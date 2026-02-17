@@ -1,0 +1,14 @@
+node_modules/
+env/
+.env
+
+*.log
+npm-debug.log*
+.eslintcache
+
+dist/
+build/
+out/
+
+.vscode/
+.idea/
