@@ -1,2 +1,2 @@
-export {Header} from './ui/Header/Header';
-export {NavLinks} from './ui/NavLinks/NavLinks'
+export { Header } from './ui/Header/Header';
+export { NavLinks } from './ui/NavLinks/NavLinks';
