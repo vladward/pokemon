@@ -9,7 +9,10 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "start": "webpack serve --open --config webpack.dev.js",
-    "format": "prettier --write \"**/*.{ts,tsx,json,scss}\""
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,json,scss}\"",
+    "fix": "npm run format && npm run lint:fix"
   },
   "dependencies": {
     "react": "^19.2.4",
