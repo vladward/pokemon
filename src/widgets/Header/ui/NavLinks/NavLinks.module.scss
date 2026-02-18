@@ -7,7 +7,6 @@
     justify-content: space-between;
     align-items: center;
 
-
     li {
       list-style: none;
       margin-bottom: 7px;
@@ -28,9 +27,9 @@
       &:hover {
         color: #e36d28;
         text-shadow:
-            0 0 5px #fff,
-            0 0 10px #ffcb05,
-            0 0 20px #ffcb05;
+          0 0 5px #fff,
+          0 0 10px #ffcb05,
+          0 0 20px #ffcb05;
       }
     }
   }
