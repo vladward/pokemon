@@ -1,24 +1,21 @@
 import type { FC } from 'react';
+import { Link } from 'react-router';
 
 import { NavLinks } from '@/widgets/Header';
 
-import { PokeballLogo, PokemonTitle } from '@/shared/ui/icons';
+import { PokemonTitle } from '@/shared/ui/icons';
 
 import styles from './Header.module.scss';
 
 export const Header: FC = () => {
   return (
     <header className={styles.header}>
-      <a href="/">
-        <PokeballLogo
-          width={50}
-          height={50}
+      <Link to="/">
+        <PokemonTitle
+          width={120}
+          height={120}
         />
-      </a>
-      <PokemonTitle
-        width={120}
-        height={120}
-      />
+      </Link>
       <NavLinks />
     </header>
   );

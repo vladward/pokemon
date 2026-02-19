@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { Link } from 'react-router';
 
 import styles from './NavLinks.module.scss';
 
@@ -7,16 +8,16 @@ export const NavLinks: FC = () => {
     <nav className={styles.nav}>
       <ul className={styles.navList}>
         <li>
-          <a href="#">Pokemons</a>
+          <Link to="#">Pokemons</Link>
         </li>
         <li>
-          <a href="#">Skills</a>
+          <Link to="#">Skills</Link>
         </li>
         <li>
-          <a href="#">Items</a>
+          <Link to="#">Items</Link>
         </li>
         <li>
-          <a href="#">Game</a>
+          <Link to="#">Game</Link>
         </li>
       </ul>
     </nav>
