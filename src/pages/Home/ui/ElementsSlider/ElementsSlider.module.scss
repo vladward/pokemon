@@ -1,0 +1,9 @@
+@use "sass:color";
+
+.inner {
+  width: 100%;
+  padding: 100px 20px;
+  background: $white100;
+  border-top: 1px solid color.adjust($white100, $lightness: -3%);
+  border-bottom: 1px solid color.adjust($white100, $lightness: -3%);
+}

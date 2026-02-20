@@ -1,10 +1,13 @@
+@use "sass:color";
+
 .league {
-  padding: 80px 20px;
+  padding: 100px 20px;
+  background: $white100;
+  border-top: 1px solid color.adjust($white100, $lightness: -3%);
+  border-bottom: 1px solid color.adjust($white100, $lightness: -3%);
   width: 100%;
 
   &__container {
-    max-width: 1200px;
-    margin: 0 auto;
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: 80px;
@@ -12,7 +15,7 @@
   }
 
   &__subTitle {
-    color: #2a75bb;
+    color: $lightBlue;
     text-transform: uppercase;
     font-size: 0.85rem;
     letter-spacing: 3px;
@@ -22,14 +25,14 @@
 
   &__title {
     font-size: 3rem;
-    color: #2a75bb;
+    color: $lightBlue;
     font-weight: 900;
     margin: 0 0 50px 0;
     line-height: 1.1;
   }
 
   &__accent {
-    color: #ffcb05;
+    color: $yellow;
   }
 
   &__list {
@@ -42,7 +45,7 @@
     display: flex;
     gap: 35px;
     padding-bottom: 35px;
-    border-bottom: 2px dashed #2a75bb;
+    border-bottom: 2px dashed $lightBlue;
 
     &:last-child {
       border-bottom: none;
@@ -52,8 +55,8 @@
   &__stepNum {
     font-size: 1.6rem;
     font-weight: 900;
-    color: #2a75bb;
-    background-color: #ffcb05;
+    color: $lightBlue;
+    background-color: $yellow;
     width: 65px;
     height: 65px;
     border-radius: 16px;
@@ -61,19 +64,18 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    border: 3px solid #2a75bb;
-    box-shadow: 0 4px 10px rgba(255, 90, 95, 0.3);
+    border: 3px solid $lightBlue;
   }
 
   &__stepTitle {
     font-size: 1.4rem;
-    color: #2a75bb;
+    color: $lightBlue;
     margin: 0 0 12px 0;
     font-weight: 800;
   }
 
   &__stepDesc {
-    color: #475569;
+    color: $blue;
     line-height: 1.7;
     font-size: 1.05rem;
     margin: 0;
@@ -85,16 +87,16 @@
   }
 
   &__factCard {
-    background: #ffffff;
+    background: $white;
     padding: 40px;
     border-radius: 28px;
-    border: 4px solid #2a75bb;
+    border: 4px solid $lightBlue;
     position: relative;
     box-shadow: 15px 15px 0 rgba(42, 117, 187, 0.1);
   }
 
   &__factTitle {
-    color: #2a75bb;
+    color: $lightBlue;
     font-size: 1.25rem;
     margin: 0 0 15px 0;
     font-weight: 900;
@@ -102,7 +104,7 @@
   }
 
   &__factText {
-    color: #516391;
+    color: $blue;
     line-height: 1.7;
     font-style: italic;
     font-size: 1rem;
@@ -120,7 +122,7 @@
       content: '';
       width: 12px;
       height: 12px;
-      background: #4da4ff;
+      background: $lightBlue;
       border-radius: 50%;
       box-shadow: 0 0 8px rgba(77, 164, 255, 0.6);
       display: block;
@@ -130,7 +132,7 @@
       content: '';
       width: 12px;
       height: 12px;
-      background: #ffcb05;
+      background: $yellow;
       border-radius: 50%;
       box-shadow: 0 0 8px rgba(255, 203, 5, 0.6);
       display: block;
