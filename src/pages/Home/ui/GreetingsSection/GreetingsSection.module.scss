@@ -4,36 +4,45 @@
   justify-content: center;
   padding: 120px 0;
 
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
   &__info {
     display: flex;
     flex-direction: column;
     text-align: start;
     gap: 40px;
-    width: 50%;
+    width: 55%;
 
     &__greetings {
       font-size: 1.5rem;
       font-weight: 600;
-      color: orange;
+      color: $lightBlue;
     }
 
     &__title {
       font-size: 5rem;
       font-weight: 700;
+      color: $lightBlue;
 
       &_highlighted {
-        color: #ffcc00;
+        color: $yellow;
       }
     }
 
     &__description {
       font-size: 2rem;
       font-weight: 500;
+      color: $blue;
     }
   }
 
   &__image {
-    width: 50%;
+    width: 45%;
     padding: 20px 0;
   }
 }
