@@ -1,0 +1,7 @@
+@use "./resetStyles";
+
+:root {
+  @each $name, $color in $pokemonTypes {
+    --type-#{$name}: #{$color};
+  }
+}
