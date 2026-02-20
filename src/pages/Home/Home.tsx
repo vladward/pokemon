@@ -9,7 +9,7 @@ import {
   EvolutionPreview,
   LeaguePreview,
   LeagueSection,
-} from '@/app/pages/Home/ui';
+} from '@/pages/Home/ui';
 
 import styles from './Home.module.scss';
 

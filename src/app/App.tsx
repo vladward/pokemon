@@ -1,21 +1,13 @@
 import type { FC } from 'react';
 
-import { Layout } from '@/app/layout';
-import { Home } from '@/app/pages';
+import { Home } from '@/pages';
 
-import { Footer } from '@/widgets/Footer';
-import { Header } from '@/widgets/Header';
+import { Layout } from '@/widgets/Layout';
 
-import './global.scss';
+import '@/shared/styles/index.scss';
 
-export const App: FC = () => {
-  return (
-    <div>
-      <Header />
-      <Layout>
-        <Home />
-      </Layout>
-      <Footer />
-    </div>
-  );
-};
+export const App: FC = () => (
+  <Layout>
+    <Home />
+  </Layout>
+);

@@ -1,11 +1,13 @@
 import type { FC } from 'react';
 
+import { Container } from '@/shared/ui';
+
 import styles from './EvolutionSection.module.scss';
 
 export const EvolutionSection: FC = () => {
   return (
     <section className={styles.evolution}>
-      <div className={styles.evolution__container}>
+      <Container>
         <div className={styles.evolution__header}>
           <h2 className={styles.evolution__title}>
             Пути <span className={styles.evolution__accent}>Развития</span>
@@ -53,7 +55,7 @@ export const EvolutionSection: FC = () => {
             от условий среды.
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 };
