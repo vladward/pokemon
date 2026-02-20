@@ -8,16 +8,16 @@ export const NavLinks: FC = () => {
     <nav className={styles.nav}>
       <ul className={styles.navList}>
         <li>
-          <Link to="#">Pokemons</Link>
+          <Link to="/pokemons">Pokemons</Link>
         </li>
         <li>
-          <Link to="#">Skills</Link>
+          <Link to="/skill">Skills</Link>
         </li>
         <li>
-          <Link to="#">Items</Link>
+          <Link to="/items">Items</Link>
         </li>
         <li>
-          <Link to="#">Game</Link>
+          <Link to="/game">Game</Link>
         </li>
       </ul>
     </nav>
