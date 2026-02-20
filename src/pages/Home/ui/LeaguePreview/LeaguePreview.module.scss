@@ -1,0 +1,97 @@
+.leaguePre {
+  width: 100%;
+  margin: 40px 20px;
+  padding: 20px 60px;
+  color: $white;
+  overflow: hidden;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 2.8rem;
+    color: $lightBlue;
+    margin: 0 0 25px 0;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  &__quote {
+    margin: 0 0 30px 0;
+    padding-left: 25px;
+    border-left: 5px solid $yellow;
+    color: $blue;
+  }
+
+  &__text {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-style: italic;
+    opacity: 0.9;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__ctaText {
+    font-weight: 800;
+    color: $lightBlue;
+    font-size: 1.2rem;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+  }
+
+  &__imageWrapper {
+    flex: 0 0 380px;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+@media (max-width: 992px) {
+  .leaguePre {
+    padding: 40px 30px;
+
+    &__container {
+      flex-direction: column-reverse;
+      text-align: center;
+    }
+
+    &__imageWrapper {
+      flex: 0 0 auto;
+      width: 260px;
+    }
+
+    &__quote {
+      border-left: none;
+      border-top: 4px solid $yellow;
+      padding-top: 20px;
+    }
+  }
+}
