@@ -1,23 +1,26 @@
-@import url('https://fonts.cdnfonts.com/css/pokemon-hollow');
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 5vw;
+  background: #ffcc00;
 
-.nav {
-  .navList {
-    width: max-content;
+  &__top {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    padding-bottom: 40px;
+  }
 
-    li {
-      list-style: none;
-    }
+  &__bottom {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #cdc1c1;
 
     a {
-      font-size: 22px;
-      padding: 0 12px;
-      text-decoration: none;
       color: #ffcb05;
       text-shadow: -1px -1px 0 #2a75bb, 1px -1px 0 #2a75bb, -1px 1px 0 #2a75bb, 1px 1px 0 #2a75bb;
-      font-weight: 700;
       transition: all 0.3s ease;
 
       &:hover {
