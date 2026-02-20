@@ -1,8 +1,8 @@
-import { FC, SVGProps } from 'react';
+import { FC } from 'react';
 
-type Props = SVGProps<SVGSVGElement>;
+import { SVGPropsType } from '@/shared/model';
 
-export const Pikachu: FC<Props> = ({ width = '135', height = '169', ...rest }) => (
+export const Pikachu: FC<SVGPropsType> = ({ width = '135', height = '169', ...rest }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     version="1.1"
