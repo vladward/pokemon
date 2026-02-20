@@ -15,16 +15,16 @@
       font-size: 22px;
       padding: 0 12px;
       text-decoration: none;
-      color: #ffcb05;
-      text-shadow: -1px -1px 0 #2a75bb, 1px -1px 0 #2a75bb, -1px 1px 0 #2a75bb, 1px 1px 0 #2a75bb;
+      color: $yellow;
+      text-shadow: -1px -1px 0 $lightBlue, 1px -1px 0 $lightBlue, -1px 1px 0 $lightBlue, 1px 1px 0 $lightBlue;
       font-weight: 700;
       transition: all 0.3s ease;
 
       &:hover {
-        color: #2a75bb;
-        text-shadow: 0 0 5px #fff,
-        0 0 10px #2a75bb,
-        0 0 20px #2a75bb;
+        color: $lightBlue;
+        text-shadow: 0 0 5px $white,
+        0 0 10px $lightBlue,
+        0 0 20px $lightBlue;
       }
     }
   }

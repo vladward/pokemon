@@ -1,8 +1,13 @@
+@use "sass:color";
+
 .abilities {
-  padding: 0 20px;
   width: 100%;
   margin: 0 auto;
   text-align: center;
+  padding: 100px 20px;
+  background: $white100;
+  border-top: 1px solid color.adjust($white100, $lightness: -3%);
+  border-bottom: 1px solid color.adjust($white100, $lightness: -3%);
 
   &__intro {
     text-align: center;
@@ -15,7 +20,7 @@
 
   &__title {
     font-size: 2.8rem;
-    color: #2a75bb;
+    color: $lightBlue;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -24,16 +29,16 @@
   }
 
   &__accent {
-    color: #ffcb05;
-    text-shadow: -1px -1px 0 #2a75bb,
-    1px -1px 0 #2a75bb,
-    -1px 1px 0 #2a75bb,
-    1px 1px 0 #2a75bb;
+    color: $yellow;
+    text-shadow: -1px -1px 0 $lightBlue,
+    1px -1px 0 $lightBlue,
+    -1px 1px 0 $lightBlue,
+    1px 1px 0 $lightBlue;
   }
 
   &__subtitle {
     font-size: 1.2rem;
-    color: #4a5568;
+    color: $blue;
     max-width: 700px;
     line-height: 1.6;
     margin: 0;
@@ -44,7 +49,7 @@
       display: block;
       width: 60px;
       height: 4px;
-      background: #ffcb05;
+      background: $yellow;
       margin: 20px auto 0;
       border-radius: 2px;
     }

@@ -1,11 +1,11 @@
-.evolution {
-  padding: 100px 20px;
-  background-color: #fcfdfe;
+@use "sass:color";
 
-  &__container {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
+.evolution {
+  width: 100%;
+  padding: 100px 20px;
+  background: $white100;
+  border-top: 1px solid color.adjust($white100, $lightness: -3%);
+  border-bottom: 1px solid color.adjust($white100, $lightness: -3%);
 
   &__header {
     text-align: center;
@@ -14,19 +14,18 @@
 
   &__title {
     font-size: 2.5rem;
-    color: #2a75bb;
+    color: $lightBlue;
     font-weight: 900;
     text-transform: uppercase;
   }
 
   &__accent {
-    color: #ffcb05;
+    color: $yellow;
   }
 
   &__subtitle {
     font-size: 1.1rem;
-    color: #64748b;
-    max-width: 750px;
+    color: $blue;
     margin: 20px auto 0;
     line-height: 1.6;
   }
@@ -38,15 +37,15 @@
   }
 
   &__card {
-    background: #fff;
+    background: $white;
     padding: 40px 30px;
     border-radius: 20px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid $blue;
     position: relative;
     transition: all 0.3s ease;
 
     &:hover {
-      border-color: #2a75bb;
+      border-color: $lightBlue;
       transform: translateY(-5px);
       box-shadow: 0 15px 30px rgba(42, 117, 187, 0.08);
     }
@@ -56,9 +55,9 @@
     position: absolute;
     top: -12px;
     left: 30px;
-    background: #2a75bb;
-    color: #fff;
-    padding: 4px 12px;
+    background: $lightBlue;
+    color: $white;
+    padding: 8px 12px;
     font-size: 0.75rem;
     font-weight: 800;
     text-transform: uppercase;
@@ -68,33 +67,33 @@
 
   &__cardTitle {
     font-size: 1.3rem;
-    color: #1e293b;
+    color: $lightBlue;
     margin-bottom: 15px;
     font-weight: 800;
   }
 
   &__cardText {
     font-size: 0.95rem;
-    color: #475569;
+    color: $blue;
     line-height: 1.6;
     margin: 0;
   }
 
   &__deepInfo {
     margin-top: 50px;
-    background: #fff3cd;
+    background: $warningBg;
     border-radius: 15px;
     padding: 25px 35px;
-    border-left: 6px solid #ffcb05;
+    border-left: 6px solid $yellow;
   }
 
   &__fact {
-    color: #856404;
+    color: $warningText;
     font-size: 1.05rem;
     line-height: 1.5;
 
     strong {
-      color: #533f03;
+      color: $lightBlue;
     }
   }
 }

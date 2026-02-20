@@ -1,14 +1,14 @@
 .leaguePre {
-  padding: 60px;
-  color: #fff;
+  width: 100%;
+  margin: 40px 20px;
+  padding: 20px 60px;
+  color: $white;
   overflow: hidden;
 
   &__container {
-    max-width: 1100px;
-    margin: 0 auto;
     display: flex;
     align-items: center;
-    gap: 60px;
+    gap: 40px;
   }
 
   &__content {
@@ -17,7 +17,7 @@
 
   &__title {
     font-size: 2.8rem;
-    color: #2a75bb;
+    color: $lightBlue;
     margin: 0 0 25px 0;
     font-weight: 900;
     text-transform: uppercase;
@@ -26,8 +26,8 @@
   &__quote {
     margin: 0 0 30px 0;
     padding-left: 25px;
-    border-left: 4px solid #ffcb05;
-    color: #334e68;
+    border-left: 5px solid $yellow;
+    color: $blue;
   }
 
   &__text {
@@ -44,7 +44,7 @@
 
   &__ctaText {
     font-weight: 800;
-    color: #2a75bb;
+    color: $lightBlue;
     font-size: 1.2rem;
     margin: 0 0 10px 0;
     text-transform: uppercase;
@@ -57,7 +57,11 @@
   &__image {
     width: 100%;
     height: auto;
-    filter: drop-shadow(0 0 40px rgba(42, 117, 187, 0.4));
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.03);
+    }
   }
 }
 
@@ -86,7 +90,7 @@
 
     &__quote {
       border-left: none;
-      border-top: 4px solid #ff5a5f;
+      border-top: 4px solid $yellow;
       padding-top: 20px;
     }
   }
