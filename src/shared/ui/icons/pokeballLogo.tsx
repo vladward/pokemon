@@ -1,9 +1,8 @@
 import type { FC } from 'react';
-import { SVGProps } from 'react';
 
-type Props = SVGProps<SVGSVGElement>;
+import { SVGPropsType } from '@/shared/model';
 
-export const PokeballLogo: FC<Props> = ({ width = '800px', height = '800px', ...rest }) => (
+export const PokeballLogo: FC<SVGPropsType> = ({ width = '800px', height = '800px', ...rest }) => (
   <svg
     width={width}
     height={height}

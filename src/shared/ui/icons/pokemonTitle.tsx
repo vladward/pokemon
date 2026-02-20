@@ -1,8 +1,8 @@
-import { FC, SVGProps } from 'react';
+import { FC } from 'react';
 
-type Props = SVGProps<SVGSVGElement>;
+import { SVGPropsType } from '@/shared/model';
 
-export const PokemonTitle: FC<Props> = ({ width = '800px', height = '800px', ...rest }) => (
+export const PokemonTitle: FC<SVGPropsType> = ({ width = '800px', height = '800px', ...rest }) => (
   <svg
     fill="currentColor"
     width={width}

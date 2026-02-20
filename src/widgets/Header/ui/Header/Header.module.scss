@@ -1,8 +1,12 @@
 .header {
-  background-color: #ffcc00;
+  background-color: $yellow;
   height: 70px;
-  padding: 0 5vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: 100%;
+
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
 }

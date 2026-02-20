@@ -1,0 +1,65 @@
+@use "sass:color";
+
+.abilities {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 100px 20px;
+  background: $white100;
+  border-top: 1px solid color.adjust($white100, $lightness: -3%);
+  border-bottom: 1px solid color.adjust($white100, $lightness: -3%);
+
+  &__intro {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__title {
+    font-size: 2.8rem;
+    color: $lightBlue;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  &__accent {
+    color: $yellow;
+    text-shadow: -1px -1px 0 $lightBlue,
+    1px -1px 0 $lightBlue,
+    -1px 1px 0 $lightBlue,
+    1px 1px 0 $lightBlue;
+  }
+
+  &__subtitle {
+    font-size: 1.2rem;
+    color: $blue;
+    max-width: 700px;
+    line-height: 1.6;
+    margin: 0;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: $yellow;
+      margin: 20px auto 0;
+      border-radius: 2px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    width: 100%;
+    justify-items: center;
+  }
+}

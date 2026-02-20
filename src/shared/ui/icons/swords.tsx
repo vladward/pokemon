@@ -1,8 +1,8 @@
-import { FC, SVGProps } from 'react';
+import { FC } from 'react';
 
-type Props = SVGProps<SVGSVGElement>;
+import { SVGPropsType } from '@/shared/model';
 
-export const Swords: FC<Props> = ({ width = '36', height = 36, ...rest }) => (
+export const Swords: FC<SVGPropsType> = ({ width = '36', height = 36, ...rest }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}
