@@ -1,8 +1,8 @@
-import { FC, SVGProps } from 'react';
+import { FC } from 'react';
 
-type Props = SVGProps<SVGSVGElement>;
+import { SVGPropsType } from '@/shared/model';
 
-export const Ground: FC<Props> = ({ width = '76', height = '76', ...rest }) => (
+export const Ground: FC<SVGPropsType> = ({ width = '76', height = '76', ...rest }) => (
   <svg
     width={width}
     height={height}

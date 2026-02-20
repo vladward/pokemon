@@ -17,20 +17,7 @@ export const ElementCard: FC<PokemonTypeCardProps> = ({ name, color, image, onCl
       style={{ '--type-color': color } as React.CSSProperties}
     >
       <div className={styles.typeCard__imageWrapper}>
-        {typeof image === 'string' ? (
-          <img
-            src={image}
-            alt={name}
-            className={styles.typeCard__image}
-          />
-        ) : (
-          <div
-            className={styles.typeCard__node}
-            style={{ background: color }}
-          >
-            {image}
-          </div>
-        )}
+        <div className={styles.typeCard__node}>{image}</div>
       </div>
       <span className={styles.typeCard__name}>{name}</span>
     </div>

@@ -1,6 +1,6 @@
 .typeCard {
-  background: #ffffff;
-  border: 3px solid var(--type-color, #ccc);
+  background: $white;
+  border: 3px solid var(--type-color, $white);
   border-radius: 16px;
   display: flex;
   flex-direction: column;
@@ -9,15 +9,15 @@
   padding: 30px 10px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 0 var(--type-color, #ccc);
+  box-shadow: 0 4px 0 var(--type-color, $white);
 
   &:hover {
     transform: translateY(-4px);
-    background: var(--type-color, #ccc);
+    background: var(--type-color, $white);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 
     .typeCard__name {
-      color: #fff;
+      color: $white;
     }
 
     .typeCard__image {
@@ -28,7 +28,7 @@
 
   &:active {
     transform: translateY(2px);
-    box-shadow: 0 1px 0 var(--type-color, #ccc);
+    box-shadow: 0 1px 0 var(--type-color, $white);
   }
 
   &__imageWrapper {
@@ -48,12 +48,13 @@
   &__node {
     padding: 20px;
     border-radius: 50%;
+    background: var(--type-color);
   }
 
   &__name {
     font-weight: 800;
     font-size: 0.85rem;
-    color: var(--type-color, #333);
+    color: var(--type-color, $black);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     transition: color 0.3s ease;

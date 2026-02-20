@@ -1,1 +1,1 @@
-export { Footer } from './ui/Footer/Footer';
+export { Footer } from './ui/Footer';
