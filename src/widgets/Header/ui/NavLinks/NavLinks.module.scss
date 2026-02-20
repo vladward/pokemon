@@ -9,27 +9,22 @@
 
     li {
       list-style: none;
-      margin-bottom: 7px;
     }
 
     a {
       font-size: 22px;
       padding: 0 12px;
       text-decoration: none;
-      color: black;
-
-      font-family: 'Pokemon Hollow', sans-serif;
+      color: #ffcb05;
+      text-shadow: -1px -1px 0 #2a75bb, 1px -1px 0 #2a75bb, -1px 1px 0 #2a75bb, 1px 1px 0 #2a75bb;
       font-weight: 700;
-      letter-spacing: 4px;
-
-      transition: all 0.2s ease;
+      transition: all 0.3s ease;
 
       &:hover {
-        color: #e36d28;
-        text-shadow:
-          0 0 5px #fff,
-          0 0 10px #ffcb05,
-          0 0 20px #ffcb05;
+        color: #2a75bb;
+        text-shadow: 0 0 5px #fff,
+        0 0 10px #2a75bb,
+        0 0 20px #2a75bb;
       }
     }
   }
