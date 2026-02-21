@@ -1,7 +1,7 @@
 export { HomeCard } from './HomeCard/HomeCard';
 export { GreetingsSection } from './GreetingsSection/GreetingsSection';
 export { AbilitiesSection } from './AbilitiesSection/AbilitiesSection';
-export { ElementsSection } from './ElementsSection/ElementsSection';
+export { ElementsPreview } from './ElementsSection/ElementsPreview';
 export { ElementsSlider } from './ElementsSlider/ElementsSlider';
 export { EvolutionPreview } from './EvolutionPreview/EvolutionPreview';
 export { EvolutionSection } from './EvolutionSection/EvolutionSection';
