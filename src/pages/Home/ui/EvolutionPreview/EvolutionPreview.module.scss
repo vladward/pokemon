@@ -1,9 +1,10 @@
 .evolutionPre {
   width: 100%;
-  margin: 40px 20px;
-  padding: 20px 60px;
+  padding: 60px 60px;
   position: relative;
   overflow: hidden;
+  @include theme-prop(background, bg-primary);
+  @include theme-prop(color, text);
 
   &__container {
     display: flex;
@@ -48,7 +49,6 @@
   &__text {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: $blue;
     margin-bottom: 15px;
     font-style: italic;
 
@@ -69,12 +69,6 @@
     line-height: 1.4;
     font-size: 1.2rem;
     text-transform: uppercase;
-  }
-
-  &__arrow {
-    font-size: 2rem;
-    color: $yellow;
-    animation: bounce 2s infinite;
   }
 }
 
