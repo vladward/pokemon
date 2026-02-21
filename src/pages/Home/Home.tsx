@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import {
   AbilitiesSection,
-  ElementsSection,
+  ElementsPreview,
   GreetingsSection,
   ElementsSlider,
   EvolutionSection,
@@ -18,7 +18,7 @@ export const Home: FC = () => {
     <div className={styles.container}>
       <GreetingsSection />
       <AbilitiesSection />
-      <ElementsSection />
+      <ElementsPreview />
       <ElementsSlider />
       <EvolutionPreview />
       <EvolutionSection />
