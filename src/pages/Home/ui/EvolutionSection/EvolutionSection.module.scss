@@ -3,7 +3,9 @@
 .evolution {
   width: 100%;
   padding: 100px 20px;
-  background: $white100;
+  @include theme-prop(background, bg-secondary);
+  @include theme-prop(border-color, bg-secondary);
+  @include theme-prop(color, text);
   border-top: 1px solid color.adjust($white100, $lightness: -3%);
   border-bottom: 1px solid color.adjust($white100, $lightness: -3%);
 
@@ -21,11 +23,11 @@
 
   &__accent {
     color: $yellow;
+    text-shadow: $textBordered;
   }
 
   &__subtitle {
     font-size: 1.1rem;
-    color: $blue;
     margin: 20px auto 0;
     line-height: 1.6;
   }
@@ -37,7 +39,7 @@
   }
 
   &__card {
-    background: $white;
+    @include theme-prop(background, bg-tertiary);
     padding: 40px 30px;
     border-radius: 20px;
     border: 1px solid $blue;

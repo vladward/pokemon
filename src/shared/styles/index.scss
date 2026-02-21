@@ -1,7 +1,18 @@
+@use "sass:map";
 @use "./resetStyles";
 
 :root {
   @each $name, $color in $pokemonTypes {
     --type-#{$name}: #{$color};
   }
+}
+
+body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
 }

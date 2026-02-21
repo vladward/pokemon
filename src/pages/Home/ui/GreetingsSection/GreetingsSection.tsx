@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { MainImage } from '@/shared/assets';
+import { Pokemons } from '@/shared/assets';
 import { Container } from '@/shared/ui';
 
 import styles from './GreetingsSection.module.scss';
@@ -21,7 +21,7 @@ export const GreetingsSection: FC = () => {
           </h2>
         </div>
         <img
-          src={MainImage}
+          src={Pokemons}
           alt="pokemons_main"
           className={styles.greetings__image}
         />
