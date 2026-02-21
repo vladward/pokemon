@@ -8,5 +8,18 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
+
+    svg {
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    .actions {
+      @include flex-center();
+      gap: 10px;
+    }
   }
 }

@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 
 import { NavLinks } from '@/widgets/Header';
 
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+
 import { Container } from '@/shared/ui';
 import { PokemonTitle } from '@/shared/ui/icons';
 
@@ -18,7 +20,10 @@ export const Header: FC = () => {
             height={120}
           />
         </Link>
-        <NavLinks />
+        <div className={styles.actions}>
+          <NavLinks />
+          <ThemeSwitcher />
+        </div>
       </Container>
     </header>
   );
