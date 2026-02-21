@@ -5,7 +5,7 @@ import { Container } from '@/shared/ui';
 
 import styles from './ElementsSection.module.scss';
 
-export const ElementsSection: FC = () => {
+export const ElementsPreview: FC = () => {
   return (
     <section className={styles.elements}>
       <Container className={styles.inner}>

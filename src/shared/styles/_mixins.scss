@@ -1,6 +1,34 @@
+@use "sass:map";
+
+$themes: (
+    light: (
+        bg-primary: #ffffff,
+        bg-secondary: #F4F7FB,
+        bg-tertiary: #ffffff,
+        text: #334e68,
+    ),
+    dark: (
+        bg-primary: #1A222D,
+        bg-secondary: #242E3C,
+        bg-tertiary: #D6E2F3,
+        text: #E1E8F0,
+    )
+);
+
 @mixin flex-center($direction: row) {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: $direction;
+}
+
+@mixin theme-prop($property, $key) {
+  $light-val: map.get(map.get($themes, "light"), $key);
+  $dark-val: map.get(map.get($themes, "dark"), $key);
+
+  #{$property}: $light-val;
+
+  :global(body.dark-theme) & {
+    #{$property}: $dark-val !important;
+  }
 }

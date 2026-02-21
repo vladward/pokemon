@@ -1,9 +1,9 @@
 .leaguePre {
   width: 100%;
-  margin: 40px 20px;
-  padding: 20px 60px;
-  color: $white;
+  padding: 60px 60px;
   overflow: hidden;
+  @include theme-prop(background, bg-primary);
+  @include theme-prop(color, text);
 
   &__container {
     display: flex;
@@ -27,7 +27,6 @@
     margin: 0 0 30px 0;
     padding-left: 25px;
     border-left: 5px solid $yellow;
-    color: $blue;
   }
 
   &__text {

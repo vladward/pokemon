@@ -22,3 +22,5 @@ export { Steel } from './steel';
 export { Fairy } from './fairy';
 export { Dark } from './dark';
 export { Normal } from './normal';
+export { Sun } from './sun';
+export { Moon } from './moon';
