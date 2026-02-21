@@ -5,7 +5,9 @@
   margin: 0 auto;
   text-align: center;
   padding: 100px 20px;
-  background: $white100;
+  @include theme-prop(background, bg-secondary);
+  @include theme-prop(border-color, bg-secondary);
+  @include theme-prop(color, text);
   border-top: 1px solid color.adjust($white100, $lightness: -3%);
   border-bottom: 1px solid color.adjust($white100, $lightness: -3%);
 
@@ -38,7 +40,6 @@
 
   &__subtitle {
     font-size: 1.2rem;
-    color: $blue;
     max-width: 700px;
     line-height: 1.6;
     margin: 0;

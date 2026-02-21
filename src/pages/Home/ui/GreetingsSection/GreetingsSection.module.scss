@@ -3,6 +3,9 @@
   align-items: center;
   justify-content: center;
   padding: 120px 0;
+  width: 100%;
+  @include theme-prop(background, bg-primary);
+  @include theme-prop(color, text);
 
   .inner {
     display: flex;
@@ -31,13 +34,13 @@
 
       &_highlighted {
         color: $yellow;
+        text-shadow: $textBordered;
       }
     }
 
     &__description {
       font-size: 2rem;
       font-weight: 500;
-      color: $blue;
     }
   }
 
