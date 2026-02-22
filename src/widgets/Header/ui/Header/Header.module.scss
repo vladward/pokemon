@@ -11,6 +11,7 @@
 
     svg {
       transition: all 0.3s ease;
+      color: $blue;
 
       &:hover {
         transform: scale(1.1);
