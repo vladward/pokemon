@@ -8,4 +8,6 @@ export default {
     '^@/(.*)$': '<rootDir>/src/$1',
     '\\.(s?css)$': 'identity-obj-proxy',
   },
+  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/e2e/'],
+  testMatch: ['<rootDir>/src/**/*(*.)@(test|spec).(ts|tsx)'],
 };
