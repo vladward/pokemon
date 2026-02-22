@@ -3,8 +3,9 @@
 .inner {
   width: 100%;
   padding: 100px 20px;
-  @include theme-prop(background, bg-secondary);
-  @include theme-prop(border-color, bg-secondary);
+  @include theme-ready();
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--bg-secondary);
   border-top: 1px solid color.adjust($white100, $lightness: -3%);
   border-bottom: 1px solid color.adjust($white100, $lightness: -3%);
 }

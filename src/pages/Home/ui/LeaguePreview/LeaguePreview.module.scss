@@ -2,8 +2,9 @@
   width: 100%;
   padding: 60px 60px;
   overflow: hidden;
-  @include theme-prop(background, bg-primary);
-  @include theme-prop(color, text);
+  @include theme-ready();
+  background-color: var(--bg-primary);
+  color: var(--text);
 
   &__container {
     display: flex;
