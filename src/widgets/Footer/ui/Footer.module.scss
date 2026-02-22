@@ -13,6 +13,7 @@
     padding-bottom: 40px;
 
     svg {
+      color: $blue;
       transition: all 0.3s ease;
 
       &:hover {
@@ -25,6 +26,7 @@
     text-align: center;
     padding: 20px 0;
     border-top: 1px solid #cdc1c1;
+    color: $blue;
 
     a {
       color: #ffcb05;
