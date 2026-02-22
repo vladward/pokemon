@@ -6,14 +6,11 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
-const getSystemTheme = (): Theme => {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? Theme.DARK : Theme.LIGHT;
-};
-
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(() => {
     const saved = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme;
-    return saved || getSystemTheme();
+    if (saved && Object.values(Theme).includes(saved)) return saved;
+    return Theme.DARK;
   });
 
   useEffect(() => {
