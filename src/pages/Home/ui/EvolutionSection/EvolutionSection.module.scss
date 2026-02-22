@@ -6,9 +6,8 @@
   @include theme-ready();
   background-color: var(--bg-secondary);
   color: var(--text);
-  border: 1px solid var(--bg-secondary);
-  border-top: 1px solid color.adjust($white100, $lightness: -3%);
-  border-bottom: 1px solid color.adjust($white100, $lightness: -3%);
+  border-top: 1px solid color-mix(in srgb, var(--bg-secondary), black 3%);
+  border-bottom: 1px solid color-mix(in srgb, var(--bg-secondary), black 3%);
 
   &__header {
     text-align: center;
