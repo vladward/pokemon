@@ -1,4 +1,4 @@
-@use "sass:color";
+@use 'sass:color';
 
 .abilities {
   width: 100%;
@@ -32,10 +32,11 @@
 
   &__accent {
     color: $yellow;
-    text-shadow: -1px -1px 0 $lightBlue,
-    1px -1px 0 $lightBlue,
-    -1px 1px 0 $lightBlue,
-    1px 1px 0 $lightBlue;
+    text-shadow:
+      -1px -1px 0 $lightBlue,
+      1px -1px 0 $lightBlue,
+      -1px 1px 0 $lightBlue,
+      1px 1px 0 $lightBlue;
   }
 
   &__subtitle {

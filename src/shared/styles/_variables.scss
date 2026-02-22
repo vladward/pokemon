@@ -1,56 +1,60 @@
-@use "sass:map";
+@use 'sass:map';
 
 $black: #000000;
 $white: #ffffff;
-$white100: #F4F7FB;
+$white100: #f4f7fb;
 $yellow: #ffcc00;
-$yellow100: #C7A008;
+$yellow100: #c7a008;
 $lightBlue: #2a75bb;
 $blue: #334e68;
 
 $warningBg: #fff3cd;
 $warningText: #856404;
 
-$textBordered: -1px -1px 0 $lightBlue, 1px -1px 0 $lightBlue, -1px 1px 0 $lightBlue, 1px 1px 0 $lightBlue;
+$textBordered:
+  -1px -1px 0 $lightBlue,
+  1px -1px 0 $lightBlue,
+  -1px 1px 0 $lightBlue,
+  1px 1px 0 $lightBlue;
 
-$fontPrimary: "Josefin Sans", sans-serif;
+$fontPrimary: 'Josefin Sans', sans-serif;
 
-$typeFire: #FBA54C;
-$typeWater: #539DDF;
-$typeGrass: #5FBD58;
-$typeElectric: #F2D94E;
-$typeIce: #75D0C1;
-$typeFighting: #D3425F;
-$typePoison: #B763CF;
-$typeGround: #DA7C4D;
-$typeFlying: #A1BBEC;
-$typePsychic: #FA8581;
-$typeBug: #92BC2C;
-$typeRock: #C9BB8A;
-$typeGhost: #5F6DBC;
-$typeDragon: #0C69C8;
-$typeSteel: #5695A3;
-$typeFairy: #EE90E6;
+$typeFire: #fba54c;
+$typeWater: #539ddf;
+$typeGrass: #5fbd58;
+$typeElectric: #f2d94e;
+$typeIce: #75d0c1;
+$typeFighting: #d3425f;
+$typePoison: #b763cf;
+$typeGround: #da7c4d;
+$typeFlying: #a1bbec;
+$typePsychic: #fa8581;
+$typeBug: #92bc2c;
+$typeRock: #c9bb8a;
+$typeGhost: #5f6dbc;
+$typeDragon: #0c69c8;
+$typeSteel: #5695a3;
+$typeFairy: #ee90e6;
 $typeDark: #595761;
-$typeNormal: #A0A29F;
+$typeNormal: #a0a29f;
 
 $pokemonTypes: (
-    "fire": $typeFire,
-    "water": $typeWater,
-    "grass": $typeGrass,
-    "electric": $typeElectric,
-    "ice": $typeIce,
-    "fighting": $typeFighting,
-    "poison": $typePoison,
-    "ground": $typeGround,
-    "flying": $typeFlying,
-    "psychic": $typePsychic,
-    "bug": $typeBug,
-    "rock": $typeRock,
-    "ghost": $typeGhost,
-    "dragon": $typeDragon,
-    "steel": $typeSteel,
-    "fairy": $typeFairy,
-    "dark": $typeDark,
-    "normal": $typeNormal
+  'fire': $typeFire,
+  'water': $typeWater,
+  'grass': $typeGrass,
+  'electric': $typeElectric,
+  'ice': $typeIce,
+  'fighting': $typeFighting,
+  'poison': $typePoison,
+  'ground': $typeGround,
+  'flying': $typeFlying,
+  'psychic': $typePsychic,
+  'bug': $typeBug,
+  'rock': $typeRock,
+  'ghost': $typeGhost,
+  'dragon': $typeDragon,
+  'steel': $typeSteel,
+  'fairy': $typeFairy,
+  'dark': $typeDark,
+  'normal': $typeNormal,
 );
