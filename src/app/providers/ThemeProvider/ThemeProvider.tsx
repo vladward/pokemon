@@ -15,19 +15,32 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
     const handleChange = (e: MediaQueryListEvent) => {
       if (!localStorage.getItem(LOCAL_STORAGE_THEME_KEY)) {
         setTheme(e.matches ? Theme.DARK : Theme.LIGHT);
       }
     };
-
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
+  useEffect(() => {
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === LOCAL_STORAGE_THEME_KEY && e.newValue) {
+        setTheme(e.newValue as Theme);
+      }
+    };
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+  }, []);
+
   useLayoutEffect(() => {
-    document.body.className = theme === Theme.DARK ? 'dark-theme' : '';
+    const body = document.body;
+    if (theme === Theme.DARK) {
+      body.classList.add('dark-theme');
+    } else {
+      body.classList.remove('dark-theme');
+    }
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme);
   }, [theme]);
 
