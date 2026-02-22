@@ -6,31 +6,41 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
-const getSystemTheme = (): Theme => {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? Theme.DARK : Theme.LIGHT;
-};
-
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(() => {
     const saved = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme;
-    return saved || getSystemTheme();
+    if (saved && Object.values(Theme).includes(saved)) return saved;
+    return Theme.DARK;
   });
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
     const handleChange = (e: MediaQueryListEvent) => {
       if (!localStorage.getItem(LOCAL_STORAGE_THEME_KEY)) {
         setTheme(e.matches ? Theme.DARK : Theme.LIGHT);
       }
     };
-
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
+  useEffect(() => {
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === LOCAL_STORAGE_THEME_KEY && e.newValue) {
+        setTheme(e.newValue as Theme);
+      }
+    };
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+  }, []);
+
   useLayoutEffect(() => {
-    document.body.className = theme === Theme.DARK ? 'dark-theme' : '';
+    const body = document.body;
+    if (theme === Theme.DARK) {
+      body.classList.add('dark-theme');
+    } else {
+      body.classList.remove('dark-theme');
+    }
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme);
   }, [theme]);
 
