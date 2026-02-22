@@ -8,10 +8,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
-    "fix": "npm run format && npm run lint:fix",
-    "format": "prettier --write \"**/*.{ts,tsx,json,scss}\"",
+    "fix": "prettier --write \"**/*.{ts,tsx,json,scss}\" && eslint \"src/**/*.{ts,tsx}\" --fix",
+    "format:check": "prettier --check \"**/*.{ts,tsx,json,scss}\"",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
-    "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "start": "webpack serve --open --config webpack.dev.js"
   },
   "dependencies": {
