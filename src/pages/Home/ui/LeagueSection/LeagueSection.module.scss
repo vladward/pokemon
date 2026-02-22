@@ -2,9 +2,10 @@
 
 .league {
   padding: 100px 20px;
-  @include theme-prop(background, bg-secondary);
-  @include theme-prop(border-color, bg-secondary);
-  @include theme-prop(color, text);
+  @include theme-ready();
+  background-color: var(--bg-secondary);
+  color: var(--text);
+  border: 1px solid var(--bg-secondary);
   border-top: 1px solid color.adjust($white100, $lightness: -3%);
   border-bottom: 1px solid color.adjust($white100, $lightness: -3%);
   width: 100%;
@@ -89,7 +90,10 @@
   }
 
   &__factCard {
-    @include theme-prop(background, bg-tertiary);
+    //@include theme-prop(background, bg-tertiary);
+    @include theme-ready();
+    background-color: var(--bg-tertiary);
+    //color: var(--text);
     background: $white;
     padding: 40px;
     border-radius: 28px;

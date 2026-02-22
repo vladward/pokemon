@@ -4,8 +4,9 @@
   justify-content: center;
   padding: 120px 0;
   width: 100%;
-  @include theme-prop(background, bg-primary);
-  @include theme-prop(color, text);
+  @include theme-ready();
+  background-color: var(--bg-primary);
+  color: var(--text);
 
   .inner {
     display: flex;

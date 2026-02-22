@@ -3,8 +3,9 @@
   padding: 60px 60px;
   position: relative;
   overflow: hidden;
-  @include theme-prop(background, bg-primary);
-  @include theme-prop(color, text);
+  @include theme-ready();
+  background-color: var(--bg-primary);
+  color: var(--text);
 
   .inner {
     width: 100%;

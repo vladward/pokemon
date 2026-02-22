@@ -1,6 +1,7 @@
 .homeCard {
   width: 300px;
-  @include theme-prop(background, bg-tertiary);
+  @include theme-ready();
+  background-color: var(--bg-tertiary);
   border: 3px solid $lightBlue;
   border-radius: 20px;
   overflow: hidden;
