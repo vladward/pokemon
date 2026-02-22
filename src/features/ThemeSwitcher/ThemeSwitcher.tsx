@@ -12,11 +12,11 @@ export const ThemeSwitcher = () => {
       type="button"
       className={styles.switcher}
       onClick={toggleTheme}
+      aria-label="Toggle theme"
     >
       <div
         key={theme}
         className={styles.iconContainer}
-        style={{ animation: 'fadeScale 0.3s ease-out' }}
       >
         {theme === Theme.DARK ? <Sun className={styles.icon} /> : <Moon className={styles.icon} />}
       </div>
