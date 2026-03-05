@@ -79,7 +79,7 @@ jobs:
 
   deploy:
     needs: [ lint-and-types, unit-tests, build, e2e-tests ]
-    if: github.ref == 'refs/heads/dev'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
