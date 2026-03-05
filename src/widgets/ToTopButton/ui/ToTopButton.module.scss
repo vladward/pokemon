@@ -1,0 +1,23 @@
+.topBtn {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  transition:
+    all 0.3s ease,
+    visibility 0.3s;
+  z-index: 10;
+
+  margin: 15px;
+  padding: 12px;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+}
