@@ -65,8 +65,8 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
 
       - name: Install Playwright Browsers
-      - if: steps.playwright-cache.outputs.cache-hit != 'true'
-      - run: npx playwright install webkit chromium
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install webkit chromium
 
       - name: Install Playwright Dependencies
         run: npx playwright install-deps webkit chromium
