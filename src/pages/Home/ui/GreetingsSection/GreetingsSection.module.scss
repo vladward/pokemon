@@ -48,5 +48,10 @@
   &__image {
     width: 45%;
     padding: 20px 0;
+    transition: 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }

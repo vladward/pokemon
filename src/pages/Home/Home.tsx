@@ -3,13 +3,15 @@ import { FC } from 'react';
 import {
   AbilitiesSection,
   ElementsPreview,
-  GreetingsSection,
   ElementsSlider,
-  EvolutionSection,
   EvolutionPreview,
+  EvolutionSection,
+  GreetingsSection,
   LeaguePreview,
   LeagueSection,
 } from '@/pages/Home/ui';
+
+import ToTopButton from '@/widgets/ToTopButton/ui/ToTopButton';
 
 import styles from './Home.module.scss';
 
@@ -24,6 +26,7 @@ export const Home: FC = () => {
       <EvolutionSection />
       <LeaguePreview />
       <LeagueSection />
+      <ToTopButton />
     </div>
   );
 };
