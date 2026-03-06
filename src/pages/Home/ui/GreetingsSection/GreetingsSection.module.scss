@@ -12,15 +12,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
     height: 100%;
   }
 
   &__info {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
     text-align: start;
     gap: 40px;
-    width: 55%;
 
     &__greetings {
       font-size: 1.5rem;
@@ -29,6 +30,7 @@
     }
 
     &__title {
+      height: max-content;
       font-size: 5rem;
       font-weight: 700;
       color: $lightBlue;
@@ -37,11 +39,28 @@
         color: $yellow;
         text-shadow: $textBordered;
       }
+
+      @include media('mobile') {
+        font-size: 3rem;
+      }
     }
 
     &__description {
+      margin: 40px 0 80px;
       font-size: 2rem;
       font-weight: 500;
+      text-align: center;
+      line-height: 1.2;
+
+      @include media('mobile') {
+        margin-bottom: 0;
+        font-size: 1.5rem;
+      }
+    }
+
+    @include media('mobile') {
+      text-align: center;
+      flex-direction: column;
     }
   }
 
@@ -53,5 +72,26 @@
     &:hover {
       transform: scale(1.05);
     }
+
+    @include media('mobile') {
+      width: 100%;
+    }
+  }
+
+  &__startBtn {
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+      background-color: $yellow;
+    }
+
+    @include media('mobile') {
+      display: none;
+    }
+  }
+
+  @include media('mobile') {
+    padding: 40px 0;
   }
 }

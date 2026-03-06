@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
 
+import { HOME_PAGE_TO_TOP_SIZE } from '@/shared/constants/constants';
 import { ArrowTop, Button } from '@/shared/ui';
 
 import styles from './ToTopButton.module.scss';
 
 const ToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 1000;
+      const isScrolled = window.scrollY > HOME_PAGE_TO_TOP_SIZE - 1;
       setIsVisible((prev) => (prev !== isScrolled ? isScrolled : prev));
     };
     document.addEventListener('scroll', handleScroll, { passive: true });

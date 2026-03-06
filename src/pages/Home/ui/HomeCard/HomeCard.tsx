@@ -48,12 +48,7 @@ export const HomeCard: FC<Props> = ({ card }) => {
         <h3 className={styles.homeCard__title}>{card.title}</h3>
         <p className={styles.homeCard__description}>{card.description}</p>
         <div className={styles.homeCard__action}>
-          <Button
-            className={styles.homeCard__button}
-            onClick={() => navigate(card.link)}
-          >
-            {card.btnText}
-          </Button>
+          <Button onClick={() => navigate(card.link)}>{card.btnText}</Button>
         </div>
       </div>
     </div>
