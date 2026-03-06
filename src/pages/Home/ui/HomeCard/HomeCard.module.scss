@@ -60,18 +60,4 @@
     display: flex;
     justify-content: center;
   }
-
-  &__button {
-    border: 3px solid $lightBlue;
-    transition: all 0.1s ease;
-
-    &:hover {
-      background-color: $yellow;
-    }
-
-    &:active {
-      box-shadow: 0 1px $yellow;
-      transform: translateY(4px);
-    }
-  }
 }
