@@ -1,4 +1,4 @@
-@use "sass:map";
+@use 'sass:map';
 
 @mixin flex-center($direction: row) {
   display: flex;
@@ -14,11 +14,11 @@
 }
 
 $breakpoints: (
-    "mobile": 576px,
-    "tablet": 768px,
-    "laptop": 992px,
-    "desktop": 1200px,
-    "wide": 1400px,
+  'mobile': 576px,
+  'tablet': 768px,
+  'laptop': 992px,
+  'desktop': 1200px,
+  'wide': 1400px,
 );
 
 @mixin media($breakpoint) {
