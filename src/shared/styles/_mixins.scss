@@ -1,3 +1,5 @@
+@use "sass:map";
+
 @mixin flex-center($direction: row) {
   display: flex;
   justify-content: center;
@@ -9,4 +11,22 @@
   transition-property: background-color, border-color, color, box-shadow;
   transition-duration: 0.4s;
   transition-timing-function: ease;
+}
+
+$breakpoints: (
+    "mobile": 576px,
+    "tablet": 768px,
+    "laptop": 992px,
+    "desktop": 1200px,
+    "wide": 1400px,
+);
+
+@mixin media($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (max-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint '#{$breakpoint}' not found.";
+  }
 }

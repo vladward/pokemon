@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import { FC, useState } from 'react';
 import { Link } from 'react-router';
 
 import { NavLinks } from '@/widgets/Header';
@@ -11,6 +11,7 @@ import { PokemonTitle } from '@/shared/ui/icons';
 import styles from './Header.module.scss';
 
 export const Header: FC = () => {
+  const [isOpen] = useState(true);
   return (
     <header className={styles.header}>
       <Container className={styles.inner}>
@@ -24,6 +25,8 @@ export const Header: FC = () => {
           <NavLinks />
           <ThemeSwitcher />
         </div>
+
+        {isOpen ? <dialog>hello</dialog> : <></>}
       </Container>
     </header>
   );
