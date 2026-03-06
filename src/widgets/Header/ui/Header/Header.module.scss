@@ -22,5 +22,10 @@
       @include flex-center();
       gap: 10px;
     }
+    
+  }
+
+  @include media('mobile') {
+    height: 100px;
   }
 }
