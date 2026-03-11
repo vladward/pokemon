@@ -89,10 +89,8 @@
   }
 
   &__factCard {
-    //@include theme-prop(background, bg-tertiary);
     @include theme-ready();
     background-color: var(--bg-tertiary);
-    //color: var(--text);
     background: $white;
     padding: 40px;
     border-radius: 28px;
