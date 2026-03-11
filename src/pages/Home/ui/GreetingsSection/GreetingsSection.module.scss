@@ -40,12 +40,12 @@
         text-shadow: $textBordered;
       }
 
-      @include media('mobile') {
-        font-size: 3rem;
-      }
-
       @include media('tablet') {
         font-size: 4rem;
+      }
+
+      @include media('mobile') {
+        font-size: 3rem;
       }
     }
 
@@ -56,23 +56,23 @@
       text-align: center;
       line-height: 1.2;
 
-      @include media('mobile') {
-        margin-bottom: 0;
-        font-size: 1.5rem;
-      }
-
       @include media('tablet') {
         margin-bottom: 0;
         font-size: 2rem;
       }
+
+      @include media('mobile') {
+        margin-bottom: 0;
+        font-size: 1.5rem;
+      }
     }
 
-    @include media('mobile') {
+    @include media('tablet') {
       text-align: center;
       flex-direction: column;
     }
 
-    @include media('tablet') {
+    @include media('mobile') {
       text-align: center;
       flex-direction: column;
     }
@@ -87,11 +87,11 @@
       transform: scale(1.05);
     }
 
-    @include media('mobile') {
+    @include media('tablet') {
       width: 100%;
     }
 
-    @include media('tablet') {
+    @include media('mobile') {
       width: 100%;
     }
   }
@@ -104,20 +104,20 @@
       background-color: $yellow;
     }
 
-    @include media('mobile') {
-      display: none;
-    }
-
     @include media('tablet') {
       display: none;
     }
-  }
 
-  @include media('mobile') {
-    padding: 40px 0;
+    @include media('mobile') {
+      display: none;
+    }
   }
 
   @include media('tablet') {
+    padding: 40px 0;
+  }
+
+  @include media('mobile') {
     padding: 40px 0;
   }
 }
