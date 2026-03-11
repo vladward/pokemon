@@ -20,6 +20,10 @@
         transform: scale(1.1);
       }
     }
+
+    @include media('mobile') {
+      padding-bottom: 0;
+    }
   }
 
   &__bottom {
@@ -30,19 +34,17 @@
 
     a {
       color: #ffcb05;
-      text-shadow:
-        -1px -1px 0 #2a75bb,
-        1px -1px 0 #2a75bb,
-        -1px 1px 0 #2a75bb,
-        1px 1px 0 #2a75bb;
+      text-shadow: -1px -1px 0 #2a75bb,
+      1px -1px 0 #2a75bb,
+      -1px 1px 0 #2a75bb,
+      1px 1px 0 #2a75bb;
       transition: all 0.3s ease;
 
       &:hover {
         color: #2a75bb;
-        text-shadow:
-          0 0 5px #fff,
-          0 0 10px #2a75bb,
-          0 0 20px #2a75bb;
+        text-shadow: 0 0 5px #fff,
+        0 0 10px #2a75bb,
+        0 0 20px #2a75bb;
       }
     }
   }
