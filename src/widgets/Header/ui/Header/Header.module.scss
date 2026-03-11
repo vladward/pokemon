@@ -1,3 +1,5 @@
+$drawer-width: 320px;
+
 .header {
   background-color: $yellow;
   height: 70px;
@@ -18,13 +20,79 @@
       }
     }
 
-    .actions {
-      @include flex-center();
-      gap: 10px;
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: -$drawer-width;
+      width: $drawer-width;
+      height: 100vh;
+      background-color: $yellow;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      padding: 80px 40px;
+      z-index: 1000;
+
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+
+      &.isOpen {
+        transform: translateX(-100%);
+      }
+
+      .navigation {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 999;
+
+      &.overlayVisible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .menuList {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        a {
+          font-size: 1.5rem;
+          font-weight: 500;
+          color: #1a1a1a;
+          text-decoration: none;
+          transition: color 0.2s;
+
+          &:hover {
+            color: #007bff;
+          }
+        }
+      }
+    }
+
+    .desktopNav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
     }
   }
 
   @include media('mobile') {
+    height: 100px;
+  }
+
+  @include media('tablet') {
     height: 100px;
   }
 }
