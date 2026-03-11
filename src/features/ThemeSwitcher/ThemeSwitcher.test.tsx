@@ -1,11 +1,11 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 
+import { ThemeSwitcher } from '@/features';
+
 import { Theme, useTheme } from '@/shared/lib/theme';
 
-import { ThemeSwitcher } from './ThemeSwitcher';
-
-jest.mock('@/app/providers/ThemeProvider', () => ({
-  ...jest.requireActual('@/app/providers/ThemeProvider'),
+jest.mock('@/shared/lib/theme', () => ({
+  ...jest.requireActual('@/shared/lib/theme'),
   useTheme: jest.fn(),
 }));
 
