@@ -4,12 +4,13 @@ import styles from './NavLinks.module.scss';
 
 type NavLinksProps = {
   isVertical?: boolean;
+  isCentered?: boolean;
 };
 
-export const NavLinks = ({ isVertical }: NavLinksProps) => {
+export const NavLinks = ({ isVertical, isCentered }: NavLinksProps) => {
   return (
     <nav className={`${styles.nav} ${isVertical ? styles.vertical : ''}`}>
-      <ul className={styles.navList}>
+      <ul className={`${styles.navList} ${isCentered ? styles.centered : ''}`}>
         <li>
           <Link to="/pokemons">Pokemons</Link>
         </li>
