@@ -32,6 +32,10 @@
         transform: translateY(-2px);
       }
     }
+
+    &.centered {
+      align-items: center !important;
+    }
   }
 
   &.vertical {
