@@ -13,8 +13,7 @@
 body {
   background-color: var(--bg-primary);
   color: var(--text);
-  transition:
-    background-color 0.4s ease,
-    color 0.4s ease;
+  transition: background-color 0.4s ease,
+  color 0.4s ease;
   font-family: $fontPrimary;
 }
