@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 
-import { useTheme, Theme } from '@/app/providers/ThemeProvider';
+import { Theme, useTheme } from '@/shared/lib/theme';
 
 import { ThemeSwitcher } from './ThemeSwitcher';
 

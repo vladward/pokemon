@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import { ToTopButton } from '@/features';
+
 import {
   AbilitiesSection,
   ElementsPreview,
@@ -10,8 +12,6 @@ import {
   LeaguePreview,
   LeagueSection,
 } from '@/pages/Home/ui';
-
-import ToTopButton from '@/widgets/ToTopButton/ui/ToTopButton';
 
 import styles from './Home.module.scss';
 
