@@ -1,22 +1,22 @@
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 
-import { NavLinks } from '@/widgets/Header';
+import { MobileNavigation, NavLinks } from '@/widgets/Header';
 
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 
 import { useBreakpoints } from '@/shared/lib/hooks';
-import { BurgerButton, Container } from '@/shared/ui';
+import { Container } from '@/shared/ui';
 import { PokemonTitle } from '@/shared/ui/icons';
 
 import styles from './Header.module.scss';
 
-export const Header: FC = () => {
+export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { mobile, tablet } = useBreakpoints();
 
-  const toggleMenu = () => setIsOpen((prev) => !prev);
+  const isMobileView = mobile || tablet;
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
@@ -33,29 +33,18 @@ export const Header: FC = () => {
             height={120}
           />
         </Link>
-        {mobile || tablet ? (
-          <>
-            <BurgerButton
-              isActive={isOpen}
-              onClick={toggleMenu}
-            />
 
-            <div className={`${styles.drawer} ${isOpen ? styles.isOpen : ''}`}>
-              <nav className={styles.navigation}>
-                <div className={styles.actions}>
-                  <NavLinks isVertical />
-                  <ThemeSwitcher />
-                </div>
-              </nav>
-            </div>
-
-            <div
-              className={`${styles.overlay} ${isOpen ? styles.overlayVisible : ''}`}
-              onClick={toggleMenu}
-            />
-          </>
+        {isMobileView ? (
+          <MobileNavigation
+            isOpen={isOpen}
+            onToggle={() => setIsOpen(!isOpen)}
+            onClose={() => setIsOpen(false)}
+          />
         ) : (
-          <div className={styles.desktopNav}>
+          <div
+            data-testid="desktop-nav"
+            className={styles.desktopNav}
+          >
             <NavLinks />
             <ThemeSwitcher />
           </div>
