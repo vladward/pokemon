@@ -1,11 +1,14 @@
-import type { FC } from 'react';
 import { Link } from 'react-router';
 
 import styles from './NavLinks.module.scss';
 
-export const NavLinks: FC = () => {
+type NavLinksProps = {
+  isVertical?: boolean;
+};
+
+export const NavLinks = ({ isVertical }: NavLinksProps) => {
   return (
-    <nav className={styles.nav}>
+    <nav className={`${styles.nav} ${isVertical ? styles.vertical : ''}`}>
       <ul className={styles.navList}>
         <li>
           <Link to="/pokemons">Pokemons</Link>
