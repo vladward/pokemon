@@ -2,29 +2,37 @@
   background-color: $yellow;
   height: 70px;
   width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 
-  .inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-
-    svg {
-      transition: all 0.3s ease;
-      color: $blue;
-
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-
-    .actions {
-      @include flex-center();
-      gap: 10px;
-    }
+  @include media('tablet') {
+    height: 100px;
   }
 
   @include media('mobile') {
     height: 100px;
   }
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+
+  svg {
+    transition: all 0.3s ease;
+    color: $blue;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
 }
