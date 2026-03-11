@@ -7,8 +7,10 @@
   cursor: pointer;
   z-index: 1001;
 
-  span, &::before, &::after {
-    content: "";
+  span,
+  &::before,
+  &::after {
+    content: '';
     position: absolute;
     left: 0;
     width: 100%;

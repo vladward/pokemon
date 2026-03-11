@@ -5,24 +5,35 @@ import styles from './NavLinks.module.scss';
 type NavLinksProps = {
   isVertical?: boolean;
   isCentered?: boolean;
+  callback?: () => void;
 };
 
-export const NavLinks = ({ isVertical, isCentered }: NavLinksProps) => {
+type NavLinksState = {
+  url: '/pokemons' | '/skills' | '/items' | '/game';
+  title: string;
+};
+
+const links: NavLinksState[] = [
+  { url: '/pokemons', title: 'Pokemons' },
+  { url: '/skills', title: 'Skills' },
+  { url: '/items', title: 'Items' },
+  { url: '/game', title: 'Game' },
+];
+
+export const NavLinks = ({ isVertical, isCentered, callback }: NavLinksProps) => {
   return (
     <nav className={`${styles.nav} ${isVertical ? styles.vertical : ''}`}>
       <ul className={`${styles.navList} ${isCentered ? styles.centered : ''}`}>
-        <li>
-          <Link to="/pokemons">Pokemons</Link>
-        </li>
-        <li>
-          <Link to="/skill">Skills</Link>
-        </li>
-        <li>
-          <Link to="/items">Items</Link>
-        </li>
-        <li>
-          <Link to="/game">Game</Link>
-        </li>
+        {links.map(({ url, title }) => (
+          <li key={url}>
+            <Link
+              to={url}
+              onClick={callback}
+            >
+              {title}
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );
