@@ -3,11 +3,13 @@ import { Link } from 'react-router';
 
 import { NavLinks } from '@/widgets/Header';
 
+import { useBreakpoints } from '@/shared/lib/hooks';
 import { PokemonTitle } from '@/shared/ui';
 
 import styles from './Footer.module.scss';
 
 export const Footer: FC = () => {
+  const { mobile } = useBreakpoints();
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__top}>
@@ -17,7 +19,10 @@ export const Footer: FC = () => {
             height={120}
           />
         </Link>
-        <NavLinks />
+        <NavLinks
+          isVertical={mobile}
+          isCentered
+        />
       </div>
       <div className={styles.footer__bottom}>
         <span>
