@@ -5,6 +5,7 @@ exports[`ThemeSwitcher Component Tests should match snapshot in DARK theme 1`] =
   <button
     aria-label="Toggle theme"
     class="switcher"
+    data-testid="theme-switcher"
     type="button"
   >
     <div

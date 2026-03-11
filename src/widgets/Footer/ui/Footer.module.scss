@@ -20,6 +20,10 @@
         transform: scale(1.1);
       }
     }
+
+    @include media('mobile') {
+      padding-bottom: 0;
+    }
   }
 
   &__bottom {

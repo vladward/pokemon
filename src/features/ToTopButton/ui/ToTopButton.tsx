@@ -5,7 +5,7 @@ import { ArrowTop, Button } from '@/shared/ui';
 
 import styles from './ToTopButton.module.scss';
 
-const ToTopButton = () => {
+export const ToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -32,5 +32,3 @@ const ToTopButton = () => {
     </Button>
   );
 };
-
-export default ToTopButton;
