@@ -1,9 +1,14 @@
+import { TextEncoder, TextDecoder } from 'util';
+
 import '@testing-library/jest-dom';
+
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
 
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: jest.fn().mockImplementation((query) => ({
-    matches: false, // по умолчанию светлая
+    matches: false,
     media: query,
     onchange: null,
     addListener: jest.fn(),

@@ -1,8 +1,9 @@
 import { renderHook, act } from '@testing-library/react';
 
-import { Theme, LOCAL_STORAGE_THEME_KEY } from './ThemeContext';
+import { LOCAL_STORAGE_THEME_KEY, useTheme } from '@/shared/lib/theme';
+import { Theme } from '@/shared/lib/theme';
+
 import { ThemeProvider } from './ThemeProvider';
-import { useTheme } from './useTheme';
 
 describe('ThemeProvider Unit Tests', () => {
   beforeEach(() => {
