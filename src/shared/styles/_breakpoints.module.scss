@@ -1,5 +1,5 @@
-@use "sass:map";
-@use "./breakpoints-config" as data;
+@use 'sass:map';
+@use './breakpoints-config' as data;
 
 :export {
   @each $key, $value in data.$breakpoints {

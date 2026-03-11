@@ -9,6 +9,7 @@ export const ThemeSwitcher = () => {
 
   return (
     <button
+      data-testid="theme-switcher"
       type="button"
       className={styles.switcher}
       onClick={toggleTheme}
