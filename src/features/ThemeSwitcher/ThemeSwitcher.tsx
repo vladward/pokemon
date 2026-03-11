@@ -1,5 +1,4 @@
-import { Theme, useTheme } from '@/app/providers/ThemeProvider';
-
+import { Theme, useTheme } from '@/shared/lib/theme';
 import { Moon, Sun } from '@/shared/ui';
 
 import styles from './ThemeSwitcher.module.scss';
