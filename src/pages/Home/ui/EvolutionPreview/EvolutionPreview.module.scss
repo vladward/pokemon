@@ -1,0 +1,96 @@
+.evolutionPre {
+  width: 100%;
+  padding: 60px 60px;
+  position: relative;
+  overflow: hidden;
+  @include theme-ready();
+  background-color: var(--bg-primary);
+  color: var(--text);
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  &__imageWrapper {
+    flex: 0 0 350px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 2.2rem;
+    color: $lightBlue;
+    margin: 0 0 25px 0;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  &__quote {
+    margin: 0 0 30px 0;
+    padding-left: 20px;
+    border-left: 5px solid $yellow;
+  }
+
+  &__text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-style: italic;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__cta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__ctaText {
+    font-weight: 800;
+    color: $lightBlue;
+    line-height: 1.4;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@media (max-width: 992px) {
+  .evolutionPre__container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .evolutionPre__quote {
+    border-left: none;
+    border-top: 5px solid $yellow;
+    padding: 20px 0 0 0;
+  }
+}
