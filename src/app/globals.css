@@ -30,6 +30,9 @@
     --type-dark: #595761;
     --type-normal: #a0a29f;
 
+    --warning-bg: #fff3cd;
+    --warning-text: #856404;
+
     --border: #e1e8f0;
     --input: #e1e8f0;
     --ring: #2a75bb;
@@ -42,6 +45,9 @@
     --bg-secondary: #242e3c;
     --bg-tertiary: #d6e2f3;
     --text: #e1e8f0;
+
+    --warning-bg: #2c2507;
+    --warning-text: #d4a821;
 
     --border: #242e3c;
     --input: #242e3c;

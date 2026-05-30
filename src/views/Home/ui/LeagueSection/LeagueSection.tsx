@@ -38,7 +38,7 @@ export const LeagueSection: FC = () => {
           </div>
 
           <aside className="sticky top-[100px] laptop:static">
-            <div className="relative bg-white px-10 py-10 rounded-[28px] border-[4px] border-lightBlue shadow-[15px_15px_0_rgba(42,117,187,0.1)]">
+            <div className="relative bg-tertiary px-10 py-10 rounded-[28px] border-[4px] border-lightBlue shadow-[15px_15px_0_rgba(42,117,187,0.1)]">
               <h5 className="text-lightBlue text-[1.25rem] m-0 mb-[15px] font-black uppercase">
                 Тайны Стадиона
               </h5>

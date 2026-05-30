@@ -48,9 +48,9 @@ export const ThemeSwitcher = () => {
                 className="flex items-center justify-center animate-[fadeIn_0.3s_ease-out]"
             >
                 {isDark ? (
-                    <Sun className="w-5.5 h-5.5 pointer-events-none transition-colors duration-300"/>
+                    <Sun className="w-[1.375rem] h-[1.375rem] pointer-events-none transition-colors duration-300"/>
                 ) : (
-                    <Moon className="w-5.5 h-5.5 pointer-events-none transition-colors duration-300"/>
+                    <Moon className="w-[1.375rem] h-[1.375rem] pointer-events-none transition-colors duration-300"/>
                 )}
             </div>
         </button>

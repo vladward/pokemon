@@ -30,8 +30,8 @@ export default {
                 white100: '#f4f7fb',
 
                 warning: {
-                    bg: '#fff3cd',
-                    text: '#856404',
+                    bg: 'var(--warning-bg)',
+                    text: 'var(--warning-text)',
                 },
 
                 background: 'var(--bg-primary)',
