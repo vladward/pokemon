@@ -2,9 +2,6 @@ jest.mock('@/shared/lib/hooks', () => ({
   useBreakpoints: jest.fn(),
 }));
 
-jest.mock('./Header.module.scss', () => ({}));
-jest.mock('../MobileNavigation/MobileNavigation.module.scss', () => ({}));
-
 jest.mock('next/navigation', () => ({
   useRouter: jest.fn(() => ({ push: jest.fn(), replace: jest.fn(), prefetch: jest.fn() })),
   usePathname: jest.fn(() => '/'),
@@ -12,8 +9,17 @@ jest.mock('next/navigation', () => ({
 
 jest.mock('next/link', () => ({
   __esModule: true,
-  default: ({ children, href, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) => (
-    <a href={href} {...props}>{children}</a>
+  default: ({
+    children,
+    href,
+    ...props
+  }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) => (
+    <a
+      href={href}
+      {...props}
+    >
+      {children}
+    </a>
   ),
 }));
 

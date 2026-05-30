@@ -4,38 +4,38 @@ import Image from 'next/image';
 import { ProfessorOak } from '@/shared/assets';
 import { Container } from '@/shared/ui';
 
-import styles from './EvolutionPreview.module.scss';
-
 export const EvolutionPreview: FC = () => {
   return (
-    <section className={styles.evolutionPre}>
+    <section className="w-full py-[60px] px-[60px] relative overflow-hidden bg-background text-foreground transition-colors duration-theme laptop:py-[30px] laptop:px-5">
       <Container>
-        <div className={styles.evolutionPre__container}>
-          <div className={styles.evolutionPre__imageWrapper}>
+        <div className="flex items-center gap-10 laptop:flex-col laptop:text-center">
+          <div className="flex-[0_0_350px] flex justify-center laptop:flex-[0_0_auto] laptop:w-[250px]">
             <Image
               src={ProfessorOak}
               alt="Professor Oak"
-              className={styles.evolutionPre__image}
+              className="w-full h-auto transition-transform duration-300 hover:scale-[1.03]"
             />
           </div>
 
-          <div className={styles.evolutionPre__content}>
-            <h2 className={styles.evolutionPre__title}>Раскрой скрытый потенциал!</h2>
+          <div className="flex-1">
+            <h2 className="text-[2.2rem] text-lightBlue m-0 mb-[25px] font-extrabold uppercase">
+              Раскрой скрытый потенциал!
+            </h2>
 
-            <blockquote className={styles.evolutionPre__quote}>
-              <p className={styles.evolutionPre__text}>
+            <blockquote className="m-0 mb-[30px] pl-5 border-l-[5px] border-yellow laptop:border-l-0 laptop:border-t-[5px] laptop:pt-5 laptop:pl-0">
+              <p className="text-[1.1rem] leading-relaxed mb-[15px] italic last:mb-0">
                 «Эволюция — это не просто смена облика, это величайшее таинство природы. Я посвятил
                 жизнь изучению того, как внутренняя энергия трансформируется, превращая скромное
                 существо в могучего исполина.»
               </p>
-              <p className={styles.evolutionPre__text}>
+              <p className="text-[1.1rem] leading-relaxed mb-[15px] italic last:mb-0">
                 «Некоторые виды меняются от опыта, другие — под влиянием редких камней. Понимание
                 этих путей — признак истинного исследователя.»
               </p>
             </blockquote>
 
-            <div className={styles.evolutionPre__cta}>
-              <p className={styles.evolutionPre__ctaText}>
+            <div className="flex flex-col gap-[10px]">
+              <p className="font-extrabold text-lightBlue leading-snug text-[1.2rem] uppercase">
                 Узнай, какие секреты скрывает генетический код и как направить развитие покемона по
                 нужному пути. Исследуй механизмы эволюции!
               </p>

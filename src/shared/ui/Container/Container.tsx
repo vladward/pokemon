@@ -1,7 +1,5 @@
-import clsx from 'clsx';
+import { cn } from '@/shared/lib/utils/cn';
 import type { FC, ReactNode } from 'react';
-
-import styles from './Container.module.scss';
 
 type Props = {
   children: ReactNode;
@@ -9,5 +7,9 @@ type Props = {
 };
 
 export const Container: FC<Props> = ({ children, className }) => {
-  return <div className={clsx(styles.container, className)}>{children}</div>;
+  return (
+    <div className={cn('max-w-[1440px] mx-auto px-20 w-full mobile:px-10', className)}>
+      {children}
+    </div>
+  );
 };

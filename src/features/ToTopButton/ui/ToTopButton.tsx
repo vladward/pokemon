@@ -1,9 +1,9 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 
 import { HOME_PAGE_TO_TOP_SIZE } from '@/shared/constants/constants';
 import { ArrowTop, Button } from '@/shared/ui';
-
-import styles from './ToTopButton.module.scss';
 
 export const ToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -24,7 +24,9 @@ export const ToTopButton = () => {
 
   return (
     <Button
-      className={`${styles.topBtn} ${isVisible ? styles.visible : ''}`}
+      className={`fixed right-5 bottom-5 z-10 m-[15px] p-3 transition-all duration-300 ease-in-out hover:scale-110 ${
+        isVisible ? 'opacity-100 visible' : 'opacity-0 invisible'
+      }`}
       onClick={handleScrollToTop}
       aria-label="Scroll to top"
     >

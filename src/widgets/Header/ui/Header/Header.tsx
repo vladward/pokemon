@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
@@ -9,13 +11,9 @@ import { useBreakpoints } from '@/shared/lib/hooks';
 import { Container } from '@/shared/ui';
 import { PokemonTitle } from '@/shared/ui/icons';
 
-import styles from './Header.module.scss';
-
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const { mobile, tablet } = useBreakpoints();
-
   const isMobileView = mobile || tablet;
 
   useEffect(() => {
@@ -24,11 +22,13 @@ export const Header = () => {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
+
   return (
-    <header className={styles.header}>
-      <Container className={styles.inner}>
+    <header className="bg-yellow h-[70px] w-full sticky top-0 z-[100] transition-colors duration-theme tablet:h-[100px]">
+      <Container className="flex justify-between items-center h-full">
         <Link href="/">
           <PokemonTitle
+            className="text-blue transition-transform duration-300 hover:scale-110"
             width={120}
             height={120}
           />
@@ -43,7 +43,7 @@ export const Header = () => {
         ) : (
           <div
             data-testid="desktop-nav"
-            className={styles.desktopNav}
+            className="flex items-center gap-8"
           >
             <NavLinks />
             <ThemeSwitcher />

@@ -1,4 +1,4 @@
-import { ElementsDataType } from '@/pages/Home/model/types';
+import { ElementsDataType } from '@/views/Home/model/types';
 
 import {
   Bug,

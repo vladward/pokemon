@@ -11,13 +11,11 @@ import {
   GreetingsSection,
   LeaguePreview,
   LeagueSection,
-} from '@/pages/Home/ui';
-
-import styles from './Home.module.scss';
+} from '@/views/Home/ui';
 
 export const Home: FC = () => {
   return (
-    <div className={styles.container}>
+    <div className="relative flex flex-col items-center">
       <GreetingsSection />
       <AbilitiesSection />
       <ElementsPreview />

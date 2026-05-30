@@ -7,29 +7,30 @@ import { Pokemons } from '@/shared/assets';
 import { HOME_PAGE_TO_TOP_SIZE } from '@/shared/constants/constants';
 import { Button, Container } from '@/shared/ui';
 
-import styles from './GreetingsSection.module.scss';
-
 export const GreetingsSection: FC = () => {
   return (
-    <div className={styles.greetings}>
-      <Container className={styles.inner}>
-        <div className={styles.greetings__info}>
-          <h1 className={styles.greetings__info__title}>
+    <div className="flex items-center justify-center py-[120px] w-full bg-background text-foreground transition-colors duration-theme tablet:py-10 mobile:py-10">
+      <Container className="flex justify-between items-center flex-col h-full">
+        <div className="flex flex-row items-center text-start gap-10 tablet:text-center tablet:flex-col mobile:text-center mobile:flex-col">
+          <h1 className="h-max text-[5rem] font-bold text-lightBlue leading-tight tablet:text-[4rem] mobile:text-[3rem]">
             Добро пожаловать в мир
-            <span className={styles.greetings__info__title_highlighted}> покемонов</span>
+            <span className="text-yellow shadow-pokemon">
+              {' '}
+              покемонов
+            </span>
           </h1>
           <Image
             src={Pokemons}
             alt="pokemons_main"
-            className={styles.greetings__image}
+            className="w-[45%] py-5 transition-transform duration-300 hover:scale-105 tablet:w-full mobile:w-full"
           />
         </div>
-        <h2 className={styles.greetings__info__description}>
+        <h2 className="my-10 mb-[80px] text-[2rem] font-medium text-center leading-tight tablet:mb-0 tablet:text-[2rem] mobile:mb-0 mobile:text-[1.5rem]">
           Стань лучшим тренером: исследуй виды, изучай их способности и собирай свою идеальную
           команду. Твоё приключение начинается здесь!
         </h2>
         <Button
-          className={styles.greetings__startBtn}
+          className="transition-all duration-300 hover:scale-[1.02] tablet:hidden mobile:hidden"
           onClick={() => window.scrollTo({ top: HOME_PAGE_TO_TOP_SIZE })}
         >
           Начать приключение!

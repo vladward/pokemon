@@ -1,10 +1,8 @@
 import type { FC } from 'react';
 
-import { elementsData } from '@/pages/Home/model';
+import { elementsData } from '@/views/Home/model';
 
 import { ElementCard, InfiniteSlider } from '@/shared/ui';
-
-import styles from './ElementsSlider.module.scss';
 
 export const ElementsSlider: FC = () => (
   <InfiniteSlider
@@ -12,7 +10,7 @@ export const ElementsSlider: FC = () => (
     items={elementsData}
     cardWidth={250}
     gap={20}
-    className={styles.inner}
+    className="w-full py-[100px] px-5 bg-secondary transition-colors duration-theme border-y border-y-[color-mix(in_srgb,var(--bg-secondary),black_3%)]"
     renderItem={({ name, color, icon }) => (
       <ElementCard
         name={name}
