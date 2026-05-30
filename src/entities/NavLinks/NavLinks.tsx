@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import Link from 'next/link';
 
 import styles from './NavLinks.module.scss';
 
@@ -27,7 +27,7 @@ export const NavLinks = ({ isVertical, isCentered, callback }: NavLinksProps) =>
         {links.map(({ url, title }) => (
           <li key={url}>
             <Link
-              to={url}
+              href={url}
               onClick={callback}
             >
               {title}

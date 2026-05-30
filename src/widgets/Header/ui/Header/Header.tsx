@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router';
+import Link from 'next/link';
 
 import { MobileNavigation, NavLinks } from '@/widgets/Header';
 
@@ -27,7 +27,7 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <Container className={styles.inner}>
-        <Link to="/">
+        <Link href="/">
           <PokemonTitle
             width={120}
             height={120}

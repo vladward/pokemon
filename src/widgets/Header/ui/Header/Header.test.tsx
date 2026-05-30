@@ -5,8 +5,19 @@ jest.mock('@/shared/lib/hooks', () => ({
 jest.mock('./Header.module.scss', () => ({}));
 jest.mock('../MobileNavigation/MobileNavigation.module.scss', () => ({}));
 
+jest.mock('next/navigation', () => ({
+  useRouter: jest.fn(() => ({ push: jest.fn(), replace: jest.fn(), prefetch: jest.fn() })),
+  usePathname: jest.fn(() => '/'),
+}));
+
+jest.mock('next/link', () => ({
+  __esModule: true,
+  default: ({ children, href, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) => (
+    <a href={href} {...props}>{children}</a>
+  ),
+}));
+
 import { render, screen, within } from '@testing-library/react';
-import { MemoryRouter } from 'react-router';
 
 import { useBreakpoints } from '@/shared/lib/hooks';
 
@@ -22,11 +33,7 @@ describe('Widget: Header', () => {
   test('displays MobileNavigation on tablets/mobile phones', () => {
     mockUseBreakpoints.mockReturnValue({ tablet: true, mobile: false });
 
-    render(
-      <MemoryRouter>
-        <Header />
-      </MemoryRouter>,
-    );
+    render(<Header />);
 
     expect(screen.getByTestId('mobile-nav')).toBeInTheDocument();
   });
@@ -34,11 +41,7 @@ describe('Widget: Header', () => {
   test('should display the navigation and theme switcher in the header on the desktop', () => {
     mockUseBreakpoints.mockReturnValue({ tablet: false, mobile: false });
 
-    render(
-      <MemoryRouter>
-        <Header />
-      </MemoryRouter>,
-    );
+    render(<Header />);
 
     expect(screen.queryByTestId('mobile-nav')).not.toBeInTheDocument();
 

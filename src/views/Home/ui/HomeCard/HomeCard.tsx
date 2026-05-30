@@ -1,7 +1,9 @@
-import { FC } from 'react';
-import { useNavigate } from 'react-router';
+'use client';
 
-import { AbilitiesSectionType } from '@/pages/Home/model';
+import { FC } from 'react';
+import { useRouter } from 'next/navigation';
+
+import { AbilitiesSectionType } from '@/views/Home/model';
 
 import { Button } from '@/shared/ui';
 
@@ -12,7 +14,7 @@ type Props = {
 };
 
 export const HomeCard: FC<Props> = ({ card }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const renderImage = () => {
     if (typeof card.image === 'string') {
@@ -48,7 +50,7 @@ export const HomeCard: FC<Props> = ({ card }) => {
         <h3 className={styles.homeCard__title}>{card.title}</h3>
         <p className={styles.homeCard__description}>{card.description}</p>
         <div className={styles.homeCard__action}>
-          <Button onClick={() => navigate(card.link)}>{card.btnText}</Button>
+          <Button onClick={() => router.push(card.link)}>{card.btnText}</Button>
         </div>
       </div>
     </div>

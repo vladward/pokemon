@@ -1,0 +1,38 @@
+import type {Metadata} from 'next';
+import {Josefin_Sans} from 'next/font/google';
+
+import {ThemeProvider} from '@/app/_providers/ThemeProvider';
+
+import './globals.css';
+
+const josefinSans = Josefin_Sans({
+    subsets: ['latin'],
+    variable: '--font-primary',
+});
+
+export const metadata: Metadata = {
+    title: 'Pokemon Repo',
+    description: 'Приложение со списком покемонов на Next.js',
+};
+
+export default function RootLayout({children}: { children: React.ReactNode }) {
+    return (
+        <html
+            lang="ru"
+            suppressHydrationWarning
+            className={josefinSans.variable}
+        >
+        <body>
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+        >
+            <div className="relative flex min-h-screen flex-col">
+                <main className="flex-grow">{children}</main>
+            </div>
+        </ThemeProvider>
+        </body>
+        </html>
+    );
+}

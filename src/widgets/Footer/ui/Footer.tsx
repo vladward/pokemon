@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Link } from 'react-router';
+import Link from 'next/link';
 
 import { NavLinks } from '@/widgets/Header';
 
@@ -13,7 +13,7 @@ export const Footer: FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__top}>
-        <Link to="/">
+        <Link href="/">
           <PokemonTitle
             width={120}
             height={120}
@@ -26,7 +26,8 @@ export const Footer: FC = () => {
       </div>
       <div className={styles.footer__bottom}>
         <span>
-          2026 <Link to="https://github.com/vladward">Vladward</Link>. All rights reserved.
+          2026{' '}
+          <Link href="https://github.com/vladward">Vladward</Link>. All rights reserved.
         </span>
       </div>
     </footer>
