@@ -1,0 +1,28 @@
+@use 'sass:map';
+
+$themes: (
+  light: (
+    bg-primary: #ffffff,
+    bg-secondary: #f4f7fb,
+    bg-tertiary: #ffffff,
+    text: #334e68,
+  ),
+  dark: (
+    bg-primary: #1a222d,
+    bg-secondary: #242e3c,
+    bg-tertiary: #d6e2f3,
+    text: #e1e8f0,
+  ),
+);
+
+:root {
+  @each $key, $value in map.get($themes, 'light') {
+    --#{$key}: #{$value};
+  }
+}
+
+body.dark-theme {
+  @each $key, $value in map.get($themes, 'dark') {
+    --#{$key}: #{$value};
+  }
+}
