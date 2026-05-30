@@ -1,8 +1,8 @@
 import { FC } from 'react';
+import Image from 'next/image';
 
+import { Cynthia } from '@/shared/assets';
 import { Container } from '@/shared/ui';
-
-import CynthiaImg from '../../../../shared/assets/images/cynthia.png';
 
 import styles from './LeaguePreview.module.scss';
 
@@ -33,8 +33,8 @@ export const LeaguePreview: FC = () => {
           </div>
 
           <div className={styles.leaguePre__imageWrapper}>
-            <img
-              src={CynthiaImg}
+            <Image
+              src={Cynthia}
               alt="Champion Cynthia"
               className={styles.leaguePre__image}
             />

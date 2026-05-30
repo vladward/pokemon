@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import Image from 'next/image';
 
 import { ProfessorOak } from '@/shared/assets';
 import { Container } from '@/shared/ui';
@@ -11,7 +12,7 @@ export const EvolutionPreview: FC = () => {
       <Container>
         <div className={styles.evolutionPre__container}>
           <div className={styles.evolutionPre__imageWrapper}>
-            <img
+            <Image
               src={ProfessorOak}
               alt="Professor Oak"
               className={styles.evolutionPre__image}

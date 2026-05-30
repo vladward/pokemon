@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import Image from 'next/image';
 
 import { AshKetchum } from '@/shared/assets';
 import { Container } from '@/shared/ui';
@@ -34,7 +35,7 @@ export const ElementsPreview: FC = () => {
           </div>
 
           <div className={styles.elements__imageWrapper}>
-            <img
+            <Image
               src={AshKetchum}
               alt="Ash Ketchum"
               className={styles.elements__image}

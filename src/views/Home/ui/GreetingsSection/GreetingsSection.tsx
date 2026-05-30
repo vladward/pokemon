@@ -1,4 +1,7 @@
+'use client';
+
 import type { FC } from 'react';
+import Image from 'next/image';
 
 import { Pokemons } from '@/shared/assets';
 import { HOME_PAGE_TO_TOP_SIZE } from '@/shared/constants/constants';
@@ -15,7 +18,7 @@ export const GreetingsSection: FC = () => {
             Добро пожаловать в мир
             <span className={styles.greetings__info__title_highlighted}> покемонов</span>
           </h1>
-          <img
+          <Image
             src={Pokemons}
             alt="pokemons_main"
             className={styles.greetings__image}

@@ -1,6 +1,7 @@
 'use client';
 
 import { FC } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 import { AbilitiesSectionType } from '@/views/Home/model';
@@ -17,9 +18,9 @@ export const HomeCard: FC<Props> = ({ card }) => {
   const router = useRouter();
 
   const renderImage = () => {
-    if (typeof card.image === 'string') {
+    if (typeof card.image !== 'function') {
       return (
-        <img
+        <Image
           src={card.image}
           alt={card.title}
           className={styles.homeCard__image}
