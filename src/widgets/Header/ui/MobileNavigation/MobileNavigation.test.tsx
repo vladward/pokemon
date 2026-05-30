@@ -1,9 +1,9 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 
 import { MobileNavigation } from './MobileNavigation';
 
 jest.mock('@/widgets/Header', () => ({
-  NavLinks: ({ callback }: { callback: () => void }) => (
+  NavLinks: ({ callback }: { callback?: () => void }) => (
     <div
       onClick={callback}
       data-testid="nav-links"
@@ -16,9 +16,10 @@ jest.mock('@/features/ThemeSwitcher', () => ({
   ThemeSwitcher: () => <div>Theme</div>,
 }));
 jest.mock('@/shared/ui', () => ({
-  BurgerButton: ({ onClick }: { onClick: () => void }) => (
+  BurgerButton: ({ onClick, isActive }: { onClick: () => void; isActive: boolean }) => (
     <button
       aria-label="Toggle menu"
+      data-active={isActive}
       onClick={onClick}
     >
       Burger
@@ -27,33 +28,43 @@ jest.mock('@/shared/ui', () => ({
 }));
 
 describe('Component: MobileNavigation', () => {
-  const props = {
-    isOpen: true,
-    onToggle: jest.fn(),
-    onClose: jest.fn(),
-  };
+  test('should open drawer on burger click', () => {
+    render(<MobileNavigation />);
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-    document.body.style.overflow = '';
+    fireEvent.click(screen.getByRole('button', { name: /toggle menu/i }));
+
+    expect(screen.getByTestId('mobile-drawer')).toBeInTheDocument();
   });
 
-  test('should block the scroll when opening and remove it when closing', () => {
-    const { unmount } = render(<MobileNavigation {...props} />);
-    expect(document.body.style.overflow).toBe('hidden');
-    unmount();
-    expect(document.body.style.overflow).toBe('');
+  test('should mark burger as active when drawer is open', () => {
+    render(<MobileNavigation />);
+
+    const burger = screen.getByRole('button', { name: /toggle menu/i });
+    expect(burger).toHaveAttribute('data-active', 'false');
+
+    fireEvent.click(burger);
+    expect(burger).toHaveAttribute('data-active', 'true');
   });
 
-  test('should call onClose when clicking on the overlay or links', () => {
-    render(<MobileNavigation {...props} />);
+  test('should close drawer when clicking overlay', async () => {
+    render(<MobileNavigation />);
 
+    fireEvent.click(screen.getByRole('button', { name: /toggle menu/i }));
+    fireEvent.click(screen.getByTestId('overlay'));
+
+    await waitFor(() => {
+      expect(screen.queryByTestId('mobile-drawer')).not.toBeInTheDocument();
+    });
+  });
+
+  test('should close drawer when clicking on a nav link', async () => {
+    render(<MobileNavigation />);
+
+    fireEvent.click(screen.getByRole('button', { name: /toggle menu/i }));
     fireEvent.click(screen.getByTestId('nav-links'));
-    expect(props.onClose).toHaveBeenCalledTimes(1);
 
-    const overlay = screen.getByTestId('overlay');
-    fireEvent.click(overlay);
-
-    expect(props.onClose).toHaveBeenCalledTimes(2);
+    await waitFor(() => {
+      expect(screen.queryByTestId('mobile-drawer')).not.toBeInTheDocument();
+    });
   });
 });

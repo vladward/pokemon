@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import { MobileNavigation, NavLinks } from '@/widgets/Header';
@@ -12,16 +11,8 @@ import { Container } from '@/shared/ui';
 import { PokemonTitle } from '@/shared/ui/icons';
 
 export const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const { mobile, tablet } = useBreakpoints();
   const isMobileView = mobile || tablet;
-
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
 
   return (
     <header className="bg-yellow h-[70px] w-full sticky top-0 z-[100] transition-colors duration-theme tablet:h-[100px]">
@@ -35,11 +26,7 @@ export const Header = () => {
         </Link>
 
         {isMobileView ? (
-          <MobileNavigation
-            isOpen={isOpen}
-            onToggle={() => setIsOpen(!isOpen)}
-            onClose={() => setIsOpen(false)}
-          />
+          <MobileNavigation />
         ) : (
           <div
             data-testid="desktop-nav"
