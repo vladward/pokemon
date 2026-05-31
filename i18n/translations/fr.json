@@ -1,0 +1,154 @@
+{
+  "navigation": {
+    "pokemon": "Pokémon",
+    "skills": "Capacités",
+    "items": "Objets",
+    "game": "Qui est-ce ?"
+  },
+  "footer": {
+    "rights": " Tous droits réservés.",
+    "created_by": "Développé par "
+  },
+  "home": {
+    "greetings": "Bienvenue dans le monde des ",
+    "pokemon": "Pokémon",
+    "description": "Devenez le meilleur Dresseur : étudiez les espèces, explorez leurs capacités et composez votre équipe parfaite. Votre aventure commence ici !",
+    "start": "Commencer l'aventure !"
+  },
+  "abilities": {
+    "title": "Votre préparation pour la ",
+    "title_colored": "Ligue des Champions",
+    "description": "On ne naît pas Maître — on le devient en connaissant les faiblesses de l'ennemi et les capacités de ses alliés. Commencez à apprendre dès maintenant !",
+    "card": {
+      "pokemon": {
+        "title": "Pokémon",
+        "description": "Une encyclopédie complète des créatures : caractéristiques, types, évolutions et formes rares de Pokémon."
+      },
+      "skills": {
+        "title": "Capacités",
+        "description": "Un guide détaillé des capacités et des attaques : découvrez leurs effets en combat."
+      },
+      "items": {
+        "title": "Objets",
+        "description": "Catalogue d'objets : des baies médicinales et Poké Balls aux pierres rares pour l'évolution."
+      },
+      "who_is_it": {
+        "title": "Qui est-ce ?",
+        "description": "Mode divertissement : tentez de reconnaître un Pokémon à sa silhouette et devenez un maître !"
+      }
+    },
+    "explore": "Explorer !"
+  },
+  "elements_preview": {
+    "title": "Votre chemin vers la connaissance commence ici !",
+    "note_first": "« Savez-vous quel est le secret d'une vraie victoire ? Ce n'est pas seulement le niveau de votre partenaire. Un vrai maître sait que même le plus petit Pikachu peut vaincre un géant s'il exploite las faiblesses de l'adversaire. »",
+    "note_second": "« Le monde des Pokémon regorge de stratégies : le feu fait fondre l'acier, mais il s'éteint sous la pression de l'eau. Si vous voulez bâtir l'équipe de vos rêves, vous devez apprendre à voir ces liens. »",
+    "description": "La puissance des Pokémon est grande, mais leur connaissance des éléments est illimitée. Devenez un stratège qu'aucun adversaire ne pourra surprendre !"
+  },
+  "elements": {
+    "title": "Classification par éléments",
+    "fire": "Feu",
+    "water": "Eau",
+    "grass": "Plante",
+    "electric": "Électrik",
+    "ice": "Glace",
+    "fighting": "Combat",
+    "poison": "Poison",
+    "ground": "Sol",
+    "flying": "Vol",
+    "psychic": "Psy",
+    "bug": "Insecte",
+    "rock": "Roche",
+    "ghost": "Spectre",
+    "dragon": "Dragon",
+    "steel": "Acier",
+    "fairy": "Fée",
+    "dark": "Ténèbres",
+    "normal": "Normal"
+  },
+  "evolution_preview": {
+    "title": "Libérez votre potentiel caché !",
+    "note_first": "« L'évolution n'est pas seulement un changement d'apparence, c'est le plus grand mystère de la nature. J'ai consacré ma vie à étudier comment l'énergie intérieure se transforme, transformant une humble créature en un colosse puissant. »",
+    "note_second": "« Certaines espèces changent avec l'expérience, d'autres sous l'influence de pierres rares. Comprendre ces chemins est la marque d'un vrai chercheur. »",
+    "description": "Découvrez quels secrets cache le code génétique et comment guider le développement des Pokémon sur la bonne voie. Explorez los mécanismes de l'évolution !"
+  },
+  "evolution_way": {
+    "title": "Chemins d'",
+    "subtitle": "Évolution",
+    "description": "L'évolution n'est pas un simple changement d'apparence. C'est un processus complexe de restructuration de l'ADN influencé par des facteurs externes et internes. Découvrez comment le potentiel caché s'éveille.",
+    "card": {
+      "classic": {
+        "badge": "Classique",
+        "title": "Maturité Biologique",
+        "description": "Le chemin le plus courant. À mesure que l'expérience (Points Exp.) s'accumule, les cellules de l'organisme atteignent une masse critique, déclenchant une transformation instantanée en une forme plus puissante."
+      },
+      "resonance": {
+        "badge": "Résonance",
+        "title": "Pierres Évolutives",
+        "description": "Certaines espèces possèdent des gènes \"dormants\" qui ne s'activent qu'au contact de l'énergie hautement concentrée des pierres (Foudre, Feu, Eau)."
+      },
+      "psychology": {
+        "badge": "Psychologie",
+        "title": "Niveau d'Amitié",
+        "description": "Une forme d'évolution unique basée sur la confiance. Le lien psycho-affectif avec le Dresseur déclenche une libération d'endorphines, provoquant des changements physiques dans l'organisme."
+      }
+    },
+    "note": {
+      "title": "Fait Important : ",
+      "description": "Il existe une « Évolution Ramifiée ». Une même espèce, comme Évoli, peut se transformer en 8 formes différentes selon les conditions environnementales."
+    }
+  },
+  "league_preview": {
+    "title": "Arène des Champions",
+    "note_first": "« Le Tournoi de la Ligue n'est pas qu'une suite de combats. C'est le moment de vérité, où la volonté du dresseur et la foi de son Pokémon fusionnent en une seule énergie, capable de faire des miracles dans le stade. »",
+    "note_second": "« Traverser toutes les épreuves régionales et allumer le feu sacré de Sulfura lors de la cérémonie d'ouverture est le rêve de tout chercheur. Êtes-vous prêt à apprendre les règles du plus grand festival du monde ? »",
+    "description": "Étudiez les étapes du tournoi et les traditions de la Ligue Pokémon !"
+  },
+  "pages": {
+    "wip": "Page en construction. Quelque chose d'intéressant arrive bientôt !",
+    "pokemon": {
+      "title": "Pokémon",
+      "description": "Une encyclopédie complète des Pokémon apparaîtra bientôt ici."
+    },
+    "skills": {
+      "title": "Capacités",
+      "description": "Une base de données des capacités Pokémon apparaîtra bientôt ici."
+    },
+    "items": {
+      "title": "Objets",
+      "description": "Un catalogue d'objets et d'équipements apparaîtra bientôt ici."
+    },
+    "game": {
+      "title": "Jeu",
+      "description": "Un jeu interactif apparaîtra bientôt ici."
+    }
+  },
+  "not_found": {
+    "title": "Page introuvable",
+    "description": "On dirait que ce Pokémon s'est enfui. Essayez de revenir à la page d'accueil.",
+    "button": "Retour à l'accueil"
+  },
+  "league_section": {
+    "title": "Chronique Sportive",
+    "subtitle": "Traditions de la ",
+    "subtitle_highlighted": "Ligue Pokémon",
+    "league_steps": {
+      "preliminary": {
+        "title": "Tours Préliminaires",
+        "description": "Les combats se déroulent sur des terrains spécialisés : Plante, Glace, Roche et Eau. Un dresseur doit être capable d'utiliser les spécificités du terrain pour remporter la victoire dans un environnement changeant."
+      },
+      "final": {
+        "title": "Phase Finale (Combats Totaux)",
+        "description": "Combats en 6 contre 6 dans le stade central devant des milliers de spectateurs. Ici, ce n'est pas seulement la stratégie qui passe au premier plan, mais la profondeur du lien entre le dresseur et chaque membre de son équipe."
+      },
+      "hall_of_fame": {
+        "title": "Cérémonie du Panthéon",
+        "description": "Le vainqueur de la Ligue inscrit son nom dans l'histoire de la région. C'est le plus grand honneur, qui signifie que le chercheur a atteint une entente absolue avec ses Pokémon."
+      }
+    },
+    "note": {
+      "title": "Secrets du Stade",
+      "description": "Saviez-vous qu'avant l'ouverture de chaque tournoi, le feu sacré du légendaire Sulfura est apporté par relais ? Tant que cette flamme brûle dans la vasque du stade, elle protège l'esprit de fair-play de la compétition."
+    }
+  }
+}
