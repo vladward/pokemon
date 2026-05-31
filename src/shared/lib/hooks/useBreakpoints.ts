@@ -1,18 +1,33 @@
+'use client';
+
 import { useSyncExternalStore, useCallback, useRef, useMemo } from 'react';
 
-import breakpoints from '@/shared/styles/_breakpoints.module.scss';
+const BREAKPOINTS = {
+  mobile: '576px',
+  tablet: '768px',
+  laptop: '992px',
+  desktop: '1200px',
+  wide: '1400px',
+} as const;
 
-type BreakpointKey = 'mobile' | 'tablet' | 'laptop' | 'desktop' | 'wide';
-
+type BreakpointKey = keyof typeof BREAKPOINTS;
 type BreakpointsState = Record<BreakpointKey, boolean>;
+
+const SERVER_SNAPSHOT: BreakpointsState = {
+  mobile: false,
+  tablet: false,
+  laptop: false,
+  desktop: false,
+  wide: false,
+};
 
 export const useBreakpoints = (): BreakpointsState => {
   const lastSnapshot = useRef<BreakpointsState>({} as BreakpointsState);
 
   const queryEntries = useMemo(
     () =>
-      Object.entries(breakpoints).map(([key, value]) => ({
-        key: key as BreakpointKey,
+      (Object.entries(BREAKPOINTS) as [BreakpointKey, string][]).map(([key, value]) => ({
+        key,
         query: `(max-width: ${value})`,
       })),
     [],
@@ -21,9 +36,7 @@ export const useBreakpoints = (): BreakpointsState => {
   const subscribe = useCallback(
     (callback: () => void) => {
       const matchers = queryEntries.map(({ query }) => window.matchMedia(query));
-
       matchers.forEach((m) => m.addEventListener('change', callback));
-
       return () => {
         matchers.forEach((m) => m.removeEventListener('change', callback));
       };
@@ -48,5 +61,5 @@ export const useBreakpoints = (): BreakpointsState => {
     return lastSnapshot.current;
   };
 
-  return useSyncExternalStore(subscribe, getSnapshot, () => ({}) as BreakpointsState);
+  return useSyncExternalStore(subscribe, getSnapshot, () => SERVER_SNAPSHOT);
 };

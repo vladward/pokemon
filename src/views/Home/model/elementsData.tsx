@@ -1,0 +1,43 @@
+import { ElementsDataType } from '@/views/Home/model/types';
+
+import {
+  Bug,
+  Dark,
+  Dragon,
+  Electric,
+  Fairy,
+  Fighting,
+  Fire,
+  Flying,
+  Ghost,
+  Grass,
+  Ground,
+  Ice,
+  Normal,
+  Poison,
+  Psychic,
+  Rock,
+  Steel,
+  Water,
+} from '@/shared/ui';
+
+export const elementsData: ElementsDataType[] = [
+  { id: '1', name: 'Огонь', color: 'var(--type-fire)', icon: <Fire /> },
+  { id: '2', name: 'Вода', color: 'var(--type-water)', icon: <Water /> },
+  { id: '3', name: 'Трава', color: 'var(--type-grass)', icon: <Grass /> },
+  { id: '4', name: 'Электро', color: 'var(--type-electric)', icon: <Electric /> },
+  { id: '5', name: 'Лед', color: 'var(--type-ice)', icon: <Ice /> },
+  { id: '6', name: 'Боевой', color: 'var(--type-fighting)', icon: <Fighting /> },
+  { id: '7', name: 'Яд', color: 'var(--type-poison)', icon: <Poison /> },
+  { id: '8', name: 'Земля', color: 'var(--type-ground)', icon: <Ground /> },
+  { id: '9', name: 'Полет', color: 'var(--type-flying)', icon: <Flying /> },
+  { id: '10', name: 'Психо', color: 'var(--type-psychic)', icon: <Psychic /> },
+  { id: '11', name: 'Жук', color: 'var(--type-bug)', icon: <Bug /> },
+  { id: '12', name: 'Камень', color: 'var(--type-rock)', icon: <Rock /> },
+  { id: '13', name: 'Призрак', color: 'var(--type-ghost)', icon: <Ghost /> },
+  { id: '14', name: 'Дракон', color: 'var(--type-dragon)', icon: <Dragon /> },
+  { id: '15', name: 'Сталь', color: 'var(--type-steel)', icon: <Steel /> },
+  { id: '16', name: 'Фея', color: 'var(--type-fairy)', icon: <Fairy /> },
+  { id: '17', name: 'Темный', color: 'var(--type-dark)', icon: <Dark /> },
+  { id: '18', name: 'Обычный', color: 'var(--type-normal)', icon: <Normal /> },
+];

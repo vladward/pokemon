@@ -8,8 +8,8 @@ test.describe('Header Adaptive Flow', () => {
   test('full cycle: open/close via burger and overlay', async ({ page }) => {
     await page.setViewportSize({ width: 500, height: 800 });
     const burger = page.getByLabel('Toggle menu');
-    const drawer = page.locator('[class*="drawer"]');
-    const overlay = page.locator('[class*="overlay"]');
+    const drawer = page.locator('[data-testid="mobile-drawer"]');
+    const overlay = page.locator('[data-testid="overlay"]');
 
     await burger.click();
     await expect(drawer).toBeInViewport();
@@ -29,7 +29,7 @@ test.describe('Header Adaptive Flow', () => {
     await page.setViewportSize({ width: 500, height: 800 });
     await page.getByLabel('Toggle menu').click();
 
-    const drawer = page.locator('[class*="drawer"]');
+    const drawer = page.locator('[data-testid="mobile-drawer"]');
     await drawer.getByRole('link', { name: 'Pokemons' }).click();
 
     await expect(drawer).not.toBeInViewport();

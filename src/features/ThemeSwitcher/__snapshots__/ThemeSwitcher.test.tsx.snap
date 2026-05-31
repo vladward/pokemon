@@ -4,15 +4,25 @@ exports[`ThemeSwitcher Component Tests should match snapshot in DARK theme 1`] =
 <DocumentFragment>
   <button
     aria-label="Toggle theme"
-    class="switcher"
+    class="
+        flex items-center justify-center
+        w-11 h-11 cursor-pointer rounded-xl
+        border border-black/10 dark:border-white/10
+        text-blue dark:text-foreground
+        bg-background
+        shadow-[0_2px_8px_rgba(0,0,0,0.05)]
+        transition-all duration-300 ease-out
+        hover:-translate-y-0.5 hover:shadow-[0_5px_12px_rgba(0,0,0,0.1)]
+        active:scale-95
+      "
     data-testid="theme-switcher"
     type="button"
   >
     <div
-      class="iconContainer"
+      class="flex items-center justify-center animate-[fadeIn_0.3s_ease-out]"
     >
       <svg
-        class="icon"
+        class="w-[1.375rem] h-[1.375rem] pointer-events-none transition-colors duration-300"
         fill="none"
         height="24"
         stroke="currentColor"

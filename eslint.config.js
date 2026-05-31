@@ -15,9 +15,10 @@ const compat = new FlatCompat({
 
 export default [
   {
-    ignores: ['**/node_modules/', '**/dist/', '**/build/'],
+    ignores: ['**/node_modules/', '**/dist/', '**/build/', '**/.next/', '**/next-env.d.ts'],
   },
   ...compat.extends(
+    'next/core-web-vitals',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
@@ -56,13 +57,11 @@ export default [
           pathGroups: [
             { pattern: 'react', group: 'external', position: 'before' },
             { pattern: '@/app/**', group: 'internal', position: 'after' },
-            { pattern: '@/pages/**', group: 'internal', position: 'after' },
+            { pattern: '@/views/**', group: 'internal', position: 'after' },
             { pattern: '@/widgets/**', group: 'internal', position: 'after' },
             { pattern: '@/features/**', group: 'internal', position: 'after' },
             { pattern: '@/entities/**', group: 'internal', position: 'after' },
             { pattern: '@/shared/**', group: 'internal', position: 'after' },
-            { pattern: './**/*.scss', group: 'index', position: 'after' },
-            { pattern: '@/app/*.scss', group: 'index', position: 'after' },
           ],
           warnOnUnassignedImports: true,
           'newlines-between': 'always',
