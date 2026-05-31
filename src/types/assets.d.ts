@@ -1,24 +1,26 @@
+import type { StaticImageData } from 'next/image';
+
 declare module '*.svg' {
   const content: React.FC<React.SVGProps<SVGSVGElement>>;
   export default content;
 }
 
 declare module '*.png' {
-  const content: string;
+  const content: StaticImageData;
   export default content;
 }
 
 declare module '*.jpg' {
-  const content: string;
+  const content: StaticImageData;
   export default content;
 }
 
 declare module '*.jpeg' {
-  const content: string;
+  const content: StaticImageData;
   export default content;
 }
 
 declare module '*.webp' {
-  const content: string;
+  const content: StaticImageData;
   export default content;
 }
