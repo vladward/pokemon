@@ -1,0 +1,10 @@
+@use 'sass:color';
+
+.inner {
+  width: 100%;
+  padding: 100px 20px;
+  @include theme-ready();
+  background-color: var(--bg-secondary);
+  border-top: 1px solid color-mix(in srgb, var(--bg-secondary), black 3%);
+  border-bottom: 1px solid color-mix(in srgb, var(--bg-secondary), black 3%);
+}

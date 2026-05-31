@@ -1,0 +1,170 @@
+@use 'sass:color';
+
+.league {
+  padding: 100px 20px;
+  @include theme-ready();
+  background-color: var(--bg-secondary);
+  width: 100%;
+  color: var(--text);
+  border-top: 1px solid color-mix(in srgb, var(--bg-secondary), black 3%);
+  border-bottom: 1px solid color-mix(in srgb, var(--bg-secondary), black 3%);
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  &__subTitle {
+    color: $lightBlue;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+    font-weight: 800;
+  }
+
+  &__title {
+    font-size: 3rem;
+    color: $lightBlue;
+    font-weight: 900;
+    margin: 0 0 50px 0;
+    line-height: 1.1;
+  }
+
+  &__accent {
+    color: $yellow;
+    text-shadow: $textBordered;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+  }
+
+  &__item {
+    display: flex;
+    gap: 35px;
+    padding-bottom: 35px;
+    border-bottom: 2px dashed $lightBlue;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__stepNum {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: $lightBlue;
+    background-color: $yellow;
+    width: 65px;
+    height: 65px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 3px solid $lightBlue;
+  }
+
+  &__stepTitle {
+    font-size: 1.4rem;
+    color: $lightBlue;
+    margin: 0 0 12px 0;
+    font-weight: 800;
+  }
+
+  &__stepDesc {
+    line-height: 1.7;
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  &__aside {
+    position: sticky;
+    top: 100px;
+  }
+
+  &__factCard {
+    @include theme-ready();
+    background-color: var(--bg-tertiary);
+    background: $white;
+    padding: 40px;
+    border-radius: 28px;
+    border: 4px solid $lightBlue;
+    position: relative;
+    box-shadow: 15px 15px 0 rgba(42, 117, 187, 0.1);
+  }
+
+  &__factTitle {
+    color: $lightBlue;
+    font-size: 1.25rem;
+    margin: 0 0 15px 0;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  &__factText {
+    color: $blue;
+    line-height: 1.7;
+    font-style: italic;
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  &__pokedexDecor {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+
+    &::before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      background: $lightBlue;
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(77, 164, 255, 0.6);
+      display: block;
+    }
+
+    &::after {
+      content: '';
+      width: 12px;
+      height: 12px;
+      background: $yellow;
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(255, 203, 5, 0.6);
+      display: block;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .league {
+    padding: 60px 20px;
+
+    &__container {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+
+    &__aside {
+      position: static;
+    }
+
+    &__title {
+      font-size: 2.2rem;
+    }
+
+    &__stepNum {
+      width: 55px;
+      height: 55px;
+      font-size: 1.3rem;
+    }
+  }
+}
