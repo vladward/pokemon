@@ -1,9 +1,0 @@
-export { HomeCard } from './HomeCard/HomeCard';
-export { GreetingsSection } from './GreetingsSection/GreetingsSection';
-export { AbilitiesSection } from './AbilitiesSection/AbilitiesSection';
-export { ElementsPreview } from './ElementsSection/ElementsPreview';
-export { ElementsSlider } from './ElementsSlider/ElementsSlider';
-export { EvolutionPreview } from './EvolutionPreview/EvolutionPreview';
-export { EvolutionSection } from './EvolutionSection/EvolutionSection';
-export { LeaguePreview } from './LeaguePreview/LeaguePreview';
-export { LeagueSection } from './LeagueSection/LeagueSection';
