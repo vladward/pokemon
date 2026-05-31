@@ -1,12 +1,18 @@
 import type { Metadata } from 'next';
-import { Josefin_Sans } from 'next/font/google';
+import { Geist, Josefin_Sans } from 'next/font/google';
+import { getLocale, getMessages } from 'next-intl/server';
 
+import { I18nProvider } from '@/app/_providers/I18nProvider';
 import { ThemeProvider } from '@/app/_providers/ThemeProvider';
 
 import { Footer } from '@/widgets/Footer';
 import { Header } from '@/widgets/Header';
 
+import { cn } from '@/shared/lib/utils';
+
 import './globals.css';
+
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 const josefinSans = Josefin_Sans({
   subsets: ['latin'],
@@ -18,12 +24,15 @@ export const metadata: Metadata = {
   description: 'Приложение со списком покемонов на Next.js',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
     <html
-      lang="ru"
+      lang={locale}
       suppressHydrationWarning
-      className={josefinSans.variable}
+      className={cn('font-sans', geist.variable, josefinSans.variable)}
     >
       <body suppressHydrationWarning>
         <script
@@ -31,17 +40,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: `setTimeout(function(){document.body.classList.add('theme-ready')},100)`,
           }}
         />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
+        <I18nProvider
+          locale={locale}
+          messages={messages as Record<string, unknown>}
         >
-          <div className="relative flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-grow">{children}</main>
-            <Footer />
-          </div>
-        </ThemeProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+          >
+            <div className="relative flex min-h-screen flex-col">
+              <Header />
+              <main className="flex-grow">{children}</main>
+              <Footer />
+            </div>
+          </ThemeProvider>
+        </I18nProvider>
       </body>
     </html>
   );

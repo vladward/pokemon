@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 
+import { LanguageSwitcher } from '@/features/LanguageSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 
 import { NavLinks } from '@/entities/NavLinks';
@@ -31,7 +32,10 @@ export const MobileNavigation = () => {
             isVertical
             callback={() => setOpen(false)}
           />
-          <ThemeSwitcher />
+          <div className="flex items-center gap-4">
+            <ThemeSwitcher />
+            <LanguageSwitcher />
+          </div>
         </nav>
       </SheetContent>
     </Sheet>

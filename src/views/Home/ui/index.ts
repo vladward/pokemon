@@ -1,4 +1,4 @@
-export { HomeCard } from './HomeCard/HomeCard';
+export { AbilityCard } from './HomeCard/AbilityCard';
 export { GreetingsSection } from './GreetingsSection/GreetingsSection';
 export { AbilitiesSection } from './AbilitiesSection/AbilitiesSection';
 export { ElementsPreview } from './ElementsSection/ElementsPreview';

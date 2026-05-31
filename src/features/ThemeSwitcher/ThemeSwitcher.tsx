@@ -14,9 +14,7 @@ export const ThemeSwitcher = () => {
   }, []);
 
   if (!mounted) {
-    return (
-      <div className="w-11 h-11 border border-black/10 dark:border-white/10 rounded-xl bg-transparent" />
-    );
+    return <div className="w-11 h-11 border-2 border-lightBlue rounded-xl bg-transparent" />;
   }
 
   const isDark = resolvedTheme === 'dark';
@@ -34,9 +32,9 @@ export const ThemeSwitcher = () => {
       className="
         flex items-center justify-center
         w-11 h-11 cursor-pointer rounded-xl
-        border border-black/10 dark:border-white/10
-        text-blue dark:text-foreground
-        bg-background
+        border-2 border-lightBlue
+        text-lightBlue
+        bg-transparent
         shadow-[0_2px_8px_rgba(0,0,0,0.05)]
         transition-all duration-300 ease-out
         hover:-translate-y-0.5 hover:shadow-[0_5px_12px_rgba(0,0,0,0.1)]
