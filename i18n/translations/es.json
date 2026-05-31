@@ -1,0 +1,154 @@
+{
+  "navigation": {
+    "pokemon": "Pokémon",
+    "skills": "Habilidades",
+    "items": "Objetos",
+    "game": "¿Quién es?"
+  },
+  "footer": {
+    "rights": " Todos los derechos reservados.",
+    "created_by": "Desarrollado por "
+  },
+  "home": {
+    "greetings": "¡Bienvenido al mundo de los ",
+    "pokemon": "Pokémon",
+    "description": "Conviértete en el mejor Entrenador: investiga las especies, explora sus habilidades y forma tu equipo perfecto. ¡Tu aventura comienza aquí!",
+    "start": "¡Comienza la aventura!"
+  },
+  "abilities": {
+    "title": "Tu preparación para la ",
+    "title_colored": "Liga de Campeones",
+    "description": "Los maestros no nacen, se hacen conociendo las debilidades del enemigo y las capacidades de sus aliados. ¡Empieza a aprender ahora mismo!",
+    "card": {
+      "pokemon": {
+        "title": "Pokémon",
+        "description": "Una enciclopedia completa de criaturas: características, tipos, evoluciones y formas raras de Pokémon."
+      },
+      "skills": {
+        "title": "Habilidades",
+        "description": "Una guía detallada de habilidades y ataques: descubre qué efectos tienen en combate."
+      },
+      "items": {
+        "title": "Objetos",
+        "description": "Catálogo de cosas: desde bayas medicinales y Poké Balls hasta piedras raras para la evolución."
+      },
+      "who_is_it": {
+        "title": "¿Quién es?",
+        "description": "Modo de entretenimiento: ¡Intenta reconocer al Pokémon por su silueta y conviértete en un maestro!"
+      }
+    },
+    "explore": "¡Explorar!"
+  },
+  "elements_preview": {
+    "title": "¡Tu camino hacia el conocimiento comienza aquí!",
+    "note_first": "«¿Sabes cuál es el secreto de una verdadera victoria? No es solo el nivel de tu compañero. Un verdadero maestro sabe que incluso el Pikachu más pequeño puede vencer a un gigante si aprovecha las debilidades del oponente».",
+    "note_second": "«El mundo Pokémon está lleno de estrategias: el fuego funde el acero, pero se apaga bajo la presión del agua. Si quieres construir el equipo de tus sueños, debes aprender a ver estas conexiones».",
+    "description": "El poder de los Pokémon es grande, pero su conocimiento de los elementos es ilimitado. ¡Conviértete en un estratega al que ningún oponente pueda sorprender!"
+  },
+  "elements": {
+    "title": "Clasificación por elementos",
+    "fire": "Fuego",
+    "water": "Agua",
+    "grass": "Planta",
+    "electric": "Eléctrico",
+    "ice": "Hielo",
+    "fighting": "Lucha",
+    "poison": "Veneno",
+    "ground": "Tierra",
+    "flying": "Volador",
+    "psychic": "Psíquico",
+    "bug": "Bicho",
+    "rock": "Roca",
+    "ghost": "Fantasma",
+    "dragon": "Dragón",
+    "steel": "Acero",
+    "fairy": "Hada",
+    "dark": "Siniestro",
+    "normal": "Normal"
+  },
+  "evolution_preview": {
+    "title": "¡Desbloquea tu potencial oculto!",
+    "note_first": "«La evolución no es solo un cambio de apariencia, es el mayor misterio de la naturaleza. He dedicado mi vida a estudiar cómo se transforma la energía interior, convirtiendo a un ser humilde en un coloso poderoso».",
+    "note_second": "«Algunas especies cambian por la experiencia, otras bajo la influencia de piedras raras. Comprender estos caminos es la marca de un verdadero investigador».",
+    "description": "Descubre qué secretos esconde el código genético y cómo guiar el desarrollo de los Pokémon por el camino correcto. ¡Explora los mecanismos de la evolución!"
+  },
+  "evolution_way": {
+    "title": "Caminos de ",
+    "subtitle": "Evolución",
+    "description": "La evolución no es solo un cambio de apariencia. Es un proceso complejo de reestructuración del ADN influenciado por factores externos e internos. Descubre cómo se despierta el potencial oculto.",
+    "card": {
+      "classic": {
+        "badge": "Clásico",
+        "title": "Madurez Biológica",
+        "description": "El camino más común. A medida que se acumula experiencia (EXP), las células del organismo alcanzan una masa crítica, desencadenando una transformación instantánea en una forma más poderosa."
+      },
+      "resonance": {
+        "badge": "Resonancia",
+        "title": "Piedras Evolutivas",
+        "description": "Algunas especies poseen genes \"dormidos\" que se activan solo al entrar en contacto con la energía altamente concentrada de las piedras (Trueno, Fuego, Agua)."
+      },
+      "psychology": {
+        "badge": "Psicología",
+        "title": "Nivel de Amistad",
+        "description": "Una forma única de evolución basada en la confianza. El vínculo psicoemocional con el Entrenador desencadena la liberación de endorfinas, provocando cambios físicos en el organismo."
+      }
+    },
+    "note": {
+      "title": "Dato Importante: ",
+      "description": "Existe la «Evolución Ramificada». Una misma especie, por ejemplo Eevee, puede transformarse en 8 formas diferentes según las condiciones ambientales."
+    }
+  },
+  "league_preview": {
+    "title": "Arena de Campeones",
+    "note_first": "«El Torneo de la Liga no es solo una serie de combates. Es el momento de la verdad, cuando la voluntad del Entrenador y la fe de su Pokémon se fusionan en una sola energía, capaz de hacer milagros en el estadio».",
+    "note_second": "«Superar todas las pruebas regionales y encender el fuego sagrado de Moltres en la ceremonia de apertura es el sueño de todo investigador. ¿Estás listo para aprender las reglas del mayor festival del mundo?».",
+    "description": "¡Estudia las etapas del torneo y las tradiciones de la Liga Pokémon!"
+  },
+  "pages": {
+    "wip": "Página en construcción. ¡Pronto habrá algo interesante aquí!",
+    "pokemon": {
+      "title": "Pokémon",
+      "description": "Pronto aparecerá aquí una enciclopedia completa de Pokémon."
+    },
+    "skills": {
+      "title": "Habilidades",
+      "description": "Pronto aparecerá aquí una base de datos de habilidades de Pokémon."
+    },
+    "items": {
+      "title": "Objetos",
+      "description": "Pronto aparecerá aquí un catálogo de objetos y equipamiento."
+    },
+    "game": {
+      "title": "Juego",
+      "description": "Pronto aparecerá aquí un juego interactivo."
+    }
+  },
+  "not_found": {
+    "title": "Página no encontrada",
+    "description": "Parece que este Pokémon escapó. Intenta volver a la página principal.",
+    "button": "Ir al inicio"
+  },
+  "league_section": {
+    "title": "Crónica Deportiva",
+    "subtitle": "Tradiciones de la ",
+    "subtitle_highlighted": "Liga Pokémon",
+    "league_steps": {
+      "preliminary": {
+        "title": "Rondas Preliminares",
+        "description": "Los combates se desarrollan en campos especializados: Planta, Hielo, Roca y Agua. Un Entrenador debe ser capaz de utilizar las características del terreno para lograr la victoria en un entorno cambiante."
+      },
+      "final": {
+        "title": "Fase Final (Combates Totales)",
+        "description": "Combates de 6 contra 6 en el estadio central ante miles de espectadores. Aquí, no es solo la estrategia lo que pasa a primer plano, sino la profundidad del vínculo entre el Entrenador y cada miembro de su equipo."
+      },
+      "hall_of_fame": {
+        "title": "Ceremonia del Hall de la Fama",
+        "description": "El ganador de la Liga inscribe su nombre en la historia de la región. Este es el honor más alto, lo que significa que el investigador ha alcanzado un entendimiento absoluto con sus Pokémon."
+      }
+    },
+    "note": {
+      "title": "Secretos del Estadio",
+      "description": "¿Sabías que antes de la inauguración de cada torneo, el fuego sagrado del legendario Moltres se transporta mediante relevos? Mientras esta llama arda en el pebetero del estadio, protege el espíritu limpio de la competición."
+    }
+  }
+}

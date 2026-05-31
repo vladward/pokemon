@@ -1,0 +1,154 @@
+{
+  "navigation": {
+    "pokemon": "Pokemon",
+    "skills": "Skills",
+    "items": "Items",
+    "game": "Game"
+  },
+  "footer": {
+    "rights": " All rights reserved.",
+    "created_by": "Developed by "
+  },
+  "home": {
+    "greetings": "Welcome to the world of the ",
+    "pokemon": "Pokemon",
+    "description": "Become the best coach: explore the species, explore their abilities and assemble your perfect team. Your adventure begins here!",
+    "start": "Start an adventure!"
+  },
+  "abilities": {
+    "title": "Your preparation for the ",
+    "title_colored": "Champions League",
+    "description": "Masters are not born — they are those who know the weaknesses of the enemy and the capabilities of their allies. Start learning right now!",
+    "card": {
+      "pokemon": {
+        "title": "Pokemon",
+        "description": "A complete encyclopedia of creatures: characteristics, types, evolutions, and rare forms of Pokemon."
+      },
+      "skills": {
+        "title": "Skills",
+        "description": "A detailed guide to abilities and attacks: find out what effects they have in combat."
+      },
+      "items": {
+        "title": "Items",
+        "description": "Catalog of things: from medicinal berries and pokeballs to rare stones for evolution."
+      },
+      "who_is_it": {
+        "title": "Who is it?",
+        "description": "Entertainment mode: Try to recognize Pokemon by its silhouette and become a master!"
+      }
+    },
+    "explore": "Explore!"
+  },
+  "elements_preview": {
+    "title": "Your path to knowledge begins here!",
+    "note_first": "«Do you know what the secret of real victory is? It's not just your partner's level. A true master knows that even the smallest Pikachu can defeat a giant if he uses the opponent's weaknesses.»",
+    "note_second": "«The Pokemon world is full of strategies: fire melts steel, but it goes out under the pressure of water. If you want to build a dream team, you need to learn to see these connections.»",
+    "description": "Pokemon's power is great, but their knowledge of the elements is limitless. Become a strategist that no opponent can surprise!"
+  },
+  "elements": {
+    "title": "Classification by elements",
+    "fire": "Fire",
+    "water": "Water",
+    "grass": "Grass",
+    "electric": "Electric",
+    "ice": "Ice",
+    "fighting": "Fighting",
+    "poison": "Poison",
+    "ground": "Ground",
+    "flying": "Flying",
+    "psychic": "Psychic",
+    "bug": "Bug",
+    "rock": "Rock",
+    "ghost": "Ghost",
+    "dragon": "Dragon",
+    "steel": "Steel",
+    "fairy": "Fairy",
+    "dark": "Dark",
+    "normal": "Normal"
+  },
+  "evolution_preview": {
+    "title": "Unlock your hidden potential!",
+    "note_first": "«Evolution is not just a change of appearance, it is the greatest mystery of nature. I have devoted my life to studying how inner energy transforms, turning a humble being into a mighty giant.»",
+    "note_second": "«Some species change from experience, others — under the influence of rare stones. Understanding these paths is the mark of a true researcher.»",
+    "description": "Find out what secrets the genetic code hides and how to direct the development of Pokemon along the right path. Explore the mechanisms of evolution!"
+  },
+  "evolution_way": {
+    "title": "Evolution ",
+    "subtitle": "Paths",
+    "description": "Evolution is not just a change of appearance. It is a complex process of DNA restructuring influenced by external and internal factors. Find out how the hidden potential awakens.",
+    "card": {
+      "classic": {
+        "badge": "Classic",
+        "title": "Biological Maturity",
+        "description": "The most common path. As life experience (EXP) accumulates, the organism's cells reach a critical mass, triggering an instant transformation into a more powerful form."
+      },
+      "resonance": {
+        "badge": "Resonance",
+        "title": "Elemental Stones",
+        "description": "Some species possess \"dormant\" genes that activate only upon contact with the highly concentrated energy of stones (Thunder, Fire, Water)."
+      },
+      "psychology": {
+        "badge": "Psychology",
+        "title": "Happiness Level",
+        "description": "A unique form of evolution based on trust. The psycho-emotional bond with the trainer triggers a release of endorphins, provoking physical changes in the organism."
+      }
+    },
+    "note": {
+      "title": "Important Fact: ",
+      "description": "There is a «Branching Evolution». The same species, for example Eevee, can transform into 8 different forms depending on environmental conditions."
+    }
+  },
+  "league_preview": {
+    "title": "Champions Arena",
+    "note_first": "«The League Tournament is not just a series of battles. It is the moment of truth, when the trainer's will and their Pokemon's faith merge into a single energy, capable of working wonders in the stadium.»",
+    "note_second": "«Going through all the regional trials and lighting the sacred fire of Moltres at the opening ceremony is the dream of every researcher. Are you ready to learn the rules of the world's greatest festival?»",
+    "description": "Study the tournament stages and traditions of the Pokemon League!"
+  },
+  "league_section": {
+    "title": "Sports Chronicle",
+    "subtitle": "Traditions of the ",
+    "subtitle_highlighted": "Pokémon League",
+    "league_steps": {
+      "preliminary": {
+        "title": "Preliminary Rounds",
+        "description": "Battles take place on specialized arenas: Grass, Ice, Rock, and Water. A trainer must be able to utilize the terrain features to achieve victory in a changing environment."
+      },
+      "final": {
+        "title": "Final Stage (Full Battles)",
+        "description": "6v6 battles in the central stadium before thousands of spectators. Here, it is not just strategy that comes to the forefront, but the depth of the bond between the trainer and every member of their team."
+      },
+      "hall_of_fame": {
+        "title": "Hall of Fame Ceremony",
+        "description": "The League winner writes their name into the region's history. This is the highest honor, signifying that the researcher has achieved absolute understanding with their Pokémon."
+      }
+    },
+    "note": {
+      "title": "Stadium Secrets",
+      "description": "Did you know that before the opening of each tournament, the sacred fire of the legendary Moltres is delivered by a relay? As long as this flame burns in the stadium's cauldron, it protects the fair spirit of the competition."
+    }
+  },
+  "pages": {
+    "wip": "Page under construction. Something interesting is coming soon!",
+    "pokemon": {
+      "title": "Pokémon",
+      "description": "A complete encyclopedia of Pokémon will appear here soon."
+    },
+    "skills": {
+      "title": "Skills",
+      "description": "A database of Pokémon abilities and attacks will appear here soon."
+    },
+    "items": {
+      "title": "Items",
+      "description": "A catalog of items and equipment will appear here soon."
+    },
+    "game": {
+      "title": "Game",
+      "description": "An interactive game will appear here soon."
+    }
+  },
+  "not_found": {
+    "title": "Page not found",
+    "description": "Looks like this Pokémon ran away. Try going back to the home page.",
+    "button": "Go home"
+  }
+}
