@@ -10,7 +10,7 @@ export type AbilitiesSectionType = {
   image: StaticImageData | ComponentType<SVGProps<SVGSVGElement>>;
   link: string;
   btnText: string;
-  isBlured: boolean;
+  isBlured?: boolean;
 };
 
 export type ElementsDataType = {

@@ -3,17 +3,17 @@ import { LeagueDataType } from './types';
 export const leagueData: LeagueDataType[] = [
   {
     step: '01',
-    title: 'Отборочные этапы (Preliminary Rounds)',
-    desc: 'Битвы проходят на специализированных аренах: Трава, Лед, Камень и Вода. Тренер должен уметь использовать особенности ландшафта, чтобы одержать победу в условиях меняющейся среды.',
+    title: 'league_section.league_steps.preliminary.title',
+    desc: 'league_section.league_steps.preliminary.description',
   },
   {
     step: '02',
-    title: 'Финальная стадия (Full Battles)',
-    desc: 'Сражения 6 на 6 на центральном стадионе перед тысячами зрителей. Здесь на первый план выходит не только стратегия, но и глубина связи между тренером и каждым членом его команды.',
+    title: 'league_section.league_steps.final.title',
+    desc: 'league_section.league_steps.final.description',
   },
   {
     step: '03',
-    title: 'Церемония Зала Славы',
-    desc: 'Победитель Лиги вписывает свое имя в историю региона. Это высшая честь, означающая, что исследователь достиг полного взаимопонимания со своими покемонами.',
+    title: 'league_section.league_steps.hall_of_fame.title',
+    desc: 'league_section.league_steps.hall_of_fame.description',
   },
 ];
