@@ -2,10 +2,9 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Theme Persistence', () => {
   test('should persist theme after page reload', async ({ page }) => {
-    await page.addInitScript(() => {
-      window.localStorage.setItem('theme', 'dark');
-    });
     await page.goto('/');
+    await page.evaluate(() => window.localStorage.setItem('theme', 'dark'));
+    await page.reload();
 
     const html = page.locator('html');
     await expect(html).toHaveClass(/\bdark\b/);
@@ -34,9 +33,16 @@ test.describe('Theme Persistence', () => {
   });
 
   test('should sync theme across multiple tabs', async ({ browser }) => {
-    const context = await browser.newContext();
-    await context.addInitScript(() => {
-      window.localStorage.setItem('theme', 'dark');
+    const context = await browser.newContext({
+      storageState: {
+        cookies: [],
+        origins: [
+          {
+            origin: 'http://localhost:3000',
+            localStorage: [{ name: 'theme', value: 'dark' }],
+          },
+        ],
+      },
     });
     const page1 = await context.newPage();
     const page2 = await context.newPage();

@@ -1,5 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
 
+if (!process.env.PLAYWRIGHT_BROWSERS_PATH && process.platform === 'win32') {
+  process.env.PLAYWRIGHT_BROWSERS_PATH = 'D:/playwright-browsers';
+}
+
 export default defineConfig({
   testDir: './e2e',
   fullyParallel: true,

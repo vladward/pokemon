@@ -9,16 +9,17 @@ export const Footer: FC = () => (
   <footer className="w-full flex flex-col px-[5vw] bg-yellow transition-colors duration-theme">
     <div className="flex flex-col justify-center items-center pb-10 mobile:pb-2">
       <Link href="/">
-        <PokemonTitle
-          className="text-blue transition-transform duration-300 hover:scale-110 w-[120px] h-[120px] mobile:w-[80px] mobile:h-[80px]"
-        />
+        <PokemonTitle className="text-blue transition-transform duration-300 hover:scale-110 w-[120px] h-[120px] mobile:w-[80px] mobile:h-[80px]" />
       </Link>
 
       <div className="mobile:hidden">
         <NavLinks isCentered />
       </div>
       <div className="hidden mobile:block">
-        <NavLinks isVertical isCentered />
+        <NavLinks
+          isVertical
+          isCentered
+        />
       </div>
     </div>
 
