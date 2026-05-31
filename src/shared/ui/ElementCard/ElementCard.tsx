@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { FC, ReactNode } from 'react';
 
 import { cn } from '@/shared/lib/utils/cn';
@@ -12,6 +13,7 @@ interface PokemonTypeCardProps {
 }
 
 export const ElementCard: FC<PokemonTypeCardProps> = ({ name, color, image, onClick }) => {
+  const t = useTranslations();
   return (
     <div
       className={cn(
@@ -45,7 +47,7 @@ export const ElementCard: FC<PokemonTypeCardProps> = ({ name, color, image, onCl
           '[color:var(--type-color)] group-hover:text-white',
         )}
       >
-        {name}
+        {t(name)}
       </span>
     </div>
   );

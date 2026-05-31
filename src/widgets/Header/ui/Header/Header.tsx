@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { MobileNavigation } from '@/widgets/Header';
 
+import { LanguageSwitcher } from '@/features/LanguageSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 
 import { NavLinks } from '@/entities/NavLinks';
@@ -26,6 +27,7 @@ export const Header = () => (
       >
         <NavLinks />
         <ThemeSwitcher />
+        <LanguageSwitcher />
       </div>
     </Container>
   </header>
