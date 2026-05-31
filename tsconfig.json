@@ -23,7 +23,8 @@
       }
     ],
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@i18n/*": ["i18n/*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "resolveJsonModule": true

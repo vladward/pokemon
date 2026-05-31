@@ -1,0 +1,154 @@
+{
+  "navigation": {
+    "pokemon": "Pokémon",
+    "skills": "Aanvallen",
+    "items": "Voorwerpen",
+    "game": "Wie is het?"
+  },
+  "footer": {
+    "rights": " Alle rechten voorbehouden.",
+    "created_by": "Ontwikkeld door "
+  },
+  "home": {
+    "greetings": "Welkom in de wereld van ",
+    "pokemon": "Pokémon",
+    "description": "Word de beste Trainer: onderzoek de soorten, verken hun vaardigheden en stel je perfecte team samen. Jouw avontuur begint hier!",
+    "start": "Begin het avontuur!"
+  },
+  "abilities": {
+    "title": "Jouw voorbereiding op de ",
+    "title_colored": "Champions League",
+    "description": "Meesters worden niet geboren – het zijn degenen die de zwakheden van de vijand en de mogelijkheden van hun bondgenoten kennen. Begin nu met leren!",
+    "card": {
+      "pokemon": {
+        "title": "Pokémon",
+        "description": "Een volledige encyclopedie van wezens: kenmerken, typen, evoluties en zeldzame vormen van Pokémon."
+      },
+      "skills": {
+        "title": "Aanvallen",
+        "description": "Een gedetailleerde gids voor vaardigheden en aanvallen: ontdek welke effecten ze hebben in gevechten."
+      },
+      "items": {
+        "title": "Voorwerpen",
+        "description": "Catalogus van spullen: van medicinale bessen en Poké Balls tot zeldzame stenen voor evolutie."
+      },
+      "who_is_it": {
+        "title": "Wie is het?",
+        "description": "Amusementsmodus: probeer Pokémon te herkennen aan hun silhouet en word een meester!"
+      }
+    },
+    "explore": "Ontdekken!"
+  },
+  "elements_preview": {
+    "title": "Jouw pad naar kennis begint hier!",
+    "note_first": "«Weet je wat het geheim van een echte overwinning is? Het is niet alleen het niveau van je partner. Een echte meester weet dat zelfs de kleinste Pikachu een reus kan verslaan als hij de zwakheden van de tegenstander gebruikt.»",
+    "note_second": "«De Pokémon-wereld zit vol strategieën: vuur smelt staal, maar het dooft onder de druk van water. Als je een droomteam wilt bouwen, moet je deze verbanden leren zien.»",
+    "description": "De kracht van Pokémon is groot, maar hun kennis van de elementen is grenzeloos. Word een strateeg die door geen enkele tegenstander verrast kan worden!"
+  },
+  "elements": {
+    "title": "Classificatie naar elementen",
+    "fire": "Vuur",
+    "water": "Water",
+    "grass": "Gras",
+    "electric": "Elektrisch",
+    "ice": "Ijs",
+    "fighting": "Gvecht",
+    "poison": "Gif",
+    "ground": "Grond",
+    "flying": "Vliegend",
+    "psychic": "Psychisch",
+    "bug": "Insect",
+    "rock": "Steen",
+    "ghost": "Geest",
+    "dragon": "Draak",
+    "steel": "Staal",
+    "fairy": "Fee",
+    "dark": "Duister",
+    "normal": "Normaal"
+  },
+  "evolution_preview": {
+    "title": "Ontgrendel je verborgen potentieel!",
+    "note_first": "«Evolutie is niet alleen een verandering van uiterlijk, het is het grootste mysterie van de natuur. Ik heb mijn leven gewijd aan het bestuderen van hoe innerlijke energie transformeert, waardoor een bescheiden wezen verandert in een machtige reus.»",
+    "note_second": "«Sommige soorten veranderen door ervaring, andere onder invloed van zeldzame stenen. Het begrijpen van deze paden is het kenmerk van een echte onderzoeker.»",
+    "description": "Ontdek welke geheimen de genetische code verbergt en hoe je de ontwikkeling van Pokémon in de goede richting stuurt. Verken de mechanismen van evolutie!"
+  },
+  "evolution_way": {
+    "title": "Wegen van ",
+    "subtitle": "Evolutie",
+    "description": "Evolutie is niet alleen een verandering van uiterlijk. Het is een complex proces van DNA-herstructurering onder invloed van externe en interne factoren. Ontdek hoe het verborgen potentieel ontwaakt.",
+    "card": {
+      "classic": {
+        "badge": "Klassiek",
+        "title": "Biologische Rijpheid",
+        "description": "Het meest algemene pad. Naarmate levenservaring (EXP) zich ophoopt, bereiken de cellen van het organisme een kritieke massa, wat een onmiddellijke transformatie in een krachtigere vorm in gang zet."
+      },
+      "resonance": {
+        "badge": "Resonantie",
+        "title": "Elementaire Stenen",
+        "description": "Sommige soorten bezitten \"slapende\" genen die alleen worden geactiveerd bij contact met de sterk geconcentreerde energie van stenen (Donder-, Vuur-, Watersteen)."
+      },
+      "psychology": {
+        "badge": "Psychologie",
+        "title": "Vriendschapsniveau",
+        "description": "Een unieke vorm van evolutie gebaseerd op vertrouwen. De psycho-emotionele band met de Trainer zorgt voor het vrijkomen van endorfines, wat fysieke veranderingen in het organisme veroorzaakt."
+      }
+    },
+    "note": {
+      "title": "Belangrijk feit: ",
+      "description": "Er bestaat een «Vertakte Evolutie». Dezelfde soort, bijvoorbeeld Eevee, kan transformeren in 8 verschillende vormen, afhankelijk van de omgevingsomstandigheden."
+    }
+  },
+  "league_preview": {
+    "title": "Arena der Kampioenen",
+    "note_first": "«Het Competitietoernooi is niet zomaar een reeks gevechten. Het is het moment van de waarheid, waarin de wil van de Trainer and het geloof van zijn Pokémon samensmelten tot één energie, in staat om wonderen te verrichten in het stadion.»",
+    "note_second": "«Alle regionale proeven doorstaan en het heilige vuur van Moltres aansteken bij de openingsceremonie is de droom van elke onderzoeker. Ben je klaar om de regels van 's werelds grootste festival te leren?»",
+    "description": "Bestudeer de toernooifasen en tradities van de Pokémon League!"
+  },
+  "pages": {
+    "wip": "Pagina in aanbouw. Er komt binnenkort iets interessants!",
+    "pokemon": {
+      "title": "Pokémon",
+      "description": "Binnenkort verschijnt hier een volledige Pokémon-encyclopedie."
+    },
+    "skills": {
+      "title": "Vaardigheden",
+      "description": "Binnenkort verschijnt hier een database van Pokémon-vaardigheden."
+    },
+    "items": {
+      "title": "Voorwerpen",
+      "description": "Binnenkort verschijnt hier een catalogus van voorwerpen en uitrusting."
+    },
+    "game": {
+      "title": "Spel",
+      "description": "Binnenkort verschijnt hier een interactief spel."
+    }
+  },
+  "not_found": {
+    "title": "Pagina niet gevonden",
+    "description": "Het lijkt erop dat deze Pokémon is weggerend. Probeer terug te gaan naar de startpagina.",
+    "button": "Naar startpagina"
+  },
+  "league_section": {
+    "title": "Sportkroniek",
+    "subtitle": "Tradities van de ",
+    "subtitle_highlighted": "Pokémon League",
+    "league_steps": {
+      "preliminary": {
+        "title": "Voorrondes",
+        "description": "Gevechten vinden plaats op gespecialiseerde arena's: Gras, IJs, Steen en Water. Een Trainer moet de terreinkenmerken kunnen benutten om de overwinning te behalen in een veranderende omgeving."
+      },
+      "final": {
+        "title": "Eindfase (Volledige Gevechten)",
+        "description": "6v6 gevechten in het centrale stadion voor duizenden toeschouwers. Hier staat niet alleen de strategie op de voorgrond, maar de diepte van de band tussen de Trainer en elk lid van zijn team."
+      },
+      "hall_of_fame": {
+        "title": "Hall of Fame-ceremonie",
+        "description": "De winnaar van de League schrijft zijn naam in de geschiedenis van de regio. Dit is de hoogste eer, wat betekent dat de onderzoeker een absoluut begrip heeft bereikt met zijn Pokémon."
+      }
+    },
+    "note": {
+      "title": "Geheimen van het Stadion",
+      "description": "Wist je dat voor de opening van elk toernooi het heilige vuur van de legendarische Moltres via een estafette wordt bezorgd? Zolang deze vlam in de ketel van het stadion brandt, beschermt het de eerlijke geest van de competitie."
+    }
+  }
+}

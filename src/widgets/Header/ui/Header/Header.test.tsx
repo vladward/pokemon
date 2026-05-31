@@ -41,7 +41,7 @@ describe('Widget: Header', () => {
     const desktopNav = screen.getByTestId('desktop-nav');
     const { getByRole, getByTestId: getByTestIdWithin } = within(desktopNav);
 
-    expect(getByRole('link', { name: /pokemons/i })).toBeInTheDocument();
+    expect(getByRole('link', { name: /pokemon/i })).toBeInTheDocument();
     expect(getByTestIdWithin('theme-switcher')).toBeInTheDocument();
   });
 });
