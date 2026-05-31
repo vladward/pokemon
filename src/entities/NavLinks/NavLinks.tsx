@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 import { cn } from '@/shared/lib/utils/cn';
 
@@ -16,13 +17,14 @@ type NavLinksState = {
 };
 
 const links: NavLinksState[] = [
-  { url: '/pokemons', title: 'Pokemons' },
-  { url: '/skills', title: 'Skills' },
-  { url: '/items', title: 'Items' },
-  { url: '/game', title: 'Game' },
+  { url: '/pokemons', title: 'navigation.pokemon' },
+  { url: '/skills', title: 'navigation.skills' },
+  { url: '/items', title: 'navigation.items' },
+  { url: '/game', title: 'navigation.game' },
 ];
 
 export const NavLinks = ({ isVertical, isCentered, callback }: NavLinksProps) => {
+  const t = useTranslations();
   return (
     <nav>
       <ul
@@ -44,7 +46,7 @@ export const NavLinks = ({ isVertical, isCentered, callback }: NavLinksProps) =>
                 isVertical && 'text-[28px] px-0 py-0',
               )}
             >
-              {title}
+              {t(title)}
             </Link>
           </li>
         ))}
