@@ -1,13 +1,8 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
-
 import { defineConfig, devices } from '@playwright/test';
-import dotenv from 'dotenv';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-dotenv.config({ path: path.resolve(__dirname, '.env') });
+if (!process.env.PLAYWRIGHT_BROWSERS_PATH && process.platform === 'win32') {
+  process.env.PLAYWRIGHT_BROWSERS_PATH = 'D:/playwright-browsers';
+}
 
 export default defineConfig({
   testDir: './e2e',
@@ -38,7 +33,7 @@ export default defineConfig({
   ],
 
   webServer: {
-    command: 'npm run start',
+    command: process.env.CI ? 'npm run build && npm run start' : 'npm run dev',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,

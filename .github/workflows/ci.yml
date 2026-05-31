@@ -66,10 +66,10 @@ jobs:
 
       - name: Install Playwright Browsers
         if: steps.playwright-cache.outputs.cache-hit != 'true'
-        run: npx playwright install webkit chromium
+        run: npx playwright install chromium firefox webkit
 
       - name: Install Playwright Dependencies
-        run: npx playwright install-deps webkit chromium
+        run: npx playwright install-deps chromium firefox webkit
 
       - run: npm run test:e2e
 

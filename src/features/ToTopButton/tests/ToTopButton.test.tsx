@@ -19,13 +19,13 @@ describe('ToTopButton Unit', () => {
       setScrollY(1500);
       fireEvent.scroll(document);
     });
-    expect(button.className).toMatch(/visible/);
+    expect(button.className).toMatch(/\bvisible\b/);
 
     act(() => {
       setScrollY(500);
       fireEvent.scroll(document);
     });
-    expect(button.className).not.toMatch(/visible/);
+    expect(button.className).not.toMatch(/\bvisible\b/);
   });
 
   it('should remove scroll event listener when unmounted to prevent memory leaks', () => {

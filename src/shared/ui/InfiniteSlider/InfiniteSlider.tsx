@@ -1,6 +1,8 @@
+'use client';
+
 import { CSSProperties, useRef, useEffect, useState, ReactNode } from 'react';
 
-import styles from './InfiniteSlider.module.scss';
+import { cn } from '@/shared/lib/utils/cn';
 
 interface InfiniteSliderProps<T> {
   items: T[];
@@ -23,6 +25,7 @@ export const InfiniteSlider = <T extends { id: string | number }>({
 }: InfiniteSliderProps<T>) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isAnimating, setIsAnimating] = useState(false);
+  const animationTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const infiniteItems = [...items, ...items, ...items];
   const fullCardWidth = cardWidth + gap;
@@ -47,6 +50,12 @@ export const InfiniteSlider = <T extends { id: string | number }>({
     }
   };
 
+  useEffect(() => {
+    return () => {
+      if (animationTimer.current) clearTimeout(animationTimer.current);
+    };
+  }, []);
+
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current && !isAnimating) {
       setIsAnimating(true);
@@ -54,40 +63,46 @@ export const InfiniteSlider = <T extends { id: string | number }>({
       scrollRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
       });
-      setTimeout(() => setIsAnimating(false), 400);
+      animationTimer.current = setTimeout(() => setIsAnimating(false), 400);
     }
   };
 
   return (
     <section
-      className={`${styles.slider} ${className}`}
-      style={
-        {
-          '--card-width': `${cardWidth}px`,
-          '--gap': `${gap}px`,
-        } as CSSProperties
-      }
+      className={cn('px-5 relative overflow-hidden', className)}
+      style={{ '--card-width': `${cardWidth}px`, '--gap': `${gap}px` } as CSSProperties}
     >
-      {title && <h3 className={styles.slider__title}>{title}</h3>}
+      {title && (
+        <h3 className="text-center text-lightBlue text-2xl uppercase mb-[30px] font-extrabold tracking-[1px]">
+          {title}
+        </h3>
+      )}
 
-      <div className={styles.slider__wrapper}>
+      <div className="relative flex items-center max-w-[1400px] mx-auto">
         <button
-          className={`${styles.slider__btn} ${styles.slider__btn_left}`}
+          className={cn(
+            'absolute top-1/2 -translate-y-1/2 left-0 w-12 h-12 z-10',
+            'bg-lightBlue text-white border-[3px] border-yellow rounded-full text-[2rem]',
+            'flex items-center justify-center cursor-pointer',
+            'shadow-[0_4px_12px_rgba(0,0,0,0.2)] transition-all duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]',
+            'hover:scale-110 hover:shadow-[0_6px_16px_rgba(0,0,0,0.3)]',
+            'active:scale-95',
+          )}
           onClick={() => scroll('left')}
         >
           ‹
         </button>
 
-        <div className={styles.slider__container}>
+        <div className="flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] tablet:[mask-image:none]">
           <div
-            className={styles.slider__track}
+            className="flex gap-[var(--gap)] py-5 items-stretch overflow-x-auto scroll-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             ref={scrollRef}
             onScroll={handleInfiniteScroll}
           >
             {infiniteItems.map((item, index) => (
               <div
                 key={`${item.id}-${index}`}
-                className={styles.slider__item}
+                className="flex-[0_0_var(--card-width)] h-auto flex transition-transform duration-300 [&>*]:w-full"
               >
                 {renderItem(item, index)}
               </div>
@@ -96,7 +111,14 @@ export const InfiniteSlider = <T extends { id: string | number }>({
         </div>
 
         <button
-          className={`${styles.slider__btn} ${styles.slider__btn_right}`}
+          className={cn(
+            'absolute top-1/2 -translate-y-1/2 right-0 w-12 h-12 z-10',
+            'bg-lightBlue text-white border-[3px] border-yellow rounded-full text-[2rem]',
+            'flex items-center justify-center cursor-pointer',
+            'shadow-[0_4px_12px_rgba(0,0,0,0.2)] transition-all duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]',
+            'hover:scale-110 hover:shadow-[0_6px_16px_rgba(0,0,0,0.3)]',
+            'active:scale-95',
+          )}
           onClick={() => scroll('right')}
         >
           ›

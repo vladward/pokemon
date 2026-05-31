@@ -1,55 +1,32 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router';
+import Link from 'next/link';
 
-import { MobileNavigation, NavLinks } from '@/widgets/Header';
+import { MobileNavigation } from '@/widgets/Header';
 
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 
-import { useBreakpoints } from '@/shared/lib/hooks';
+import { NavLinks } from '@/entities/NavLinks';
+
 import { Container } from '@/shared/ui';
 import { PokemonTitle } from '@/shared/ui/icons';
 
-import styles from './Header.module.scss';
+export const Header = () => (
+  <header className="bg-yellow h-[70px] w-full sticky top-0 z-[1004] pointer-events-auto transition-colors duration-theme tablet:h-[60px]">
+    <Container className="flex justify-between items-center h-full">
+      <Link href="/">
+        <PokemonTitle className="text-blue transition-transform duration-300 hover:scale-110 w-[120px] h-[120px] tablet:w-[80px] tablet:h-[80px]" />
+      </Link>
 
-export const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+      <div className="hidden tablet:block">
+        <MobileNavigation />
+      </div>
 
-  const { mobile, tablet } = useBreakpoints();
-
-  const isMobileView = mobile || tablet;
-
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
-  return (
-    <header className={styles.header}>
-      <Container className={styles.inner}>
-        <Link to="/">
-          <PokemonTitle
-            width={120}
-            height={120}
-          />
-        </Link>
-
-        {isMobileView ? (
-          <MobileNavigation
-            isOpen={isOpen}
-            onToggle={() => setIsOpen(!isOpen)}
-            onClose={() => setIsOpen(false)}
-          />
-        ) : (
-          <div
-            data-testid="desktop-nav"
-            className={styles.desktopNav}
-          >
-            <NavLinks />
-            <ThemeSwitcher />
-          </div>
-        )}
-      </Container>
-    </header>
-  );
-};
+      <div
+        data-testid="desktop-nav"
+        className="flex items-center gap-8 tablet:hidden"
+      >
+        <NavLinks />
+        <ThemeSwitcher />
+      </div>
+    </Container>
+  </header>
+);

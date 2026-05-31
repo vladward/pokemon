@@ -16,13 +16,13 @@ describe('BurgerButton UI', () => {
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
-  test('should have an active class if the prop is active === true', () => {
-    const { container } = render(
+  test('should set data-active=true when isActive prop is true', () => {
+    render(
       <BurgerButton
         isActive={true}
         onClick={() => {}}
       />,
     );
-    expect(container.firstChild).toHaveClass('active');
+    expect(screen.getByRole('button')).toHaveAttribute('data-active', 'true');
   });
 });

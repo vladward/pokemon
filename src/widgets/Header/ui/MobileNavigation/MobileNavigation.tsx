@@ -1,51 +1,39 @@
-import { useEffect } from 'react';
+'use client';
 
-import { NavLinks } from '@/widgets/Header';
+import { useState } from 'react';
 
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 
+import { NavLinks } from '@/entities/NavLinks';
+
 import { BurgerButton } from '@/shared/ui';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/shared/ui/shadcn/sheet';
 
-import styles from './MobileNavigation.module.scss';
-
-interface MobileNavigationProps {
-  isOpen: boolean;
-  onToggle: () => void;
-  onClose: () => void;
-}
-
-export const MobileNavigation = ({ isOpen, onToggle, onClose }: MobileNavigationProps) => {
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
+export const MobileNavigation = () => {
+  const [open, setOpen] = useState(false);
 
   return (
-    <>
-      <BurgerButton
-        isActive={isOpen}
-        onClick={onToggle}
-      />
-
-      <div className={`${styles.drawer} ${isOpen ? styles.isOpen : ''}`}>
-        <nav className={styles.navigation}>
-          <div className={styles.actions}>
-            <NavLinks
-              isVertical
-              callback={onClose}
-            />
-            <ThemeSwitcher />
-          </div>
+    <Sheet
+      open={open}
+      onOpenChange={setOpen}
+    >
+      <SheetTrigger asChild>
+        <BurgerButton isActive={open} />
+      </SheetTrigger>
+      <SheetContent
+        data-testid="mobile-drawer"
+        onOverlayClick={() => setOpen(false)}
+        className="py-[80px] px-[40px]"
+      >
+        <SheetTitle>Навигация</SheetTitle>
+        <nav className="flex flex-col gap-10">
+          <NavLinks
+            isVertical
+            callback={() => setOpen(false)}
+          />
+          <ThemeSwitcher />
         </nav>
-      </div>
-
-      <div
-        data-testid="overlay"
-        className={`${styles.overlay} ${isOpen ? styles.overlayVisible : ''}`}
-        onClick={onClose}
-      />
-    </>
+      </SheetContent>
+    </Sheet>
   );
 };
