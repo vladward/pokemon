@@ -25,6 +25,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
       className={josefinSans.variable}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.addEventListener('DOMContentLoaded',function(){setTimeout(function(){document.body.classList.add('theme-ready')},100)})`,
+          }}
+        />
+      </head>
       <body>
         <ThemeProvider
           attribute="class"
