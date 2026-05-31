@@ -2,7 +2,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 
 import { MobileNavigation } from './MobileNavigation';
 
-jest.mock('@/widgets/Header', () => ({
+jest.mock('@/entities/NavLinks', () => ({
   NavLinks: ({ callback }: { callback?: () => void }) => (
     <div
       onClick={callback}

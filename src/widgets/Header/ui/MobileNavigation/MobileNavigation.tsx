@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 
-import { NavLinks } from '@/widgets/Header';
-
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+
+import { NavLinks } from '@/entities/NavLinks';
 
 import { BurgerButton } from '@/shared/ui';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/shared/ui/shadcn/sheet';
@@ -18,13 +18,11 @@ export const MobileNavigation = () => {
       onOpenChange={setOpen}
     >
       <SheetTrigger asChild>
-        <BurgerButton
-          isActive={open}
-          onClick={() => setOpen((prev) => !prev)}
-        />
+        <BurgerButton isActive={open} />
       </SheetTrigger>
       <SheetContent
         data-testid="mobile-drawer"
+        onOverlayClick={() => setOpen(false)}
         className="py-[80px] px-[40px]"
       >
         <SheetTitle>Навигация</SheetTitle>

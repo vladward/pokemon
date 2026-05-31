@@ -4,13 +4,13 @@ import { cn } from '@/shared/lib/utils/cn';
 
 type BurgerButtonProps = {
   isActive: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export const BurgerButton = ({ isActive, onClick }: BurgerButtonProps) => (
   <button
     data-active={isActive}
-    className="relative w-[30px] h-[20px] bg-transparent border-0 cursor-pointer z-[1001] hover:opacity-70 transition-opacity duration-200"
+    className="relative w-[30px] h-[20px] bg-transparent border-0 cursor-pointer z-[1001] hover:opacity-70 transition-opacity duration-200 text-blue"
     onClick={onClick}
     aria-label="Toggle menu"
   >

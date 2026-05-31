@@ -18,7 +18,7 @@ const SheetOverlay = React.forwardRef<
     data-testid="overlay"
     ref={ref}
     className={cn(
-      'fixed inset-0 top-[70px] tablet:top-[60px] bg-black/40 backdrop-blur-sm z-[999]',
+      'fixed inset-0 bg-black/40 backdrop-blur-sm z-[1002]',
       'data-[state=open]:animate-in data-[state=closed]:animate-out',
       'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
       'duration-300',
@@ -43,16 +43,16 @@ SheetTitle.displayName = SheetPrimitive.Title.displayName;
 
 const SheetContent = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>
->(({ className, children, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content> & { onOverlayClick?: () => void }
+>(({ className, children, onOverlayClick, ...props }, ref) => (
   <SheetPortal>
-    <SheetOverlay />
+    <SheetOverlay onClick={onOverlayClick} />
     <SheetPrimitive.Content
       ref={ref}
       onPointerDownOutside={(e) => e.preventDefault()}
       onInteractOutside={(e) => e.preventDefault()}
       className={cn(
-        'fixed top-[70px] tablet:top-[60px] right-0 h-[calc(100vh-70px)] tablet:h-[calc(100vh-60px)] w-[320px] z-[1000]',
+        'fixed top-0 right-0 h-screen w-[320px] z-[1003]',
         'bg-yellow shadow-[-5px_0_15px_rgba(0,0,0,0.1)]',
         'data-[state=open]:animate-in data-[state=closed]:animate-out',
         'data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right',

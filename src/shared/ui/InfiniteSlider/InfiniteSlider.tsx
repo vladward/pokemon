@@ -25,6 +25,7 @@ export const InfiniteSlider = <T extends { id: string | number }>({
 }: InfiniteSliderProps<T>) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isAnimating, setIsAnimating] = useState(false);
+  const animationTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const infiniteItems = [...items, ...items, ...items];
   const fullCardWidth = cardWidth + gap;
@@ -49,6 +50,12 @@ export const InfiniteSlider = <T extends { id: string | number }>({
     }
   };
 
+  useEffect(() => {
+    return () => {
+      if (animationTimer.current) clearTimeout(animationTimer.current);
+    };
+  }, []);
+
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current && !isAnimating) {
       setIsAnimating(true);
@@ -56,7 +63,7 @@ export const InfiniteSlider = <T extends { id: string | number }>({
       scrollRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
       });
-      setTimeout(() => setIsAnimating(false), 400);
+      animationTimer.current = setTimeout(() => setIsAnimating(false), 400);
     }
   };
 

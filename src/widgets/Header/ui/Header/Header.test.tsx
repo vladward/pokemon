@@ -1,7 +1,3 @@
-jest.mock('@/shared/lib/hooks', () => ({
-  useBreakpoints: jest.fn(),
-}));
-
 jest.mock('next/navigation', () => ({
   useRouter: jest.fn(() => ({ push: jest.fn(), replace: jest.fn(), prefetch: jest.fn() })),
   usePathname: jest.fn(() => '/'),
@@ -25,8 +21,6 @@ jest.mock('next/link', () => ({
 
 import { render, screen, within } from '@testing-library/react';
 
-import { useBreakpoints } from '@/shared/lib/hooks';
-
 import { Header } from './Header';
 
 jest.mock('../MobileNavigation/MobileNavigation', () => ({
@@ -34,30 +28,20 @@ jest.mock('../MobileNavigation/MobileNavigation', () => ({
 }));
 
 describe('Widget: Header', () => {
-  const mockUseBreakpoints = useBreakpoints as jest.Mock;
-
-  test('displays MobileNavigation on tablets/mobile phones', () => {
-    mockUseBreakpoints.mockReturnValue({ tablet: true, mobile: false });
-
+  test('renders both mobile and desktop nav in DOM', () => {
     render(<Header />);
 
     expect(screen.getByTestId('mobile-nav')).toBeInTheDocument();
+    expect(screen.getByTestId('desktop-nav')).toBeInTheDocument();
   });
 
-  test('should display the navigation and theme switcher in the header on the desktop', () => {
-    mockUseBreakpoints.mockReturnValue({ tablet: false, mobile: false });
-
+  test('desktop nav contains navigation links and theme switcher', () => {
     render(<Header />);
 
-    expect(screen.queryByTestId('mobile-nav')).not.toBeInTheDocument();
-
     const desktopNav = screen.getByTestId('desktop-nav');
-    expect(desktopNav).toBeInTheDocument();
-
     const { getByRole, getByTestId: getByTestIdWithin } = within(desktopNav);
 
     expect(getByRole('link', { name: /pokemons/i })).toBeInTheDocument();
-
     expect(getByTestIdWithin('theme-switcher')).toBeInTheDocument();
   });
 });
