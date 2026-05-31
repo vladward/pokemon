@@ -10,7 +10,7 @@ type BurgerButtonProps = {
 export const BurgerButton = ({ isActive, onClick }: BurgerButtonProps) => (
   <button
     data-active={isActive}
-    className="relative w-[30px] h-[20px] bg-transparent border-0 cursor-pointer z-[1001]"
+    className="relative w-[30px] h-[20px] bg-transparent border-0 cursor-pointer z-[1001] hover:opacity-70 transition-opacity duration-200"
     onClick={onClick}
     aria-label="Toggle menu"
   >

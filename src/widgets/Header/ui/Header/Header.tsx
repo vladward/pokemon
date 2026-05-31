@@ -15,13 +15,13 @@ export const Header = () => {
   const isMobileView = mobile || tablet;
 
   return (
-    <header className="bg-yellow h-[70px] w-full sticky top-0 z-[100] transition-colors duration-theme tablet:h-[100px]">
+    <header className="bg-yellow h-[70px] w-full sticky top-0 z-[1001] pointer-events-auto transition-colors duration-theme tablet:h-[60px]">
       <Container className="flex justify-between items-center h-full">
         <Link href="/">
           <PokemonTitle
             className="text-blue transition-transform duration-300 hover:scale-110"
-            width={120}
-            height={120}
+            width={isMobileView ? 80 : 120}
+            height={isMobileView ? 80 : 120}
           />
         </Link>
 

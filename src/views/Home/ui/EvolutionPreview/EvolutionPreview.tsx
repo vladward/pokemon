@@ -1,12 +1,12 @@
-import type { FC } from 'react';
 import Image from 'next/image';
+import type { FC } from 'react';
 
 import { ProfessorOak } from '@/shared/assets';
 import { Container } from '@/shared/ui';
 
 export const EvolutionPreview: FC = () => {
   return (
-    <section className="w-full py-[60px] px-[60px] relative overflow-hidden bg-background text-foreground transition-colors duration-theme laptop:py-[30px] laptop:px-5">
+    <section className="w-full py-[60px] px-[60px] relative overflow-hidden bg-background text-foreground transition-colors duration-theme laptop:py-[30px] laptop:px-5 mobile:py-5">
       <Container>
         <div className="flex items-center gap-10 laptop:flex-col laptop:text-center">
           <div className="flex-[0_0_350px] flex justify-center laptop:flex-[0_0_auto] laptop:w-[250px]">

@@ -1,7 +1,7 @@
 'use client';
 
-import type { FC } from 'react';
 import Link from 'next/link';
+import type { FC } from 'react';
 
 import { NavLinks } from '@/widgets/Header';
 
@@ -12,12 +12,12 @@ export const Footer: FC = () => {
   const { mobile } = useBreakpoints();
   return (
     <footer className="w-full flex flex-col px-[5vw] bg-yellow transition-colors duration-theme">
-      <div className="flex flex-col justify-center items-center pb-10 mobile:pb-0">
+      <div className="flex flex-col justify-center items-center pb-10 mobile:pb-2">
         <Link href="/">
           <PokemonTitle
             className="text-blue transition-transform duration-300 hover:scale-110"
-            width={120}
-            height={120}
+            width={mobile ? 80 : 120}
+            height={mobile ? 80 : 120}
           />
         </Link>
         <NavLinks
@@ -25,7 +25,7 @@ export const Footer: FC = () => {
           isCentered
         />
       </div>
-      <div className="text-center py-5 border-t border-[#cdc1c1] text-blue">
+      <div className="text-center py-5 mobile:py-3 border-t border-[#cdc1c1] text-blue">
         <span>
           2026{' '}
           <Link

@@ -1,12 +1,12 @@
-import { FC } from 'react';
 import Image from 'next/image';
+import { FC } from 'react';
 
 import { Cynthia } from '@/shared/assets';
 import { Container } from '@/shared/ui';
 
 export const LeaguePreview: FC = () => {
   return (
-    <section className="w-full py-[60px] px-[60px] overflow-hidden bg-background text-foreground transition-colors duration-theme laptop:py-10 laptop:px-[30px]">
+    <section className="w-full py-[60px] px-[60px] overflow-hidden bg-background text-foreground transition-colors duration-theme laptop:py-10 laptop:px-[30px] mobile:py-5">
       <Container>
         <div className="flex items-center gap-10 laptop:flex-col-reverse laptop:text-center">
           <div className="flex-1">

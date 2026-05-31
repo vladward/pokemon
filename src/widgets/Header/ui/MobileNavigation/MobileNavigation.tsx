@@ -13,9 +13,15 @@ export const MobileNavigation = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
+    <Sheet
+      open={open}
+      onOpenChange={setOpen}
+    >
       <SheetTrigger asChild>
-        <BurgerButton isActive={open} onClick={() => setOpen((prev) => !prev)} />
+        <BurgerButton
+          isActive={open}
+          onClick={() => setOpen((prev) => !prev)}
+        />
       </SheetTrigger>
       <SheetContent
         data-testid="mobile-drawer"
@@ -23,7 +29,10 @@ export const MobileNavigation = () => {
       >
         <SheetTitle>Навигация</SheetTitle>
         <nav className="flex flex-col gap-10">
-          <NavLinks isVertical callback={() => setOpen(false)} />
+          <NavLinks
+            isVertical
+            callback={() => setOpen(false)}
+          />
           <ThemeSwitcher />
         </nav>
       </SheetContent>

@@ -1,12 +1,12 @@
-import type { FC } from 'react';
 import Image from 'next/image';
+import type { FC } from 'react';
 
 import { AshKetchum } from '@/shared/assets';
 import { Container } from '@/shared/ui';
 
 export const ElementsPreview: FC = () => {
   return (
-    <section className="w-full py-[60px] px-[60px] relative overflow-hidden bg-background text-foreground transition-colors duration-theme laptop:py-[30px] laptop:px-5">
+    <section className="w-full py-[60px] px-[60px] relative overflow-hidden bg-background text-foreground transition-colors duration-theme laptop:py-[30px] laptop:px-5 mobile:py-5">
       <Container className="w-full">
         <div className="flex items-center justify-between laptop:flex-col laptop:text-center">
           <div className="flex-1 z-[5] text-left laptop:text-center">

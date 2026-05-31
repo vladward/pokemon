@@ -13,6 +13,14 @@ const BREAKPOINTS = {
 type BreakpointKey = keyof typeof BREAKPOINTS;
 type BreakpointsState = Record<BreakpointKey, boolean>;
 
+const SERVER_SNAPSHOT: BreakpointsState = {
+  mobile: false,
+  tablet: false,
+  laptop: false,
+  desktop: false,
+  wide: false,
+};
+
 export const useBreakpoints = (): BreakpointsState => {
   const lastSnapshot = useRef<BreakpointsState>({} as BreakpointsState);
 
@@ -53,5 +61,5 @@ export const useBreakpoints = (): BreakpointsState => {
     return lastSnapshot.current;
   };
 
-  return useSyncExternalStore(subscribe, getSnapshot, () => ({}) as BreakpointsState);
+  return useSyncExternalStore(subscribe, getSnapshot, () => SERVER_SNAPSHOT);
 };

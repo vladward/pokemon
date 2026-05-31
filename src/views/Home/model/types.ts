@@ -1,5 +1,5 @@
-import { ComponentType, ReactNode, SVGProps } from 'react';
 import type { StaticImageData } from 'next/image';
+import { ComponentType, ReactNode, SVGProps } from 'react';
 
 import { PokemonType } from '@/shared/model';
 

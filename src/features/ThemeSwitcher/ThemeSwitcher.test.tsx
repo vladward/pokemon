@@ -1,59 +1,57 @@
-import {render, screen, fireEvent} from '@testing-library/react';
-import {useTheme} from 'next-themes';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { useTheme } from 'next-themes';
 
-import {ThemeSwitcher} from './ThemeSwitcher';
+import { ThemeSwitcher } from './ThemeSwitcher';
 
-// Мокаем библиотеку next-themes
 jest.mock('next-themes', () => ({
-    useTheme: jest.fn(),
+  useTheme: jest.fn(),
 }));
 
 const mockedUseTheme = useTheme as jest.Mock;
 
 describe('ThemeSwitcher Component Tests', () => {
-    beforeEach(() => {
-        // По умолчанию считаем, что компонент смонтирован
-        mockedUseTheme.mockReturnValue({
-            theme: 'light',
-            resolvedTheme: 'light',
-            setTheme: jest.fn(),
-        });
+  beforeEach(() => {
+    mockedUseTheme.mockReturnValue({
+      theme: 'light',
+      resolvedTheme: 'light',
+      setTheme: jest.fn(),
+    });
+  });
+
+  test('should render button when mounted', () => {
+    render(<ThemeSwitcher />);
+    expect(screen.getByRole('button')).toBeInTheDocument();
+  });
+
+  test('should call setTheme with opposite theme on click', () => {
+    const setTheme = jest.fn();
+    mockedUseTheme.mockReturnValue({
+      theme: 'dark',
+      resolvedTheme: 'dark',
+      setTheme,
     });
 
-    test('should render button when mounted', () => {
-        render(<ThemeSwitcher/>);
-        expect(screen.getByRole('button')).toBeInTheDocument();
+    render(<ThemeSwitcher />);
+
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
+
+    expect(setTheme).toHaveBeenCalledWith('light');
+  });
+
+  test('should match snapshot in DARK theme', () => {
+    mockedUseTheme.mockReturnValue({
+      theme: 'dark',
+      resolvedTheme: 'dark',
+      setTheme: jest.fn(),
     });
 
-    test('should call setTheme with opposite theme on click', () => {
-        const setTheme = jest.fn();
-        mockedUseTheme.mockReturnValue({
-            theme: 'dark',
-            resolvedTheme: 'dark',
-            setTheme,
-        });
+    const { asFragment } = render(<ThemeSwitcher />);
+    expect(asFragment()).toMatchSnapshot();
+  });
 
-        render(<ThemeSwitcher/>);
-
-        const button = screen.getByRole('button');
-        fireEvent.click(button);
-
-        expect(setTheme).toHaveBeenCalledWith('light');
-    });
-
-    test('should match snapshot in DARK theme', () => {
-        mockedUseTheme.mockReturnValue({
-            theme: 'dark',
-            resolvedTheme: 'dark',
-            setTheme: jest.fn(),
-        });
-
-        const {asFragment} = render(<ThemeSwitcher/>);
-        expect(asFragment()).toMatchSnapshot();
-    });
-
-    test('should have aria-label for accessibility', () => {
-        render(<ThemeSwitcher/>);
-        expect(screen.getByRole('button')).toHaveAttribute('aria-label', 'Toggle theme');
-    });
+  test('should have aria-label for accessibility', () => {
+    render(<ThemeSwitcher />);
+    expect(screen.getByRole('button')).toHaveAttribute('aria-label', 'Toggle theme');
+  });
 });

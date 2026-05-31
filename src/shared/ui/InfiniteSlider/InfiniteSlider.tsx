@@ -71,7 +71,7 @@ export const InfiniteSlider = <T extends { id: string | number }>({
         </h3>
       )}
 
-      <div className="relative flex items-center max-w-[1400px] mx-auto px-[60px] tablet:px-0">
+      <div className="relative flex items-center max-w-[1400px] mx-auto">
         <button
           className={cn(
             'absolute top-1/2 -translate-y-1/2 left-0 w-12 h-12 z-10',
@@ -80,7 +80,6 @@ export const InfiniteSlider = <T extends { id: string | number }>({
             'shadow-[0_4px_12px_rgba(0,0,0,0.2)] transition-all duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]',
             'hover:scale-110 hover:shadow-[0_6px_16px_rgba(0,0,0,0.3)]',
             'active:scale-95',
-            'tablet:hidden',
           )}
           onClick={() => scroll('left')}
         >
@@ -112,7 +111,6 @@ export const InfiniteSlider = <T extends { id: string | number }>({
             'shadow-[0_4px_12px_rgba(0,0,0,0.2)] transition-all duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]',
             'hover:scale-110 hover:shadow-[0_6px_16px_rgba(0,0,0,0.3)]',
             'active:scale-95',
-            'tablet:hidden',
           )}
           onClick={() => scroll('right')}
         >

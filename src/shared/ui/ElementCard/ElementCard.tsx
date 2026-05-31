@@ -30,10 +30,12 @@ export const ElementCard: FC<PokemonTypeCardProps> = ({ name, color, image, onCl
           className={cn(
             'p-5 rounded-full [background:var(--type-color)]',
             'transition-all duration-300',
-            'group-hover:scale-[1.15] group-hover:rotate-[5deg] group-hover:brightness-0 group-hover:invert',
+            'group-hover:scale-[1.15] group-hover:rotate-[5deg]',
           )}
         >
-          {image}
+          <div className="transition-[filter] duration-300 group-hover:brightness-0 group-hover:invert">
+            {image}
+          </div>
         </div>
       </div>
       <span
