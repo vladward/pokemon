@@ -30,7 +30,7 @@ test.describe('Header Adaptive Flow', () => {
     await page.getByLabel('Toggle menu').click();
 
     const drawer = page.locator('[data-testid="mobile-drawer"]');
-    await drawer.getByRole('link', { name: 'Pokemons' }).click();
+    await drawer.getByRole('link', { name: 'Pokemon' }).click();
 
     await expect(drawer).not.toBeInViewport();
     await expect(page).toHaveURL(/\/pokemons/);
