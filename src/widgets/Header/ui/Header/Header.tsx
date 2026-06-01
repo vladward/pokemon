@@ -1,9 +1,8 @@
 import Link from 'next/link';
 
-import { MobileNavigation } from '@/widgets/Header';
+import { ThemeSwitcher, PokemonSearch, LanguageSwitcher } from '@/features';
 
-import { LanguageSwitcher } from '@/features/LanguageSwitcher';
-import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+import { MobileNavigation } from '@/widgets/Header';
 
 import { NavLinks } from '@/entities/NavLinks';
 
@@ -20,6 +19,8 @@ export const Header = () => (
       <div className="hidden tablet:block">
         <MobileNavigation />
       </div>
+
+      <PokemonSearch />
 
       <div
         data-testid="desktop-nav"
