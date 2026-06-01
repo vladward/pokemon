@@ -1,10 +1,19 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 
-import { MobileNavigation } from './MobileNavigation';
+import { MobileNavigation } from '@/widgets/Header';
 
 jest.mock('@/shared/config/navigation', () => ({
-  Link: ({ children, href, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) => (
-    <a href={href} {...props}>{children}</a>
+  Link: ({
+    children,
+    href,
+    ...props
+  }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) => (
+    <a
+      href={href}
+      {...props}
+    >
+      {children}
+    </a>
   ),
   usePathname: jest.fn(() => '/'),
   useRouter: jest.fn(() => ({ push: jest.fn(), replace: jest.fn() })),
