@@ -3,9 +3,8 @@ jest.mock('next/navigation', () => ({
   usePathname: jest.fn(() => '/'),
 }));
 
-jest.mock('next/link', () => ({
-  __esModule: true,
-  default: ({
+jest.mock('@/shared/config/navigation', () => ({
+  Link: ({
     children,
     href,
     ...props
@@ -17,6 +16,22 @@ jest.mock('next/link', () => ({
       {children}
     </a>
   ),
+  usePathname: jest.fn(() => '/'),
+  useRouter: jest.fn(() => ({ push: jest.fn(), replace: jest.fn() })),
+  routing: { locales: ['en', 'ru', 'de', 'es', 'fr', 'nl'] },
+}));
+
+jest.mock('@/widgets/NavLinks', () => ({
+  /* eslint-disable @next/next/no-html-link-for-pages */
+  NavLinks: () => (
+    <nav>
+      <a href="/pokemon">Pokemon</a>
+      <a href="/skills">Skills</a>
+      <a href="/items">Items</a>
+      <a href="/game">Game</a>
+    </nav>
+  ),
+  /* eslint-enable @next/next/no-html-link-for-pages */
 }));
 
 import { render, screen, within } from '@testing-library/react';

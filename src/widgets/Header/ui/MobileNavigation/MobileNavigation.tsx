@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 
+import { NavLinks } from '@/widgets/NavLinks';
+
 import { LanguageSwitcher } from '@/features/LanguageSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
-
-import { NavLinks } from '@/entities/NavLinks';
 
 import { BurgerButton } from '@/shared/ui';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/shared/ui/shadcn/sheet';

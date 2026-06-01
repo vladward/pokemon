@@ -1,7 +1,5 @@
 import { FC } from 'react';
 
-import { ToTopButton } from '@/features';
-
 import {
   AbilitiesSection,
   ElementsPreview,
@@ -12,6 +10,8 @@ import {
   LeaguePreview,
   LeagueSection,
 } from '@/views/Home/ui';
+
+import { ToTopButton } from '@/features/ToTopButton';
 
 export const Home: FC = () => {
   return (

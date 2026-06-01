@@ -1,10 +1,9 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import type { MessageKeys, Messages, NestedKeyOf } from 'use-intl/core';
 
+import { Link, usePathname } from '@/shared/config/navigation';
 import { cn } from '@/shared/lib/utils/cn';
 
 type NavLinksProps = {
