@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 
-export default async function PokemonsPage() {
+export const PokemonPage = async () => {
   const t = await getTranslations('pages');
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-5">
@@ -8,4 +8,4 @@ export default async function PokemonsPage() {
       <p className="text-[1.1rem] max-w-[500px]">{t('pokemon.description')}</p>
     </div>
   );
-}
+};
