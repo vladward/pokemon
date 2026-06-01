@@ -6,7 +6,7 @@ import { FC } from 'react';
 import { AbilitiesSectionType } from '@/views/Home/model';
 
 import { cn } from '@/shared/lib/utils/cn';
-import { Button } from '@/shared/ui';
+import { PokemonButton } from '@/shared/ui';
 
 type Props = {
   card: AbilitiesSectionType;
@@ -54,7 +54,7 @@ export const AbilityCard: FC<Props> = async ({ card }) => {
         </p>
         <div className="flex justify-center">
           <Link href={card.link}>
-            <Button>{t(card.btnText)}</Button>
+            <PokemonButton>{t(card.btnText)}</PokemonButton>
           </Link>
         </div>
       </div>

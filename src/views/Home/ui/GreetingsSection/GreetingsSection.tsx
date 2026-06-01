@@ -6,7 +6,7 @@ import type { FC } from 'react';
 
 import { Pokemon } from '@/shared/assets';
 import { HOME_PAGE_TO_TOP_SIZE } from '@/shared/constants/constants';
-import { Button, Container } from '@/shared/ui';
+import { PokemonButton, Container } from '@/shared/ui';
 
 export const GreetingsSection: FC = () => {
   const t = useTranslations();
@@ -28,12 +28,12 @@ export const GreetingsSection: FC = () => {
         <h2 className="my-10 mb-[80px] text-[2rem] font-medium text-center leading-tight tablet:mb-0 tablet:text-[2rem] mobile:mb-0 mobile:text-[1.5rem]">
           {t('home.description')}
         </h2>
-        <Button
+        <PokemonButton
           className="transition-all duration-300 hover:scale-[1.02] tablet:hidden mobile:hidden"
           onClick={() => window.scrollTo({ top: HOME_PAGE_TO_TOP_SIZE })}
         >
           {t('home.start')}
-        </Button>
+        </PokemonButton>
       </Container>
     </div>
   );
