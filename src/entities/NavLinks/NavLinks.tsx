@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import type { MessageKeys, Messages, NestedKeyOf } from 'use-intl/core';
 
 import { cn } from '@/shared/lib/utils/cn';
 
@@ -11,9 +12,11 @@ type NavLinksProps = {
   callback?: () => void;
 };
 
+type MessageKey = MessageKeys<Messages, NestedKeyOf<Messages>>;
+
 type NavLinksState = {
   url: '/pokemons' | '/skills' | '/items' | '/game';
-  title: string;
+  title: MessageKey;
 };
 
 const links: NavLinksState[] = [

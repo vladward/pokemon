@@ -10,6 +10,7 @@ test.describe('ToTopButton E2E', () => {
 
     await page.evaluate(() => window.scrollTo(0, 1500));
     await page.waitForFunction(() => window.scrollY >= 925);
+    await page.evaluate(() => document.dispatchEvent(new Event('scroll')));
     await expect(topBtn).toBeVisible();
     await expect(topBtn).toHaveCSS('opacity', '1');
 
