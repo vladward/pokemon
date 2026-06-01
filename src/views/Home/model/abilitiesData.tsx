@@ -9,7 +9,7 @@ export const abilitiesData: AbilitiesSectionType[] = [
     title: 'abilities.card.pokemon.title',
     description: 'abilities.card.pokemon.description',
     image: Pikachu,
-    link: '/pokemons',
+    link: '/pokemon',
     btnText: 'abilities.explore',
   },
   {
