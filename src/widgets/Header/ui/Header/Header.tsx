@@ -1,11 +1,11 @@
-import Link from 'next/link';
-
-import { ThemeSwitcher, PokemonSearch, LanguageSwitcher } from '@/features';
-
 import { MobileNavigation } from '@/widgets/Header';
+import { NavLinks } from '@/widgets/NavLinks';
 
-import { NavLinks } from '@/entities/NavLinks';
+import { LanguageSwitcher } from '@/features/LanguageSwitcher';
+import { PokemonSearch } from '@/features/PokemonSearch';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 
+import { Link } from '@/shared/config/navigation';
 import { Container } from '@/shared/ui';
 import { PokemonTitle } from '@/shared/ui/icons';
 

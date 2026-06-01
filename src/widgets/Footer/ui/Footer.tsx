@@ -1,9 +1,10 @@
-import Link from 'next/link';
+import NextLink from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import type { FC } from 'react';
 
-import { NavLinks } from '@/entities/NavLinks';
+import { NavLinks } from '@/widgets/NavLinks';
 
+import { Link } from '@/shared/config/navigation';
 import { PokemonTitle } from '@/shared/ui';
 
 export const Footer: FC = async () => {
@@ -29,12 +30,12 @@ export const Footer: FC = async () => {
       <div className="text-center py-5 mobile:py-3 border-t border-[#cdc1c1] text-blue">
         <span>
           {t('footer.created_by')}
-          <Link
+          <NextLink
             href="https://github.com/vladward"
             className="text-yellow shadow-pokemon transition-all duration-300 hover:text-lightBlue hover:[text-shadow:0_0_5px_#fff,_0_0_10px_#2a75bb,_0_0_20px_#2a75bb]"
           >
             Vladward
-          </Link>
+          </NextLink>
           .{t('footer.rights')}
         </span>
       </div>
