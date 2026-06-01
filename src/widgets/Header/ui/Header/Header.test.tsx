@@ -9,7 +9,12 @@ jest.mock('@/shared/config/navigation', () => ({
     href,
     ...props
   }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) => (
-    <a href={href} {...props}>{children}</a>
+    <a
+      href={href}
+      {...props}
+    >
+      {children}
+    </a>
   ),
   usePathname: jest.fn(() => '/'),
   useRouter: jest.fn(() => ({ push: jest.fn(), replace: jest.fn() })),
@@ -17,6 +22,7 @@ jest.mock('@/shared/config/navigation', () => ({
 }));
 
 jest.mock('@/widgets/NavLinks', () => ({
+  /* eslint-disable @next/next/no-html-link-for-pages */
   NavLinks: () => (
     <nav>
       <a href="/pokemon">Pokemon</a>
@@ -25,6 +31,7 @@ jest.mock('@/widgets/NavLinks', () => ({
       <a href="/game">Game</a>
     </nav>
   ),
+  /* eslint-enable @next/next/no-html-link-for-pages */
 }));
 
 import { render, screen, within } from '@testing-library/react';
