@@ -6,7 +6,7 @@ import { cn } from '@/shared/lib/utils/cn';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const Button: FC<{ children?: ReactNode | string } & ButtonProps> = ({
+export const PokemonButton: FC<{ children?: ReactNode | string } & ButtonProps> = ({
   className,
   children,
   ...rest
