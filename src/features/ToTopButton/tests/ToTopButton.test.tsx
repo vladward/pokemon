@@ -1,6 +1,6 @@
 import { render, fireEvent, screen, act } from '@testing-library/react';
 
-import { ToTopButton } from '@/features';
+import { ToTopButton } from '@/features/ToTopButton';
 
 describe('ToTopButton Unit', () => {
   const setScrollY = (value: number) => {
