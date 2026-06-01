@@ -3,19 +3,27 @@ jest.mock('next/navigation', () => ({
   usePathname: jest.fn(() => '/'),
 }));
 
-jest.mock('next/link', () => ({
-  __esModule: true,
-  default: ({
+jest.mock('@/shared/config/navigation', () => ({
+  Link: ({
     children,
     href,
     ...props
   }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) => (
-    <a
-      href={href}
-      {...props}
-    >
-      {children}
-    </a>
+    <a href={href} {...props}>{children}</a>
+  ),
+  usePathname: jest.fn(() => '/'),
+  useRouter: jest.fn(() => ({ push: jest.fn(), replace: jest.fn() })),
+  routing: { locales: ['en', 'ru', 'de', 'es', 'fr', 'nl'] },
+}));
+
+jest.mock('@/widgets/NavLinks', () => ({
+  NavLinks: () => (
+    <nav>
+      <a href="/pokemon">Pokemon</a>
+      <a href="/skills">Skills</a>
+      <a href="/items">Items</a>
+      <a href="/game">Game</a>
+    </nav>
   ),
 }));
 

@@ -2,7 +2,16 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 
 import { MobileNavigation } from './MobileNavigation';
 
-jest.mock('@/entities/NavLinks', () => ({
+jest.mock('@/shared/config/navigation', () => ({
+  Link: ({ children, href, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) => (
+    <a href={href} {...props}>{children}</a>
+  ),
+  usePathname: jest.fn(() => '/'),
+  useRouter: jest.fn(() => ({ push: jest.fn(), replace: jest.fn() })),
+  routing: { locales: ['en', 'ru', 'de', 'es', 'fr', 'nl'] },
+}));
+
+jest.mock('@/widgets/NavLinks', () => ({
   NavLinks: ({ action }: { action?: () => void }) => (
     <div
       onClick={action}
