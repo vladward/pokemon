@@ -33,7 +33,7 @@ test.describe('Header Adaptive Flow', () => {
     await drawer.getByRole('link', { name: 'Pokemon' }).click();
 
     await expect(drawer).not.toBeInViewport();
-    await expect(page).toHaveURL(/\/pokemons/);
+    await expect(page).toHaveURL(/\/pokemon/);
   });
 
   test('adaptability: hiding a burger when resizing to a desktop', async ({ page }) => {
