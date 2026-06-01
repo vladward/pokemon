@@ -2,11 +2,14 @@
 
 import { useTranslations } from 'next-intl';
 import { FC, ReactNode } from 'react';
+import type { MessageKeys, Messages, NestedKeyOf } from 'use-intl/core';
 
 import { cn } from '@/shared/lib/utils/cn';
 
+type MessageKey = MessageKeys<Messages, NestedKeyOf<Messages>>;
+
 interface PokemonTypeCardProps {
-  name: string;
+  name: MessageKey;
   color: string;
   image: ReactNode | string;
   onClick?: () => void;

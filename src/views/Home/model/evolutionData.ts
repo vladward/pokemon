@@ -1,7 +1,11 @@
+import type { MessageKeys, Messages, NestedKeyOf } from 'use-intl/core';
+
+type MessageKey = MessageKeys<Messages, NestedKeyOf<Messages>>;
+
 export interface EvolutionDataItem {
-  badge: string;
-  title: string;
-  text: string;
+  badge: MessageKey;
+  title: MessageKey;
+  text: MessageKey;
 }
 
 export const evolutionData: EvolutionDataItem[] = [
