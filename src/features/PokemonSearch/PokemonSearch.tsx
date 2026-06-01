@@ -2,9 +2,9 @@
 
 import { usePathname } from 'next/navigation';
 
-import { usePokemonStore } from '@/entities/Pokemon';
-
 import { Input } from '@/shared/ui';
+
+import { usePokemonStore } from './model';
 
 export const PokemonSearch = () => {
   const search = usePokemonStore((state) => state.search);
