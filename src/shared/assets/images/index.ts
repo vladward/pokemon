@@ -2,7 +2,7 @@ import AshKetchum from './ash-ketchum.png';
 import Cynthia from './cynthia.png';
 import Meowth from './meowth.png';
 import Pokeball from './pokeball-img.png';
-import Pokemons from './pokemons.png';
+import Pokemon from './pokemon.png';
 import MainImage from './pokemons_image.png';
 import ProfessorOak from './professor-oak.png';
 import Silhouette from './silhouette.png';
@@ -17,5 +17,5 @@ export {
   Pokeball,
   Silhouette,
   Meowth,
-  Pokemons,
+  Pokemon,
 };

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import type { FC } from 'react';
 
-import { Pokemons } from '@/shared/assets';
+import { Pokemon } from '@/shared/assets';
 import { HOME_PAGE_TO_TOP_SIZE } from '@/shared/constants/constants';
 import { Button, Container } from '@/shared/ui';
 
@@ -19,7 +19,7 @@ export const GreetingsSection: FC = () => {
             <span className="text-yellow shadow-pokemon">{t('home.pokemon')}</span>
           </h1>
           <Image
-            src={Pokemons}
+            src={Pokemon}
             alt="pokemons_main"
             priority
             className="w-[45%] py-5 transition-transform duration-300 hover:scale-105 tablet:w-full mobile:w-full"

@@ -30,7 +30,7 @@ export const MobileNavigation = () => {
         <nav className="flex flex-col gap-10">
           <NavLinks
             isVertical
-            callback={() => setOpen(false)}
+            action={() => setOpen(false)}
           />
           <div className="flex items-center gap-4">
             <ThemeSwitcher />

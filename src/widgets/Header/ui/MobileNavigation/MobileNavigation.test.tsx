@@ -3,9 +3,9 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MobileNavigation } from './MobileNavigation';
 
 jest.mock('@/entities/NavLinks', () => ({
-  NavLinks: ({ callback }: { callback?: () => void }) => (
+  NavLinks: ({ action }: { action?: () => void }) => (
     <div
-      onClick={callback}
+      onClick={action}
       data-testid="nav-links"
     >
       Links
