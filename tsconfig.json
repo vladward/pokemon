@@ -23,12 +23,31 @@
       }
     ],
     "paths": {
-      "@/*": ["src/*"],
-      "@i18n/*": ["i18n/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "@i18n/*": [
+        "i18n/*"
+      ]
     },
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "resolveJsonModule": true
   },
-  "include": ["next-env.d.ts", "src", "i18n", ".next/types/**/*.ts", "e2e/**/*.ts"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "next-env.d.ts",
+    "src",
+    "i18n",
+    ".next/types/**/*.ts",
+    "e2e/**/*.ts",
+    "scripts",
+    "lib"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
