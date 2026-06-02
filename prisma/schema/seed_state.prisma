@@ -1,0 +1,4 @@
+model seed_state {
+  id    String @id @db.VarChar(50)
+  value Int
+}

@@ -1,0 +1,11 @@
+model location_area {
+  id                 Int                  @id
+  location_id        Int
+  name               String               @db.VarChar(100)
+  game_index         Int?
+  location           location             @relation(fields: [location_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "location_area_ibfk_1")
+  location_area_name location_area_name[]
+  pokemon_encounter  pokemon_encounter[]
+
+  @@index([location_id], map: "location_area_ibfk_1")
+}

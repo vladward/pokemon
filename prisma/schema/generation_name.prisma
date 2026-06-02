@@ -1,0 +1,8 @@
+model generation_name {
+  generation_id Int
+  language      String     @db.VarChar(10)
+  name          String     @db.VarChar(200)
+  generation    generation @relation(fields: [generation_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "generation_name_ibfk_1")
+
+  @@id([generation_id, language])
+}

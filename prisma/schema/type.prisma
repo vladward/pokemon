@@ -1,0 +1,13 @@
+model type {
+  id                                                       Int                  @id
+  name                                                     String               @db.VarChar(100)
+  generation_id                                            Int?
+  move_damage_class                                        String?              @db.VarChar(20)
+  pokemon_past_type                                        pokemon_past_type[]
+  pokemon_type                                             pokemon_type[]
+  type_efficacy_type_efficacy_from_type_idTotype           type_efficacy[]      @relation("type_efficacy_from_type_idTotype")
+  type_efficacy_type_efficacy_to_type_idTotype             type_efficacy[]      @relation("type_efficacy_to_type_idTotype")
+  type_name                                                type_name[]
+  type_past_efficacy_type_past_efficacy_from_type_idTotype type_past_efficacy[] @relation("type_past_efficacy_from_type_idTotype")
+  type_past_efficacy_type_past_efficacy_to_type_idTotype   type_past_efficacy[] @relation("type_past_efficacy_to_type_idTotype")
+}

@@ -1,0 +1,7 @@
+model region {
+  id                 Int           @id
+  name               String        @db.VarChar(100)
+  main_generation_id Int?
+  location           location[]
+  region_name        region_name[]
+}

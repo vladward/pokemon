@@ -1,0 +1,8 @@
+model berry_flavor {
+  berry_id Int
+  flavor   String @db.VarChar(50)
+  potency  Int
+  berry    berry  @relation(fields: [berry_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "berry_flavor_ibfk_1")
+
+  @@id([berry_id, flavor])
+}

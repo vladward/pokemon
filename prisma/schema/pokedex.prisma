@@ -1,0 +1,8 @@
+model pokedex {
+  id                  Int                   @id
+  name                String                @db.VarChar(100)
+  is_main_series      Boolean?
+  region_id           Int?
+  pokedex_description pokedex_description[]
+  pokedex_name        pokedex_name[]
+}

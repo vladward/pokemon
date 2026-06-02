@@ -1,0 +1,10 @@
+model pokemon_type {
+  pokemon_id Int
+  type_id    Int
+  slot       Int?
+  pokemon    pokemon @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_type_ibfk_1")
+  type       type    @relation(fields: [type_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_type_ibfk_2")
+
+  @@id([pokemon_id, type_id])
+  @@index([type_id], map: "type_id")
+}

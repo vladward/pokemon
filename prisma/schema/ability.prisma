@@ -1,0 +1,11 @@
+model ability {
+  id                   Int                    @id
+  name                 String                 @db.VarChar(100)
+  generation_id        Int?
+  is_main_series       Boolean?
+  ability_effect       ability_effect[]
+  ability_flavor_text  ability_flavor_text[]
+  ability_name         ability_name[]
+  pokemon_ability      pokemon_ability[]
+  pokemon_past_ability pokemon_past_ability[]
+}

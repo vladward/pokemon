@@ -1,0 +1,8 @@
+model nature_name {
+  nature_id Int
+  language  String @db.VarChar(10)
+  name      String @db.VarChar(200)
+  nature    nature @relation(fields: [nature_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "nature_name_ibfk_1")
+
+  @@id([nature_id, language])
+}

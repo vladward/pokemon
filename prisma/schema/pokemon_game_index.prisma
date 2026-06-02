@@ -1,0 +1,10 @@
+model pokemon_game_index {
+  pokemon_id Int
+  version_id Int
+  game_index Int
+  pokemon    pokemon @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_game_index_ibfk_1")
+  version    version @relation(fields: [version_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_game_index_ibfk_2")
+
+  @@id([pokemon_id, version_id])
+  @@index([version_id], map: "version_id")
+}

@@ -1,0 +1,11 @@
+model pokemon_ability {
+  pokemon_id Int
+  ability_id Int
+  is_hidden  Boolean?
+  slot       Int?
+  pokemon    pokemon  @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_ability_ibfk_1")
+  ability    ability  @relation(fields: [ability_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_ability_ibfk_2")
+
+  @@id([pokemon_id, ability_id])
+  @@index([ability_id], map: "ability_id")
+}

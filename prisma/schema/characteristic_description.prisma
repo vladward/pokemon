@@ -1,0 +1,8 @@
+model characteristic_description {
+  characteristic_id Int
+  language          String         @db.VarChar(10)
+  description       String         @db.VarChar(200)
+  characteristic    characteristic @relation(fields: [characteristic_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "characteristic_description_ibfk_1")
+
+  @@id([characteristic_id, language])
+}

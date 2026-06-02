@@ -1,0 +1,6 @@
+model generation {
+  id              Int               @id
+  name            String            @db.VarChar(100)
+  main_region_id  Int?
+  generation_name generation_name[]
+}

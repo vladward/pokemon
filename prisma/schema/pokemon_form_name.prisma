@@ -1,0 +1,7 @@
+model pokemon_form_name {
+  form_id  Int
+  language String @db.VarChar(10)
+  name     String @db.VarChar(200)
+
+  @@id([form_id, language])
+}

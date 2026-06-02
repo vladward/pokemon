@@ -1,0 +1,8 @@
+model egg_group_name {
+  egg_group_id Int
+  language     String    @db.VarChar(10)
+  name         String    @db.VarChar(200)
+  egg_group    egg_group @relation(fields: [egg_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "egg_group_name_ibfk_1")
+
+  @@id([egg_group_id, language])
+}

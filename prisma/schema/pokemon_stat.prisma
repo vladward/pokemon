@@ -1,0 +1,9 @@
+model pokemon_stat {
+  pokemon_id Int
+  stat_name  String  @db.VarChar(50)
+  base_stat  Int
+  effort     Int
+  pokemon    pokemon @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_stat_ibfk_1")
+
+  @@id([pokemon_id, stat_name])
+}

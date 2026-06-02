@@ -1,0 +1,14 @@
+model move_past_value {
+  move_id          Int
+  version_group_id Int
+  power            Int?
+  pp               Int?
+  accuracy         Int?
+  effect_chance    Int?
+  type_id          Int?
+  move             move          @relation(fields: [move_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "move_past_value_ibfk_1")
+  version_group    version_group @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "move_past_value_ibfk_2")
+
+  @@id([move_id, version_group_id])
+  @@index([version_group_id], map: "move_past_value_ibfk_2")
+}
