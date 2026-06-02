@@ -1,76 +1,179 @@
-# PokeWiki (v1.0.0)
+# PokeWiki
 
-A modular web portal dedicated to the Pokémon universe. The primary milestone (`v1.0.0`) focuses on building a highly
-scalable client-side architecture from scratch using **React 19** and **TypeScript**, driven by a custom **Webpack 5**
-pipeline and strict architectural boundaries without pre-built boilerplate.
+A Pokédex web application built with **Next.js 15**, **Tailwind CSS**, and **Shadcn/UI**. All Pokémon data is copied
+from [PokéAPI](https://pokeapi.co) into a local **MySQL** database — no runtime API calls, no rate limits.
 
-## 🛠 Project Architecture & Specs
+## Tech Stack
 
-### Feature-Sliced Design (FSD)
-
-The repository strictly follows the FSD methodology to isolate business logic, features, and UI components:
-
-- `app/` — Global setup, configuration types, and core providers (e.g., `ThemeProvider`).
-- `pages/` — Main view layers (`Home` component) containing localized page sub-sections (`AbilitiesSection`,
-  `EvolutionSection`, `LeagueSection`) and standalone UI models.
-- `widgets/` — Structural layout units (`Header`, `Footer`, global `Layout` wrapper).
-- `features/` — Independent user actions, including the persistent `ThemeSwitcher` and the reactive `ToTopButton`.
-- `entities/` — Core business units and contextual components like `NavLinks`.
-- `shared/` — Reusable infrastructure: asset catalogues (SVG icons/images), layout primitives (`Button`, `Container`,
-  `InfiniteSlider`), custom reactive hooks (`useBreakpoints`), and low-level theme configurations.
-
-### Custom Webpack 5 Pipeline
-
-- **Decoupled Environments:** Configurations split cleanly across `webpack.common.js`, `webpack.dev.js`, and
-  `webpack.prod.js`.
-- **Bundle Splitting:** Active chunk isolation targeting `node_modules` into distinct vendor scripts to leverage browser
-  caching.
-- **Cache Control:** Bundled files are generated using explicit dynamic hash tags (`[contenthash:8]`) for reliable build
-  invalidation upon production deployments.
-- **Vector Handling:** Vector assets are compiled down into customizable React UI components through native
-  `@svgr/webpack` hook-ins.
-
-### Styling & Design Tokens
-
-- **Scoped SCSS Modules:** Complete namespace isolation using encapsulated CSS modules hashed down to unique strings in
-  production environments.
-- **Automated Mixin Pipelines:** Global styles, custom tokens, and media breakpoints (`_variables.scss`, `_mixins.scss`)
-  are automatically injected into child modules at compilation time using `sass-loader`.
-- **Adaptive Breakpoints:** Layout transformations managed through a responsive fluid grid system and unified through
-  the `useBreakpoints` execution state.
-
-### Automated Testing & QA Gates
-
-- **Unit & Integration:** Configured `jest` + `ts-jest` environments alongside `@testing-library/react` to test hook
-  states, UI controls (`BurgerButton`), and theme context rules.
-- **End-to-End (E2E):** Integrated `@playwright/test` matrix running isolated smoke tests covering client theme
-  synchronization, infinite scrolling, and mobile drawer accessibility states.
-- **CI Pipelines:** Automated GitHub Actions build validations (`ci.yml`) triggering code linting (`eslint 9`),
-  formatting setups (`prettier`), and test suites on remote runners upon every push.
+| Layer     | Technology                          |
+|:----------|:------------------------------------|
+| Framework | Next.js 15 (App Router)             |
+| Language  | TypeScript                          |
+| Styling   | Tailwind CSS + Shadcn/UI (Radix UI) |
+| State     | Zustand                             |
+| i18n      | next-intl                           |
+| Database  | MySQL 8 (Docker) via mysql2         |
+| Testing   | Jest + Testing Library, Playwright  |
+| CI        | GitHub Actions                      |
 
 ---
 
-## 🚀 Available Scripts
+## Project Architecture
 
-Manage the local application environment through the following terminal controls:
+The codebase follows **Feature-Sliced Design (FSD)** adapted for Next.js App Router:
 
-| Command             | Action                                                                                           |
-|:--------------------|:-------------------------------------------------------------------------------------------------|
-| `npm run start`     | Fires up Webpack Dev Server on `http://localhost:3000` with active Hot Module Replacement (HMR). |
-| `npm run build`     | Compiles and shrinks production-ready distribution assets directly into the `/dist` path.        |
-| `npm run lint`      | Inspects syntax and formatting using ESLint 9 rules.                                             |
-| `npm run typecheck` | Triggers a static compilation validation across the TS codebase (`tsc --noEmit`).                |
-| `npm run fix`       | Automatically patches format style inconsistencies via Prettier and lint configurations.         |
-| `npm run test`      | Launches the complete Jest unit and integration test runners.                                    |
-| `npm run test:e2e`  | Executes headful or headless web interactions inside Playwright test sandboxes.                  |
+```
+src/
+├── app/
+│   ├── [locale]/           # Locale-based routing (next-intl)
+│   │   ├── pokemon/        # Pokémon list & detail pages
+│   │   ├── skills/         # Moves/skills pages
+│   │   ├── items/          # Items pages
+│   │   └── game/           # Game info pages
+│   ├── api/                # Route handlers (db-test, etc.)
+│   └── _providers/         # Global React providers
+├── views/                  # Page-level view components
+│   ├── Home/
+│   ├── Pokemon/
+│   ├── Skills/
+│   ├── Items/
+│   ├── Game/
+│   └── NotFound/
+├── widgets/                # Layout units
+│   ├── Header/
+│   ├── Footer/
+│   └── NavLinks/
+├── features/               # User interactions
+│   ├── LanguageSwitcher/
+│   ├── PokemonSearch/
+│   ├── ThemeSwitcher/
+│   └── ToTopButton/
+├── entities/               # Business domain
+│   └── Pokemon/
+└── shared/                 # Reusable primitives
+    ├── ui/                 # Components (shadcn, BurgerButton, InfiniteSlider…)
+    ├── config/             # i18n, navigation, jest config
+    ├── lib/                # Hooks, utils, theme
+    └── assets/             # Icons, images
+```
+
+### i18n
+
+Locale routing via `next-intl` — all pages live under `/[locale]/`. Supported locales: **en, de, es, fr, nl, ru**.
+
+> Dutch (`nl`) and Russian (`ru`) have no Pokémon translations in PokéAPI — the app falls back to `en` for
+> Pokémon-specific content (names, descriptions, flavor texts).
 
 ---
 
-## 🗺 System Evolution Roadmap
+## Getting Started
 
-- [x] **v1.0.0**: Custom Webpack multi-stage compiler setup, strict Feature-Sliced Design structuring, dark mode
-  synchronization layer, automated multi-tier QA test suites (Jest/Playwright/CI).
-- [ ] **v2.0.0 (Next Release)**: Migrating the application workspace over to **Next.js (App Router)**. Moving core
-  Pokédex indices to Server-Side Component rendering, adapting FSD layers into Next.js workspace folders, swapping
-  generic file loaders for `next/image` compression networks, and adding server data caching to handle the public
-  PokeAPI integrations.
+```bash
+# Install dependencies
+npm install
+
+# Copy environment file and fill in values
+cp .env.example .env
+
+# Start MySQL (Docker)
+docker run --name mysql-pokedex \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -e MYSQL_DATABASE=pokedex \
+  -p 3306:3306 -d mysql:8
+
+# Create database schema
+npm run db:migrate
+
+# Populate database from PokéAPI (~15–30 min)
+npm run seed:all
+
+# Start development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+---
+
+## Available Scripts
+
+### Application
+
+| Command             | Action                            |
+|:--------------------|:----------------------------------|
+| `npm run dev`       | Start Next.js dev server with HMR |
+| `npm run build`     | Build for production              |
+| `npm run start`     | Start production server           |
+| `npm run lint`      | ESLint check                      |
+| `npm run typecheck` | TypeScript check (`tsc --noEmit`) |
+| `npm run fix`       | Auto-fix with Prettier + ESLint   |
+| `npm run test`      | Jest unit & integration tests     |
+| `npm run test:e2e`  | Playwright end-to-end tests       |
+
+### Database
+
+| Command              | Action                                      |
+|:---------------------|:--------------------------------------------|
+| `npm run db:migrate` | Create / update all 80+ tables (idempotent) |
+| `npm run seed:all`   | Run full seed in correct dependency order   |
+| `npm run seed:reset` | Truncate all tables for a clean re-seed     |
+
+---
+
+## Database & Seeding
+
+All Pokémon data is seeded once from PokéAPI and stored in MySQL. This gives full offline access and freedom to
+query, extend, or index the schema however needed.
+
+### Full seed order
+
+`seed:all` runs everything in the correct order automatically:
+
+```
+db:migrate → version-groups → types → stats → growth-rates → egg-groups → natures →
+encounter-methods → item-categories → item-attributes → items → berries → moves →
+abilities → machines → pokemon → forms → characteristics → generations → regions →
+versions → pokedex → locations
+```
+
+### Individual seeds
+
+| Command                          | Records                                                                          |
+|:---------------------------------|:---------------------------------------------------------------------------------|
+| `npm run seed:pokemon`           | 1 350 Pokémon · species · sprites · moves · stats · abilities · evolution chains |
+| `npm run seed:moves`             | 937 moves with effects, meta, flavor texts, stat changes                         |
+| `npm run seed:abilities`         | 371 abilities with descriptions and flavor texts                                 |
+| `npm run seed:types`             | 18 types with full damage relations (current + past)                             |
+| `npm run seed:items`             | 2 176 items with effects, categories, attributes, flavor texts                   |
+| `npm run seed:berries`           | 64 berries with flavor potency data                                              |
+| `npm run seed:machines`          | 2 212 TM/HM/TR records                                                           |
+| `npm run seed:forms`             | 1 578 Pokémon forms with sprites and types                                       |
+| `npm run seed:locations`         | 1 096 locations · 1 246 areas · 31 866 encounter records                         |
+| `npm run seed:natures`           | 25 natures with stat modifiers and Pokéathlon data                               |
+| `npm run seed:stats`             | 9 base stats with localized names                                                |
+| `npm run seed:growth-rates`      | 6 growth rates with full XP-per-level tables                                     |
+| `npm run seed:egg-groups`        | 15 egg groups with localized names                                               |
+| `npm run seed:characteristics`   | 30 characteristics with descriptions                                             |
+| `npm run seed:generations`       | 9 generations with localized names                                               |
+| `npm run seed:regions`           | 11 regions with localized names                                                  |
+| `npm run seed:versions`          | 30 game versions with localized names                                            |
+| `npm run seed:version-groups`    | 25 version groups                                                                |
+| `npm run seed:pokedex`           | 35 regional Pokédexes with descriptions                                          |
+| `npm run seed:encounter-methods` | 55 encounter methods with localized names                                        |
+| `npm run seed:item-categories`   | 54 item categories with localized names                                          |
+| `npm run seed:item-attributes`   | 8 item attributes with descriptions                                              |
+| `npm run seed:sprites`           | Download sprite images to `public/sprites/`                                      |
+
+### Resume & idempotency
+
+Long-running seeds (`pokemon`, `moves`, `items`, `forms`, `locations`, `machines`) checkpoint progress in the
+`seed_state` table. Interrupting and re-running resumes from the last completed batch. All seeds use
+`INSERT ... ON DUPLICATE KEY UPDATE` and are safe to run multiple times.
+
+---
+
+## Roadmap
+
+- [x] **v1.0.0** — Custom Webpack 5 pipeline, FSD architecture, dark mode, Jest/Playwright/CI.
+- [x] **v2.0.0** — Migrated to Next.js 15 App Router, Tailwind CSS, Shadcn/UI, next-intl i18n (6 locales), MySQL local
+  database with full PokéAPI seed.
