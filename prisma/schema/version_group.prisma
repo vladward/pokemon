@@ -1,0 +1,13 @@
+model version_group {
+  id                  Int                   @id
+  name                String                @db.VarChar(100)
+  generation_id       Int?
+  order_index         Int?
+  ability_flavor_text ability_flavor_text[]
+  item_flavor_text    item_flavor_text[]
+  machine             machine[]
+  move_flavor_text    move_flavor_text[]
+  move_past_value     move_past_value[]
+  pokemon_move        pokemon_move[]
+  version_group_name  version_group_name[]
+}

@@ -1,0 +1,8 @@
+model growth_rate_experience {
+  growth_rate_id Int
+  level          Int
+  experience     Int
+  growth_rate    growth_rate @relation(fields: [growth_rate_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "growth_rate_experience_ibfk_1")
+
+  @@id([growth_rate_id, level])
+}

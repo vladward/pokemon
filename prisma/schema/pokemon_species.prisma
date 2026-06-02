@@ -1,0 +1,20 @@
+model pokemon_species {
+  id                     Int      @id
+  name                   String   @db.VarChar(100)
+  gender_rate            Int?
+  capture_rate           Int?
+  base_happiness         Int?
+  is_baby                Boolean?
+  hatch_counter          Int?
+  has_gender_differences Boolean?
+  forms_switchable       Boolean?
+  is_legendary           Boolean?
+  is_mythical            Boolean?
+  order_index            Int?
+  generation_id          Int?
+  color                  String?  @db.VarChar(50)
+  shape                  String?  @db.VarChar(50)
+  habitat                String?  @db.VarChar(50)
+  growth_rate            String?  @db.VarChar(50)
+  evolution_chain_id     Int?
+}

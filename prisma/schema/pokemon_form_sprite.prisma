@@ -1,0 +1,7 @@
+model pokemon_form_sprite {
+  form_id Int
+  slot    String @db.VarChar(30)
+  url     String @db.VarChar(255)
+
+  @@id([form_id, slot])
+}

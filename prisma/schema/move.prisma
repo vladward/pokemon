@@ -1,0 +1,22 @@
+model move {
+  id               Int                @id
+  name             String             @db.VarChar(100)
+  power            Int?
+  pp               Int?
+  accuracy         Int?
+  priority         Int?
+  effect_chance    Int?
+  type_id          Int?
+  damage_class     String?            @db.VarChar(20)
+  target           String?            @db.VarChar(50)
+  contest_type     String?            @db.VarChar(50)
+  generation_id    Int?
+  machine          machine[]
+  move_effect      move_effect[]
+  move_flavor_text move_flavor_text[]
+  move_meta        move_meta?
+  move_name        move_name[]
+  move_past_value  move_past_value[]
+  move_stat_change move_stat_change[]
+  pokemon_move     pokemon_move[]
+}

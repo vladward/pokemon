@@ -1,0 +1,9 @@
+model ability_effect {
+  ability_id   Int
+  language     String  @db.VarChar(10)
+  short_effect String? @db.Text
+  effect       String? @db.Text
+  ability      ability @relation(fields: [ability_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "ability_effect_ibfk_1")
+
+  @@id([ability_id, language])
+}

@@ -1,0 +1,5 @@
+model egg_group {
+  id             Int              @id
+  name           String           @db.VarChar(100)
+  egg_group_name egg_group_name[]
+}

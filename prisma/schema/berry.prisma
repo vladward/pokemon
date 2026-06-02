@@ -1,0 +1,17 @@
+model berry {
+  id                   Int            @id
+  item_id              Int
+  name                 String         @db.VarChar(100)
+  growth_time          Int?
+  max_harvest          Int?
+  natural_gift_power   Int?
+  size                 Int?
+  smoothness           Int?
+  soil_dryness         Int?
+  firmness             String?        @db.VarChar(50)
+  natural_gift_type_id Int?
+  item                 item           @relation(fields: [item_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "berry_ibfk_1")
+  berry_flavor         berry_flavor[]
+
+  @@index([item_id], map: "berry_ibfk_1")
+}

@@ -1,0 +1,7 @@
+model pokemon_species_name {
+  species_id Int
+  language   String @db.VarChar(10)
+  name       String @db.VarChar(200)
+
+  @@id([species_id, language])
+}

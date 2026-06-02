@@ -1,0 +1,14 @@
+model pokemon_form {
+  id               Int      @id
+  pokemon_id       Int
+  form_name        String   @db.VarChar(100)
+  name             String?  @db.VarChar(100)
+  is_default       Boolean?
+  is_battle_only   Boolean?
+  is_mega          Boolean?
+  form_order       Int?
+  version_group_id Int?
+  pokemon          pokemon  @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_form_ibfk_1")
+
+  @@index([pokemon_id], map: "pokemon_id")
+}

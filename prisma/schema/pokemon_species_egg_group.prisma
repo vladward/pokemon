@@ -1,0 +1,6 @@
+model pokemon_species_egg_group {
+  species_id   Int
+  egg_group_id Int
+
+  @@id([species_id, egg_group_id])
+}

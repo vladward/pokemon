@@ -1,0 +1,7 @@
+model pokemon_pokedex_number {
+  species_id   Int
+  pokedex_name String @db.VarChar(50)
+  entry_number Int
+
+  @@id([species_id, pokedex_name])
+}

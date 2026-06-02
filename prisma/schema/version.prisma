@@ -1,0 +1,8 @@
+model version {
+  id                 Int                  @id
+  name               String               @db.VarChar(100)
+  version_group_id   Int?
+  pokemon_game_index pokemon_game_index[]
+  pokemon_held_item  pokemon_held_item[]
+  version_name       version_name[]
+}

@@ -1,0 +1,8 @@
+model encounter_method_name {
+  method_id        Int
+  language         String           @db.VarChar(10)
+  name             String           @db.VarChar(200)
+  encounter_method encounter_method @relation(fields: [method_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "encounter_method_name_ibfk_1")
+
+  @@id([method_id, language])
+}

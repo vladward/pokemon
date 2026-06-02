@@ -1,0 +1,8 @@
+model location_name {
+  location_id Int
+  language    String   @db.VarChar(10)
+  name        String   @db.VarChar(200)
+  location    location @relation(fields: [location_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "location_name_ibfk_1")
+
+  @@id([location_id, language])
+}

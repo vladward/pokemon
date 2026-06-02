@@ -1,0 +1,10 @@
+model nature {
+  id                     Int                      @id
+  name                   String                   @db.VarChar(50)
+  decreased_stat         String?                  @db.VarChar(50)
+  increased_stat         String?                  @db.VarChar(50)
+  hates_flavor           String?                  @db.VarChar(50)
+  likes_flavor           String?                  @db.VarChar(50)
+  nature_name            nature_name[]
+  nature_pokeathlon_stat nature_pokeathlon_stat[]
+}

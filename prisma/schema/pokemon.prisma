@@ -1,0 +1,23 @@
+model pokemon {
+  id                   Int                    @id
+  name                 String                 @db.VarChar(100)
+  base_experience      Int?
+  height               Int?
+  weight               Int?
+  is_default           Boolean?
+  order_index          Int?
+  cry_latest_url       String?                @db.Text
+  cry_legacy_url       String?                @db.Text
+  species_id           Int?
+  pokemon_ability      pokemon_ability[]
+  pokemon_encounter    pokemon_encounter[]
+  pokemon_form         pokemon_form[]
+  pokemon_game_index   pokemon_game_index[]
+  pokemon_held_item    pokemon_held_item[]
+  pokemon_move         pokemon_move[]
+  pokemon_past_ability pokemon_past_ability[]
+  pokemon_past_type    pokemon_past_type[]
+  pokemon_sprite       pokemon_sprite[]
+  pokemon_stat         pokemon_stat[]
+  pokemon_type         pokemon_type[]
+}

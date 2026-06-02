@@ -1,0 +1,10 @@
+model type_efficacy {
+  from_type_id                          Int
+  to_type_id                            Int
+  damage_factor                         Int
+  type_type_efficacy_from_type_idTotype type @relation("type_efficacy_from_type_idTotype", fields: [from_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "type_efficacy_ibfk_1")
+  type_type_efficacy_to_type_idTotype   type @relation("type_efficacy_to_type_idTotype", fields: [to_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "type_efficacy_ibfk_2")
+
+  @@id([from_type_id, to_type_id])
+  @@index([to_type_id], map: "type_efficacy_ibfk_2")
+}

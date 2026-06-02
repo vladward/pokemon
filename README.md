@@ -12,7 +12,7 @@ from [PokéAPI](https://pokeapi.co) into a local **MySQL** database — no runti
 | Styling   | Tailwind CSS + Shadcn/UI (Radix UI) |
 | State     | Zustand                             |
 | i18n      | next-intl                           |
-| Database  | MySQL 8 (Docker) via mysql2         |
+| Database  | MySQL 8 (Docker) via Prisma + mysql2 |
 | Testing   | Jest + Testing Library, Playwright  |
 | CI        | GitHub Actions                      |
 
@@ -169,6 +169,70 @@ versions → pokedex → locations
 Long-running seeds (`pokemon`, `moves`, `items`, `forms`, `locations`, `machines`) checkpoint progress in the
 `seed_state` table. Interrupting and re-running resumes from the last completed batch. All seeds use
 `INSERT ... ON DUPLICATE KEY UPDATE` and are safe to run multiple times.
+
+---
+
+## Prisma
+
+Prisma is used to generate a fully-typed database client from the MySQL schema.
+
+### Initial setup (run once after seeding the database)
+
+These commands set up Prisma from scratch by introspecting the already-seeded MySQL database:
+
+```bash
+# 1. Install Prisma packages
+npm install @prisma/client
+npm install prisma --save-dev
+
+# 2. Create prisma.config.ts and an empty prisma/schema.prisma
+npx prisma init
+
+# 3. Pull the existing MySQL schema into schema.prisma
+npx prisma db pull
+
+# 4. Split the monolithic schema into per-model files under prisma/schema/
+node --experimental-modules prisma/split-prisma.js
+
+# 5. Generate the typed Prisma client
+npx prisma generate
+```
+
+After step 3, edit `prisma/schema.prisma` (or `prisma/schema/main.prisma` after the split) to point the datasource to `DATABASE_URL` from your `.env`, then run step 4 onward.
+
+---
+
+### Multi-file schema
+
+The schema is split into individual `.prisma` files under `prisma/schema/` — one file per model. The datasource and generator config live in `prisma/schema/main.prisma`. Prisma reads the entire directory via `prisma.config.ts`:
+
+```ts
+// prisma.config.ts
+export default defineConfig({
+  schema: 'prisma/schema',
+  datasource: { url: env('DATABASE_URL') },
+});
+```
+
+### Generate the client
+
+Run this after `npm install` (or any time the schema changes):
+
+```bash
+npx prisma generate
+```
+
+This picks up `prisma.config.ts` automatically and writes the typed client to `node_modules/@prisma/client`.
+
+### Splitting a monolithic schema
+
+If you have a single `prisma/schema.prisma` and want to split it into per-model files, run:
+
+```bash
+node prisma/split-prisma.js
+```
+
+The script extracts every `model`, `enum`, and `view` block into its own file in `prisma/schema/`, updates `main.prisma` to contain only the datasource/generator config, and deletes the original `schema.prisma`.
 
 ---
 

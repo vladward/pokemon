@@ -1,0 +1,8 @@
+model nature_pokeathlon_stat {
+  nature_id  Int
+  stat_name  String @db.VarChar(50)
+  max_change Int
+  nature     nature @relation(fields: [nature_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "nature_pokeathlon_stat_ibfk_1")
+
+  @@id([nature_id, stat_name])
+}

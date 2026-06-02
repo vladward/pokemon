@@ -1,0 +1,9 @@
+model characteristic {
+  id                         Int                          @id
+  gene_modulo                Int
+  highest_stat_id            Int?
+  stat                       stat?                        @relation(fields: [highest_stat_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "characteristic_ibfk_1")
+  characteristic_description characteristic_description[]
+
+  @@index([highest_stat_id], map: "characteristic_ibfk_1")
+}
