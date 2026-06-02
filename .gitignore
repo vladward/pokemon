@@ -4,6 +4,7 @@ env/
 
 *.log
 npm-debug.log*
+logs/
 .eslintcache
 
 dist/
