@@ -40,6 +40,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@prisma/client": "^7.8.0",
     "@radix-ui/react-dialog": "^1.1.15",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -80,6 +81,7 @@
     "postcss": "^8.5.3",
     "prettier": "^3.3.0",
     "prettier-plugin-pkg": "^0.21.2",
+    "prisma": "^7.8.0",
     "shadcn": "^4.9.0",
     "tailwindcss": "^3.4.16",
     "tailwindcss-animate": "^1.0.7",

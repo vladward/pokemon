@@ -1,0 +1,8 @@
+model pokemon_sprite {
+  pokemon_id  Int
+  sprite_name String  @db.VarChar(150)
+  url         String  @db.Text
+  pokemon     pokemon @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_sprite_ibfk_1")
+
+  @@id([pokemon_id, sprite_name])
+}

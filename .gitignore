@@ -26,3 +26,5 @@ out/
 /playwright/.cache/
 /playwright/.auth/
 .vercel
+
+/generated/prisma

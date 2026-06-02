@@ -1,0 +1,9 @@
+model item_to_attribute {
+  item_id        Int
+  attribute_id   Int
+  item           item           @relation(fields: [item_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "item_to_attribute_ibfk_1")
+  item_attribute item_attribute @relation(fields: [attribute_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "item_to_attribute_ibfk_2")
+
+  @@id([item_id, attribute_id])
+  @@index([attribute_id], map: "item_to_attribute_ibfk_2")
+}

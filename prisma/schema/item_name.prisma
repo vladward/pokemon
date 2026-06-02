@@ -1,0 +1,8 @@
+model item_name {
+  item_id  Int
+  language String @db.VarChar(10)
+  name     String @db.VarChar(200)
+  item     item   @relation(fields: [item_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "item_name_ibfk_1")
+
+  @@id([item_id, language])
+}

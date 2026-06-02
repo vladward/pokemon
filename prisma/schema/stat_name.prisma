@@ -1,0 +1,8 @@
+model stat_name {
+  stat_id  Int
+  language String @db.VarChar(10)
+  name     String @db.VarChar(200)
+  stat     stat   @relation(fields: [stat_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "stat_name_ibfk_1")
+
+  @@id([stat_id, language])
+}

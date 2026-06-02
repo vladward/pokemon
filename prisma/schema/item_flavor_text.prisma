@@ -1,0 +1,11 @@
+model item_flavor_text {
+  item_id          Int
+  language         String        @db.VarChar(10)
+  version_group_id Int
+  flavor_text      String        @db.Text
+  item             item          @relation(fields: [item_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "item_flavor_text_ibfk_1")
+  version_group    version_group @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "item_flavor_text_ibfk_2")
+
+  @@id([item_id, language, version_group_id])
+  @@index([version_group_id], map: "item_flavor_text_ibfk_2")
+}

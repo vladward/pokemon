@@ -1,0 +1,7 @@
+model pokemon_form_type {
+  form_id Int
+  slot    Int
+  type_id Int
+
+  @@id([form_id, slot])
+}

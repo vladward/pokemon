@@ -1,0 +1,26 @@
+model pokemon_evolution {
+  id                      Int      @id @default(autoincrement())
+  chain_id                Int?
+  from_species_id         Int?
+  to_species_id           Int?
+  trigger                 String?  @db.VarChar(50)
+  min_level               Int?
+  min_happiness           Int?
+  min_beauty              Int?
+  min_affection           Int?
+  needs_overworld_rain    Boolean?
+  relative_physical_stats Int?
+  time_of_day             String?  @db.VarChar(20)
+  turn_upside_down        Boolean?
+  gender                  Int?
+  item_id                 Int?
+  held_item_id            Int?
+  known_move_id           Int?
+  known_move_type_id      Int?
+  location_id             Int?
+  party_species_id        Int?
+  party_type_id           Int?
+  trade_species_id        Int?
+
+  @@index([chain_id], map: "chain_id")
+}

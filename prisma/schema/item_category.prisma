@@ -1,0 +1,5 @@
+model item_category {
+  id                 Int                  @id
+  name               String               @db.VarChar(100)
+  item_category_name item_category_name[]
+}

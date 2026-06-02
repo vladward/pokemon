@@ -1,0 +1,6 @@
+model pokemon_raw {
+  id         Int       @id
+  name       String?   @db.VarChar(100)
+  api_data   Json
+  fetched_at DateTime? @default(now()) @db.Timestamp(0)
+}

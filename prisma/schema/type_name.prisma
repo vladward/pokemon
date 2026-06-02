@@ -1,0 +1,8 @@
+model type_name {
+  type_id  Int
+  language String @db.VarChar(10)
+  name     String @db.VarChar(200)
+  type     type   @relation(fields: [type_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "type_name_ibfk_1")
+
+  @@id([type_id, language])
+}

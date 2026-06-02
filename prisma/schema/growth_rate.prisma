@@ -1,0 +1,6 @@
+model growth_rate {
+  id                     Int                      @id
+  name                   String                   @db.VarChar(50)
+  formula                String?                  @db.Text
+  growth_rate_experience growth_rate_experience[]
+}

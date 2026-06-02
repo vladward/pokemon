@@ -1,0 +1,8 @@
+model move_stat_change {
+  move_id   Int
+  stat_name String @db.VarChar(50)
+  change    Int
+  move      move   @relation(fields: [move_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "move_stat_change_ibfk_1")
+
+  @@id([move_id, stat_name])
+}

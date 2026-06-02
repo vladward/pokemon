@@ -1,0 +1,8 @@
+model version_group_name {
+  version_group_id Int
+  language         String        @db.VarChar(10)
+  name             String        @db.VarChar(200)
+  version_group    version_group @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "version_group_name_ibfk_1")
+
+  @@id([version_group_id, language])
+}

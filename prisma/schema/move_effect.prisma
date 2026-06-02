@@ -1,0 +1,9 @@
+model move_effect {
+  move_id      Int
+  language     String  @db.VarChar(10)
+  short_effect String? @db.Text
+  effect       String? @db.Text
+  move         move    @relation(fields: [move_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "move_effect_ibfk_1")
+
+  @@id([move_id, language])
+}

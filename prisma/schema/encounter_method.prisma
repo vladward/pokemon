@@ -1,0 +1,7 @@
+model encounter_method {
+  id                    Int                     @id
+  name                  String                  @db.VarChar(100)
+  order_index           Int?
+  encounter_method_name encounter_method_name[]
+  pokemon_encounter     pokemon_encounter[]
+}

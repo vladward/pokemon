@@ -1,0 +1,8 @@
+model pokedex_description {
+  pokedex_id  Int
+  language    String  @db.VarChar(10)
+  description String  @db.Text
+  pokedex     pokedex @relation(fields: [pokedex_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokedex_description_ibfk_1")
+
+  @@id([pokedex_id, language])
+}
