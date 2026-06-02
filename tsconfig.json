@@ -23,18 +23,10 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@i18n/*": [
-        "i18n/*"
-      ]
+      "@/*": ["src/*"],
+      "@i18n/*": ["i18n/*"]
     },
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "resolveJsonModule": true
   },
   "include": [
@@ -46,8 +38,5 @@
     "scripts",
     "lib"
   ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "exclude": ["node_modules", "dist"]
 }
