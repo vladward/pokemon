@@ -1,0 +1,9 @@
+model pokemon_species_flavor_text {
+  id           Int    @id @default(autoincrement())
+  species_id   Int
+  language     String @db.VarChar(10)
+  game_version String @db.VarChar(50)
+  flavor_text  String @db.Text
+
+  @@unique([species_id, language, game_version], map: "uq_species_flavor")
+}

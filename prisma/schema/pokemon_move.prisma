@@ -1,0 +1,14 @@
+model pokemon_move {
+  pokemon_id       Int
+  move_id          Int
+  version_group_id Int
+  learn_method     String        @db.VarChar(50)
+  level_learned_at Int?
+  pokemon          pokemon       @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_move_ibfk_1")
+  move             move          @relation(fields: [move_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_move_ibfk_2")
+  version_group    version_group @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_move_ibfk_3")
+
+  @@id([pokemon_id, move_id, version_group_id, learn_method])
+  @@index([move_id], map: "move_id")
+  @@index([version_group_id], map: "version_group_id")
+}

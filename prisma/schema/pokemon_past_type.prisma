@@ -1,0 +1,12 @@
+model pokemon_past_type {
+  id            Int     @id @default(autoincrement())
+  pokemon_id    Int
+  generation_id Int
+  slot          Int
+  type_id       Int
+  pokemon       pokemon @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_past_type_ibfk_1")
+  type          type    @relation(fields: [type_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_past_type_ibfk_2")
+
+  @@unique([pokemon_id, generation_id, slot], map: "uq_pokemon_past_type")
+  @@index([type_id], map: "type_id")
+}

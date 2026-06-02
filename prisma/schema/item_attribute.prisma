@@ -1,0 +1,6 @@
+model item_attribute {
+  id                  Int                   @id
+  name                String                @db.VarChar(100)
+  item_attribute_name item_attribute_name[]
+  item_to_attribute   item_to_attribute[]
+}

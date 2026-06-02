@@ -1,0 +1,9 @@
+model item_attribute_name {
+  attribute_id   Int
+  language       String         @db.VarChar(10)
+  name           String         @db.VarChar(200)
+  description    String?        @db.Text
+  item_attribute item_attribute @relation(fields: [attribute_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "item_attribute_name_ibfk_1")
+
+  @@id([attribute_id, language])
+}

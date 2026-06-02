@@ -1,0 +1,8 @@
+model item_category_name {
+  category_id   Int
+  language      String        @db.VarChar(10)
+  name          String        @db.VarChar(200)
+  item_category item_category @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "item_category_name_ibfk_1")
+
+  @@id([category_id, language])
+}

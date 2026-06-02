@@ -1,0 +1,4 @@
+model evolution_chain {
+  id                   Int  @id
+  baby_trigger_item_id Int?
+}

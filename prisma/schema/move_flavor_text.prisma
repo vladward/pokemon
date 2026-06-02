@@ -1,0 +1,11 @@
+model move_flavor_text {
+  move_id          Int
+  language         String        @db.VarChar(10)
+  version_group_id Int
+  flavor_text      String        @db.Text
+  move             move          @relation(fields: [move_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "move_flavor_text_ibfk_1")
+  version_group    version_group @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "move_flavor_text_ibfk_2")
+
+  @@id([move_id, language, version_group_id])
+  @@index([version_group_id], map: "move_flavor_text_ibfk_2")
+}

@@ -1,0 +1,8 @@
+model ability_name {
+  ability_id Int
+  language   String  @db.VarChar(10)
+  name       String  @db.VarChar(200)
+  ability    ability @relation(fields: [ability_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "ability_name_ibfk_1")
+
+  @@id([ability_id, language])
+}

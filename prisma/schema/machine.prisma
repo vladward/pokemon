@@ -1,0 +1,13 @@
+model machine {
+  id               Int           @id
+  item_id          Int
+  move_id          Int
+  version_group_id Int
+  item             item          @relation(fields: [item_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "machine_ibfk_1")
+  move             move          @relation(fields: [move_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "machine_ibfk_2")
+  version_group    version_group @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "machine_ibfk_3")
+
+  @@unique([move_id, version_group_id], map: "uq_machine")
+  @@index([item_id], map: "machine_ibfk_1")
+  @@index([version_group_id], map: "machine_ibfk_3")
+}

@@ -1,0 +1,8 @@
+model move_name {
+  move_id  Int
+  language String @db.VarChar(10)
+  name     String @db.VarChar(200)
+  move     move   @relation(fields: [move_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "move_name_ibfk_1")
+
+  @@id([move_id, language])
+}

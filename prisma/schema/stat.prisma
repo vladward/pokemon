@@ -1,0 +1,8 @@
+model stat {
+  id             Int              @id
+  name           String           @db.VarChar(50)
+  game_index     Int?
+  is_battle_only Boolean?
+  characteristic characteristic[]
+  stat_name      stat_name[]
+}

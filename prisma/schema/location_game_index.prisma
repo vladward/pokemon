@@ -1,0 +1,8 @@
+model location_game_index {
+  location_id     Int
+  game_index      Int
+  generation_name String   @db.VarChar(30)
+  location        location @relation(fields: [location_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "location_game_index_ibfk_1")
+
+  @@id([location_id, game_index, generation_name])
+}

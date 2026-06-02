@@ -1,0 +1,16 @@
+model item {
+  id                Int                 @id
+  name              String              @db.VarChar(100)
+  cost              Int?
+  fling_power       Int?
+  fling_effect      String?             @db.VarChar(100)
+  category_id       Int?
+  sprite_url        String?             @db.Text
+  berry             berry[]
+  item_effect       item_effect[]
+  item_flavor_text  item_flavor_text[]
+  item_name         item_name[]
+  item_to_attribute item_to_attribute[]
+  machine           machine[]
+  pokemon_held_item pokemon_held_item[]
+}

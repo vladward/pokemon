@@ -1,0 +1,17 @@
+model pokemon_encounter {
+  id               Int              @id @default(autoincrement())
+  pokemon_id       Int
+  area_id          Int
+  method_id        Int
+  version          String           @db.VarChar(30)
+  min_level        Int?             @db.TinyInt
+  max_level        Int?             @db.TinyInt
+  chance           Int?             @db.TinyInt
+  pokemon          pokemon          @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_encounter_ibfk_1")
+  location_area    location_area    @relation(fields: [area_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_encounter_ibfk_2")
+  encounter_method encounter_method @relation(fields: [method_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_encounter_ibfk_3")
+
+  @@unique([pokemon_id, area_id, method_id, version], map: "uq_encounter")
+  @@index([area_id], map: "pokemon_encounter_ibfk_2")
+  @@index([method_id], map: "pokemon_encounter_ibfk_3")
+}
