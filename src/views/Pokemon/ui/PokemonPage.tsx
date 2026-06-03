@@ -1,29 +1,32 @@
-import { getTranslations } from 'next-intl/server';
-
 import type { getLocationList } from '@/entities/Location';
-import type { getPokemonList } from '@/entities/Pokemon';
+import type {
+  getGenerationList,
+  getPokemonList,
+  getRarityList,
+  getTypeList,
+} from '@/entities/Pokemon';
 import type { getRegionList } from '@/entities/Region';
+
+import { PokemonFilters } from './PokemonFilters';
 
 interface Props {
   pokemonList: Awaited<ReturnType<typeof getPokemonList>>;
   locations: Awaited<ReturnType<typeof getLocationList>>;
   regions: Awaited<ReturnType<typeof getRegionList>>;
+  types: Awaited<ReturnType<typeof getTypeList>>;
+  rarities: Awaited<ReturnType<typeof getRarityList>>;
+  generations: Awaited<ReturnType<typeof getGenerationList>>;
 }
 
-export const PokemonPage = async ({ pokemonList, locations, regions }: Props) => {
-  const t = await getTranslations('pages');
-  const { data, total, page, totalPages } = pokemonList;
-
+export const PokemonPage = ({ regions, types, rarities, generations }: Props) => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-5">
-      <h1 className="text-[3rem] font-bold text-lightBlue mb-4">{t('pokemon.title')}</h1>
-      <p className="text-[1.1rem] max-w-[500px]">{t('pokemon.description')}</p>
-      <p className="mt-4 text-sm opacity-60">
-        {data.length} of {total} Pokémon — page {page} / {totalPages}
-      </p>
-      <p className="mt-1 text-sm opacity-60">
-        {locations.length} locations · {regions.length} regions available
-      </p>
+    <div>
+      <PokemonFilters
+        regions={regions}
+        types={types}
+        rarities={rarities}
+        generations={generations}
+      />
     </div>
   );
 };

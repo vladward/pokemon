@@ -3,7 +3,14 @@ export const dynamic = 'force-dynamic';
 import { PokemonPage } from '@/views/Pokemon';
 
 import { getLocationList } from '@/entities/Location';
-import { getPokemonList, type SortBy, type SortOrder } from '@/entities/Pokemon';
+import {
+  getPokemonList,
+  getGenerationList,
+  getRarityList,
+  getTypeList,
+  type SortBy,
+  type SortOrder,
+} from '@/entities/Pokemon';
 import { getRegionList } from '@/entities/Region';
 
 type SearchParams = Promise<{
@@ -29,7 +36,7 @@ function toArray(v: string | string[] | undefined): string[] | undefined {
 export default async function Page({ searchParams }: { searchParams: SearchParams }) {
   const params = await searchParams;
 
-  const [pokemonList, locations, regions] = await Promise.all([
+  const [pokemonList, locations, regions, types, rarities, generations] = await Promise.all([
     getPokemonList({
       search: params.search,
       types: toArray(params.types),
@@ -46,6 +53,9 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
     }),
     getLocationList(),
     getRegionList(),
+    getTypeList(),
+    getRarityList(),
+    getGenerationList(),
   ]);
 
   return (
@@ -53,6 +63,9 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
       pokemonList={pokemonList}
       locations={locations}
       regions={regions}
+      types={types}
+      rarities={rarities}
+      generations={generations}
     />
   );
 }
