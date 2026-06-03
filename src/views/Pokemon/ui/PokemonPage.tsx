@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 import type { getLocationList } from '@/entities/Location';
 import type {
   getGenerationList,
@@ -21,12 +23,14 @@ interface Props {
 export const PokemonPage = ({ regions, types, rarities, generations }: Props) => {
   return (
     <div>
-      <PokemonFilters
-        regions={regions}
-        types={types}
-        rarities={rarities}
-        generations={generations}
-      />
+      <Suspense>
+        <PokemonFilters
+          regions={regions}
+          types={types}
+          rarities={rarities}
+          generations={generations}
+        />
+      </Suspense>
     </div>
   );
 };
