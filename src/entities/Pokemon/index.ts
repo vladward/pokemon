@@ -1,5 +1,8 @@
 export type { PokemonCard } from './PokemonCard';
 export { getPokemonList } from './api/getPokemonList';
+export { getTypeList } from './api/getTypeList';
+export { getRarityList } from './api/getRarityList';
+export { getGenerationList } from './api/getGenerationList';
 export type { PokemonSearchQuery, SortBy, SortOrder } from './model';
 export {
   POKEMON_COLORS,
