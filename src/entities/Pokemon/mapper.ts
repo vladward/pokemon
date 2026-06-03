@@ -13,8 +13,7 @@ type RawPokemon = Prisma.pokemonGetPayload<{
 }>;
 
 export function mapPokemon(raw: RawPokemon): PokemonCard {
-  const sprite =
-    raw.pokemon_sprite.find((s) => s.sprite_name === 'front_default')?.url ?? null;
+  const sprite = raw.pokemon_sprite.find((s) => s.sprite_name === 'front_default')?.url ?? null;
 
   const statsMap: Record<string, number> = Object.fromEntries(
     raw.pokemon_stat.map((s) => [s.stat_name, s.base_stat]),
