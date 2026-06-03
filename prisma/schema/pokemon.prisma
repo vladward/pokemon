@@ -9,6 +9,7 @@ model pokemon {
   cry_latest_url       String?                @db.Text
   cry_legacy_url       String?                @db.Text
   species_id           Int?
+  species              pokemon_species?       @relation(fields: [species_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   pokemon_ability      pokemon_ability[]
   pokemon_encounter    pokemon_encounter[]
   pokemon_form         pokemon_form[]

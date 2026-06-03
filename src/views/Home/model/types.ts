@@ -2,7 +2,7 @@ import type { StaticImageData } from 'next/image';
 import { ComponentType, ReactNode, SVGProps } from 'react';
 import type { MessageKeys, Messages, NestedKeyOf } from 'use-intl/core';
 
-import { PokemonType } from '@/shared/model';
+import type { PokemonType } from '@/entities/Pokemon';
 
 type MessageKey = MessageKeys<Messages, NestedKeyOf<Messages>>;
 
