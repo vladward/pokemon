@@ -51,8 +51,22 @@ export function buildPokemonWhere(q: PokemonSearchQuery) {
     const rarityOr: object[] = [];
     if (q.rarity.includes('legendary')) rarityOr.push({ is_legendary: true });
     if (q.rarity.includes('mythical')) rarityOr.push({ is_mythical: true });
-    if (q.rarity.includes('common') || q.rarity.includes('rare')) {
-      rarityOr.push({ is_legendary: false, is_mythical: false });
+    if (q.rarity.includes('rare')) {
+      rarityOr.push({ is_legendary: false, is_mythical: false, capture_rate: { lte: 45 } });
+    }
+    if (q.rarity.includes('uncommon')) {
+      rarityOr.push({
+        is_legendary: false,
+        is_mythical: false,
+        capture_rate: { gt: 45, lte: 100 },
+      });
+    }
+    if (q.rarity.includes('common')) {
+      rarityOr.push({
+        is_legendary: false,
+        is_mythical: false,
+        OR: [{ capture_rate: { gt: 100 } }, { capture_rate: null }],
+      });
     }
     if (rarityOr.length) {
       conditions.push({ species: { OR: rarityOr } });

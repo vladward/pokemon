@@ -46,5 +46,6 @@ function getRarity(species: RawPokemon['species']): PokemonCard['rarity'] {
   if (species.is_mythical) return 'mythical';
   if (species.is_legendary) return 'legendary';
   if (species.capture_rate !== null && species.capture_rate <= 45) return 'rare';
+  if (species.capture_rate !== null && species.capture_rate <= 100) return 'uncommon';
   return 'common';
 }
