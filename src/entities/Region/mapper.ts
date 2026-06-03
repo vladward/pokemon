@@ -1,7 +1,11 @@
-import type { findRegions } from './api/regionRepository';
 import { Region } from './model/region';
 
-type RawRegion = Awaited<ReturnType<typeof findRegions>>[number];
+type RawRegion = {
+  id: number;
+  name: string;
+  main_generation_id: number | null;
+  region_name: { name: string }[];
+};
 
 export function mapRegion(raw: RawRegion): Region {
   return {
