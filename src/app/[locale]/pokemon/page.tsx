@@ -1,7 +1,8 @@
+import { PokemonPage } from '@/views/Pokemon';
+
 import { getLocationList } from '@/entities/Location';
 import { getPokemonList, type SortBy, type SortOrder } from '@/entities/Pokemon';
 import { getRegionList } from '@/entities/Region';
-import { PokemonPage } from '@/views/Pokemon';
 
 type SearchParams = Promise<{
   search?: string;
