@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { PokemonPage } from '@/views/Pokemon';
 
 import { getLocationList } from '@/entities/Location';
