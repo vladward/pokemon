@@ -1,4 +1,5 @@
 export type { PokemonCard } from './PokemonCard';
+export { getPokemonList } from './api/getPokemonList';
 export type { PokemonSearchQuery, SortBy, SortOrder } from './model';
 export {
   POKEMON_COLORS,

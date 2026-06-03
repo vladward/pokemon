@@ -1,7 +1,6 @@
-import { getLocationList } from '@/entities/Location/api/getLocationList';
-import { getPokemonList } from '@/entities/Pokemon/api/getPokemonList';
-import type { SortBy, SortOrder } from '@/entities/Pokemon/model/pokemonSearchQuery';
-import { getRegionList } from '@/entities/Region/api/getRegionList';
+import { getLocationList } from '@/entities/Location';
+import { getPokemonList, type SortBy, type SortOrder } from '@/entities/Pokemon';
+import { getRegionList } from '@/entities/Region';
 import { PokemonPage } from '@/views/Pokemon';
 
 type SearchParams = Promise<{
@@ -46,5 +45,11 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
     getRegionList(),
   ]);
 
-  return <PokemonPage pokemonList={pokemonList} locations={locations} regions={regions} />;
+  return (
+    <PokemonPage
+      pokemonList={pokemonList}
+      locations={locations}
+      regions={regions}
+    />
+  );
 }

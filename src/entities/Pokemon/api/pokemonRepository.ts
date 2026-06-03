@@ -1,6 +1,7 @@
-import { POKEMON_PAGE_SIZE, PokemonSearchQuery } from '@/entities/Pokemon';
-
 import { db } from '@/shared/db/db';
+
+import { POKEMON_PAGE_SIZE } from '../config/pagination';
+import { PokemonSearchQuery } from '../model/pokemonSearchQuery';
 
 import { buildPokemonWhere } from './pokemonQueryBuilder';
 
