@@ -19,7 +19,7 @@ export const GreetingsSection: FC = async () => {
           </h1>
           <Image
             src={Pokemon}
-            alt="pokemons_main"
+            alt="pokemon_main"
             priority
             className="w-[45%] py-5 transition-transform hover:scale-105 tablet:w-full mobile:w-full animate-in fade-in-0 duration-600"
           />
