@@ -1,1 +1,1 @@
-export { usePokemonStore } from './pokemonStore';
+export { usePokemonFilters } from './usePokemonFilters';
