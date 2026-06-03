@@ -5,7 +5,7 @@ export type PokemonCard = {
   sprite: string | null;
   generation: number | null;
   region: string;
-  rarity: 'common' | 'rare' | 'legendary' | 'mythical';
+  rarity: 'common' | 'uncommon' | 'rare' | 'legendary' | 'mythical';
   stats: {
     hp: number;
     attack: number;

@@ -4,11 +4,12 @@ import { usePathname } from 'next/navigation';
 
 import { Input } from '@/shared/ui';
 
-import { usePokemonStore } from './model';
+type PokemonSearchProps = {
+  value?: string;
+  onChange: (value: string) => void;
+};
 
-export const PokemonSearch = () => {
-  const search = usePokemonStore((state) => state.search);
-  const setSearch = usePokemonStore((state) => state.setSearch);
+export const PokemonSearch = ({ value, onChange }: PokemonSearchProps) => {
   const pathname = usePathname();
 
   if (!pathname.includes('pokemon')) return;
@@ -17,9 +18,9 @@ export const PokemonSearch = () => {
     <Input
       type="text"
       placeholder="Search Pokémon..."
-      value={search}
-      onChange={(e) => setSearch(e.target.value)}
-      className="max-w-[350px] tablet:max-w-[180px]"
+      value={value || ''}
+      onChange={(e) => onChange(e.target.value)}
+      className="max-w-[350px] tablet:max-w-[180px] h-full"
     />
   );
 };
