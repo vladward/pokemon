@@ -17,4 +17,5 @@ model pokemon_species {
   habitat                String?  @db.VarChar(50)
   growth_rate            String?  @db.VarChar(50)
   evolution_chain_id     Int?
+  pokemon                pokemon[]
 }
