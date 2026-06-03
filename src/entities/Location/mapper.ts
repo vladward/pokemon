@@ -1,13 +1,7 @@
-import { Prisma } from '@prisma/client';
-
+import type { findLocations } from './api/locationRepository';
 import { Location } from './model/location';
 
-type RawLocation = Prisma.locationGetPayload<{
-  include: {
-    location_name: true;
-    region: { include: { region_name: true } };
-  };
-}>;
+type RawLocation = Awaited<ReturnType<typeof findLocations>>[number];
 
 export function mapLocation(raw: RawLocation): Location {
   return {
