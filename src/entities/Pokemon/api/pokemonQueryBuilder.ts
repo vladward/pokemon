@@ -1,4 +1,4 @@
-import { PokemonSearchQuery } from '@/entities/Pokemon';
+import { PokemonSearchQuery } from '../model/pokemonSearchQuery';
 
 export function buildPokemonWhere(q: PokemonSearchQuery) {
   const conditions: object[] = [];

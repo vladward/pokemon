@@ -1,8 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 
-import type { getLocationList } from '@/entities/Location/api/getLocationList';
-import type { getPokemonList } from '@/entities/Pokemon/api/getPokemonList';
-import type { getRegionList } from '@/entities/Region/api/getRegionList';
+import type { getLocationList } from '@/entities/Location';
+import type { getPokemonList } from '@/entities/Pokemon';
+import type { getRegionList } from '@/entities/Region';
 
 interface Props {
   pokemonList: Awaited<ReturnType<typeof getPokemonList>>;
