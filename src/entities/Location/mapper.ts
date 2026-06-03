@@ -1,7 +1,12 @@
-import type { findLocations } from './api/locationRepository';
 import { Location } from './model/location';
 
-type RawLocation = Awaited<ReturnType<typeof findLocations>>[number];
+type RawLocation = {
+  id: number;
+  name: string;
+  region_id: number | null;
+  location_name: { name: string }[];
+  region: { name: string; region_name: { name: string }[] } | null;
+};
 
 export function mapLocation(raw: RawLocation): Location {
   return {
