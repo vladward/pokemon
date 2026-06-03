@@ -1,10 +1,7 @@
-import { Prisma } from '@prisma/client';
-
+import type { findRegions } from './api/regionRepository';
 import { Region } from './model/region';
 
-type RawRegion = Prisma.regionGetPayload<{
-  include: { region_name: true };
-}>;
+type RawRegion = Awaited<ReturnType<typeof findRegions>>[number];
 
 export function mapRegion(raw: RawRegion): Region {
   return {

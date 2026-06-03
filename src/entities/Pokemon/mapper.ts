@@ -1,16 +1,8 @@
-import { Prisma } from '@prisma/client';
-
+import type { findPokemon } from './api/pokemonRepository';
 import { GENERATION_TO_REGION } from './config/regions';
 import { PokemonCard } from './PokemonCard';
 
-type RawPokemon = Prisma.pokemonGetPayload<{
-  include: {
-    species: true;
-    pokemon_type: { include: { type: true } };
-    pokemon_stat: true;
-    pokemon_sprite: true;
-  };
-}>;
+type RawPokemon = Awaited<ReturnType<typeof findPokemon>>['items'][number];
 
 export function mapPokemon(raw: RawPokemon): PokemonCard {
   const sprite = raw.pokemon_sprite.find((s) => s.sprite_name === 'front_default')?.url ?? null;
