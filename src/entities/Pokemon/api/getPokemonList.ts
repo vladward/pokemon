@@ -5,10 +5,10 @@ import { mapPokemon } from '../mapper';
 import { findPokemon } from './pokemonRepository';
 
 export async function getPokemonList(query: PokemonSearchQuery) {
-  const { items, total, page } = await findPokemon(query);
+  const { items, total, page, stageMap } = await findPokemon(query);
 
   return {
-    data: items.map(mapPokemon),
+    data: items.map((item) => mapPokemon(item, stageMap)),
     total,
     page,
     totalPages: Math.ceil(total / POKEMON_PAGE_SIZE),

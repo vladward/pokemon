@@ -1,6 +1,6 @@
 import { PokemonSearchQuery } from '../model/pokemonSearchQuery';
 
-export function buildPokemonWhere(q: PokemonSearchQuery) {
+export function buildPokemonWhere(q: PokemonSearchQuery, evolutionSpeciesIds?: number[]) {
   const conditions: object[] = [];
 
   if (q.search) {
@@ -71,6 +71,10 @@ export function buildPokemonWhere(q: PokemonSearchQuery) {
     if (rarityOr.length) {
       conditions.push({ species: { OR: rarityOr } });
     }
+  }
+
+  if (evolutionSpeciesIds !== undefined) {
+    conditions.push({ species_id: { in: evolutionSpeciesIds } });
   }
 
   return conditions.length ? { AND: conditions } : {};
