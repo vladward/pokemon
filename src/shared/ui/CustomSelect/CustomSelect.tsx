@@ -45,7 +45,7 @@ export function CustomSelect({
 
       <SelectContent
         position="popper"
-        className="w-[var(--radix-select-trigger-width)] min-w-0"
+        className="w-[var(--radix-select-trigger-width)] min-w-0 max-h-[250px] overflow-y-auto"
       >
         {options.map((opt) => (
           <SelectItem
