@@ -10,12 +10,14 @@ import {
   getTypeList,
   type SortBy,
   type SortOrder,
+  type EvolutionStage,
 } from '@/entities/Pokemon';
 import { getRegionList } from '@/entities/Region';
 
 type SearchParams = Promise<{
   search?: string;
   types?: string | string[];
+  region?: string;
   generation?: string | string[];
   rarity?: string | string[];
   colors?: string | string[];
@@ -23,6 +25,7 @@ type SearchParams = Promise<{
   shape?: string | string[];
   isBaby?: string;
   locationIds?: string | string[];
+  evolutionStage?: string;
   page?: string;
   sortBy?: string;
   sortOrder?: string;
@@ -40,13 +43,17 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
     getPokemonList({
       search: params.search,
       types: toArray(params.types),
-      generation: toArray(params.generation)?.map(Number).filter(Boolean),
+      generation: [
+        ...(toArray(params.generation)?.map(Number).filter(Boolean) ?? []),
+        ...(params.region ? [Number(params.region)] : []),
+      ],
       rarity: toArray(params.rarity),
       colors: toArray(params.colors),
       habitat: toArray(params.habitat),
       shape: toArray(params.shape),
       isBaby: params.isBaby === 'true' ? true : undefined,
       locationIds: toArray(params.locationIds)?.map(Number).filter(Boolean),
+      evolutionStage: params.evolutionStage as EvolutionStage | undefined,
       page: params.page ? Number(params.page) : 1,
       sortBy: (params.sortBy as SortBy) ?? 'id',
       sortOrder: (params.sortOrder as SortOrder) ?? 'asc',
