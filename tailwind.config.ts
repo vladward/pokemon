@@ -107,6 +107,87 @@ export default {
           '0%': { opacity: '0', transform: 'scale(0.95)' },
           '100%': { opacity: '1', transform: 'scale(1)' },
         },
+        holoShift: {
+          '0%, 100%': { backgroundPosition: '0% 0%' },
+          '50%': { backgroundPosition: '100% 100%' },
+        },
+        sovereignShimmer: {
+          '0%': { transform: 'rotate(20deg) translateX(-200px)', opacity: '0' },
+          '58%': { transform: 'rotate(20deg) translateX(-200px)', opacity: '0' },
+          '63%': { transform: 'rotate(20deg) translateX(-200px)', opacity: '1' },
+          '83%': { transform: 'rotate(20deg) translateX(440px)', opacity: '1' },
+          '88%': { transform: 'rotate(20deg) translateX(440px)', opacity: '0' },
+          '100%': { transform: 'rotate(20deg) translateX(-200px)', opacity: '0' },
+        },
+        edgeBreathe: {
+          '0%, 100%': { opacity: '0.45' },
+          '50%': { opacity: '1' },
+        },
+        coronaBreathe: {
+          '0%, 100%': { opacity: '0.2', transform: 'scale(0.88)' },
+          '50%': { opacity: '0.5', transform: 'scale(1.08)' },
+        },
+        etherealFloat: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-7px)' },
+        },
+        auroraShift: {
+          '0%, 100%': { backgroundPosition: '0% 0%' },
+          '50%': { backgroundPosition: '0% 65%' },
+        },
+        starTwinkle: {
+          '0%, 100%': { opacity: '0', transform: 'scale(0.4)' },
+          '50%': { opacity: '1', transform: 'scale(1)' },
+        },
+        radiantPulse: {
+          '0%': { opacity: '0.5', transform: 'scale(0.5)' },
+          '100%': { opacity: '0', transform: 'scale(2.0)' },
+        },
+        iridShimmer: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+        imageBreath: {
+          '0%, 100%': { transform: 'scale(1.00)' },
+          '50%': { transform: 'scale(1.03)' },
+        },
+        reticlePulse: {
+          '0%, 100%': { opacity: '0.2', transform: 'scale(0.78)' },
+          '50%': { opacity: '0.7', transform: 'scale(1.18)' },
+        },
+        embersRise: {
+          '0%, 100%': { opacity: '0.35', transform: 'scaleY(0.88) translateY(5px)' },
+          '50%': { opacity: '0.65', transform: 'scaleY(1.12) translateY(-5px)' },
+        },
+        cosmicPulse: {
+          '0%, 100%': { opacity: '0.18', transform: 'scale(0.88)' },
+          '50%': { opacity: '0.42', transform: 'scale(1.12)' },
+        },
+        'pokeball-bounce': {
+          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+          '50%': { transform: 'translateY(-44px) rotate(180deg)' },
+        },
+        'pokeball-shadow': {
+          '0%, 100%': { transform: 'scaleX(1)', opacity: '0.25' },
+          '50%': { transform: 'scaleX(0.35)', opacity: '0.06' },
+        },
+      },
+      animation: {
+        holo: 'holoShift 5s linear infinite',
+        'sovereign-shimmer': 'sovereignShimmer 7s ease-in-out infinite',
+        'edge-breathe': 'edgeBreathe 3s ease-in-out infinite',
+        'corona-breathe': 'coronaBreathe 4s ease-in-out infinite',
+        'ethereal-float': 'etherealFloat 4s ease-in-out infinite',
+        'aurora-shift': 'auroraShift 12s ease-in-out infinite',
+        'star-twinkle': 'starTwinkle 2s ease-in-out infinite',
+        'radiant-pulse': 'radiantPulse 2.4s ease-out infinite',
+        'irid-shimmer': 'iridShimmer 14s ease-in-out infinite',
+        'image-breath': 'imageBreath 5s ease-in-out infinite',
+        'reticle-pulse': 'reticlePulse 3.5s ease-in-out infinite',
+        'embers-rise': 'embersRise 3s ease-in-out infinite',
+        'cosmic-pulse': 'cosmicPulse 5s ease-in-out infinite',
+        'pokeball-bounce': 'pokeball-bounce 0.85s ease-in-out infinite',
+        'pokeball-shadow': 'pokeball-shadow 0.85s ease-in-out infinite',
       },
     },
   },
