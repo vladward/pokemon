@@ -1,33 +1,53 @@
 'use client';
 import { XIcon } from 'lucide-react';
+import { useEffect } from 'react';
 
 import { PokemonSearch } from '@/features/PokemonSearch';
 import { usePokemonFilters } from '@/features/PokemonSearch/model';
 
-import type { getGenerationList, getRarityList, getTypeList } from '@/entities/Pokemon';
-import type { getRegionList } from '@/entities/Region';
+import type { Generation, PokemonRarity } from '@/entities/Pokemon';
+import type { Region } from '@/entities/Region';
 
 import { Button } from '@/shared/ui';
 import { CustomSelect } from '@/shared/ui/CustomSelect/CustomSelect';
 
 interface Props {
-  regions: Awaited<ReturnType<typeof getRegionList>>;
-  types: Awaited<ReturnType<typeof getTypeList>>;
-  rarities: Awaited<ReturnType<typeof getRarityList>>;
-  generations: Awaited<ReturnType<typeof getGenerationList>>;
+  regions: Region[];
+  types: string[];
+  rarities: PokemonRarity[];
+  generations: Generation[];
+  onPendingChange?: (pending: boolean) => void;
 }
 
-export const PokemonFilters = ({ regions, types, rarities, generations }: Props) => {
-  const { filters, setFilters, resetFilters } = usePokemonFilters();
+export const PokemonFilters = ({
+  regions,
+  types,
+  rarities,
+  generations,
+  onPendingChange,
+}: Props) => {
+  const { filters, setFilters, resetFilters, isPending } = usePokemonFilters();
+
+  useEffect(() => {
+    onPendingChange?.(isPending);
+  }, [isPending, onPendingChange]);
+
+  const evolutionStageOptions = [
+    { value: 'base', label: 'Base' },
+    { value: 'stage1', label: 'Stage 1' },
+    { value: 'stage2', label: 'Stage 2' },
+  ];
 
   const handleSetFilter = (
-    name: 'search' | 'region' | 'type' | 'rarity' | 'generation',
+    name: 'search' | 'region' | 'types' | 'rarity' | 'generation' | 'evolutionStage',
     value: string,
   ) => {
     setFilters({ [name]: value });
   };
 
-  const selectRegions = regions.map(({ id, name }) => ({ value: id.toString(), label: name }));
+  const selectRegions = regions
+    .filter((r) => r.generationId !== null)
+    .map(({ generationId, name }) => ({ value: generationId!.toString(), label: name }));
   const typeOptions = types.map((t) => ({ value: t, label: t }));
   const rarityOptions = rarities.map((r) => ({ value: r, label: r }));
   const generationOptions = generations.map(({ id, name }) => ({
@@ -37,14 +57,15 @@ export const PokemonFilters = ({ regions, types, rarities, generations }: Props)
 
   const hasActiveFilters = !!(
     filters.region ||
-    filters.type ||
+    filters.types ||
     filters.rarity ||
     filters.search ||
-    filters.generation
+    filters.generation ||
+    filters.evolutionStage
   );
 
   return (
-    <div className="flex items-stretch justify-start gap-3 text-center h-[40px] py-[20px] box-content mx-8">
+    <div className="flex items-stretch justify-between gap-3 text-center h-[40px] py-[20px] box-content">
       <PokemonSearch
         value={filters.search}
         onChange={(value) => handleSetFilter('search', value)}
@@ -71,10 +92,10 @@ export const PokemonFilters = ({ regions, types, rarities, generations }: Props)
 
         <CustomSelect
           id="typeId"
-          value={filters.type || ''}
+          value={filters.types || ''}
           options={typeOptions}
           placeholder="Type"
-          onChange={(value) => handleSetFilter('type', value)}
+          onChange={(value) => handleSetFilter('types', value)}
           className="!h-full w-[110px] capitalize"
         />
 
@@ -85,6 +106,15 @@ export const PokemonFilters = ({ regions, types, rarities, generations }: Props)
           placeholder="Generation"
           onChange={(value) => handleSetFilter('generation', value)}
           className="!h-full w-[140px]"
+        />
+
+        <CustomSelect
+          id="evolutionStageId"
+          value={filters.evolutionStage || ''}
+          options={evolutionStageOptions}
+          placeholder="Evo Stage"
+          onChange={(value) => handleSetFilter('evolutionStage', value)}
+          className="!h-full w-[120px]"
         />
 
         {hasActiveFilters && (
