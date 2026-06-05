@@ -5,6 +5,8 @@
   "scripts": {
     "build": "prisma generate && next build",
     "db:migrate": "tsx scripts/run-migrate.ts",
+    "db:use:docker": "tsx scripts/switch-db.ts docker",
+    "db:use:tidb": "tsx scripts/switch-db.ts tidb",
     "dev": "next dev",
     "fix": "prettier --write \"**/*.{ts,tsx,json}\" && eslint \"src/**/*.{ts,tsx}\" --fix",
     "format:check": "prettier --check \"**/*.{ts,tsx,json}\"",

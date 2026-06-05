@@ -75,13 +75,10 @@ npm install
 # Copy environment file and fill in values
 cp .env.example .env
 
-# Start MySQL (Docker)
-docker run --name mysql-pokedex \
-  -e MYSQL_ROOT_PASSWORD=root \
-  -e MYSQL_DATABASE=pokedex \
-  -p 3306:3306 -d mysql:8
+# Start MySQL via Docker Compose
+docker-compose up -d
 
-# Create database schema
+# Apply database schema
 npm run db:migrate
 
 # Populate database from PokéAPI (~15–30 min)
@@ -92,6 +89,15 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+### Switching databases
+
+The `.env` file stores both connection strings. Use the npm scripts to switch the active `DATABASE_URL`:
+
+```bash
+npm run db:use:docker   # mysql://root:root@localhost:3306/pokemon
+npm run db:use:tidb     # TiDB Cloud
+```
 
 ---
 
@@ -112,11 +118,13 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ### Database
 
-| Command              | Action                                      |
-|:---------------------|:--------------------------------------------|
-| `npm run db:migrate` | Create / update all 80+ tables (idempotent) |
-| `npm run seed:all`   | Run full seed in correct dependency order   |
-| `npm run seed:reset` | Truncate all tables for a clean re-seed     |
+| Command                   | Action                                      |
+|:--------------------------|:--------------------------------------------|
+| `npm run db:migrate`      | Create / update all 80+ tables (idempotent) |
+| `npm run db:use:docker`   | Switch `DATABASE_URL` to local Docker MySQL |
+| `npm run db:use:tidb`     | Switch `DATABASE_URL` to TiDB Cloud         |
+| `npm run seed:all`        | Run full seed in correct dependency order   |
+| `npm run seed:reset`      | Truncate all tables for a clean re-seed     |
 
 ---
 
