@@ -18,7 +18,7 @@ jest.mock('@/shared/config/navigation', () => ({
   ),
   usePathname: jest.fn(() => '/'),
   useRouter: jest.fn(() => ({ push: jest.fn(), replace: jest.fn() })),
-  routing: { locales: ['en', 'ru', 'de', 'es', 'fr', 'nl'] },
+  routing: { locales: ['en', 'ru', 'de', 'es', 'fr'] },
 }));
 
 jest.mock('@/widgets/NavLinks', () => ({

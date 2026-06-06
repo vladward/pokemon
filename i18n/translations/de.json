@@ -64,7 +64,10 @@
     "steel": "Stahl",
     "fairy": "Fee",
     "dark": "Unlicht",
-    "normal": "Normal"
+    "normal": "Normal",
+    "shadow": "Schatten",
+    "stellar": "Stellar",
+    "unknown": "Unbekannt"
   },
   "evolution_preview": {
     "title": "Entfessle dein verborgenes Potenzial!",
@@ -150,5 +153,28 @@
     "title": "Seite nicht gefunden",
     "description": "Dieser Pokémon scheint weggelaufen zu sein. Versuche, zur Startseite zurückzukehren.",
     "button": "Zur Startseite"
+  },
+  "pokemon_filters": {
+    "search_placeholder": "Pokémon suchen...",
+    "region": "Region",
+    "rarity": "Seltenheit",
+    "type": "Typ",
+    "generation": "Generation",
+    "evo_stage": "Evo-Stufe",
+    "clear": "Filter zurücksetzen"
+  },
+  "pokemon_card": {
+    "rarity": {
+      "common": "Häufig",
+      "uncommon": "Ungewöhnlich",
+      "rare": "Selten",
+      "legendary": "Legendär",
+      "mythical": "Mystisch"
+    },
+    "evolution_stage": {
+      "base": "Basis",
+      "stage1": "Stufe 1",
+      "stage2": "Stufe 2"
+    }
   }
 }

@@ -64,7 +64,10 @@
     "steel": "Сталь",
     "fairy": "Фея",
     "dark": "Темный",
-    "normal": "Обычный"
+    "normal": "Обычный",
+    "shadow": "Теневой",
+    "stellar": "Звёздный",
+    "unknown": "Неизвестный"
   },
   "evolution_preview": {
     "title": "Раскрой скрытый потенциал!",
@@ -150,5 +153,28 @@
     "title": "Страница не найдена",
     "description": "Похоже, этот покемон сбежал. Попробуй вернуться на главную страницу.",
     "button": "На главную"
+  },
+  "pokemon_filters": {
+    "search_placeholder": "Поиск покемона...",
+    "region": "Регион",
+    "rarity": "Редкость",
+    "type": "Тип",
+    "generation": "Поколение",
+    "evo_stage": "Эволюция",
+    "clear": "Сбросить фильтры"
+  },
+  "pokemon_card": {
+    "rarity": {
+      "common": "Обычный",
+      "uncommon": "Необычный",
+      "rare": "Редкий",
+      "legendary": "Легендарный",
+      "mythical": "Мистический"
+    },
+    "evolution_stage": {
+      "base": "Базовый",
+      "stage1": "Стадия 1",
+      "stage2": "Стадия 2"
+    }
   }
 }
