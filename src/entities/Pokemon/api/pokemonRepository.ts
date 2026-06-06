@@ -50,7 +50,23 @@ export async function findPokemon(query: PokemonSearchQuery) {
     db.pokemon.findMany({
       where,
       include: {
-        species: true,
+        pokemon_form: {
+          take: 1,
+          include: {
+            pokemon_form_name: {
+              where: { language: query.searchLocale ?? 'en' },
+              take: 1,
+            },
+          },
+        },
+        species: {
+          include: {
+            pokemon_species_name: {
+              where: { language: query.searchLocale ?? 'en' },
+              take: 1,
+            },
+          },
+        },
         pokemon_type: { include: { type: true }, orderBy: { slot: 'asc' } },
         pokemon_stat: true,
         pokemon_sprite: true,

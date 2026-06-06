@@ -11,3 +11,5 @@ export { POKEMON_TYPES } from './pokemonTypes';
 export type { PokemonType } from './pokemonTypes';
 export { REGION_TO_GENERATION, GENERATION_TO_REGION } from './regions';
 export { RARITY_OVERLAYS } from './rarityOverlays';
+export { SEARCH_LOCALES, toSearchLocale } from './searchLocales';
+export type { SearchLocale } from './searchLocales';

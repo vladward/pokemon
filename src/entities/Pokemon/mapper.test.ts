@@ -18,11 +18,13 @@ const makeRaw = (overrides: Partial<RawPokemon> = {}): RawPokemon => ({
     { stat_name: 'speed', base_stat: 45 },
   ],
   pokemon_type: [{ type: { name: 'grass' } }],
+  pokemon_form: [],
   species: {
     generation_id: 1,
     is_mythical: false,
     is_legendary: false,
     capture_rate: 200,
+    pokemon_species_name: [],
   },
   ...overrides,
 });
@@ -34,15 +36,41 @@ const makeSpecies = (
   is_mythical: false,
   is_legendary: false,
   capture_rate: 200,
+  pokemon_species_name: [],
   ...overrides,
 });
 
 describe('mapPokemon', () => {
   describe('scalar fields', () => {
-    it('maps id and name directly from the raw row', () => {
-      const result = mapPokemon(makeRaw({ id: 42, name: 'charizard' }));
-      expect(result.id).toBe(42);
-      expect(result.name).toBe('charizard');
+    it('maps id directly from the raw row', () => {
+      expect(mapPokemon(makeRaw({ id: 42 })).id).toBe(42);
+    });
+
+    it('prefers pokemon_form_name over pokemon_species_name', () => {
+      const result = mapPokemon(
+        makeRaw({
+          pokemon_form: [{ pokemon_form_name: [{ name: 'Пикачу Рок Звезда' }] }],
+          species: makeSpecies({ pokemon_species_name: [{ name: 'Пикачу' }] }),
+        }),
+      );
+      expect(result.name).toBe('Пикачу Рок Звезда');
+    });
+
+    it('uses pokemon_species_name when pokemon_form_name is empty', () => {
+      const result = mapPokemon(
+        makeRaw({ species: makeSpecies({ pokemon_species_name: [{ name: 'Bulbizarre' }] }) }),
+      );
+      expect(result.name).toBe('Bulbizarre');
+    });
+
+    it('falls back to raw.name when pokemon_species_name is empty', () => {
+      const result = mapPokemon(makeRaw({ name: 'bulbasaur' }));
+      expect(result.name).toBe('bulbasaur');
+    });
+
+    it('falls back to raw.name when species is null', () => {
+      const result = mapPokemon(makeRaw({ name: 'bulbasaur', species: null }));
+      expect(result.name).toBe('bulbasaur');
     });
 
     it('maps each pokemon_type entry into the types array', () => {

@@ -1,9 +1,14 @@
+import type { SearchLocale } from '../config/searchLocales';
+
+export type { SearchLocale };
+
 export type SortOrder = 'asc' | 'desc';
 export type SortBy = 'id' | 'name';
 export type EvolutionStage = 'base' | 'stage1' | 'stage2';
 
 export type PokemonSearchQuery = {
   search?: string;
+  searchLocale?: SearchLocale;
   types?: string[];
   generation?: number[];
   rarity?: string[];

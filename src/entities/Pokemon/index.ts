@@ -7,6 +7,7 @@ export { getRarityList } from './api/getRarityList';
 export { getGenerationList } from './api/getGenerationList';
 export type {
   PokemonSearchQuery,
+  SearchLocale,
   SortBy,
   SortOrder,
   PokemonListResult,
@@ -22,6 +23,8 @@ export {
   POKEMON_TYPES,
   REGION_TO_GENERATION,
   GENERATION_TO_REGION,
+  SEARCH_LOCALES,
+  toSearchLocale,
 } from './config';
 export type {
   PokemonColor,

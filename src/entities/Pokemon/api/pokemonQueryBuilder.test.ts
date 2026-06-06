@@ -25,7 +25,26 @@ describe('buildPokemonWhere', () => {
 
   describe('single active filter — exact AND clause', () => {
     it.each([
-      ['search', { search: 'char' }, { name: { contains: 'char' } }],
+      [
+        'search without locale defaults to en',
+        { search: 'char' },
+        {
+          OR: [
+            { species: { pokemon_species_name: { some: { language: 'en', name: { contains: 'char' } } } } },
+            { pokemon_form: { some: { pokemon_form_name: { some: { language: 'en', name: { contains: 'char' } } } } } },
+          ],
+        },
+      ],
+      [
+        'search with explicit locale uses that locale',
+        { search: 'bulbi', searchLocale: 'fr' as const },
+        {
+          OR: [
+            { species: { pokemon_species_name: { some: { language: 'fr', name: { contains: 'bulbi' } } } } },
+            { pokemon_form: { some: { pokemon_form_name: { some: { language: 'fr', name: { contains: 'bulbi' } } } } } },
+          ],
+        },
+      ],
       [
         'types',
         { types: ['fire'] },
@@ -134,7 +153,12 @@ describe('buildPokemonWhere', () => {
         generation: [1],
       }) as { AND: object[] };
 
-      expect(result.AND[0]).toEqual({ name: { contains: 'char' } });
+      expect(result.AND[0]).toEqual({
+        OR: [
+          { species: { pokemon_species_name: { some: { language: 'en', name: { contains: 'char' } } } } },
+          { pokemon_form: { some: { pokemon_form_name: { some: { language: 'en', name: { contains: 'char' } } } } } },
+        ],
+      });
       expect(result.AND[1]).toEqual({
         pokemon_type: { some: { type: { name: { in: ['fire'] } } } },
       });
