@@ -8,6 +8,7 @@ import {
   getGenerationList,
   getRarityList,
   getTypeList,
+  toSearchLocale,
   type SortBy,
   type SortOrder,
   type EvolutionStage,
@@ -36,12 +37,22 @@ function toArray(v: string | string[] | undefined): string[] | undefined {
   return Array.isArray(v) ? v : [v];
 }
 
-export default async function Page({ searchParams }: { searchParams: SearchParams }) {
-  const params = await searchParams;
+type PageParams = Promise<{ locale: string }>;
+
+export default async function Page({
+  params: pageParams,
+  searchParams,
+}: {
+  params: PageParams;
+  searchParams: SearchParams;
+}) {
+  const [{ locale }, params] = await Promise.all([pageParams, searchParams]);
+  const searchLocale = toSearchLocale(locale);
 
   const [pokemonList, locations, regions, types, rarities, generations] = await Promise.all([
     getPokemonList({
       search: params.search,
+      searchLocale,
       types: toArray(params.types),
       generation: [
         ...(toArray(params.generation)?.map(Number).filter(Boolean) ?? []),
