@@ -1,18 +1,37 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 import React from 'react';
 
 import { cn } from '@/shared/lib/utils/cn';
 
 import type { PokemonCard as PokemonCardType } from '../PokemonCard';
+import type { PokemonRarity } from '../config';
 
-import { rarityConfig, typeBadgeColors, getGradientClasses } from './pokemonCardShared';
+import {
+  rarityConfig,
+  typeBadgeColors,
+  getGradientClasses,
+  LIGHT_BG_TYPES,
+  LIGHT_BG_BADGE_TEXT,
+  STAR_PATH,
+} from './pokemonCardShared';
 import { usePokemonCardTilt } from './usePokemonCardTilt';
 
 interface Props {
   pokemon: PokemonCardType;
 }
+
+const RarityStars = ({ count, color }: { count: number; color: string }) => (
+  <div className="flex gap-0.5">
+    {Array.from({ length: count }).map((_, i) => (
+      <svg key={i} className="h-3.5 w-3.5" style={{ color }} viewBox="0 0 24 24" fill="currentColor">
+        <path d={STAR_PATH} />
+      </svg>
+    ))}
+  </div>
+);
 
 const MYTHICAL_STARS: Array<{ pos: React.CSSProperties; delay: string; size: string }> = [
   { pos: { top: '12%', left: '9%' }, delay: '0s', size: 'h-[3px] w-[3px]' },
@@ -88,12 +107,14 @@ export const PokemonCard = ({ pokemon }: Props) => {
   const isRare = pokemon.rarity === 'rare';
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === 'dark';
+  const tCard = useTranslations('pokemon_card');
+  const tTypes = useTranslations('elements');
 
-  const EVOLUTION_STAGE_LABEL: Record<string, string> = {
-    base: 'Basic',
-    stage1: 'Stage 1',
-    stage2: 'Stage 2',
-  };
+  const rarityLabel = (r: PokemonRarity) => tCard(`rarity.${r}` as `rarity.${PokemonRarity}`);
+  const stageLabel = (s: NonNullable<PokemonCardType['evolutionStage']>) =>
+    tCard(`evolution_stage.${s}` as `evolution_stage.${NonNullable<PokemonCardType['evolutionStage']>}`);
+  const typeLabel = (type: string) =>
+    tTypes(type as Parameters<typeof tTypes>[0]);
 
   const header = (
     <div className="relative z-10 flex items-start justify-between px-4 pt-4">
@@ -113,7 +134,7 @@ export const PokemonCard = ({ pokemon }: Props) => {
               key={type}
               className="rounded-full border border-white/30 bg-black/25 px-2 py-[3px] text-[11px] font-bold leading-none capitalize tracking-widest text-white backdrop-blur-sm"
             >
-              {type}
+              {typeLabel(type)}
             </span>
           ) : (
             <span
@@ -125,7 +146,7 @@ export const PokemonCard = ({ pokemon }: Props) => {
                 tc.text,
               )}
             >
-              {type}
+              {typeLabel(type)}
             </span>
           );
         })}
@@ -147,7 +168,7 @@ export const PokemonCard = ({ pokemon }: Props) => {
       </h3>
       {pokemon.evolutionStage && (
         <span className="text-[11px] font-semibold tracking-widest text-white/50 uppercase">
-          {EVOLUTION_STAGE_LABEL[pokemon.evolutionStage]}
+          {stageLabel(pokemon.evolutionStage)}
         </span>
       )}
     </div>
@@ -169,22 +190,13 @@ export const PokemonCard = ({ pokemon }: Props) => {
         )}
         style={isLegendary ? undefined : { color: rarity.color }}
       >
-        {rarity.label}
+        {rarityLabel(pokemon.rarity)}
       </span>
       {rarity.stars > 0 && (
-        <div className="flex gap-0.5">
-          {Array.from({ length: rarity.stars }).map((_, i) => (
-            <svg
-              key={i}
-              className="h-3.5 w-3.5"
-              style={isLegendary ? { color: 'rgba(255,255,255,0.8)' } : { color: rarity.color }}
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-          ))}
-        </div>
+        <RarityStars
+          count={rarity.stars}
+          color={isLegendary ? 'rgba(255,255,255,0.8)' : rarity.color}
+        />
       )}
     </div>
   );
@@ -432,7 +444,7 @@ export const PokemonCard = ({ pokemon }: Props) => {
                   key={type}
                   className="rounded-full border border-white/30 bg-black/25 px-2 py-[3px] text-[11px] font-bold leading-none capitalize tracking-widest text-white backdrop-blur-sm"
                 >
-                  {type}
+                  {typeLabel(type)}
                 </span>
               ))}
             </div>
@@ -444,7 +456,7 @@ export const PokemonCard = ({ pokemon }: Props) => {
             </h3>
             {pokemon.evolutionStage && (
               <span className="text-[11px] font-semibold tracking-widest text-white/50 uppercase">
-                {EVOLUTION_STAGE_LABEL[pokemon.evolutionStage]}
+                {stageLabel(pokemon.evolutionStage)}
               </span>
             )}
           </div>
@@ -478,22 +490,10 @@ export const PokemonCard = ({ pokemon }: Props) => {
               )}
               style={{ color: rarity.color }}
             >
-              {rarity.label}
+              {rarityLabel(pokemon.rarity)}
             </span>
             {rarity.stars > 0 && (
-              <div className="flex gap-0.5">
-                {Array.from({ length: rarity.stars }).map((_, i) => (
-                  <svg
-                    key={i}
-                    className="h-3.5 w-3.5"
-                    style={{ color: rarity.color }}
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                ))}
-              </div>
+              <RarityStars count={rarity.stars} color={rarity.color} />
             )}
           </div>
         </div>
@@ -501,16 +501,7 @@ export const PokemonCard = ({ pokemon }: Props) => {
     );
   }
 
-  const isLightBgType = [
-    'ice',
-    'water',
-    'dragon',
-    'normal',
-    'steel',
-    'electric',
-    'fairy',
-    'flying',
-  ].includes(pokemon.types[0]);
+  const isLightBgType = LIGHT_BG_TYPES.has(pokemon.types[0]);
 
   const pastelWhite = isRare
     ? 'from-white/20 via-white/10 to-transparent'
@@ -546,15 +537,6 @@ export const PokemonCard = ({ pokemon }: Props) => {
         ? '#334155'
         : rarity.color
     : rarity.color;
-  const lightBgBadgeText: Partial<Record<string, string>> = {
-    ice: 'text-cyan-900',
-    water: 'text-sky-900',
-    dragon: 'text-blue-900',
-    normal: 'text-stone-700',
-    steel: 'text-slate-700',
-    fairy: 'text-pink-800',
-    flying: 'text-indigo-800',
-  };
 
   return (
     <div
@@ -611,10 +593,10 @@ export const PokemonCard = ({ pokemon }: Props) => {
                     'rounded-full border px-2 py-[3px] text-[11px] font-bold leading-none capitalize tracking-widest backdrop-blur-sm',
                     tc.bg,
                     tc.border,
-                    lightBgBadgeText[type] ?? tc.text,
+                    LIGHT_BG_BADGE_TEXT[type] ?? tc.text,
                   )}
                 >
-                  {type}
+                  {typeLabel(type)}
                 </span>
               );
             })}
@@ -630,7 +612,7 @@ export const PokemonCard = ({ pokemon }: Props) => {
                 isLightBgType ? 'text-slate-400' : 'text-white/50',
               )}
             >
-              {EVOLUTION_STAGE_LABEL[pokemon.evolutionStage]}
+              {stageLabel(pokemon.evolutionStage)}
             </span>
           )}
         </div>
@@ -660,23 +642,9 @@ export const PokemonCard = ({ pokemon }: Props) => {
             )}
             style={{ color: accentColor }}
           >
-            {rarity.label}
+            {rarityLabel(pokemon.rarity)}
           </span>
-          {rarity.stars > 0 && (
-            <div className="flex gap-0.5">
-              {Array.from({ length: rarity.stars }).map((_, i) => (
-                <svg
-                  key={i}
-                  className="h-3.5 w-3.5"
-                  style={{ color: accentColor }}
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-              ))}
-            </div>
-          )}
+          {rarity.stars > 0 && <RarityStars count={rarity.stars} color={accentColor} />}
         </div>
       </div>
     </div>

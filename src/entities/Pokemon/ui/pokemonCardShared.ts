@@ -8,7 +8,6 @@ export const rarityConfig: Record<
     color: string;
     bg: string;
     glow: string;
-    label: string;
     stars: number;
   }
 > = {
@@ -18,7 +17,6 @@ export const rarityConfig: Record<
     color: 'rgba(255,255,255,0.9)',
     bg: 'bg-black/25',
     glow: '',
-    label: 'Common',
     stars: 1,
   },
   uncommon: {
@@ -27,7 +25,6 @@ export const rarityConfig: Record<
     color: '#7dd3fc',
     bg: 'bg-black/30',
     glow: 'shadow-[0_0_12px_rgba(94,234,212,0.4)]',
-    label: 'Uncommon',
     stars: 2,
   },
   rare: {
@@ -36,7 +33,6 @@ export const rarityConfig: Record<
     color: '#a78bfa',
     bg: 'bg-violet-900/25',
     glow: 'shadow-[0_0_16px_rgba(139,92,246,0.6)]',
-    label: 'Rare',
     stars: 3,
   },
   legendary: {
@@ -45,7 +41,6 @@ export const rarityConfig: Record<
     color: '#fef08a',
     bg: 'bg-yellow-400/20',
     glow: 'shadow-[0_0_16px_rgba(250,204,21,0.6)]',
-    label: 'Legendary',
     stars: 4,
   },
   mythical: {
@@ -54,7 +49,6 @@ export const rarityConfig: Record<
     color: '#f0abfc',
     bg: 'bg-fuchsia-500/20',
     glow: 'shadow-[0_0_18px_rgba(232,121,249,0.65)]',
-    label: 'Mythical',
     stars: 5,
   },
 };
@@ -121,6 +115,30 @@ export const typeNeonRgba: Record<string, string> = {
   steel: '148,163,184',
   fairy: '249,168,212',
 };
+
+export const LIGHT_BG_TYPES: ReadonlySet<string> = new Set([
+  'ice',
+  'water',
+  'dragon',
+  'normal',
+  'steel',
+  'electric',
+  'fairy',
+  'flying',
+]);
+
+export const LIGHT_BG_BADGE_TEXT: Partial<Record<string, string>> = {
+  ice: 'text-cyan-900',
+  water: 'text-sky-900',
+  dragon: 'text-blue-900',
+  normal: 'text-stone-700',
+  steel: 'text-slate-700',
+  fairy: 'text-pink-800',
+  flying: 'text-indigo-800',
+};
+
+export const STAR_PATH =
+  'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z';
 
 export function getGradientClasses(types: string[]): string {
   const primary = types[0] ?? 'normal';
