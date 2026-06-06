@@ -1,8 +1,10 @@
 'use client';
+import { useTranslations } from 'next-intl';
 import { XIcon } from 'lucide-react';
 import { useEffect } from 'react';
 
 import { PokemonSearch } from '@/features/PokemonSearch';
+import type { PokemonFilters } from '@/features/PokemonSearch/model';
 import { usePokemonFilters } from '@/features/PokemonSearch/model';
 
 import type { Generation, PokemonRarity } from '@/entities/Pokemon';
@@ -26,30 +28,37 @@ export const PokemonFilters = ({
   generations,
   onPendingChange,
 }: Props) => {
+  const tFilters = useTranslations('pokemon_filters');
+  const tCard = useTranslations('pokemon_card');
+  const tTypes = useTranslations('elements');
   const { filters, setFilters, resetFilters, isPending } = usePokemonFilters();
 
   useEffect(() => {
     onPendingChange?.(isPending);
   }, [isPending, onPendingChange]);
 
-  const evolutionStageOptions = [
-    { value: 'base', label: 'Base' },
-    { value: 'stage1', label: 'Stage 1' },
-    { value: 'stage2', label: 'Stage 2' },
-  ];
+  const evolutionStageOptions = (
+    ['base', 'stage1', 'stage2'] as const
+  ).map((s) => ({
+    value: s,
+    label: tCard(`evolution_stage.${s}` as `evolution_stage.${typeof s}`),
+  }));
 
-  const handleSetFilter = (
-    name: 'search' | 'region' | 'types' | 'rarity' | 'generation' | 'evolutionStage',
-    value: string,
-  ) => {
+  const handleSetFilter = (name: keyof PokemonFilters, value: string) => {
     setFilters({ [name]: value });
   };
 
   const selectRegions = regions
     .filter((r) => r.generationId !== null)
     .map(({ generationId, name }) => ({ value: generationId!.toString(), label: name }));
-  const typeOptions = types.map((t) => ({ value: t, label: t }));
-  const rarityOptions = rarities.map((r) => ({ value: r, label: r }));
+  const typeOptions = types.map((type) => ({
+    value: type,
+    label: tTypes(type as Parameters<typeof tTypes>[0]),
+  }));
+  const rarityOptions = rarities.map((r) => ({
+    value: r,
+    label: tCard(`rarity.${r}` as `rarity.${PokemonRarity}`),
+  }));
   const generationOptions = generations.map(({ id, name }) => ({
     value: id.toString(),
     label: name,
@@ -69,6 +78,7 @@ export const PokemonFilters = ({
       <PokemonSearch
         value={filters.search}
         onChange={(value) => handleSetFilter('search', value)}
+        disabled={isPending}
       />
 
       <div className="flex gap-3">
@@ -76,7 +86,7 @@ export const PokemonFilters = ({
           id="regionId"
           value={filters.region || ''}
           options={selectRegions}
-          placeholder="Region"
+          placeholder={tFilters('region')}
           onChange={(value) => handleSetFilter('region', value)}
           className="!h-full w-[110px] capitalize"
         />
@@ -85,7 +95,7 @@ export const PokemonFilters = ({
           id="rarityId"
           value={filters.rarity || ''}
           options={rarityOptions}
-          placeholder="Rarity"
+          placeholder={tFilters('rarity')}
           onChange={(value) => handleSetFilter('rarity', value)}
           className="!h-full w-[110px] capitalize"
         />
@@ -94,7 +104,7 @@ export const PokemonFilters = ({
           id="typeId"
           value={filters.types || ''}
           options={typeOptions}
-          placeholder="Type"
+          placeholder={tFilters('type')}
           onChange={(value) => handleSetFilter('types', value)}
           className="!h-full w-[110px] capitalize"
         />
@@ -103,7 +113,7 @@ export const PokemonFilters = ({
           id="generationId"
           value={filters.generation || ''}
           options={generationOptions}
-          placeholder="Generation"
+          placeholder={tFilters('generation')}
           onChange={(value) => handleSetFilter('generation', value)}
           className="!h-full w-[140px]"
         />
@@ -112,7 +122,7 @@ export const PokemonFilters = ({
           id="evolutionStageId"
           value={filters.evolutionStage || ''}
           options={evolutionStageOptions}
-          placeholder="Evo Stage"
+          placeholder={tFilters('evo_stage')}
           onChange={(value) => handleSetFilter('evolutionStage', value)}
           className="!h-full w-[120px]"
         />
@@ -121,7 +131,7 @@ export const PokemonFilters = ({
           <Button
             variant="ghost"
             onClick={resetFilters}
-            aria-label="Clear filters"
+            aria-label={tFilters('clear')}
             className=" p-0 text-destructive"
           >
             <XIcon

@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useTransition } from 'react';
 
-type PokemonFilters = {
+export type PokemonFilters = {
   search?: string;
   types?: string;
   region?: string;

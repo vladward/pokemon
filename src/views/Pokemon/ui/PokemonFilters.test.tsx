@@ -123,7 +123,7 @@ describe('PokemonFilters', () => {
 
     it('does not show the clear button when no filters are active', () => {
       render(<PokemonFilters {...defaultProps} />);
-      expect(screen.queryByRole('button', { name: 'Clear filters' })).not.toBeInTheDocument();
+      expect(screen.queryByRole('button', { name: 'clear' })).not.toBeInTheDocument();
     });
   });
 
@@ -138,7 +138,7 @@ describe('PokemonFilters', () => {
     ] as const)('shows clear button when %s is active', (_, activeFilters) => {
       setupHook({ filters: { ...emptyFilters, ...activeFilters } });
       render(<PokemonFilters {...defaultProps} />);
-      expect(screen.getByRole('button', { name: 'Clear filters' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'clear' })).toBeInTheDocument();
     });
   });
 
@@ -184,14 +184,14 @@ describe('PokemonFilters', () => {
     it('calls resetFilters when clear button is clicked', () => {
       setupHook({ filters: { ...emptyFilters, search: 'pikachu' } });
       render(<PokemonFilters {...defaultProps} />);
-      fireEvent.click(screen.getByRole('button', { name: 'Clear filters' }));
+      fireEvent.click(screen.getByRole('button', { name: 'clear' }));
       expect(mockResetFilters).toHaveBeenCalledTimes(1);
     });
 
     it('calls resetFilters exactly once per click', () => {
       setupHook({ filters: { ...emptyFilters, rarity: 'rare' } });
       render(<PokemonFilters {...defaultProps} />);
-      fireEvent.click(screen.getByRole('button', { name: 'Clear filters' }));
+      fireEvent.click(screen.getByRole('button', { name: 'clear' }));
       expect(mockResetFilters).toHaveBeenCalledTimes(1);
       expect(mockSetFilters).not.toHaveBeenCalled();
     });

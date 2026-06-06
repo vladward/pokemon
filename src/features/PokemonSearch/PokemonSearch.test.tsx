@@ -9,7 +9,7 @@ jest.mock('next/navigation', () => ({
 
 const mockUsePathname = usePathname as jest.Mock;
 
-const getInput = () => screen.getByPlaceholderText('Search Pokémon...');
+const getInput = () => screen.getByPlaceholderText('search_placeholder');
 
 describe('PokemonSearch', () => {
   beforeEach(() => {
@@ -78,12 +78,12 @@ describe('PokemonSearch', () => {
       );
 
       fireEvent.change(getInput(), { target: { value: 'pika' } });
-      act(() => jest.advanceTimersByTime(399));
+      act(() => jest.advanceTimersByTime(799));
 
       expect(onChange).not.toHaveBeenCalledWith('pika');
     });
 
-    it('calls onChange after 400ms delay', () => {
+    it('calls onChange after 800ms delay', () => {
       const onChange = jest.fn();
       render(
         <PokemonSearch
@@ -93,7 +93,7 @@ describe('PokemonSearch', () => {
       );
 
       fireEvent.change(getInput(), { target: { value: 'pika' } });
-      act(() => jest.advanceTimersByTime(400));
+      act(() => jest.advanceTimersByTime(800));
 
       expect(onChange).toHaveBeenCalledWith('pika');
     });
@@ -112,7 +112,7 @@ describe('PokemonSearch', () => {
       fireEvent.change(getInput(), { target: { value: 'pik' } });
       fireEvent.change(getInput(), { target: { value: 'pika' } });
 
-      act(() => jest.advanceTimersByTime(400));
+      act(() => jest.advanceTimersByTime(800));
 
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange).toHaveBeenCalledWith('pika');
@@ -128,14 +128,14 @@ describe('PokemonSearch', () => {
       );
 
       fireEvent.change(getInput(), { target: { value: 'pi' } });
-      act(() => jest.advanceTimersByTime(300));
+      act(() => jest.advanceTimersByTime(600));
 
       fireEvent.change(getInput(), { target: { value: 'pik' } });
-      act(() => jest.advanceTimersByTime(300));
+      act(() => jest.advanceTimersByTime(600));
 
       expect(onChange).not.toHaveBeenCalled();
 
-      act(() => jest.advanceTimersByTime(100));
+      act(() => jest.advanceTimersByTime(200));
       expect(onChange).toHaveBeenCalledWith('pik');
     });
   });
@@ -159,7 +159,7 @@ describe('PokemonSearch', () => {
           onChange={onChange}
         />,
       );
-      act(() => jest.advanceTimersByTime(400));
+      act(() => jest.advanceTimersByTime(800));
 
       expect(onChange).not.toHaveBeenCalledWith('');
     });
