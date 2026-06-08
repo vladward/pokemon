@@ -5,12 +5,18 @@ import { useTransition } from 'react';
 
 export type PokemonFilters = {
   search?: string;
-  types?: string;
-  region?: string;
-  rarity?: string;
-  generation?: string;
+  types?: string[];
+  region?: string[];
+  rarity?: string[];
+  generation?: string[];
   evolutionStage?: string;
 };
+
+function parseMulti(value: string | null): string[] | undefined {
+  if (!value) return undefined;
+  const arr = value.split(',').filter(Boolean);
+  return arr.length ? arr : undefined;
+}
 
 export function usePokemonFilters() {
   const router = useRouter();
@@ -19,28 +25,34 @@ export function usePokemonFilters() {
 
   const filters: PokemonFilters = {
     search: searchParams.get('search') || undefined,
-    types: searchParams.get('types') || undefined,
-    region: searchParams.get('region') || undefined,
-    rarity: searchParams.get('rarity') || undefined,
-    generation: searchParams.get('generation') || undefined,
+    types: parseMulti(searchParams.get('types')),
+    region: parseMulti(searchParams.get('region')),
+    rarity: parseMulti(searchParams.get('rarity')),
+    generation: parseMulti(searchParams.get('generation')),
     evolutionStage: searchParams.get('evolutionStage') || undefined,
   };
 
   const setFilters = (next: Partial<PokemonFilters>) => {
     const params = new URLSearchParams(searchParams.toString());
 
-    const set = (key: string, value?: string) => {
+    const setStr = (key: string, value?: string) => {
       if (value === undefined) return;
       if (value === '') params.delete(key);
       else params.set(key, value);
     };
 
-    set('search', next.search);
-    set('types', next.types);
-    set('region', next.region);
-    set('rarity', next.rarity);
-    set('generation', next.generation);
-    set('evolutionStage', next.evolutionStage);
+    const setArr = (key: string, value?: string[]) => {
+      if (value === undefined) return;
+      if (value.length === 0) params.delete(key);
+      else params.set(key, value.join(','));
+    };
+
+    setStr('search', next.search);
+    setArr('types', next.types);
+    setArr('region', next.region);
+    setArr('rarity', next.rarity);
+    setArr('generation', next.generation);
+    setStr('evolutionStage', next.evolutionStage);
 
     params.delete('page');
 

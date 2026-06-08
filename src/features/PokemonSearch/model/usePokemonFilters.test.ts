@@ -40,25 +40,45 @@ describe('usePokemonFilters', () => {
       });
     });
 
-    it('reads all filters from URL', () => {
+    it('parses single-value array filters from URL', () => {
+      mockUseSearchParams.mockReturnValue(
+        makeSearchParams({ types: 'fire', rarity: 'rare', region: '1', generation: '2' }),
+      );
+
+      const { result } = renderHook(() => usePokemonFilters());
+
+      expect(result.current.filters.types).toEqual(['fire']);
+      expect(result.current.filters.rarity).toEqual(['rare']);
+      expect(result.current.filters.region).toEqual(['1']);
+      expect(result.current.filters.generation).toEqual(['2']);
+    });
+
+    it('parses comma-separated values from URL', () => {
       mockUseSearchParams.mockReturnValue(
         makeSearchParams({
-          search: 'pikachu',
-          types: 'fire',
-          region: '1',
-          rarity: 'rare',
-          generation: '2',
-          evolutionStage: 'base',
+          types: 'fire,water',
+          rarity: 'rare,legendary',
+          region: '1,2',
+          generation: '1,3',
         }),
       );
 
       const { result } = renderHook(() => usePokemonFilters());
 
+      expect(result.current.filters.types).toEqual(['fire', 'water']);
+      expect(result.current.filters.rarity).toEqual(['rare', 'legendary']);
+      expect(result.current.filters.region).toEqual(['1', '2']);
+      expect(result.current.filters.generation).toEqual(['1', '3']);
+    });
+
+    it('reads scalar filters from URL', () => {
+      mockUseSearchParams.mockReturnValue(
+        makeSearchParams({ search: 'pikachu', evolutionStage: 'base' }),
+      );
+
+      const { result } = renderHook(() => usePokemonFilters());
+
       expect(result.current.filters.search).toBe('pikachu');
-      expect(result.current.filters.types).toBe('fire');
-      expect(result.current.filters.region).toBe('1');
-      expect(result.current.filters.rarity).toBe('rare');
-      expect(result.current.filters.generation).toBe('2');
       expect(result.current.filters.evolutionStage).toBe('base');
     });
   });
@@ -72,10 +92,31 @@ describe('usePokemonFilters', () => {
       expect(mockPush).toHaveBeenCalledWith('?search=bulbasaur');
     });
 
+    it('serializes array filters as comma-separated in URL', () => {
+      const { result } = renderHook(() => usePokemonFilters());
+
+      act(() =>
+        result.current.setFilters({
+          types: ['fire', 'water'],
+          rarity: ['rare', 'legendary'],
+          region: ['1', '2'],
+          generation: ['1', '3'],
+        }),
+      );
+
+      const params = getCalledParams();
+      expect(params.get('types')).toBe('fire,water');
+      expect(params.get('rarity')).toBe('rare,legendary');
+      expect(params.get('region')).toBe('1,2');
+      expect(params.get('generation')).toBe('1,3');
+    });
+
     it('sets multiple filters simultaneously', () => {
       const { result } = renderHook(() => usePokemonFilters());
 
-      act(() => result.current.setFilters({ search: 'char', types: 'fire', rarity: 'rare' }));
+      act(() =>
+        result.current.setFilters({ search: 'char', types: ['fire'], rarity: ['rare'] }),
+      );
 
       const params = getCalledParams();
       expect(params.get('search')).toBe('char');
@@ -83,11 +124,20 @@ describe('usePokemonFilters', () => {
       expect(params.get('rarity')).toBe('rare');
     });
 
-    it('empty string removes the param', () => {
+    it('empty array removes the param', () => {
       mockUseSearchParams.mockReturnValue(makeSearchParams({ types: 'fire' }));
       const { result } = renderHook(() => usePokemonFilters());
 
-      act(() => result.current.setFilters({ types: '' }));
+      act(() => result.current.setFilters({ types: [] }));
+
+      expect(mockPush).toHaveBeenCalledWith('?');
+    });
+
+    it('empty string removes scalar param', () => {
+      mockUseSearchParams.mockReturnValue(makeSearchParams({ evolutionStage: 'base' }));
+      const { result } = renderHook(() => usePokemonFilters());
+
+      act(() => result.current.setFilters({ evolutionStage: '' }));
 
       expect(mockPush).toHaveBeenCalledWith('?');
     });
@@ -96,7 +146,7 @@ describe('usePokemonFilters', () => {
       mockUseSearchParams.mockReturnValue(makeSearchParams({ types: 'fire', region: '1' }));
       const { result } = renderHook(() => usePokemonFilters());
 
-      act(() => result.current.setFilters({ search: undefined, region: '' }));
+      act(() => result.current.setFilters({ search: undefined, region: [] }));
 
       const params = getCalledParams();
       expect(params.get('types')).toBe('fire');
@@ -116,11 +166,11 @@ describe('usePokemonFilters', () => {
       expect(params.get('search')).toBe('char');
     });
 
-    it('resets page to 1 when a filter changes', () => {
+    it('resets page when a filter changes', () => {
       mockUseSearchParams.mockReturnValue(makeSearchParams({ page: '3', types: 'fire' }));
       const { result } = renderHook(() => usePokemonFilters());
 
-      act(() => result.current.setFilters({ rarity: 'rare' }));
+      act(() => result.current.setFilters({ rarity: ['rare'] }));
 
       const params = getCalledParams();
       expect(params.get('page')).toBeNull();
@@ -142,7 +192,7 @@ describe('usePokemonFilters', () => {
       );
       const { result } = renderHook(() => usePokemonFilters());
 
-      act(() => result.current.setFilters({ region: '' }));
+      act(() => result.current.setFilters({ region: [] }));
 
       const params = getCalledParams();
       expect(params.get('region')).toBeNull();

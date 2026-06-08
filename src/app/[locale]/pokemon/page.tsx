@@ -34,7 +34,8 @@ type SearchParams = Promise<{
 
 function toArray(v: string | string[] | undefined): string[] | undefined {
   if (!v) return undefined;
-  return Array.isArray(v) ? v : [v];
+  if (Array.isArray(v)) return v.flatMap((s) => s.split(',')).filter(Boolean);
+  return v.split(',').filter(Boolean);
 }
 
 type PageParams = Promise<{ locale: string }>;
@@ -56,7 +57,7 @@ export default async function Page({
       types: toArray(params.types),
       generation: [
         ...(toArray(params.generation)?.map(Number).filter(Boolean) ?? []),
-        ...(params.region ? [Number(params.region)] : []),
+        ...(toArray(params.region)?.map(Number).filter(Boolean) ?? []),
       ],
       rarity: toArray(params.rarity),
       colors: toArray(params.colors),
