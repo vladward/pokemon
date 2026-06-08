@@ -13,6 +13,14 @@ import type { Region } from '@/entities/Region';
 import { cn } from '@/shared/lib/utils/cn';
 import { Button } from '@/shared/ui';
 
+type DraftFilters = {
+  types?: string[];
+  rarity?: string[];
+  region?: string[];
+  generation?: string[];
+  evolutionStage?: string;
+};
+
 interface Props {
   open: boolean;
   onClose: () => void;
@@ -40,7 +48,7 @@ export const MobileFiltersModal = ({
   const tCard = useTranslations('pokemon_card');
   const tTypes = useTranslations('elements');
 
-  const [draft, setDraft] = useState<PokemonFilters>({});
+  const [draft, setDraft] = useState<DraftFilters>({});
   const filtersRef = useRef(filters);
   filtersRef.current = filters;
 
@@ -48,8 +56,17 @@ export const MobileFiltersModal = ({
     if (open) setDraft({ ...filtersRef.current });
   }, [open]);
 
-  const pick = (key: keyof PokemonFilters, value: string) =>
-    setDraft((prev) => ({ ...prev, [key]: value || undefined }));
+  const toggle = (key: keyof Omit<DraftFilters, 'evolutionStage'>, value: string) =>
+    setDraft((prev) => {
+      const current = prev[key] ?? [];
+      const next = current.includes(value)
+        ? current.filter((v) => v !== value)
+        : [...current, value];
+      return { ...prev, [key]: next.length ? next : undefined };
+    });
+
+  const pickEvo = (value: string) =>
+    setDraft((prev) => ({ ...prev, evolutionStage: value || undefined }));
 
   const regionOptions = regions
     .filter((r) => r.generationId !== null)
@@ -77,10 +94,10 @@ export const MobileFiltersModal = ({
 
   const handleApply = () => {
     onApply({
-      region: draft.region ?? '',
-      types: draft.types ?? '',
-      rarity: draft.rarity ?? '',
-      generation: draft.generation ?? '',
+      types: draft.types ?? [],
+      rarity: draft.rarity ?? [],
+      region: draft.region ?? [],
+      generation: draft.generation ?? [],
       evolutionStage: draft.evolutionStage ?? '',
     });
     onClose();
@@ -132,39 +149,46 @@ export const MobileFiltersModal = ({
 
           <div className="overflow-y-auto flex-1 px-5 py-4 space-y-6">
             <FilterSection
-              label={tFilters('region')}
-              options={regionOptions}
-              value={draft.region}
+              label={tFilters('type')}
+              options={typeOptions}
+              values={draft.types}
               allLabel={all}
-              onChange={(v) => pick('region', v)}
+              onToggle={(v) => toggle('types', v)}
+              onClear={() => setDraft((p) => ({ ...p, types: undefined }))}
             />
             <FilterSection
               label={tFilters('rarity')}
               options={rarityOptions}
-              value={draft.rarity}
+              values={draft.rarity}
               allLabel={all}
-              onChange={(v) => pick('rarity', v)}
+              onToggle={(v) => toggle('rarity', v)}
+              onClear={() => setDraft((p) => ({ ...p, rarity: undefined }))}
             />
             <FilterSection
-              label={tFilters('type')}
-              options={typeOptions}
-              value={draft.types}
+              label={tFilters('region')}
+              options={regionOptions}
+              values={draft.region}
               allLabel={all}
-              onChange={(v) => pick('types', v)}
+              onToggle={(v) => toggle('region', v)}
+              onClear={() => setDraft((p) => ({ ...p, region: undefined }))}
             />
             <FilterSection
               label={tFilters('generation')}
               options={generationOptions}
-              value={draft.generation}
+              values={draft.generation}
               allLabel={all}
-              onChange={(v) => pick('generation', v)}
+              onToggle={(v) => toggle('generation', v)}
+              onClear={() => setDraft((p) => ({ ...p, generation: undefined }))}
             />
             <FilterSection
               label={tFilters('evo_stage')}
               options={evolutionStageOptions}
-              value={draft.evolutionStage}
+              values={draft.evolutionStage ? [draft.evolutionStage] : undefined}
               allLabel={all}
-              onChange={(v) => pick('evolutionStage', v)}
+              onToggle={(v) =>
+                pickEvo(draft.evolutionStage === v ? '' : v)
+              }
+              onClear={() => setDraft((p) => ({ ...p, evolutionStage: undefined }))}
             />
           </div>
 
@@ -192,12 +216,20 @@ export const MobileFiltersModal = ({
 interface FilterSectionProps {
   label: string;
   options: { value: string; label: string }[];
-  value?: string;
+  values?: string[];
   allLabel: string;
-  onChange: (value: string) => void;
+  onToggle: (value: string) => void;
+  onClear: () => void;
 }
 
-const FilterSection = ({ label, options, value, allLabel, onChange }: FilterSectionProps) => (
+const FilterSection = ({
+  label,
+  options,
+  values,
+  allLabel,
+  onToggle,
+  onClear,
+}: FilterSectionProps) => (
   <div>
     <p className="text-xs font-semibold text-foreground/50 mb-3 uppercase tracking-widest text-left">
       {label}
@@ -205,15 +237,15 @@ const FilterSection = ({ label, options, value, allLabel, onChange }: FilterSect
     <div className="flex flex-wrap gap-2">
       <FilterChip
         label={allLabel}
-        active={!value}
-        onClick={() => onChange('')}
+        active={!values?.length}
+        onClick={onClear}
       />
       {options.map((opt) => (
         <FilterChip
           key={opt.value}
           label={opt.label}
-          active={value === opt.value}
-          onClick={() => onChange(opt.value)}
+          active={!!values?.includes(opt.value)}
+          onClick={() => onToggle(opt.value)}
         />
       ))}
     </div>
