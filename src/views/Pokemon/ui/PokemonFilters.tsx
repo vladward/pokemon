@@ -12,7 +12,7 @@ import type { Generation, PokemonRarity } from '@/entities/Pokemon';
 import type { Region } from '@/entities/Region';
 
 import { Button } from '@/shared/ui';
-import { CustomSelect } from '@/shared/ui/CustomSelect/CustomSelect';
+import { MultiSelect } from '@/shared/ui/MultiSelect/MultiSelect';
 
 import { MobileFiltersModal } from './MobileFiltersModal';
 
@@ -65,7 +65,7 @@ export const PokemonFilters = ({ regions, types, rarities, generations }: Props)
     filters.rarity?.length ||
     filters.search ||
     filters.generation?.length ||
-    filters.evolutionStage
+    filters.evolutionStage?.length
   );
 
   const activeModalFiltersCount = [
@@ -73,7 +73,7 @@ export const PokemonFilters = ({ regions, types, rarities, generations }: Props)
     filters.types?.length,
     filters.rarity?.length,
     filters.generation?.length,
-    filters.evolutionStage,
+    filters.evolutionStage?.length,
   ].filter(Boolean).length;
 
   return (
@@ -100,49 +100,49 @@ export const PokemonFilters = ({ regions, types, rarities, generations }: Props)
         </button>
 
         <div className="flex gap-3 mobile:hidden">
-          <CustomSelect
-            id="regionId"
-            value={filters.region?.[0] || ''}
+          <MultiSelect
+            values={filters.region ?? []}
             options={selectRegions}
             placeholder={tFilters('region')}
-            onChange={(value) => setFilters({ region: value ? [value] : [] })}
-            className="!h-full w-[130px] capitalize"
+            onChange={(value) => setFilters({ region: value })}
+            className="!h-full w-[130px]"
+            disabled={isPending}
           />
 
-          <CustomSelect
-            id="rarityId"
-            value={filters.rarity?.[0] || ''}
+          <MultiSelect
+            values={filters.rarity ?? []}
             options={rarityOptions}
             placeholder={tFilters('rarity')}
-            onChange={(value) => setFilters({ rarity: value ? [value] : [] })}
-            className="!h-full w-[130px] capitalize"
+            onChange={(value) => setFilters({ rarity: value })}
+            className="!h-full w-[130px]"
+            disabled={isPending}
           />
 
-          <CustomSelect
-            id="typeId"
-            value={filters.types?.[0] || ''}
+          <MultiSelect
+            values={filters.types ?? []}
             options={typeOptions}
             placeholder={tFilters('type')}
-            onChange={(value) => setFilters({ types: value ? [value] : [] })}
-            className="!h-full w-[130px] capitalize"
+            onChange={(value) => setFilters({ types: value })}
+            className="!h-full w-[130px]"
+            disabled={isPending}
           />
 
-          <CustomSelect
-            id="generationId"
-            value={filters.generation?.[0] || ''}
+          <MultiSelect
+            values={filters.generation ?? []}
             options={generationOptions}
             placeholder={tFilters('generation')}
-            onChange={(value) => setFilters({ generation: value ? [value] : [] })}
+            onChange={(value) => setFilters({ generation: value })}
             className="!h-full w-[130px]"
+            disabled={isPending}
           />
 
-          <CustomSelect
-            id="evolutionStageId"
-            value={filters.evolutionStage || ''}
+          <MultiSelect
+            values={filters.evolutionStage ?? []}
             options={evolutionStageOptions}
             placeholder={tFilters('evo_stage')}
             onChange={(value) => setFilters({ evolutionStage: value })}
             className="!h-full w-[130px]"
+            disabled={isPending}
           />
 
           {hasActiveFilters && (

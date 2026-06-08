@@ -18,7 +18,7 @@ type DraftFilters = {
   rarity?: string[];
   region?: string[];
   generation?: string[];
-  evolutionStage?: string;
+  evolutionStage?: string[];
 };
 
 interface Props {
@@ -56,7 +56,7 @@ export const MobileFiltersModal = ({
     if (open) setDraft({ ...filtersRef.current });
   }, [open]);
 
-  const toggle = (key: keyof Omit<DraftFilters, 'evolutionStage'>, value: string) =>
+  const toggle = (key: keyof DraftFilters, value: string) =>
     setDraft((prev) => {
       const current = prev[key] ?? [];
       const next = current.includes(value)
@@ -64,9 +64,6 @@ export const MobileFiltersModal = ({
         : [...current, value];
       return { ...prev, [key]: next.length ? next : undefined };
     });
-
-  const pickEvo = (value: string) =>
-    setDraft((prev) => ({ ...prev, evolutionStage: value || undefined }));
 
   const regionOptions = regions
     .filter((r) => r.generationId !== null)
@@ -98,7 +95,7 @@ export const MobileFiltersModal = ({
       rarity: draft.rarity ?? [],
       region: draft.region ?? [],
       generation: draft.generation ?? [],
-      evolutionStage: draft.evolutionStage ?? '',
+      evolutionStage: draft.evolutionStage ?? [],
     });
     onClose();
   };
@@ -183,11 +180,9 @@ export const MobileFiltersModal = ({
             <FilterSection
               label={tFilters('evo_stage')}
               options={evolutionStageOptions}
-              values={draft.evolutionStage ? [draft.evolutionStage] : undefined}
+              values={draft.evolutionStage}
               allLabel={all}
-              onToggle={(v) =>
-                pickEvo(draft.evolutionStage === v ? '' : v)
-              }
+              onToggle={(v) => toggle('evolutionStage', v)}
               onClear={() => setDraft((p) => ({ ...p, evolutionStage: undefined }))}
             />
           </div>
