@@ -30,8 +30,18 @@ describe('buildPokemonWhere', () => {
         { search: 'char' },
         {
           OR: [
-            { species: { pokemon_species_name: { some: { language: 'en', name: { contains: 'char' } } } } },
-            { pokemon_form: { some: { pokemon_form_name: { some: { language: 'en', name: { contains: 'char' } } } } } },
+            {
+              species: {
+                pokemon_species_name: { some: { language: 'en', name: { contains: 'char' } } },
+              },
+            },
+            {
+              pokemon_form: {
+                some: {
+                  pokemon_form_name: { some: { language: 'en', name: { contains: 'char' } } },
+                },
+              },
+            },
           ],
         },
       ],
@@ -40,8 +50,18 @@ describe('buildPokemonWhere', () => {
         { search: 'bulbi', searchLocale: 'fr' as const },
         {
           OR: [
-            { species: { pokemon_species_name: { some: { language: 'fr', name: { contains: 'bulbi' } } } } },
-            { pokemon_form: { some: { pokemon_form_name: { some: { language: 'fr', name: { contains: 'bulbi' } } } } } },
+            {
+              species: {
+                pokemon_species_name: { some: { language: 'fr', name: { contains: 'bulbi' } } },
+              },
+            },
+            {
+              pokemon_form: {
+                some: {
+                  pokemon_form_name: { some: { language: 'fr', name: { contains: 'bulbi' } } },
+                },
+              },
+            },
           ],
         },
       ],
@@ -155,8 +175,16 @@ describe('buildPokemonWhere', () => {
 
       expect(result.AND[0]).toEqual({
         OR: [
-          { species: { pokemon_species_name: { some: { language: 'en', name: { contains: 'char' } } } } },
-          { pokemon_form: { some: { pokemon_form_name: { some: { language: 'en', name: { contains: 'char' } } } } } },
+          {
+            species: {
+              pokemon_species_name: { some: { language: 'en', name: { contains: 'char' } } },
+            },
+          },
+          {
+            pokemon_form: {
+              some: { pokemon_form_name: { some: { language: 'en', name: { contains: 'char' } } } },
+            },
+          },
         ],
       });
       expect(result.AND[1]).toEqual({

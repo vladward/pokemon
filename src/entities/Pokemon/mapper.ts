@@ -38,9 +38,10 @@ export function mapPokemon(
 
   return {
     id: raw.id,
-    name: raw.pokemon_form[0]?.pokemon_form_name[0]?.name
-      ?? raw.species?.pokemon_species_name[0]?.name
-      ?? raw.name,
+    name:
+      raw.pokemon_form[0]?.pokemon_form_name[0]?.name ??
+      raw.species?.pokemon_species_name[0]?.name ??
+      raw.name,
     types: raw.pokemon_type.map((t) => t.type.name),
     sprite,
     spriteArtwork,

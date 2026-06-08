@@ -17,7 +17,5 @@ export type SearchLocale = (typeof SEARCH_LOCALES)[number];
 
 // Locales not in SEARCH_LOCALES fall back to 'en'.
 export function toSearchLocale(locale: string): SearchLocale {
-  return (SEARCH_LOCALES as readonly string[]).includes(locale)
-    ? (locale as SearchLocale)
-    : 'en';
+  return (SEARCH_LOCALES as readonly string[]).includes(locale) ? (locale as SearchLocale) : 'en';
 }
