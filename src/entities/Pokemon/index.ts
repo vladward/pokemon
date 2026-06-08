@@ -1,5 +1,5 @@
 export type { PokemonCard } from './PokemonCard';
-export { PokemonCard as PokemonCardComponent } from './ui/PokemonCard.v10';
+export { PokemonCard as PokemonCardComponent } from './ui/PokemonCard';
 export { getPokemonCardStyle } from './lib';
 export { getPokemonList } from './api/getPokemonList';
 export { getTypeList } from './api/getTypeList';

@@ -4,7 +4,7 @@ import { Suspense, useState } from 'react';
 
 import type { Location } from '@/entities/Location';
 import type { Generation, PokemonListResult, PokemonRarity } from '@/entities/Pokemon';
-import { PokemonCard } from '@/entities/Pokemon/ui/PokemonCard.v10';
+import { PokemonCard } from '@/entities/Pokemon/ui/PokemonCard';
 import type { Region } from '@/entities/Region';
 
 import { cn } from '@/shared/lib/utils/cn';

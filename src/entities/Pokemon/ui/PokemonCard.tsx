@@ -3,11 +3,12 @@
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 import React from 'react';
+import { useState, useEffect } from 'react';
 
 import { cn } from '@/shared/lib/utils/cn';
 
-import type { PokemonCard as PokemonCardType } from '../PokemonCard';
 import type { PokemonRarity } from '../config';
+import type { PokemonCard as PokemonCardType } from '../PokemonCard';
 
 import {
   rarityConfig,
@@ -26,7 +27,13 @@ interface Props {
 const RarityStars = ({ count, color }: { count: number; color: string }) => (
   <div className="flex gap-0.5">
     {Array.from({ length: count }).map((_, i) => (
-      <svg key={i} className="h-3.5 w-3.5" style={{ color }} viewBox="0 0 24 24" fill="currentColor">
+      <svg
+        key={i}
+        className="h-3.5 w-3.5"
+        style={{ color }}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
         <path d={STAR_PATH} />
       </svg>
     ))}
@@ -105,16 +112,21 @@ export const PokemonCard = ({ pokemon }: Props) => {
   const isMythical = pokemon.rarity === 'mythical';
   const isUncommon = pokemon.rarity === 'uncommon';
   const isRare = pokemon.rarity === 'rare';
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === 'dark';
+  const isDark = mounted && resolvedTheme === 'dark';
   const tCard = useTranslations('pokemon_card');
   const tTypes = useTranslations('elements');
 
   const rarityLabel = (r: PokemonRarity) => tCard(`rarity.${r}` as `rarity.${PokemonRarity}`);
   const stageLabel = (s: NonNullable<PokemonCardType['evolutionStage']>) =>
-    tCard(`evolution_stage.${s}` as `evolution_stage.${NonNullable<PokemonCardType['evolutionStage']>}`);
-  const typeLabel = (type: string) =>
-    tTypes(type as Parameters<typeof tTypes>[0]);
+    tCard(
+      `evolution_stage.${s}` as `evolution_stage.${NonNullable<PokemonCardType['evolutionStage']>}`,
+    );
+  const typeLabel = (type: string) => tTypes(type as Parameters<typeof tTypes>[0]);
 
   const header = (
     <div className="relative z-10 flex items-start justify-between px-4 pt-4">
@@ -493,7 +505,10 @@ export const PokemonCard = ({ pokemon }: Props) => {
               {rarityLabel(pokemon.rarity)}
             </span>
             {rarity.stars > 0 && (
-              <RarityStars count={rarity.stars} color={rarity.color} />
+              <RarityStars
+                count={rarity.stars}
+                color={rarity.color}
+              />
             )}
           </div>
         </div>
@@ -644,7 +659,12 @@ export const PokemonCard = ({ pokemon }: Props) => {
           >
             {rarityLabel(pokemon.rarity)}
           </span>
-          {rarity.stars > 0 && <RarityStars count={rarity.stars} color={accentColor} />}
+          {rarity.stars > 0 && (
+            <RarityStars
+              count={rarity.stars}
+              color={accentColor}
+            />
+          )}
         </div>
       </div>
     </div>

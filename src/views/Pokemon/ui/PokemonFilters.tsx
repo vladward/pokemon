@@ -1,10 +1,10 @@
 'use client';
-import { useTranslations } from 'next-intl';
 import { XIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 
 import { PokemonSearch } from '@/features/PokemonSearch';
-import type { PokemonFilters } from '@/features/PokemonSearch/model';
+import type { PokemonFilters as PokemonFiltersModel } from '@/features/PokemonSearch/model';
 import { usePokemonFilters } from '@/features/PokemonSearch/model';
 
 import type { Generation, PokemonRarity } from '@/entities/Pokemon';
@@ -37,14 +37,12 @@ export const PokemonFilters = ({
     onPendingChange?.(isPending);
   }, [isPending, onPendingChange]);
 
-  const evolutionStageOptions = (
-    ['base', 'stage1', 'stage2'] as const
-  ).map((s) => ({
+  const evolutionStageOptions = (['base', 'stage1', 'stage2'] as const).map((s) => ({
     value: s,
     label: tCard(`evolution_stage.${s}` as `evolution_stage.${typeof s}`),
   }));
 
-  const handleSetFilter = (name: keyof PokemonFilters, value: string) => {
+  const handleSetFilter = (name: keyof PokemonFiltersModel, value: string) => {
     setFilters({ [name]: value });
   };
 
