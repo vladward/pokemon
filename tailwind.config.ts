@@ -1,3 +1,6 @@
+import plugin from 'tailwindcss/plugin';
+import tailwindcssAnimate from 'tailwindcss-animate';
+
 export default {
   darkMode: ['class'],
   content: [
@@ -17,6 +20,9 @@ export default {
       mobile: { max: '576px' },
     },
     extend: {
+      gridTemplateColumns: {
+        pokemon: 'repeat(auto-fill, minmax(240px, 1fr))',
+      },
       fontFamily: {
         primary: ['var(--font-primary)', 'sans-serif'],
       },
@@ -192,14 +198,14 @@ export default {
     },
   },
   plugins: [
-    require('tailwindcss-animate'),
-    function ({ addUtilities }) {
+    tailwindcssAnimate,
+    plugin(function ({ addUtilities }) {
       addUtilities({
         '.shadow-pokemon': {
           textShadow:
             '-1px -1px 0 #2a75bb, 1px -1px 0 #2a75bb, -1px 1px 0 #2a75bb, 1px 1px 0 #2a75bb',
         },
       });
-    },
+    }),
   ],
 };
