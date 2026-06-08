@@ -40,8 +40,10 @@ async function getEvolutionStageSpeciesIds(stage: EvolutionStage): Promise<numbe
 export async function findPokemon(query: PokemonSearchQuery) {
   const page = query.page ?? 1;
 
-  const evolutionSpeciesIds = query.evolutionStage
-    ? await getEvolutionStageSpeciesIds(query.evolutionStage)
+  const evolutionSpeciesIds = query.evolutionStage?.length
+    ? (await Promise.all(query.evolutionStage.map(getEvolutionStageSpeciesIds)))
+        .flat()
+        .filter((v, i, a) => a.indexOf(v) === i)
     : undefined;
 
   const where = buildPokemonWhere(query, evolutionSpeciesIds);

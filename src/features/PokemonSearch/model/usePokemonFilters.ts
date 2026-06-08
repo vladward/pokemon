@@ -9,7 +9,7 @@ export type PokemonFilters = {
   region?: string[];
   rarity?: string[];
   generation?: string[];
-  evolutionStage?: string;
+  evolutionStage?: string[];
 };
 
 function parseMulti(value: string | null): string[] | undefined {
@@ -29,7 +29,7 @@ export function usePokemonFilters() {
     region: parseMulti(searchParams.get('region')),
     rarity: parseMulti(searchParams.get('rarity')),
     generation: parseMulti(searchParams.get('generation')),
-    evolutionStage: searchParams.get('evolutionStage') || undefined,
+    evolutionStage: parseMulti(searchParams.get('evolutionStage')),
   };
 
   const setFilters = (next: Partial<PokemonFilters>) => {
@@ -52,7 +52,7 @@ export function usePokemonFilters() {
     setArr('region', next.region);
     setArr('rarity', next.rarity);
     setArr('generation', next.generation);
-    setStr('evolutionStage', next.evolutionStage);
+    setArr('evolutionStage', next.evolutionStage);
 
     params.delete('page');
 

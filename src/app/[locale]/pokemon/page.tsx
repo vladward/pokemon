@@ -65,7 +65,7 @@ export default async function Page({
       shape: toArray(params.shape),
       isBaby: params.isBaby === 'true' ? true : undefined,
       locationIds: toArray(params.locationIds)?.map(Number).filter(Boolean),
-      evolutionStage: params.evolutionStage as EvolutionStage | undefined,
+      evolutionStage: toArray(params.evolutionStage) as EvolutionStage[] | undefined,
       page: params.page ? Number(params.page) : 1,
       sortBy: (params.sortBy as SortBy) ?? 'id',
       sortOrder: (params.sortOrder as SortOrder) ?? 'asc',

@@ -17,7 +17,7 @@ export type PokemonSearchQuery = {
   shape?: string[];
   isBaby?: boolean;
   locationIds?: number[];
-  evolutionStage?: EvolutionStage;
+  evolutionStage?: EvolutionStage[];
   page?: number;
   sortBy?: SortBy;
   sortOrder?: SortOrder;
