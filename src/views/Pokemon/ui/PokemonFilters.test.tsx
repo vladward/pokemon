@@ -85,10 +85,10 @@ const mockUsePokemonFilters = usePokemonFilters as jest.Mock;
 
 const emptyFilters = {
   search: undefined,
-  types: undefined,
-  region: undefined,
-  rarity: undefined,
-  generation: undefined,
+  types: undefined as string[] | undefined,
+  region: undefined as string[] | undefined,
+  rarity: undefined as string[] | undefined,
+  generation: undefined as string[] | undefined,
   evolutionStage: undefined,
 };
 
@@ -139,12 +139,12 @@ describe('PokemonFilters', () => {
   describe('clear button visibility', () => {
     it.each([
       ['search', { search: 'pikachu' }],
-      ['region', { region: '1' }],
-      ['types', { types: 'fire' }],
-      ['rarity', { rarity: 'rare' }],
-      ['generation', { generation: '1' }],
+      ['region', { region: ['1'] }],
+      ['types', { types: ['fire'] }],
+      ['rarity', { rarity: ['rare'] }],
+      ['generation', { generation: ['1'] }],
       ['evolutionStage', { evolutionStage: 'base' }],
-    ] as const)('shows clear button when %s is active', (_, activeFilters) => {
+    ])('shows clear button when %s is active', (_, activeFilters) => {
       setupHook({ filters: { ...emptyFilters, ...activeFilters } });
       render(<PokemonFilters {...defaultProps} />);
       expect(screen.getByRole('button', { name: 'clear' })).toBeInTheDocument();
@@ -158,28 +158,49 @@ describe('PokemonFilters', () => {
       expect(mockSetFilters).toHaveBeenCalledWith({ search: 'bulbasaur' });
     });
 
-    it('calls setFilters with region value', () => {
+    it('calls setFilters with region as array', () => {
       render(<PokemonFilters {...defaultProps} />);
       fireEvent.change(screen.getByTestId('regionId'), { target: { value: '1' } });
-      expect(mockSetFilters).toHaveBeenCalledWith({ region: '1' });
+      expect(mockSetFilters).toHaveBeenCalledWith({ region: ['1'] });
     });
 
-    it('calls setFilters with rarity value', () => {
+    it('calls setFilters with empty region array when deselected', () => {
+      setupHook({ filters: { ...emptyFilters, region: ['1'] } });
+      render(<PokemonFilters {...defaultProps} />);
+      fireEvent.change(screen.getByTestId('regionId'), { target: { value: '' } });
+      expect(mockSetFilters).toHaveBeenCalledWith({ region: [] });
+    });
+
+    it('calls setFilters with rarity as array', () => {
       render(<PokemonFilters {...defaultProps} />);
       fireEvent.change(screen.getByTestId('rarityId'), { target: { value: 'rare' } });
-      expect(mockSetFilters).toHaveBeenCalledWith({ rarity: 'rare' });
+      expect(mockSetFilters).toHaveBeenCalledWith({ rarity: ['rare'] });
     });
 
-    it('calls setFilters with type value', () => {
+    it('calls setFilters with empty rarity array when deselected', () => {
+      setupHook({ filters: { ...emptyFilters, rarity: ['rare'] } });
+      render(<PokemonFilters {...defaultProps} />);
+      fireEvent.change(screen.getByTestId('rarityId'), { target: { value: '' } });
+      expect(mockSetFilters).toHaveBeenCalledWith({ rarity: [] });
+    });
+
+    it('calls setFilters with type as array', () => {
       render(<PokemonFilters {...defaultProps} />);
       fireEvent.change(screen.getByTestId('typeId'), { target: { value: 'fire' } });
-      expect(mockSetFilters).toHaveBeenCalledWith({ types: 'fire' });
+      expect(mockSetFilters).toHaveBeenCalledWith({ types: ['fire'] });
     });
 
-    it('calls setFilters with generation value', () => {
+    it('calls setFilters with empty types array when deselected', () => {
+      setupHook({ filters: { ...emptyFilters, types: ['fire'] } });
+      render(<PokemonFilters {...defaultProps} />);
+      fireEvent.change(screen.getByTestId('typeId'), { target: { value: '' } });
+      expect(mockSetFilters).toHaveBeenCalledWith({ types: [] });
+    });
+
+    it('calls setFilters with generation as array', () => {
       render(<PokemonFilters {...defaultProps} />);
       fireEvent.change(screen.getByTestId('generationId'), { target: { value: '1' } });
-      expect(mockSetFilters).toHaveBeenCalledWith({ generation: '1' });
+      expect(mockSetFilters).toHaveBeenCalledWith({ generation: ['1'] });
     });
 
     it('calls setFilters with evolutionStage value', () => {
@@ -198,7 +219,7 @@ describe('PokemonFilters', () => {
     });
 
     it('calls resetFilters exactly once per click', () => {
-      setupHook({ filters: { ...emptyFilters, rarity: 'rare' } });
+      setupHook({ filters: { ...emptyFilters, rarity: ['rare'] } });
       render(<PokemonFilters {...defaultProps} />);
       fireEvent.click(screen.getByRole('button', { name: 'clear' }));
       expect(mockResetFilters).toHaveBeenCalledTimes(1);

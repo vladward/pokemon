@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import { usePending } from '@/views/Pokemon/lib/PendingContext';
 
 import { PokemonSearch } from '@/features/PokemonSearch';
-import type { PokemonFilters as PokemonFiltersModel } from '@/features/PokemonSearch/model';
 import { usePokemonFilters } from '@/features/PokemonSearch/model';
 
 import type { Generation, PokemonRarity } from '@/entities/Pokemon';
@@ -41,40 +40,39 @@ export const PokemonFilters = ({ regions, types, rarities, generations }: Props)
     label: tCard(`evolution_stage.${s}` as `evolution_stage.${typeof s}`),
   }));
 
-  const handleSetFilter = (name: keyof PokemonFiltersModel, value: string) => {
-    setFilters({ [name]: value });
-  };
-
   const selectRegions = regions
     .filter((r) => r.generationId !== null)
     .map(({ generationId, name }) => ({ value: generationId!.toString(), label: name }));
+
   const typeOptions = types.map((type) => ({
     value: type,
     label: tTypes(type as Parameters<typeof tTypes>[0]),
   }));
+
   const rarityOptions = rarities.map((r) => ({
     value: r,
     label: tCard(`rarity.${r}` as `rarity.${PokemonRarity}`),
   }));
+
   const generationOptions = generations.map(({ id, name }) => ({
     value: id.toString(),
     label: name,
   }));
 
   const hasActiveFilters = !!(
-    filters.region ||
-    filters.types ||
-    filters.rarity ||
+    filters.region?.length ||
+    filters.types?.length ||
+    filters.rarity?.length ||
     filters.search ||
-    filters.generation ||
+    filters.generation?.length ||
     filters.evolutionStage
   );
 
   const activeModalFiltersCount = [
-    filters.region,
-    filters.types,
-    filters.rarity,
-    filters.generation,
+    filters.region?.length,
+    filters.types?.length,
+    filters.rarity?.length,
+    filters.generation?.length,
     filters.evolutionStage,
   ].filter(Boolean).length;
 
@@ -83,7 +81,7 @@ export const PokemonFilters = ({ regions, types, rarities, generations }: Props)
       <div className="flex items-stretch justify-between gap-3 text-center h-[40px] py-[20px] box-content">
         <PokemonSearch
           value={filters.search}
-          onChange={(value) => handleSetFilter('search', value)}
+          onChange={(value) => setFilters({ search: value })}
           disabled={isPending}
         />
 
@@ -104,37 +102,37 @@ export const PokemonFilters = ({ regions, types, rarities, generations }: Props)
         <div className="flex gap-3 mobile:hidden">
           <CustomSelect
             id="regionId"
-            value={filters.region || ''}
+            value={filters.region?.[0] || ''}
             options={selectRegions}
             placeholder={tFilters('region')}
-            onChange={(value) => handleSetFilter('region', value)}
+            onChange={(value) => setFilters({ region: value ? [value] : [] })}
             className="!h-full w-[130px] capitalize"
           />
 
           <CustomSelect
             id="rarityId"
-            value={filters.rarity || ''}
+            value={filters.rarity?.[0] || ''}
             options={rarityOptions}
             placeholder={tFilters('rarity')}
-            onChange={(value) => handleSetFilter('rarity', value)}
+            onChange={(value) => setFilters({ rarity: value ? [value] : [] })}
             className="!h-full w-[130px] capitalize"
           />
 
           <CustomSelect
             id="typeId"
-            value={filters.types || ''}
+            value={filters.types?.[0] || ''}
             options={typeOptions}
             placeholder={tFilters('type')}
-            onChange={(value) => handleSetFilter('types', value)}
+            onChange={(value) => setFilters({ types: value ? [value] : [] })}
             className="!h-full w-[130px] capitalize"
           />
 
           <CustomSelect
             id="generationId"
-            value={filters.generation || ''}
+            value={filters.generation?.[0] || ''}
             options={generationOptions}
             placeholder={tFilters('generation')}
-            onChange={(value) => handleSetFilter('generation', value)}
+            onChange={(value) => setFilters({ generation: value ? [value] : [] })}
             className="!h-full w-[130px]"
           />
 
@@ -143,7 +141,7 @@ export const PokemonFilters = ({ regions, types, rarities, generations }: Props)
             value={filters.evolutionStage || ''}
             options={evolutionStageOptions}
             placeholder={tFilters('evo_stage')}
-            onChange={(value) => handleSetFilter('evolutionStage', value)}
+            onChange={(value) => setFilters({ evolutionStage: value })}
             className="!h-full w-[130px]"
           />
 
