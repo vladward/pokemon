@@ -79,7 +79,7 @@ describe('usePokemonFilters', () => {
       const { result } = renderHook(() => usePokemonFilters());
 
       expect(result.current.filters.search).toBe('pikachu');
-      expect(result.current.filters.evolutionStage).toBe('base');
+      expect(result.current.filters.evolutionStage).toEqual(['base']);
     });
   });
 
@@ -133,11 +133,11 @@ describe('usePokemonFilters', () => {
       expect(mockPush).toHaveBeenCalledWith('?');
     });
 
-    it('empty string removes scalar param', () => {
+    it('empty array removes evolutionStage param', () => {
       mockUseSearchParams.mockReturnValue(makeSearchParams({ evolutionStage: 'base' }));
       const { result } = renderHook(() => usePokemonFilters());
 
-      act(() => result.current.setFilters({ evolutionStage: '' }));
+      act(() => result.current.setFilters({ evolutionStage: [] }));
 
       expect(mockPush).toHaveBeenCalledWith('?');
     });
@@ -178,10 +178,10 @@ describe('usePokemonFilters', () => {
       expect(params.get('rarity')).toBe('rare');
     });
 
-    it('sets evolutionStage', () => {
+    it('sets evolutionStage as array', () => {
       const { result } = renderHook(() => usePokemonFilters());
 
-      act(() => result.current.setFilters({ evolutionStage: 'stage1' }));
+      act(() => result.current.setFilters({ evolutionStage: ['stage1'] }));
 
       expect(mockPush).toHaveBeenCalledWith('?evolutionStage=stage1');
     });

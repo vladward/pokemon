@@ -33,36 +33,37 @@ jest.mock('@/features/PokemonSearch', () => ({
   ),
 }));
 
-jest.mock('@/shared/ui/CustomSelect/CustomSelect', () => ({
-  CustomSelect: ({
-    id,
+jest.mock('@/shared/ui/MultiSelect/MultiSelect', () => ({
+  MultiSelect: ({
+    values,
     onChange,
     placeholder,
     options,
-    value,
   }: {
-    id: string;
-    onChange: (v: string) => void;
+    values: string[];
+    onChange: (values: string[]) => void;
     placeholder: string;
     options: { value: string; label: string }[];
-    value: string;
+    disabled?: boolean;
+    className?: string;
   }) => (
-    <select
-      data-testid={id}
-      aria-label={placeholder}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-    >
-      <option value="">--</option>
+    <div data-testid={`multiselect-${placeholder}`}>
       {options.map((o) => (
-        <option
+        <button
           key={o.value}
-          value={o.value}
+          data-testid={`${placeholder}-${o.value}`}
+          onClick={() =>
+            onChange(
+              values.includes(o.value)
+                ? values.filter((v) => v !== o.value)
+                : [...values, o.value],
+            )
+          }
         >
           {o.label}
-        </option>
+        </button>
       ))}
-    </select>
+    </div>
   ),
 }));
 
@@ -123,11 +124,11 @@ describe('PokemonFilters', () => {
 
     it('renders all five filter selects', () => {
       render(<PokemonFilters {...defaultProps} />);
-      expect(screen.getByTestId('regionId')).toBeInTheDocument();
-      expect(screen.getByTestId('rarityId')).toBeInTheDocument();
-      expect(screen.getByTestId('typeId')).toBeInTheDocument();
-      expect(screen.getByTestId('generationId')).toBeInTheDocument();
-      expect(screen.getByTestId('evolutionStageId')).toBeInTheDocument();
+      expect(screen.getByTestId('multiselect-region')).toBeInTheDocument();
+      expect(screen.getByTestId('multiselect-rarity')).toBeInTheDocument();
+      expect(screen.getByTestId('multiselect-type')).toBeInTheDocument();
+      expect(screen.getByTestId('multiselect-generation')).toBeInTheDocument();
+      expect(screen.getByTestId('multiselect-evo_stage')).toBeInTheDocument();
     });
 
     it('does not show the clear button when no filters are active', () => {
@@ -143,7 +144,7 @@ describe('PokemonFilters', () => {
       ['types', { types: ['fire'] }],
       ['rarity', { rarity: ['rare'] }],
       ['generation', { generation: ['1'] }],
-      ['evolutionStage', { evolutionStage: 'base' }],
+      ['evolutionStage', { evolutionStage: ['base'] }],
     ])('shows clear button when %s is active', (_, activeFilters) => {
       setupHook({ filters: { ...emptyFilters, ...activeFilters } });
       render(<PokemonFilters {...defaultProps} />);
@@ -160,53 +161,53 @@ describe('PokemonFilters', () => {
 
     it('calls setFilters with region as array', () => {
       render(<PokemonFilters {...defaultProps} />);
-      fireEvent.change(screen.getByTestId('regionId'), { target: { value: '1' } });
+      fireEvent.click(screen.getByTestId('region-1'));
       expect(mockSetFilters).toHaveBeenCalledWith({ region: ['1'] });
     });
 
     it('calls setFilters with empty region array when deselected', () => {
       setupHook({ filters: { ...emptyFilters, region: ['1'] } });
       render(<PokemonFilters {...defaultProps} />);
-      fireEvent.change(screen.getByTestId('regionId'), { target: { value: '' } });
+      fireEvent.click(screen.getByTestId('region-1'));
       expect(mockSetFilters).toHaveBeenCalledWith({ region: [] });
     });
 
     it('calls setFilters with rarity as array', () => {
       render(<PokemonFilters {...defaultProps} />);
-      fireEvent.change(screen.getByTestId('rarityId'), { target: { value: 'rare' } });
+      fireEvent.click(screen.getByTestId('rarity-rare'));
       expect(mockSetFilters).toHaveBeenCalledWith({ rarity: ['rare'] });
     });
 
     it('calls setFilters with empty rarity array when deselected', () => {
       setupHook({ filters: { ...emptyFilters, rarity: ['rare'] } });
       render(<PokemonFilters {...defaultProps} />);
-      fireEvent.change(screen.getByTestId('rarityId'), { target: { value: '' } });
+      fireEvent.click(screen.getByTestId('rarity-rare'));
       expect(mockSetFilters).toHaveBeenCalledWith({ rarity: [] });
     });
 
     it('calls setFilters with type as array', () => {
       render(<PokemonFilters {...defaultProps} />);
-      fireEvent.change(screen.getByTestId('typeId'), { target: { value: 'fire' } });
+      fireEvent.click(screen.getByTestId('type-fire'));
       expect(mockSetFilters).toHaveBeenCalledWith({ types: ['fire'] });
     });
 
     it('calls setFilters with empty types array when deselected', () => {
       setupHook({ filters: { ...emptyFilters, types: ['fire'] } });
       render(<PokemonFilters {...defaultProps} />);
-      fireEvent.change(screen.getByTestId('typeId'), { target: { value: '' } });
+      fireEvent.click(screen.getByTestId('type-fire'));
       expect(mockSetFilters).toHaveBeenCalledWith({ types: [] });
     });
 
     it('calls setFilters with generation as array', () => {
       render(<PokemonFilters {...defaultProps} />);
-      fireEvent.change(screen.getByTestId('generationId'), { target: { value: '1' } });
+      fireEvent.click(screen.getByTestId('generation-1'));
       expect(mockSetFilters).toHaveBeenCalledWith({ generation: ['1'] });
     });
 
-    it('calls setFilters with evolutionStage value', () => {
+    it('calls setFilters with evolutionStage as array', () => {
       render(<PokemonFilters {...defaultProps} />);
-      fireEvent.change(screen.getByTestId('evolutionStageId'), { target: { value: 'stage1' } });
-      expect(mockSetFilters).toHaveBeenCalledWith({ evolutionStage: 'stage1' });
+      fireEvent.click(screen.getByTestId('evo_stage-stage1'));
+      expect(mockSetFilters).toHaveBeenCalledWith({ evolutionStage: ['stage1'] });
     });
   });
 
