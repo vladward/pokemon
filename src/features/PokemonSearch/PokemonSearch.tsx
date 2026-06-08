@@ -1,7 +1,7 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
@@ -22,10 +22,8 @@ export const PokemonSearch = ({ value, onChange, disabled }: PokemonSearchProps)
   onChangeRef.current = onChange;
 
   useEffect(() => {
-    // intentionally omits `value` — running on value change would fire onChange
-    // before the user's own debounce resolves, causing a duplicate navigation
     if (debouncedValue !== (value ?? '')) onChangeRef.current(debouncedValue);
-  }, [debouncedValue]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [debouncedValue]);
 
   useEffect(() => {
     setInputValue(value ?? '');
@@ -40,7 +38,7 @@ export const PokemonSearch = ({ value, onChange, disabled }: PokemonSearchProps)
       value={inputValue}
       onChange={(e) => setInputValue(e.target.value)}
       readOnly={disabled}
-      className="max-w-[350px] tablet:max-w-[180px] h-full"
+      className="max-w-[350px] min-w-[150px] tablet:max-w-[180px] h-full"
     />
   );
 };
