@@ -161,7 +161,10 @@
     "type": "Тип",
     "generation": "Поколение",
     "evo_stage": "Эволюция",
-    "clear": "Сбросить фильтры"
+    "clear": "Сбросить фильтры",
+    "apply": "Применить",
+    "all": "Все",
+    "filters_title": "Фильтры"
   },
   "pokemon_card": {
     "rarity": {

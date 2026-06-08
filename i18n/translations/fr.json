@@ -161,7 +161,10 @@
     "type": "Type",
     "generation": "Génération",
     "evo_stage": "Stade évo.",
-    "clear": "Effacer les filtres"
+    "clear": "Effacer les filtres",
+    "apply": "Appliquer",
+    "all": "Tous",
+    "filters_title": "Filtres"
   },
   "pokemon_card": {
     "rarity": {
