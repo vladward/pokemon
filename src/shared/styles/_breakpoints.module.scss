@@ -1,8 +1,0 @@
-@use 'sass:map';
-@use './breakpoints-config' as data;
-
-:export {
-  @each $key, $value in data.$breakpoints {
-    #{$key}: #{$value};
-  }
-}
