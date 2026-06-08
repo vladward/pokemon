@@ -9,9 +9,18 @@ import { PokemonFilters } from './PokemonFilters';
 
 const mockSetFilters = jest.fn();
 const mockResetFilters = jest.fn();
+const mockSetIsPending = jest.fn();
 
 jest.mock('@/features/PokemonSearch/model', () => ({
   usePokemonFilters: jest.fn(),
+}));
+
+jest.mock('@/views/Pokemon/lib/PendingContext', () => ({
+  usePending: () => ({ isPending: false, setIsPending: mockSetIsPending }),
+}));
+
+jest.mock('./MobileFiltersModal', () => ({
+  MobileFiltersModal: () => null,
 }));
 
 jest.mock('@/features/PokemonSearch', () => ({
@@ -197,57 +206,25 @@ describe('PokemonFilters', () => {
     });
   });
 
-  describe('onPendingChange', () => {
-    it('notifies parent with isPending on mount', () => {
-      const onPendingChange = jest.fn();
-      render(
-        <PokemonFilters
-          {...defaultProps}
-          onPendingChange={onPendingChange}
-        />,
-      );
-      expect(onPendingChange).toHaveBeenCalledWith(false);
+  describe('pending state', () => {
+    it('notifies context with isPending on mount', () => {
+      render(<PokemonFilters {...defaultProps} />);
+      expect(mockSetIsPending).toHaveBeenCalledWith(false);
     });
 
-    it('notifies parent when isPending becomes true', () => {
-      const onPendingChange = jest.fn();
-      const { rerender } = render(
-        <PokemonFilters
-          {...defaultProps}
-          onPendingChange={onPendingChange}
-        />,
-      );
-
+    it('notifies context when isPending becomes true', () => {
+      const { rerender } = render(<PokemonFilters {...defaultProps} />);
       setupHook({ isPending: true });
-      rerender(
-        <PokemonFilters
-          {...defaultProps}
-          onPendingChange={onPendingChange}
-        />,
-      );
-
-      expect(onPendingChange).toHaveBeenCalledWith(true);
+      rerender(<PokemonFilters {...defaultProps} />);
+      expect(mockSetIsPending).toHaveBeenCalledWith(true);
     });
 
-    it('notifies parent when isPending returns to false', () => {
-      const onPendingChange = jest.fn();
+    it('notifies context when isPending returns to false', () => {
       setupHook({ isPending: true });
-      const { rerender } = render(
-        <PokemonFilters
-          {...defaultProps}
-          onPendingChange={onPendingChange}
-        />,
-      );
-
+      const { rerender } = render(<PokemonFilters {...defaultProps} />);
       setupHook({ isPending: false });
-      rerender(
-        <PokemonFilters
-          {...defaultProps}
-          onPendingChange={onPendingChange}
-        />,
-      );
-
-      expect(onPendingChange).toHaveBeenLastCalledWith(false);
+      rerender(<PokemonFilters {...defaultProps} />);
+      expect(mockSetIsPending).toHaveBeenLastCalledWith(false);
     });
   });
 });
