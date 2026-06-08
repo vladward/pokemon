@@ -3,6 +3,8 @@ import { XIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 
+import { usePending } from '@/views/Pokemon/lib/PendingContext';
+
 import { PokemonSearch } from '@/features/PokemonSearch';
 import type { PokemonFilters as PokemonFiltersModel } from '@/features/PokemonSearch/model';
 import { usePokemonFilters } from '@/features/PokemonSearch/model';
@@ -18,24 +20,18 @@ interface Props {
   types: string[];
   rarities: PokemonRarity[];
   generations: Generation[];
-  onPendingChange?: (pending: boolean) => void;
 }
 
-export const PokemonFilters = ({
-  regions,
-  types,
-  rarities,
-  generations,
-  onPendingChange,
-}: Props) => {
+export const PokemonFilters = ({ regions, types, rarities, generations }: Props) => {
   const tFilters = useTranslations('pokemon_filters');
   const tCard = useTranslations('pokemon_card');
   const tTypes = useTranslations('elements');
   const { filters, setFilters, resetFilters, isPending } = usePokemonFilters();
+  const { setIsPending } = usePending();
 
   useEffect(() => {
-    onPendingChange?.(isPending);
-  }, [isPending, onPendingChange]);
+    setIsPending(isPending);
+  }, [isPending, setIsPending]);
 
   const evolutionStageOptions = (['base', 'stage1', 'stage2'] as const).map((s) => ({
     value: s,
@@ -86,7 +82,7 @@ export const PokemonFilters = ({
           options={selectRegions}
           placeholder={tFilters('region')}
           onChange={(value) => handleSetFilter('region', value)}
-          className="!h-full w-[110px] capitalize"
+          className="!h-full w-[130px] capitalize"
         />
 
         <CustomSelect
@@ -95,7 +91,7 @@ export const PokemonFilters = ({
           options={rarityOptions}
           placeholder={tFilters('rarity')}
           onChange={(value) => handleSetFilter('rarity', value)}
-          className="!h-full w-[110px] capitalize"
+          className="!h-full w-[130px] capitalize"
         />
 
         <CustomSelect
@@ -104,7 +100,7 @@ export const PokemonFilters = ({
           options={typeOptions}
           placeholder={tFilters('type')}
           onChange={(value) => handleSetFilter('types', value)}
-          className="!h-full w-[110px] capitalize"
+          className="!h-full w-[130px] capitalize"
         />
 
         <CustomSelect
@@ -113,7 +109,7 @@ export const PokemonFilters = ({
           options={generationOptions}
           placeholder={tFilters('generation')}
           onChange={(value) => handleSetFilter('generation', value)}
-          className="!h-full w-[140px]"
+          className="!h-full w-[130px]"
         />
 
         <CustomSelect
@@ -122,7 +118,7 @@ export const PokemonFilters = ({
           options={evolutionStageOptions}
           placeholder={tFilters('evo_stage')}
           onChange={(value) => handleSetFilter('evolutionStage', value)}
-          className="!h-full w-[120px]"
+          className="!h-full w-[130px]"
         />
 
         {hasActiveFilters && (

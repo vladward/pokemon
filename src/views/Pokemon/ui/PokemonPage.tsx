@@ -1,17 +1,17 @@
-'use client';
-
-import { Suspense, useState } from 'react';
+import { Suspense } from 'react';
 
 import type { Location } from '@/entities/Location';
 import type { Generation, PokemonListResult, PokemonRarity } from '@/entities/Pokemon';
-import { PokemonCard } from '@/entities/Pokemon/ui/PokemonCard';
 import type { Region } from '@/entities/Region';
 
-import { cn } from '@/shared/lib/utils/cn';
-import { Container, Pagination } from '@/shared/ui';
+import { Container } from '@/shared/ui';
 
+import { PendingProvider } from '../lib/PendingContext';
+
+import { PokemonCardContainer } from './PokemonCardContainer';
 import { PokemonCardList } from './PokemonCardList';
 import { PokemonFilters } from './PokemonFilters';
+import { PokemonPagination } from './PokemonPagination';
 
 interface Props {
   pokemonList: PokemonListResult;
@@ -23,40 +23,29 @@ interface Props {
 }
 
 export const PokemonPage = ({ pokemonList, regions, types, rarities, generations }: Props) => {
-  const [isPending, setIsPending] = useState(false);
-
   return (
-    <Container className="py-8">
-      <Suspense>
-        <PokemonFilters
-          regions={regions}
-          types={types}
-          rarities={rarities}
-          generations={generations}
-          onPendingChange={setIsPending}
-        />
-      </Suspense>
+    <PendingProvider>
+      <Container className="py-8">
+        <Suspense>
+          <PokemonFilters
+            regions={regions}
+            types={types}
+            rarities={rarities}
+            generations={generations}
+          />
+        </Suspense>
 
-      <div
-        className={cn(
-          'transition-opacity duration-200',
-          isPending && 'opacity-40 pointer-events-none',
-        )}
-      >
-        <PokemonCardList
-          items={pokemonList.data}
-          CardComponent={PokemonCard}
-          isPending={isPending}
-        />
-      </div>
+        <PokemonCardContainer isEmpty={pokemonList.data.length === 0}>
+          <PokemonCardList items={pokemonList.data} />
+        </PokemonCardContainer>
 
-      <Suspense>
-        <Pagination
-          page={pokemonList.page}
-          totalPages={pokemonList.totalPages}
-          onPendingChange={setIsPending}
-        />
-      </Suspense>
-    </Container>
+        <Suspense>
+          <PokemonPagination
+            page={pokemonList.page}
+            totalPages={pokemonList.totalPages}
+          />
+        </Suspense>
+      </Container>
+    </PendingProvider>
   );
 };

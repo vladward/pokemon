@@ -1,21 +1,14 @@
 import { SearchX } from 'lucide-react';
-import type { ComponentType } from 'react';
+import Link from 'next/link';
 
 import type { PokemonCard } from '@/entities/Pokemon';
-
-import { PokemonLoader } from './PokemonLoader';
+import { PokemonCard as PokemonCardComponent } from '@/entities/Pokemon/ui/PokemonCard';
 
 interface Props {
   items: PokemonCard[];
-  CardComponent: ComponentType<{ pokemon: PokemonCard }>;
-  isPending?: boolean;
 }
 
-export const PokemonCardList = ({ items, CardComponent, isPending }: Props) => {
-  if (isPending && items.length === 0) {
-    return <PokemonLoader />;
-  }
-
+export const PokemonCardList = ({ items }: Props) => {
   if (items.length === 0) {
     return (
       <div className="flex flex-col items-center gap-3 py-24 text-muted-foreground">
@@ -31,10 +24,12 @@ export const PokemonCardList = ({ items, CardComponent, isPending }: Props) => {
   return (
     <div className="flex flex-wrap justify-center gap-4 min-h-[200px]">
       {items.map((pokemon) => (
-        <CardComponent
+        <Link
+          href={`/pokemon/${pokemon.id}`}
           key={pokemon.id}
-          pokemon={pokemon}
-        />
+        >
+          <PokemonCardComponent pokemon={pokemon} />
+        </Link>
       ))}
     </div>
   );
