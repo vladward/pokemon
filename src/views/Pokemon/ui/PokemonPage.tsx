@@ -25,7 +25,7 @@ interface Props {
 export const PokemonPage = ({ pokemonList, regions, types, rarities, generations }: Props) => {
   return (
     <PendingProvider>
-      <Container className="py-8">
+      <Container className="py-8 tablet:px-4 mobile:px-4">
         <Suspense>
           <PokemonFilters
             regions={regions}

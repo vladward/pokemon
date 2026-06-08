@@ -4,7 +4,7 @@ import type { CSSProperties } from 'react';
 import { cn } from '@/shared/lib/utils/cn';
 
 import type { PokemonRarity } from '../../../config';
-import type { PokemonCard as PokemonCardType } from '../../../PokemonCard';
+import type { TPokemonCard as PokemonCardType } from '../../../TPokemonCard';
 import { rarityConfig, typeBadgeColors, getGradientClasses } from '../config';
 import { PokeBallPlaceholder } from '../PokeBallPlaceholder';
 import { RarityStars } from '../RarityStars';
@@ -42,7 +42,7 @@ export const PokemonCardMythical = async ({ pokemon }: Props) => {
   return (
     <TiltWrapper
       className={cn(
-        'group relative cursor-pointer rounded-[20px] bg-gradient-to-br p-[1.5px] w-[240px] h-[336px]',
+        'group relative cursor-pointer rounded-[20px] bg-gradient-to-br p-[1.5px] w-[240px] h-[336px] mobile:w-full mobile:h-[200px]',
         gradient,
       )}
       style={{ willChange: 'transform', transformStyle: 'preserve-3d' }}
@@ -63,7 +63,7 @@ export const PokemonCardMythical = async ({ pokemon }: Props) => {
 
       <div
         className={cn(
-          'relative flex h-full flex-col overflow-hidden rounded-[18px]',
+          'relative flex h-full flex-col overflow-hidden rounded-[18px] mobile:justify-between',
           'bg-gradient-to-b from-white/15 via-white/10 to-black/20 backdrop-blur-2xl',
           'shadow-[inset_0_1px_0_rgba(255,255,255,0.65),inset_0_-1px_0_rgba(255,255,255,0.08),inset_1px_0_0_rgba(255,255,255,0.2),inset_-1px_0_0_rgba(255,255,255,0.1)]',
         )}
@@ -107,7 +107,7 @@ export const PokemonCardMythical = async ({ pokemon }: Props) => {
         <div className="pointer-events-none absolute -bottom-4 -left-8 h-20 w-20 rounded-full bg-white/10 blur-2xl" />
         <div className="pointer-events-none absolute left-[10%] right-[10%] top-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
 
-        <div className="relative z-10 flex items-start justify-between px-4 pt-4">
+        <div className="relative z-10 flex items-start justify-between px-4 pt-4 mobile:hidden">
           <span className="font-mono text-[13px] font-semibold tracking-widest text-white/50">
             #{String(pokemon.id).padStart(4, '0')}
           </span>
@@ -131,18 +131,18 @@ export const PokemonCardMythical = async ({ pokemon }: Props) => {
           </div>
         </div>
 
-        <div className="relative z-10 px-4 pt-1">
+        <div className="relative z-10 px-4 pt-1 mobile:px-3 mobile:pt-[10px] mobile:text-center">
           <h3 className="text-l font-bold capitalize leading-tight tracking-wide text-white line-clamp-2 overflow-hidden text-ellipsis drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
             {pokemon.name}
           </h3>
           {pokemon.evolutionStage && (
-            <span className="text-[11px] font-semibold tracking-widest text-white/50 uppercase">
+            <span className="text-[11px] font-semibold tracking-widest text-white/50 uppercase mobile:hidden">
               {stageLabel(pokemon.evolutionStage)}
             </span>
           )}
         </div>
 
-        <div className="relative z-10 flex flex-1 items-center justify-center py-2">
+        <div className="relative z-10 flex flex-1 items-center justify-center py-2 mobile:flex-none mobile:py-0">
           <div className="animate-ethereal-float motion-reduce:animate-none">
             {image ? (
               <img
@@ -150,7 +150,7 @@ export const PokemonCardMythical = async ({ pokemon }: Props) => {
                 alt={pokemon.name}
                 width={160}
                 height={160}
-                className="h-[160px] w-[160px] select-none object-contain transition-all duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-2 group-hover:drop-shadow-[0_20px_48px_rgba(139,92,246,0.5)]"
+                className="h-[160px] w-[160px] mobile:h-[98px] mobile:w-[98px] select-none object-contain transition-all duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-2 group-hover:drop-shadow-[0_20px_48px_rgba(139,92,246,0.5)]"
                 style={{
                   willChange: 'transform',
                   transform: 'translateZ(12px)',
@@ -163,10 +163,10 @@ export const PokemonCardMythical = async ({ pokemon }: Props) => {
           </div>
         </div>
 
-        <div className="relative z-10 flex items-center justify-between border-t border-white/10 px-4 pt-[10px] pb-[14px]">
+        <div className="relative z-10 flex items-center justify-between border-t border-white/10 px-4 pt-[10px] pb-[14px] mobile:px-3 mobile:py-2">
           <span
             className={cn(
-              'rounded-md border px-2.5 pt-[7px] pb-[5px] text-[11px] font-bold leading-none uppercase tracking-[0.15em] text-center backdrop-blur-sm',
+              'rounded-md border px-2.5 pt-[7px] pb-[5px] text-[11px] mobile:text-[9px] font-bold leading-none uppercase tracking-[0.15em] text-center backdrop-blur-sm',
               rarity.border,
               rarity.bg,
               rarity.glow,

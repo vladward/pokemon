@@ -1,11 +1,11 @@
 import { SearchX } from 'lucide-react';
 import Link from 'next/link';
 
-import type { PokemonCard } from '@/entities/Pokemon';
-import { PokemonCard as PokemonCardComponent } from '@/entities/Pokemon/ui/PokemonCard';
+import type { TPokemonCard } from '@/entities/Pokemon';
+import { PokemonCard } from '@/entities/Pokemon/ui/PokemonCard';
 
 interface Props {
-  items: PokemonCard[];
+  items: TPokemonCard[];
 }
 
 export const PokemonCardList = ({ items }: Props) => {
@@ -22,13 +22,14 @@ export const PokemonCardList = ({ items }: Props) => {
   }
 
   return (
-    <div className="flex flex-wrap justify-center gap-4 min-h-[200px]">
+    <div className="grid grid-cols-pokemon mobile:grid-cols-2 gap-4 min-h-[200px]">
       {items.map((pokemon) => (
         <Link
           href={`/pokemon/${pokemon.id}`}
           key={pokemon.id}
+          className="flex justify-center"
         >
-          <PokemonCardComponent pokemon={pokemon} />
+          <PokemonCard pokemon={pokemon} />
         </Link>
       ))}
     </div>

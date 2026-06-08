@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server';
 import { cn } from '@/shared/lib/utils/cn';
 
 import type { PokemonRarity } from '../../../config';
-import type { PokemonCard as PokemonCardType } from '../../../PokemonCard';
+import type { TPokemonCard as PokemonCardType } from '../../../TPokemonCard';
 import { rarityConfig, getGradientClasses } from '../config';
 import { PokeBallPlaceholder } from '../PokeBallPlaceholder';
 import { RarityStars } from '../RarityStars';
@@ -30,7 +30,7 @@ export const PokemonCardLegendary = async ({ pokemon }: Props) => {
   return (
     <TiltWrapper
       className={cn(
-        'group relative cursor-pointer rounded-[20px] w-[240px] h-[336px]',
+        'group relative cursor-pointer rounded-[20px] w-[240px] h-[336px] mobile:w-full mobile:h-[200px]',
         `bg-gradient-to-br ${gradient}`,
       )}
       style={{ willChange: 'transform', transformStyle: 'preserve-3d' }}
@@ -49,7 +49,7 @@ export const PokemonCardLegendary = async ({ pokemon }: Props) => {
         }}
       />
 
-      <div className="relative flex h-full flex-col overflow-hidden rounded-[20px]">
+      <div className="relative flex h-full flex-col overflow-hidden rounded-[20px] mobile:justify-between">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -76,7 +76,7 @@ export const PokemonCardLegendary = async ({ pokemon }: Props) => {
 
         <div className="pointer-events-none absolute left-[8%] right-[8%] top-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
 
-        <div className="relative z-10 flex items-start justify-between px-4 pt-4">
+        <div className="relative z-10 flex items-start justify-between px-4 pt-4 mobile:hidden">
           <span className="font-mono text-[13px] font-semibold tracking-widest text-white/70 drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
             #{String(pokemon.id).padStart(4, '0')}
           </span>
@@ -92,18 +92,18 @@ export const PokemonCardLegendary = async ({ pokemon }: Props) => {
           </div>
         </div>
 
-        <div className="relative z-10 px-4 pt-1">
+        <div className="relative z-10 px-4 pt-1 mobile:px-3 mobile:pt-[10px] mobile:text-center">
           <h3 className="text-l font-black capitalize leading-tight tracking-wide text-white line-clamp-2 overflow-hidden text-ellipsis drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
             {pokemon.name}
           </h3>
           {pokemon.evolutionStage && (
-            <span className="text-[11px] font-semibold tracking-widest text-white/50 uppercase">
+            <span className="text-[11px] font-semibold tracking-widest text-white/50 uppercase mobile:hidden">
               {stageLabel(pokemon.evolutionStage)}
             </span>
           )}
         </div>
 
-        <div className="relative z-10 flex flex-1 items-center justify-center py-2">
+        <div className="relative z-10 flex flex-1 items-center justify-center py-2 mobile:flex-none mobile:py-0">
           <div
             className="pointer-events-none absolute inset-0 animate-corona-breathe motion-reduce:animate-none"
             style={{
@@ -117,7 +117,7 @@ export const PokemonCardLegendary = async ({ pokemon }: Props) => {
               alt={pokemon.name}
               width={160}
               height={160}
-              className="h-[160px] w-[160px] select-none object-contain transition-all duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-2"
+              className="h-[160px] w-[160px] mobile:h-[98px] mobile:w-[98px] select-none object-contain transition-all duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-2"
               style={{
                 willChange: 'transform',
                 transform: 'translateZ(12px)',
@@ -129,10 +129,10 @@ export const PokemonCardLegendary = async ({ pokemon }: Props) => {
           )}
         </div>
 
-        <div className="relative z-10 flex items-center justify-between border-t border-white/20 px-4 pt-[10px] pb-[14px]">
+        <div className="relative z-10 flex items-center justify-between border-t border-white/20 px-4 pt-[10px] pb-[14px] mobile:px-3 mobile:py-2">
           <span
             className={cn(
-              'rounded-md border px-2.5 pt-[7px] pb-[5px] text-[11px] font-bold leading-none uppercase tracking-[0.15em] text-center backdrop-blur-sm',
+              'rounded-md border px-2.5 pt-[7px] pb-[5px] text-[11px] mobile:text-[9px] font-bold leading-none uppercase tracking-[0.15em] text-center backdrop-blur-sm',
               'border-white/30 bg-black/25 text-white',
               rarity.glow,
             )}

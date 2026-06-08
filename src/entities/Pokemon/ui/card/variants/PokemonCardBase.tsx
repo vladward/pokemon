@@ -4,7 +4,7 @@ import type { CSSProperties } from 'react';
 import { cn } from '@/shared/lib/utils/cn';
 
 import type { PokemonRarity } from '../../../config';
-import type { PokemonCard as PokemonCardType } from '../../../PokemonCard';
+import type { TPokemonCard as PokemonCardType } from '../../../TPokemonCard';
 import {
   rarityConfig,
   typeBadgeColors,
@@ -62,7 +62,7 @@ export const PokemonCardBase = async ({ pokemon }: Props) => {
   return (
     <TiltWrapper
       className={cn(
-        'group relative cursor-pointer rounded-[20px] w-[240px] h-[336px]',
+        'group relative cursor-pointer rounded-[20px] w-[240px] h-[336px] mobile:w-full mobile:h-[200px]',
         `bg-gradient-to-br ${gradient}`,
         'shadow-[0_4px_28px_rgba(0,0,0,0.13),_0_0_0_1px_rgba(0,0,0,0.07)] dark:shadow-none',
       )}
@@ -77,7 +77,7 @@ export const PokemonCardBase = async ({ pokemon }: Props) => {
         )}
       />
 
-      <div className="relative flex h-full flex-col overflow-hidden rounded-[20px]">
+      <div className="relative flex h-full flex-col overflow-hidden rounded-[20px] mobile:justify-between">
         <div
           className={cn(
             'pointer-events-none absolute inset-0 bg-gradient-to-b dark:hidden',
@@ -123,7 +123,7 @@ export const PokemonCardBase = async ({ pokemon }: Props) => {
 
         <div className="pointer-events-none absolute top-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent left-[10%] right-[10%] dark:left-[8%] dark:right-[8%]" />
 
-        <div className="relative z-10 flex items-start justify-between px-4 pt-4">
+        <div className="relative z-10 flex items-start justify-between px-4 pt-4 mobile:hidden">
           <span
             className={cn(
               'font-mono text-[13px] font-semibold tracking-widest',
@@ -155,7 +155,7 @@ export const PokemonCardBase = async ({ pokemon }: Props) => {
           </div>
         </div>
 
-        <div className="relative z-10 px-4 pt-1">
+        <div className="relative z-10 px-4 pt-1 mobile:px-3 mobile:pt-[10px] mobile:text-center">
           <h3
             className={cn(
               'text-l capitalize leading-tight tracking-wide line-clamp-2 overflow-hidden text-ellipsis',
@@ -169,7 +169,7 @@ export const PokemonCardBase = async ({ pokemon }: Props) => {
           {pokemon.evolutionStage && (
             <span
               className={cn(
-                'text-[11px] font-semibold tracking-widest uppercase',
+                'text-[11px] font-semibold tracking-widest uppercase mobile:hidden',
                 isLightBgType ? 'text-slate-400 dark:text-white/50' : 'text-white/50',
               )}
             >
@@ -178,14 +178,14 @@ export const PokemonCardBase = async ({ pokemon }: Props) => {
           )}
         </div>
 
-        <div className="relative z-10 flex flex-1 items-center justify-center py-2">
+        <div className="relative z-10 flex flex-1 items-center justify-center py-2 mobile:flex-none mobile:py-0">
           {image ? (
             <img
               src={image}
               alt={pokemon.name}
               width={160}
               height={160}
-              className="h-[160px] w-[160px] select-none object-contain transition-all duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-[0_8px_20px_rgba(0,0,0,0.25)] group-hover:drop-shadow-[0_20px_40px_rgba(0,0,0,0.35)] dark:drop-shadow-[0_8px_32px_rgba(0,0,0,0.6)] dark:group-hover:drop-shadow-[0_8px_32px_rgba(0,0,0,0.6)]"
+              className="h-[160px] w-[160px] mobile:h-[98px] mobile:w-[98px] select-none object-contain transition-all duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-[0_8px_20px_rgba(0,0,0,0.25)] group-hover:drop-shadow-[0_20px_40px_rgba(0,0,0,0.35)] dark:drop-shadow-[0_8px_32px_rgba(0,0,0,0.6)] dark:group-hover:drop-shadow-[0_8px_32px_rgba(0,0,0,0.6)]"
               style={{ willChange: 'transform', transform: 'translateZ(12px)' }}
             />
           ) : (
@@ -193,10 +193,10 @@ export const PokemonCardBase = async ({ pokemon }: Props) => {
           )}
         </div>
 
-        <div className="relative z-10 flex items-center justify-between border-t border-white/30 px-4 pt-[10px] pb-[14px] dark:border-white/20 dark:py-3.5">
+        <div className="relative z-10 flex items-center justify-between border-t border-white/30 px-4 pt-[10px] pb-[14px] dark:border-white/20 dark:py-3.5 mobile:px-3 mobile:py-2 mobile:dark:py-2">
           <span
             className={cn(
-              'rounded-md border px-2.5 pt-[7px] pb-[5px] text-[11px] font-bold leading-none uppercase tracking-[0.15em] text-center backdrop-blur-sm',
+              'rounded-md border px-2.5 pt-[7px] pb-[5px] text-[11px] mobile:text-[9px] font-bold leading-none uppercase tracking-[0.15em] text-center backdrop-blur-sm',
               rarity.border,
               rarity.bg,
               rarity.glow,

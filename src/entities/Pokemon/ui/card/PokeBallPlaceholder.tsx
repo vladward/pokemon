@@ -1,8 +1,8 @@
 export const PokeBallPlaceholder = () => (
-  <div className="flex h-[160px] w-[160px] items-center justify-center">
+  <div className="flex h-[160px] w-[160px] mobile:h-[98px] mobile:w-[98px] items-center justify-center">
     <svg
       viewBox="0 0 100 100"
-      className="h-[110px] w-[110px] drop-shadow-[0_4px_16px_rgba(0,0,0,0.35)]"
+      className="h-[110px] w-[110px] mobile:h-[68px] mobile:w-[68px] drop-shadow-[0_4px_16px_rgba(0,0,0,0.35)]"
     >
       <path
         d="M4,50 A46,46 0 0,0 96,50 Z"

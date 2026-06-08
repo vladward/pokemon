@@ -9,7 +9,7 @@ type Props = {
 
 export const Container: FC<Props> = ({ children, className }) => {
   return (
-    <div className={cn('max-w-[1440px] mx-auto px-20 w-full mobile:px-10', className)}>
+    <div className={cn('max-w-[1440px] mx-auto px-20 w-full mobile:px-7', className)}>
       {children}
     </div>
   );
