@@ -1,15 +1,8 @@
-import type { PokemonRarity } from '../config';
+import type { PokemonRarity } from '../../config';
 
 export const rarityConfig: Record<
   PokemonRarity,
-  {
-    border: string;
-    text: string;
-    color: string;
-    bg: string;
-    glow: string;
-    stars: number;
-  }
+  { border: string; text: string; color: string; bg: string; glow: string; stars: number }
 > = {
   common: {
     border: 'border-white/50',
@@ -30,7 +23,7 @@ export const rarityConfig: Record<
   rare: {
     border: 'border-violet-400/85',
     text: 'text-violet-100',
-    color: '#a78bfa',
+    color: '#c7bbfa',
     bg: 'bg-violet-900/25',
     glow: 'shadow-[0_0_16px_rgba(139,92,246,0.6)]',
     stars: 3,
@@ -95,27 +88,6 @@ export const typeGradients: Record<string, { from: string; to: string }> = {
   fairy: { from: 'from-pink-400', to: 'to-rose-500' },
 };
 
-export const typeNeonRgba: Record<string, string> = {
-  normal: '180,180,160',
-  fire: '251,146,60',
-  water: '56,189,248',
-  grass: '52,211,153',
-  electric: '253,224,71',
-  ice: '103,232,249',
-  fighting: '248,113,113',
-  poison: '192,132,252',
-  ground: '251,191,36',
-  flying: '129,140,248',
-  psychic: '249,168,212',
-  bug: '163,230,53',
-  rock: '202,138,4',
-  ghost: '99,102,241',
-  dragon: '96,165,250',
-  dark: '161,161,170',
-  steel: '148,163,184',
-  fairy: '249,168,212',
-};
-
 export const LIGHT_BG_TYPES: ReadonlySet<string> = new Set([
   'ice',
   'water',
@@ -136,9 +108,6 @@ export const LIGHT_BG_BADGE_TEXT: Partial<Record<string, string>> = {
   fairy: 'text-pink-800',
   flying: 'text-indigo-800',
 };
-
-export const STAR_PATH =
-  'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z';
 
 export function getGradientClasses(types: string[]): string {
   const primary = types[0] ?? 'normal';

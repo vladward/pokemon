@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 
-export function usePokemonCardTilt() {
+export function useTilt() {
   const cardRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number>(0);
   const leaveTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);

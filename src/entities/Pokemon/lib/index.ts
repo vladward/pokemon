@@ -1,1 +1,0 @@
-export { getPokemonCardStyle } from './getPokemonCardStyle';
