@@ -1,4 +1,4 @@
-export type PokemonCard = {
+export type TPokemonCard = {
   id: number;
   name: string;
   types: string[];

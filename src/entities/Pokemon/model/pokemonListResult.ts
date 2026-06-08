@@ -1,7 +1,7 @@
-import type { PokemonCard } from '../PokemonCard';
+import type { TPokemonCard } from '../TPokemonCard';
 
 export type PokemonListResult = {
-  data: PokemonCard[];
+  data: TPokemonCard[];
   total: number;
   page: number;
   totalPages: number;

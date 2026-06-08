@@ -1,4 +1,4 @@
-import type { PokemonCard as PokemonCardType } from '../PokemonCard';
+import type { TPokemonCard as PokemonCardType } from '../TPokemonCard';
 
 import { PokemonCardBase } from './card/variants/PokemonCardBase';
 import { PokemonCardLegendary } from './card/variants/PokemonCardLegendary';

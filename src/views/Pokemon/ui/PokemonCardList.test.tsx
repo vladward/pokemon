@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import type { PokemonCard } from '@/entities/Pokemon';
+import type { TPokemonCard } from '@/entities/Pokemon';
 
 import { PokemonCardList } from './PokemonCardList';
 
@@ -12,7 +12,7 @@ jest.mock('next/link', () => ({
 }));
 
 jest.mock('@/entities/Pokemon/ui/PokemonCard', () => ({
-  PokemonCard: ({ pokemon }: { pokemon: PokemonCard }) => (
+  PokemonCard: ({ pokemon }: { pokemon: TPokemonCard }) => (
     <div
       data-testid="pokemon-card"
       data-id={pokemon.id}
@@ -22,7 +22,7 @@ jest.mock('@/entities/Pokemon/ui/PokemonCard', () => ({
   ),
 }));
 
-const makePokemon = (overrides?: Partial<PokemonCard>): PokemonCard => ({
+const makePokemon = (overrides?: Partial<TPokemonCard>): TPokemonCard => ({
   id: 1,
   name: 'bulbasaur',
   types: ['grass'],
