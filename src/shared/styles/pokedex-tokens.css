@@ -179,6 +179,11 @@
   animation: pdxBootScan 1.8s ease-in-out infinite;
 }
 
+/* JetBrains Mono override — scoped to the Pokédex device so the rest of the app is unaffected */
+.pokedex-theme .font-mono {
+  font-family: var(--font-jetbrains, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace) !important;
+}
+
 /* Reduced motion overrides */
 @media (prefers-reduced-motion: reduce) {
   .pdx-reflection-streak,
