@@ -135,7 +135,27 @@
     "pokemon": {
       "title": "Pokémon",
       "browse_title": "Browse Pokémon",
-      "description": "A complete encyclopedia of Pokémon will appear here soon."
+      "description": "A complete encyclopedia of Pokémon will appear here soon.",
+      "details": {
+        "hud": {
+          "status": "STATUS",
+          "abilities": "ABILITIES",
+          "evolution": "EVOLUTION CHAIN",
+          "biology": "BIOLOGICAL INFO",
+          "location": "LOCATION",
+          "forms": "FORMS",
+          "entry": "POKÉDEX ENTRY"
+        },
+        "loading": {
+          "scanning": "SCANNING...",
+          "initializing": "INITIALIZING POKÉDEX"
+        },
+        "error": {
+          "no_signal": "STATIC — NO SIGNAL",
+          "description": "Unable to retrieve Pokémon data.",
+          "retry": "RETRY"
+        }
+      }
     },
     "skills": {
       "title": "Skills",

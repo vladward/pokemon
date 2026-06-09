@@ -135,7 +135,27 @@
     "pokemon": {
       "title": "Pokémon",
       "browse_title": "Pokémon entdecken",
-      "description": "Bald erscheint hier eine vollständige Pokémon-Enzyklopädie."
+      "description": "Bald erscheint hier eine vollständige Pokémon-Enzyklopädie.",
+      "details": {
+        "hud": {
+          "status": "STATUS",
+          "abilities": "FÄHIGKEITEN",
+          "evolution": "EVOLUTIONSKETTE",
+          "biology": "BIOLOG. INFO",
+          "location": "FUNDORTE",
+          "forms": "FORMEN",
+          "entry": "POKÉDEX-EINTRAG"
+        },
+        "loading": {
+          "scanning": "SCANNEN...",
+          "initializing": "POKÉDEX WIRD GESTARTET"
+        },
+        "error": {
+          "no_signal": "RAUSCHEN — KEIN SIGNAL",
+          "description": "Pokémon-Daten konnten nicht abgerufen werden.",
+          "retry": "ERNEUT"
+        }
+      }
     },
     "skills": {
       "title": "Fähigkeiten",
