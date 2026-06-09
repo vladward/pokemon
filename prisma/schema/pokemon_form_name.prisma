@@ -1,8 +1,7 @@
 model pokemon_form_name {
   form_id  Int
-  language String       @db.VarChar(10)
-  name     String       @db.VarChar(200)
-  form     pokemon_form @relation(fields: [form_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  language String @db.VarChar(10)
+  name     String @db.VarChar(200)
 
   @@id([form_id, language])
 }

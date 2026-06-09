@@ -18,5 +18,4 @@ model pokemon_species {
   growth_rate            String?  @db.VarChar(50)
   evolution_chain_id     Int?
   pokemon                pokemon[]
-  pokemon_species_name   pokemon_species_name[]
 }

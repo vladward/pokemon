@@ -68,154 +68,30 @@ Locale routing via `next-intl` — all pages live under `/[locale]/`. Supported 
 
 ## Getting Started
 
-### First-time setup (any device)
-
 ```bash
-# 1. Install dependencies
+# Install dependencies
 npm install
 
-# 2. Copy environment file
+# Copy environment file and fill in values
 cp .env.example .env
-```
 
-Open `.env` and fill in `DATABASE_URL_TIDB` with your TiDB Cloud credentials.
-`DATABASE_URL_DOCKER` is pre-filled and works out of the box.
+# Start MySQL (Docker)
+docker run --name mysql-pokedex \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -e MYSQL_DATABASE=pokedex \
+  -p 3306:3306 -d mysql:8
 
-Then choose your database and continue below.
+# Create database schema
+npm run db:migrate
 
----
+# Populate database from PokéAPI (~15–30 min)
+npm run seed:all
 
-### Local Docker setup
-
-> One command that starts the container, syncs the schema, and seeds the DB if it is empty.
-
-**Prerequisites:** Docker Desktop must be running.
-
-```bash
-npm run db:setup:docker
-```
-
-What it does, in order:
-
-| Step | Action |
-|:-----|:-------|
-| 1 | Verifies Docker Desktop is running |
-| 2 | Starts the MySQL container (`docker compose up -d`) |
-| 3 | Waits until MySQL accepts connections (up to 60 s) |
-| 4 | Switches `.env` active connection to Docker |
-| 5 | Runs `db:migrate` (creates / updates all tables, idempotent) |
-| 6 | If the DB is **empty** → runs `seed:all` (15–30 min, resumable) |
-| 6 | If the DB **already has data** → skips seed, schema sync only |
-
-After it finishes:
-
-```bash
+# Start development server
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
-
----
-
-### Cloud (TiDB) setup
-
-```bash
-# Switch to TiDB and start the dev server
-npm run db:use:tidb
-npm run db:migrate   # run once if schema is out of date
-npm run dev
-```
-
-TiDB Cloud already has the seeded data — no need to run `seed:all` again.
-
-### Syncing schemas between Docker and TiDB
-
-When tables or columns differ between the two databases, run `db:sync` to bring them in line.
-It connects to both simultaneously, computes the diff, applies missing pieces in both directions,
-then (optionally) activates the chosen database.
-
-```bash
-npm run db:sync docker    # sync + activate Docker
-npm run db:sync tidb      # sync + activate TiDB
-npm run db:sync           # sync only, keep current active DB
-```
-
-Example output:
-
-```
-[sync] Connecting to Docker (localhost:3306)...
-[sync] Connecting to TiDB  (gateway01.eu-central-1...)...
-[sync] Connected.
-
-[sync] Analyzing schemas...
-       Docker : 45 tables
-       TiDB   : 47 tables
-
-[sync] Found 3 difference(s):
-
-       Tables missing in Docker (2):
-         + trainer
-         + trainer_pokemon
-
-       Columns missing in TiDB (1):
-         + pokemon.evolution_stage
-
-[sync] Applying changes...
-
-         ✓ Created table 'trainer' in Docker
-         ✓ Created table 'trainer_pokemon' in Docker
-         ✓ Added 'pokemon.evolution_stage' to TiDB
-
-[sync] New tables were added. Update the Prisma schema:
-       npx prisma db pull
-       npx prisma generate
-
-[sync] Done.  Restart the dev server: npm run dev
-```
-
-**What it syncs:** tables (creates missing ones), columns (adds missing ones).
-**What it does not touch:** column types on existing columns, indexes, constraints —
-changes there require a manual `db:migrate` entry to avoid data loss.
-
----
-
-### Switching databases
-
-The `.env` file stores both connection strings (`DATABASE_URL_DOCKER` and `DATABASE_URL_TIDB`). The switch
-command derives all individual `DB_*` variables from the chosen URL, so the two sources of truth stay in sync.
-
-```bash
-npm run db:use:docker   # switch to local Docker MySQL
-npm run db:use:tidb     # switch to TiDB Cloud
-```
-
-**What changes in `.env` after the switch:**
-
-| Variable | Set to |
-|:---------|:-------|
-| `DATABASE_URL` | Value of `DATABASE_URL_DOCKER` or `DATABASE_URL_TIDB` |
-| `DB_HOST` | Parsed from the URL |
-| `DB_PORT` | Parsed from the URL |
-| `DB_USER` | Parsed from the URL |
-| `DB_PASSWORD` | Parsed from the URL |
-| `DB_NAME` | Parsed from the URL |
-
-**Prerequisites:**
-
-- **Docker** — `docker-compose up -d` must be running before switching to `docker`.
-- **TiDB** — the credentials in `DATABASE_URL_TIDB` must be valid.
-
-**After every switch you must restart the dev server** — Next.js reads `.env` only at startup:
-
-```bash
-# stop the current server (Ctrl+C), then:
-npm run dev
-```
-
-**Adding or updating connection strings:**
-
-Edit only the `DATABASE_URL_DOCKER` or `DATABASE_URL_TIDB` lines in `.env` (never edit `DATABASE_URL`
-directly — it will be overwritten on the next switch). Then run the switch command once to sync all vars.
 
 ---
 
@@ -236,15 +112,11 @@ directly — it will be overwritten on the next switch). Then run the switch com
 
 ### Database
 
-| Command                   | Action                                                              |
-|:--------------------------|:--------------------------------------------------------------------|
-| `npm run db:setup:docker` | Full local setup: start Docker, wait, migrate, seed if empty        |
-| `npm run db:sync [target]`| Sync schemas between Docker ↔ TiDB, optionally activate `target`   |
-| `npm run db:migrate`      | Create / update all 80+ tables (idempotent)                         |
-| `npm run db:use:docker`   | Switch `DATABASE_URL` to local Docker MySQL                         |
-| `npm run db:use:tidb`     | Switch `DATABASE_URL` to TiDB Cloud                                 |
-| `npm run seed:all`        | Run full seed in correct dependency order                           |
-| `npm run seed:reset`      | Truncate all tables for a clean re-seed                             |
+| Command              | Action                                      |
+|:---------------------|:--------------------------------------------|
+| `npm run db:migrate` | Create / update all 80+ tables (idempotent) |
+| `npm run seed:all`   | Run full seed in correct dependency order   |
+| `npm run seed:reset` | Truncate all tables for a clean re-seed     |
 
 ---
 
