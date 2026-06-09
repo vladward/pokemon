@@ -190,12 +190,18 @@
   }
 }
 
+.pdx-boot-scan-loop {
+  animation: pdxBootScan 1.8s ease-in-out infinite;
+}
+
 /* Reduced motion overrides */
 @media (prefers-reduced-motion: reduce) {
   .pdx-reflection-streak,
   .pdx-led-breathe,
   .pdx-typewriter,
-  .pdx-scanline-sweep {
+  .pdx-scanline-sweep,
+  .pdx-boot-scan-loop {
     animation: none !important;
+    opacity: 1;
   }
 }
