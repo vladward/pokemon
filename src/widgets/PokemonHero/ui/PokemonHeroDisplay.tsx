@@ -19,8 +19,11 @@ export function PokemonHeroDisplay({ pokemon, entryLabel }: Props) {
           No. {String(pokemon.id).padStart(3, '0')}
         </span>
         <h1
-          className="font-mono text-2xl font-bold uppercase leading-none tracking-[0.08em] text-pokedex-hud-ink"
-          style={{ textShadow: '0 0 12px var(--pdx-hud-cyan-glow)' }}
+          className="font-orbitron font-bold uppercase leading-none tracking-[0.06em] text-pokedex-hud-ink"
+          style={{
+            fontSize: 'clamp(1.5rem, 3.5vw, 2.75rem)',
+            textShadow: '0 0 16px var(--pdx-hud-cyan-glow)',
+          }}
         >
           {pokemon.name}
         </h1>
