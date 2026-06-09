@@ -10,6 +10,7 @@ export type {
 export { PokemonCard } from './ui/PokemonCard';
 export { getPokemonList } from './api/getPokemonList';
 export { getPokemonById } from './api/getPokemonById';
+export { getPokemonNeighbors } from './api/getPokemonNeighbors';
 export { getTypeList } from './api/getTypeList';
 export { getRarityList } from './api/getRarityList';
 export { getGenerationList } from './api/getGenerationList';
