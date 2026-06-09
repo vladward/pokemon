@@ -15,7 +15,14 @@ export function PokedexEntry({ text, label = 'POKÉDEX ENTRY' }: Props) {
       <span className="mb-1 block font-mono text-[10px] uppercase tracking-[0.14em] text-pokedex-hud-ink-dim">
         {label}
       </span>
-      <div className="relative overflow-hidden">
+      <div
+        className="relative overflow-hidden rounded px-2 py-1.5"
+        style={{
+          background: 'rgba(93,217,216,0.03)',
+          border: '1px solid rgba(93,217,216,0.10)',
+          boxShadow: 'inset 0 1px 4px rgba(0,0,0,0.3)',
+        }}
+      >
         <p
           className="pdx-typewriter font-mono text-[11px] leading-relaxed text-pokedex-hud-ink overflow-hidden"
           style={{ '--pdx-tw-duration': `${duration}s` } as React.CSSProperties}
