@@ -42,6 +42,12 @@ export async function PokemonDetailsPage({ pokemon, nav }: Props) {
   ].filter(Boolean) as React.ReactNode[];
 
   const rightContent = (
+    <div className="relative h-full laptop:h-auto">
+      {/* Fade indicator at the bottom when content overflows */}
+      <div
+        className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 h-8 laptop:hidden"
+        style={{ background: 'linear-gradient(to bottom, transparent, var(--pdx-screen-bg-0))' }}
+      />
     <div className="grid h-full grid-cols-2 gap-3 overflow-y-auto p-4 tablet:grid-cols-1 laptop:h-auto laptop:overflow-y-visible">
       <PokemonStatsPanel label={t('status')} stats={pokemon.stats} />
       <PokemonAbilitiesPanel label={t('abilities')} abilities={pokemon.abilities} />
@@ -65,6 +71,7 @@ export async function PokemonDetailsPage({ pokemon, nav }: Props) {
           <PokemonFormsPanel label={t('forms')} forms={pokemon.forms} />
         </div>
       )}
+    </div>
     </div>
   );
 
