@@ -106,13 +106,6 @@ export const PokemonCardLegendary = async ({ pokemon, priority }: Props) => {
         </div>
 
         <div className="relative z-10 flex flex-1 items-center justify-center py-2 mobile:flex-none mobile:py-0">
-          <div
-            className="pointer-events-none absolute inset-0 animate-corona-breathe motion-reduce:animate-none"
-            style={{
-              background:
-                'radial-gradient(circle at 50% 58%, rgba(255,255,255,0.3), rgba(253,224,71,0.2) 40%, transparent 68%)',
-            }}
-          />
           {image ? (
             <Image
               src={image}
