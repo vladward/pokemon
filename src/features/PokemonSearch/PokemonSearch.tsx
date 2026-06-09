@@ -23,7 +23,7 @@ export const PokemonSearch = ({ value, onChange, disabled }: PokemonSearchProps)
 
   useEffect(() => {
     if (debouncedValue !== (value ?? '')) onChangeRef.current(debouncedValue);
-  }, [debouncedValue]);
+  }, [debouncedValue, value]);
 
   useEffect(() => {
     setInputValue(value ?? '');
