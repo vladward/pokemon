@@ -1,6 +1,15 @@
 export type { TPokemonCard } from './TPokemonCard';
+export type {
+  TPokemonDetails,
+  TAbility,
+  TEvolutionNode,
+  TEvolutionStep,
+  TForm,
+  TBiology,
+} from './TPokemonDetails';
 export { PokemonCard } from './ui/PokemonCard';
 export { getPokemonList } from './api/getPokemonList';
+export { getPokemonById } from './api/getPokemonById';
 export { getTypeList } from './api/getTypeList';
 export { getRarityList } from './api/getRarityList';
 export { getGenerationList } from './api/getGenerationList';
