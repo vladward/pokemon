@@ -142,12 +142,14 @@ export const PokemonCardLegendary = async ({ pokemon, priority }: Props) => {
           >
             {rarityLabel(pokemon.rarity)}
           </span>
-          {rarity.stars > 0 && (
-            <RarityStars
-              count={rarity.stars}
-              color="rgba(255,255,255,0.8)"
-            />
-          )}
+          <div className="mobile:hidden">
+            {rarity.stars > 0 && (
+              <RarityStars
+                count={rarity.stars}
+                color="rgba(255,255,255,0.8)"
+              />
+            )}
+          </div>
         </div>
       </div>
     </TiltWrapper>

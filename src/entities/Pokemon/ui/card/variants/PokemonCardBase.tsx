@@ -208,12 +208,14 @@ export const PokemonCardBase = async ({ pokemon, priority }: Props) => {
           >
             {rarityLabel(pokemon.rarity)}
           </span>
-          {rarity.stars > 0 && (
-            <RarityStars
-              count={rarity.stars}
-              color={rarity.color}
-            />
-          )}
+          <div className="mobile:hidden">
+            {rarity.stars > 0 && (
+              <RarityStars
+                count={rarity.stars}
+                color={rarity.color}
+              />
+            )}
+          </div>
         </div>
       </div>
     </TiltWrapper>
