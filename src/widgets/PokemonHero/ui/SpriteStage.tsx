@@ -23,7 +23,7 @@ export function SpriteStage({ sprite, spriteArtwork, name }: Props) {
       {/* Reticle SVG ring */}
       <svg
         viewBox="0 0 160 160"
-        className="pointer-events-none absolute h-40 w-40 motion-safe:animate-reticle-pulse"
+        className="pointer-events-none absolute h-52 w-52 motion-safe:animate-reticle-pulse"
         fill="none"
         aria-hidden
       >
@@ -58,10 +58,10 @@ export function SpriteStage({ sprite, spriteArtwork, name }: Props) {
           width={200}
           height={200}
           priority
-          className="relative z-10 h-44 w-44 select-none object-contain drop-shadow-[0_8px_24px_rgba(0,0,0,0.6)] motion-safe:animate-image-breath"
+          className="relative z-10 h-52 w-52 select-none object-contain drop-shadow-[0_8px_24px_rgba(0,0,0,0.6)] motion-safe:animate-image-breath"
         />
       ) : (
-        <div className="h-44 w-44 rounded-full opacity-20" style={{ background: 'var(--pdx-hud-cyan)' }} />
+        <div className="h-52 w-52 rounded-full opacity-20" style={{ background: 'var(--pdx-hud-cyan)' }} />
       )}
     </div>
   );
