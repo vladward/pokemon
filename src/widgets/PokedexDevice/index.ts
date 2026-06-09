@@ -1,0 +1,8 @@
+export { PokedexDevice } from './ui/PokedexDevice';
+export { PokedexShell } from './ui/PokedexShell';
+export { PokedexHinge } from './ui/PokedexHinge';
+export { PokedexLeftPanel } from './ui/PokedexLeftPanel';
+export { PokedexRightPanel } from './ui/PokedexRightPanel';
+export { PokedexShellFrame } from './ui/PokedexShellFrame';
+export { PokedexContactShadow } from './ui/PokedexContactShadow';
+export { PokedexScrew } from './ui/PokedexScrew';
