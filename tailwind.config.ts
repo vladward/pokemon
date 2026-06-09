@@ -25,6 +25,8 @@ export default {
       },
       fontFamily: {
         primary: ['var(--font-primary)', 'sans-serif'],
+        orbitron: ['var(--font-orbitron)', 'sans-serif'],
+        jetbrains: ['var(--font-jetbrains)', 'ui-monospace', 'monospace'],
       },
       colors: {
         yellow: {

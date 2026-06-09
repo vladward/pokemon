@@ -42,7 +42,7 @@ export async function PokemonDetailsPage({ pokemon, nav }: Props) {
   ].filter(Boolean) as React.ReactNode[];
 
   const rightContent = (
-    <div className="grid h-full grid-cols-2 gap-3 overflow-y-auto p-4 laptop:h-auto laptop:overflow-y-visible">
+    <div className="grid h-full grid-cols-2 gap-3 overflow-y-auto p-4 tablet:grid-cols-1 laptop:h-auto laptop:overflow-y-visible">
       <PokemonStatsPanel label={t('status')} stats={pokemon.stats} />
       <PokemonAbilitiesPanel label={t('abilities')} abilities={pokemon.abilities} />
       {pokemon.evolutions.length > 0 && (
