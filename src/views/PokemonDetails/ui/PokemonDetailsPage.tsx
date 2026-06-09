@@ -1,3 +1,5 @@
+import { getTranslations } from 'next-intl/server';
+
 import { PokedexDevice, PokedexMobileStack } from '@/widgets/PokedexDevice';
 import { PokemonAbilitiesPanel } from '@/widgets/PokemonAbilities';
 import { PokemonBiologyPanel } from '@/widgets/PokemonBiology';
@@ -14,49 +16,63 @@ interface Props {
   nav?: React.ReactNode;
 }
 
-export function PokemonDetailsPage({ pokemon, nav }: Props) {
-  const heroContent = <PokemonHeroDisplay pokemon={pokemon} />;
+export async function PokemonDetailsPage({ pokemon, nav }: Props) {
+  const t = await getTranslations('pages.pokemon.details.hud');
+
+  const heroContent = <PokemonHeroDisplay pokemon={pokemon} entryLabel={t('entry')} />;
 
   const mobileModules = [
-    <PokemonStatsPanel key="stats" stats={pokemon.stats} />,
-    <PokemonAbilitiesPanel key="abilities" abilities={pokemon.abilities} />,
+    <PokemonStatsPanel key="stats" label={t('status')} stats={pokemon.stats} />,
+    <PokemonAbilitiesPanel key="abilities" label={t('abilities')} abilities={pokemon.abilities} />,
     pokemon.evolutions.length > 0 && (
       <PokemonEvolutionPanel
         key="evolution"
+        label={t('evolution')}
         evolutions={pokemon.evolutions}
         evolutionSteps={pokemon.evolutionSteps}
       />
     ),
-    <PokemonBiologyPanel key="biology" biology={pokemon.biology} />,
+    <PokemonBiologyPanel key="biology" label={t('biology')} biology={pokemon.biology} />,
     pokemon.locations.length > 0 && (
-      <PokemonRegionsPanel key="regions" locations={pokemon.locations} />
+      <PokemonRegionsPanel key="regions" label={t('location')} locations={pokemon.locations} />
     ),
     pokemon.forms.length > 1 && (
-      <PokemonFormsPanel key="forms" forms={pokemon.forms} />
+      <PokemonFormsPanel key="forms" label={t('forms')} forms={pokemon.forms} />
     ),
   ].filter(Boolean) as React.ReactNode[];
+
+  const rightContent = (
+    <div className="grid h-full grid-cols-2 gap-3 overflow-y-auto p-4 laptop:h-auto laptop:overflow-y-visible">
+      <PokemonStatsPanel label={t('status')} stats={pokemon.stats} />
+      <PokemonAbilitiesPanel label={t('abilities')} abilities={pokemon.abilities} />
+      {pokemon.evolutions.length > 0 && (
+        <div className="col-span-2">
+          <PokemonEvolutionPanel
+            label={t('evolution')}
+            evolutions={pokemon.evolutions}
+            evolutionSteps={pokemon.evolutionSteps}
+          />
+        </div>
+      )}
+      <div className={pokemon.locations.length === 0 ? 'col-span-2' : undefined}>
+        <PokemonBiologyPanel label={t('biology')} biology={pokemon.biology} />
+      </div>
+      {pokemon.locations.length > 0 && (
+        <PokemonRegionsPanel label={t('location')} locations={pokemon.locations} />
+      )}
+      {pokemon.forms.length > 1 && (
+        <div className="col-span-2">
+          <PokemonFormsPanel label={t('forms')} forms={pokemon.forms} />
+        </div>
+      )}
+    </div>
+  );
 
   return (
     <>
       {/* Desktop + Tablet (≥577px) */}
       <div className="mobile:hidden">
-        <PokedexDevice
-          leftContent={heroContent}
-          nav={nav}
-          rightContent={
-            <div className="flex h-full flex-col gap-4 overflow-y-auto p-4 laptop:h-auto laptop:overflow-y-visible">
-              <PokemonStatsPanel stats={pokemon.stats} />
-              <PokemonAbilitiesPanel abilities={pokemon.abilities} />
-              <PokemonEvolutionPanel
-                evolutions={pokemon.evolutions}
-                evolutionSteps={pokemon.evolutionSteps}
-              />
-              <PokemonBiologyPanel biology={pokemon.biology} />
-              <PokemonRegionsPanel locations={pokemon.locations} />
-              <PokemonFormsPanel forms={pokemon.forms} />
-            </div>
-          }
-        />
+        <PokedexDevice leftContent={heroContent} nav={nav} rightContent={rightContent} />
       </div>
 
       {/* Mobile (≤576px) */}
@@ -66,11 +82,7 @@ export function PokemonDetailsPage({ pokemon, nav }: Props) {
           style={{ background: 'radial-gradient(ellipse at 50% 60%, #16161a 0%, #000 100%)' }}
         >
           <div className="w-full max-w-sm">
-            <PokedexMobileStack
-              heroContent={heroContent}
-              modules={mobileModules}
-              nav={nav}
-            />
+            <PokedexMobileStack heroContent={heroContent} modules={mobileModules} nav={nav} />
           </div>
         </div>
       </div>
