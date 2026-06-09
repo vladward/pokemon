@@ -65,10 +65,10 @@ export function PokemonEvolutionPanel({ evolutions, evolutionSteps }: Props) {
 
   return (
     <HudSection label="Evolution Chain">
-      <div className="overflow-x-auto">
+      <div className="snap-x snap-mandatory overflow-x-auto">
         <div className="flex min-w-max items-center gap-1 pb-1">
           {stages.map((stage, si) => (
-            <div key={si} className="flex items-center gap-1">
+            <div key={si} className="flex snap-start items-center gap-1">
               {si > 0 && (
                 <EvolutionArrow
                   label={getArrowLabel(stages[si - 1], stage, evolutionSteps)}

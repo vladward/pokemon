@@ -18,32 +18,23 @@ export function PokemonDetailsPage({ pokemon, nav }: Props) {
   const heroContent = <PokemonHeroDisplay pokemon={pokemon} />;
 
   const mobileModules = [
-    <PokemonStatsPanel
-      key="stats"
-      stats={pokemon.stats}
-    />,
-    <PokemonAbilitiesPanel
-      key="abilities"
-      abilities={pokemon.abilities}
-    />,
-    <PokemonEvolutionPanel
-      key="evolution"
-      evolutions={pokemon.evolutions}
-      evolutionSteps={pokemon.evolutionSteps}
-    />,
-    <PokemonBiologyPanel
-      key="biology"
-      biology={pokemon.biology}
-    />,
-    <PokemonRegionsPanel
-      key="regions"
-      locations={pokemon.locations}
-    />,
-    <PokemonFormsPanel
-      key="forms"
-      forms={pokemon.forms}
-    />,
-  ];
+    <PokemonStatsPanel key="stats" stats={pokemon.stats} />,
+    <PokemonAbilitiesPanel key="abilities" abilities={pokemon.abilities} />,
+    pokemon.evolutions.length > 0 && (
+      <PokemonEvolutionPanel
+        key="evolution"
+        evolutions={pokemon.evolutions}
+        evolutionSteps={pokemon.evolutionSteps}
+      />
+    ),
+    <PokemonBiologyPanel key="biology" biology={pokemon.biology} />,
+    pokemon.locations.length > 0 && (
+      <PokemonRegionsPanel key="regions" locations={pokemon.locations} />
+    ),
+    pokemon.forms.length > 1 && (
+      <PokemonFormsPanel key="forms" forms={pokemon.forms} />
+    ),
+  ].filter(Boolean) as React.ReactNode[];
 
   return (
     <>

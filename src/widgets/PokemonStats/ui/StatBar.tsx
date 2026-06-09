@@ -15,17 +15,17 @@ export function StatBar({ value, max = 255 }: Props) {
         return (
           <div
             key={i}
-            className="h-2 flex-1 rounded-sm motion-safe:animate-pdx-stat-fill"
+            className={isFilled ? 'h-2 flex-1 rounded-sm motion-safe:animate-pdx-stat-fill' : 'h-2 flex-1 rounded-sm'}
             style={
               isFilled
                 ? {
                     background: 'linear-gradient(to top, var(--pdx-hud-cyan), var(--pdx-led-cyan-core))',
                     boxShadow: '0 0 4px var(--pdx-hud-cyan-glow)',
                     animationDelay: `${i * 30}ms`,
+                    transformOrigin: 'left center',
                   }
                 : {
                     background: 'rgba(93,217,216,0.08)',
-                    animationDelay: `${i * 30}ms`,
                   }
             }
           />

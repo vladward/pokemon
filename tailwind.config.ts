@@ -226,8 +226,12 @@ export default {
           '100%': { transform: 'translateX(120%) rotate(-20deg)', opacity: '0' },
         },
         pdxLedBreathe: {
-          '0%, 100%': { opacity: '0.7' },
-          '50%': { opacity: '1' },
+          '0%, 100%': { opacity: '0.7', boxShadow: 'var(--pdx-sh-led-glow)' },
+          '50%': {
+            opacity: '1',
+            boxShadow:
+              '0 0 8px var(--pdx-led-cyan), 0 0 24px var(--pdx-hud-cyan-glow), 0 0 48px rgba(109, 236, 231, 0.4)',
+          },
         },
         pdxBootScan: {
           '0%': { top: '0%', opacity: '1' },
