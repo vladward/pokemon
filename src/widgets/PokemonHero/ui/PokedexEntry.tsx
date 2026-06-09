@@ -26,7 +26,7 @@ export function PokedexEntry({ text }: Props) {
           {text}
         </p>
         <span
-          className="pointer-events-none absolute bottom-0 right-0 font-mono text-[11px] leading-relaxed animate-pdx-caret text-pokedex-hud-cyan"
+          className="pointer-events-none absolute bottom-0 right-0 font-mono text-[11px] leading-relaxed motion-safe:animate-pdx-caret motion-reduce:hidden text-pokedex-hud-cyan"
           aria-hidden
         >
           ▋

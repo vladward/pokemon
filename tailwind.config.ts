@@ -234,6 +234,10 @@ export default {
           '90%': { top: '100%', opacity: '1' },
           '100%': { top: '100%', opacity: '0' },
         },
+        pdxScanlineSweep: {
+          from: { backgroundPosition: '0 0' },
+          to: { backgroundPosition: '0 4px' },
+        },
         pdxStatFill: {
           from: { opacity: '0', transform: 'scaleX(0)' },
           to: { opacity: '1', transform: 'scaleX(1)' },
@@ -260,6 +264,7 @@ export default {
         'pokeball-bounce': 'pokeball-bounce 0.85s ease-in-out infinite',
         'pokeball-shadow': 'pokeball-shadow 0.85s ease-in-out infinite',
         /* Pokédex device animations */
+        'pdx-scanline-sweep': 'pdxScanlineSweep 0.8s linear infinite',
         'pdx-streak': 'pdxStreakSweep 9s ease-in-out infinite',
         'pdx-led-breathe': 'pdxLedBreathe 3s ease-in-out infinite',
         'pdx-boot-scan': 'pdxBootScan 1.2s ease-in-out forwards',
