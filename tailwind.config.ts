@@ -70,6 +70,40 @@ export default {
           normal: 'var(--type-normal)',
         },
 
+        /* Pokédex device theme colors */
+        pokedex: {
+          shell: {
+            50: 'var(--pdx-shell-50)',
+            100: 'var(--pdx-shell-100)',
+            300: 'var(--pdx-shell-300)',
+            500: 'var(--pdx-shell-500)',
+            700: 'var(--pdx-shell-700)',
+            900: 'var(--pdx-shell-900)',
+          },
+          metal: {
+            100: 'var(--pdx-metal-100)',
+            500: 'var(--pdx-metal-500)',
+            900: 'var(--pdx-metal-900)',
+          },
+          screen: {
+            0: 'var(--pdx-screen-bg-0)',
+            1: 'var(--pdx-screen-bg-1)',
+            2: 'var(--pdx-screen-bg-2)',
+          },
+          hud: {
+            cyan: 'var(--pdx-hud-cyan)',
+            amber: 'var(--pdx-hud-amber)',
+            red: 'var(--pdx-hud-red)',
+            green: 'var(--pdx-hud-green)',
+            ink: 'var(--pdx-hud-ink)',
+            'ink-dim': 'var(--pdx-hud-ink-dim)',
+          },
+          led: {
+            cyan: 'var(--pdx-led-cyan)',
+            core: 'var(--pdx-led-cyan-core)',
+          },
+        },
+
         border: 'var(--border)',
         input: 'var(--input)',
         ring: 'var(--ring)',
@@ -96,6 +130,13 @@ export default {
         destructive: {
           DEFAULT: 'var(--destructive)',
         },
+      },
+      boxShadow: {
+        'pdx-shell': 'var(--pdx-sh-shell-outer)',
+        'pdx-screen-inset': 'var(--pdx-sh-screen-inset)',
+        'pdx-led-glow': 'var(--pdx-sh-led-glow)',
+        'pdx-hud-corner': 'var(--pdx-sh-hud-corner-glow)',
+        'pdx-button-recess': 'var(--pdx-sh-button-recess)',
       },
       textShadow: {
         pokemon: `
@@ -177,6 +218,30 @@ export default {
           '0%, 100%': { transform: 'scaleX(1)', opacity: '0.25' },
           '50%': { transform: 'scaleX(0.35)', opacity: '0.06' },
         },
+        /* Pokédex device keyframes */
+        pdxStreakSweep: {
+          '0%': { transform: 'translateX(-120%) rotate(-20deg)', opacity: '0' },
+          '8%': { opacity: '1' },
+          '92%': { opacity: '1' },
+          '100%': { transform: 'translateX(120%) rotate(-20deg)', opacity: '0' },
+        },
+        pdxLedBreathe: {
+          '0%, 100%': { opacity: '0.7' },
+          '50%': { opacity: '1' },
+        },
+        pdxBootScan: {
+          '0%': { top: '0%', opacity: '1' },
+          '90%': { top: '100%', opacity: '1' },
+          '100%': { top: '100%', opacity: '0' },
+        },
+        pdxStatFill: {
+          from: { opacity: '0', transform: 'scaleX(0)' },
+          to: { opacity: '1', transform: 'scaleX(1)' },
+        },
+        pdxCaret: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
+        },
       },
       animation: {
         holo: 'holoShift 5s linear infinite',
@@ -194,6 +259,12 @@ export default {
         'cosmic-pulse': 'cosmicPulse 5s ease-in-out infinite',
         'pokeball-bounce': 'pokeball-bounce 0.85s ease-in-out infinite',
         'pokeball-shadow': 'pokeball-shadow 0.85s ease-in-out infinite',
+        /* Pokédex device animations */
+        'pdx-streak': 'pdxStreakSweep 9s ease-in-out infinite',
+        'pdx-led-breathe': 'pdxLedBreathe 3s ease-in-out infinite',
+        'pdx-boot-scan': 'pdxBootScan 1.2s ease-in-out forwards',
+        'pdx-stat-fill': 'pdxStatFill 0.6s ease-out forwards',
+        'pdx-caret': 'pdxCaret 1s step-end infinite',
       },
     },
   },
