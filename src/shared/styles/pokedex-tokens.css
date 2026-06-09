@@ -1,0 +1,166 @@
+/* Pokédex device design tokens — scoped to .pokedex-theme */
+/* Isolated from next-themes light/dark so device colors never change */
+
+.pokedex-theme {
+  /* Shell (red ABS plastic) */
+  --pdx-shell-50: #ffd8d2;
+  --pdx-shell-100: #f7958a;
+  --pdx-shell-300: #e64a3a;
+  --pdx-shell-500: #c8342c;
+  --pdx-shell-700: #8a1f1a;
+  --pdx-shell-900: #4a0e0c;
+
+  /* Hinge / metal */
+  --pdx-metal-100: #5a5a60;
+  --pdx-metal-500: #2a2a2e;
+  --pdx-metal-900: #0d0d10;
+
+  /* Screen backgrounds (HUD) */
+  --pdx-screen-bg-0: #060a12;
+  --pdx-screen-bg-1: #0b1320;
+  --pdx-screen-bg-2: #131e33;
+  --pdx-screen-grid: rgba(120, 200, 255, 0.06);
+  --pdx-scanline: rgba(120, 200, 255, 0.03);
+
+  /* HUD accent colors */
+  --pdx-hud-cyan: #5dd9d8;
+  --pdx-hud-cyan-glow: rgba(93, 217, 216, 0.45);
+  --pdx-hud-amber: #f4a93b;
+  --pdx-hud-red: #ff5252;
+  --pdx-hud-green: #6be675;
+  --pdx-hud-ink: #c9d6e3;
+  --pdx-hud-ink-dim: #6e7e92;
+
+  /* LED */
+  --pdx-led-cyan: #6dece7;
+  --pdx-led-cyan-core: #e8ffff;
+
+  /* Glass */
+  --pdx-glass-tint: rgba(120, 200, 255, 0.04);
+  --pdx-glass-edge: rgba(255, 255, 255, 0.18);
+  --pdx-glass-streak: rgba(255, 255, 255, 0.06);
+
+  /* Radii */
+  --pdx-r-shell: 28px;
+  --pdx-r-inner: 18px;
+  --pdx-r-screen: 14px;
+  --pdx-r-hud: 8px;
+  --pdx-r-pill: 9999px;
+
+  /* Shadow / highlight stack */
+  --pdx-sh-shell-outer:
+    0 24px 60px -12px rgba(0, 0, 0, 0.55),
+    0 6px 14px -4px rgba(0, 0, 0, 0.35);
+
+  --pdx-sh-shell-bevel-top: inset 0 2px 0 rgba(255, 255, 255, 0.35);
+  --pdx-sh-shell-bevel-bottom: inset 0 -3px 0 rgba(0, 0, 0, 0.45);
+  --pdx-sh-shell-rim:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 0 2px rgba(0, 0, 0, 0.25);
+
+  --pdx-sh-screen-inset:
+    inset 0 0 0 1px #000,
+    inset 0 6px 14px rgba(0, 0, 0, 0.85),
+    inset 0 -2px 6px rgba(120, 200, 255, 0.08);
+
+  --pdx-sh-hud-corner-glow:
+    0 0 0 1px rgba(93, 217, 216, 0.55),
+    0 0 12px rgba(93, 217, 216, 0.25);
+
+  --pdx-sh-led-glow:
+    0 0 6px var(--pdx-led-cyan),
+    0 0 18px var(--pdx-hud-cyan-glow),
+    0 0 36px rgba(109, 236, 231, 0.25);
+
+  --pdx-sh-button-recess:
+    inset 0 -3px 0 rgba(0, 0, 0, 0.45),
+    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Pokédex-specific keyframes */
+@keyframes pdxStreakSweep {
+  0% {
+    transform: translateX(-120%) rotate(-20deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120%) rotate(-20deg);
+    opacity: 0;
+  }
+}
+
+@keyframes pdxLedBreathe {
+  0%,
+  100% {
+    opacity: 0.7;
+    box-shadow: var(--pdx-sh-led-glow);
+  }
+  50% {
+    opacity: 1;
+    box-shadow:
+      0 0 8px var(--pdx-led-cyan),
+      0 0 24px var(--pdx-hud-cyan-glow),
+      0 0 48px rgba(109, 236, 231, 0.4);
+  }
+}
+
+@keyframes pdxTypewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes pdxCaret {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes pdxBootScan {
+  0% {
+    top: 0%;
+    opacity: 1;
+  }
+  90% {
+    top: 100%;
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes pdxStatFill {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* Reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  .pdx-reflection-streak,
+  .pdx-led-breathe,
+  .pdx-typewriter {
+    animation: none !important;
+  }
+}
