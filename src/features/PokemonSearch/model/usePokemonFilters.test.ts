@@ -114,9 +114,7 @@ describe('usePokemonFilters', () => {
     it('sets multiple filters simultaneously', () => {
       const { result } = renderHook(() => usePokemonFilters());
 
-      act(() =>
-        result.current.setFilters({ search: 'char', types: ['fire'], rarity: ['rare'] }),
-      );
+      act(() => result.current.setFilters({ search: 'char', types: ['fire'], rarity: ['rare'] }));
 
       const params = getCalledParams();
       expect(params.get('search')).toBe('char');

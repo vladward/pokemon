@@ -8,7 +8,8 @@ model pokemon_form {
   is_mega          Boolean?
   form_order       Int?
   version_group_id Int?
-  pokemon          pokemon  @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_form_ibfk_1")
+  pokemon           pokemon             @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "pokemon_form_ibfk_1")
+  pokemon_form_name pokemon_form_name[]
 
   @@index([pokemon_id], map: "pokemon_id")
 }
