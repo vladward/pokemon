@@ -1,9 +1,18 @@
-export type { PokemonCard } from './PokemonCard';
+export type { TPokemonCard } from './TPokemonCard';
+export { PokemonCard } from './ui/PokemonCard';
 export { getPokemonList } from './api/getPokemonList';
 export { getTypeList } from './api/getTypeList';
 export { getRarityList } from './api/getRarityList';
 export { getGenerationList } from './api/getGenerationList';
-export type { PokemonSearchQuery, SortBy, SortOrder } from './model';
+export type {
+  PokemonSearchQuery,
+  SearchLocale,
+  SortBy,
+  SortOrder,
+  PokemonListResult,
+  Generation,
+  EvolutionStage,
+} from './model';
 export {
   POKEMON_COLORS,
   POKEMON_HABITATS,
@@ -13,6 +22,8 @@ export {
   POKEMON_TYPES,
   REGION_TO_GENERATION,
   GENERATION_TO_REGION,
+  SEARCH_LOCALES,
+  toSearchLocale,
 } from './config';
 export type {
   PokemonColor,

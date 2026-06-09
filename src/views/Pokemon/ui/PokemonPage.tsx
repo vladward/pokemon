@@ -1,36 +1,67 @@
+import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 
-import type { getLocationList } from '@/entities/Location';
-import type {
-  getGenerationList,
-  getPokemonList,
-  getRarityList,
-  getTypeList,
-} from '@/entities/Pokemon';
-import type { getRegionList } from '@/entities/Region';
+import { ToTopButton } from '@/features/ToTopButton';
 
+import type { Location } from '@/entities/Location';
+import type { Generation, PokemonListResult, PokemonRarity } from '@/entities/Pokemon';
+import type { Region } from '@/entities/Region';
+
+import { Container } from '@/shared/ui';
+
+import { PendingProvider } from '../lib/PendingContext';
+
+import { PokemonCardContainer } from './PokemonCardContainer';
+import { PokemonCardList } from './PokemonCardList';
 import { PokemonFilters } from './PokemonFilters';
+import { PokemonPagination } from './PokemonPagination';
 
 interface Props {
-  pokemonList: Awaited<ReturnType<typeof getPokemonList>>;
-  locations: Awaited<ReturnType<typeof getLocationList>>;
-  regions: Awaited<ReturnType<typeof getRegionList>>;
-  types: Awaited<ReturnType<typeof getTypeList>>;
-  rarities: Awaited<ReturnType<typeof getRarityList>>;
-  generations: Awaited<ReturnType<typeof getGenerationList>>;
+  pokemonList: PokemonListResult;
+  locations: Location[];
+  regions: Region[];
+  types: string[];
+  rarities: PokemonRarity[];
+  generations: Generation[];
 }
 
-export const PokemonPage = ({ regions, types, rarities, generations }: Props) => {
+export const PokemonPage = async ({
+  pokemonList,
+  regions,
+  types,
+  rarities,
+  generations,
+}: Props) => {
+  const t = await getTranslations('pages.pokemon');
+
   return (
-    <div>
-      <Suspense>
-        <PokemonFilters
-          regions={regions}
-          types={types}
-          rarities={rarities}
-          generations={generations}
-        />
-      </Suspense>
-    </div>
+    <PendingProvider>
+      <Container className="py-8 tablet:px-4 mobile:px-4">
+        <div className="flex items-baseline gap-3 mb-1">
+          <h1 className="text-3xl font-bold tablet:text-2xl">{t('browse_title')}</h1>
+          <span className="text-sm text-muted-foreground">{pokemonList.total}</span>
+        </div>
+        <Suspense>
+          <PokemonFilters
+            regions={regions}
+            types={types}
+            rarities={rarities}
+            generations={generations}
+          />
+        </Suspense>
+
+        <PokemonCardContainer isEmpty={pokemonList.data.length === 0}>
+          <PokemonCardList items={pokemonList.data} />
+        </PokemonCardContainer>
+
+        <Suspense>
+          <PokemonPagination
+            page={pokemonList.page}
+            totalPages={pokemonList.totalPages}
+          />
+        </Suspense>
+      </Container>
+      <ToTopButton />
+    </PendingProvider>
   );
 };

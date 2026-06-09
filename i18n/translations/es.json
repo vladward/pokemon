@@ -64,7 +64,10 @@
     "steel": "Acero",
     "fairy": "Hada",
     "dark": "Siniestro",
-    "normal": "Normal"
+    "normal": "Normal",
+    "shadow": "Sombra",
+    "stellar": "Estelar",
+    "unknown": "Desconocido"
   },
   "evolution_preview": {
     "title": "¡Desbloquea tu potencial oculto!",
@@ -108,6 +111,7 @@
     "wip": "Página en construcción. ¡Pronto habrá algo interesante aquí!",
     "pokemon": {
       "title": "Pokémon",
+      "browse_title": "Explorar Pokémon",
       "description": "Pronto aparecerá aquí una enciclopedia completa de Pokémon."
     },
     "skills": {
@@ -149,6 +153,32 @@
     "note": {
       "title": "Secretos del Estadio",
       "description": "¿Sabías que antes de la inauguración de cada torneo, el fuego sagrado del legendario Moltres se transporta mediante relevos? Mientras esta llama arda en el pebetero del estadio, protege el espíritu limpio de la competición."
+    }
+  },
+  "pokemon_filters": {
+    "search_placeholder": "Buscar Pokémon...",
+    "region": "Región",
+    "rarity": "Rareza",
+    "type": "Tipo",
+    "generation": "Generación",
+    "evo_stage": "Fase evo.",
+    "clear": "Borrar filtros",
+    "apply": "Aplicar",
+    "all": "Todos",
+    "filters_title": "Filtros"
+  },
+  "pokemon_card": {
+    "rarity": {
+      "common": "Común",
+      "uncommon": "Poco común",
+      "rare": "Raro",
+      "legendary": "Legendario",
+      "mythical": "Mítico"
+    },
+    "evolution_stage": {
+      "base": "Básico",
+      "stage1": "Fase 1",
+      "stage2": "Fase 2"
     }
   }
 }

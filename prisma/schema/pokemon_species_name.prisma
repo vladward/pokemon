@@ -3,5 +3,7 @@ model pokemon_species_name {
   language   String @db.VarChar(10)
   name       String @db.VarChar(200)
 
+  species    pokemon_species @relation(fields: [species_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
   @@id([species_id, language])
 }

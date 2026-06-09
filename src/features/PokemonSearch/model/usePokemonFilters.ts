@@ -1,56 +1,72 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useTransition } from 'react';
 
-type PokemonFilters = {
+export type PokemonFilters = {
   search?: string;
-  type?: string;
-  region?: string;
-  rarity?: string;
-  generation?: string;
+  types?: string[];
+  region?: string[];
+  rarity?: string[];
+  generation?: string[];
+  evolutionStage?: string[];
 };
+
+function parseMulti(value: string | null): string[] | undefined {
+  if (!value) return undefined;
+  const arr = value.split(',').filter(Boolean);
+  return arr.length ? arr : undefined;
+}
 
 export function usePokemonFilters() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [isPending, startTransition] = useTransition();
 
   const filters: PokemonFilters = {
     search: searchParams.get('search') || undefined,
-    type: searchParams.get('type') || undefined,
-    region: searchParams.get('region') || undefined,
-    rarity: searchParams.get('rarity') || undefined,
-    generation: searchParams.get('generation') || undefined,
+    types: parseMulti(searchParams.get('types')),
+    region: parseMulti(searchParams.get('region')),
+    rarity: parseMulti(searchParams.get('rarity')),
+    generation: parseMulti(searchParams.get('generation')),
+    evolutionStage: parseMulti(searchParams.get('evolutionStage')),
   };
 
   const setFilters = (next: Partial<PokemonFilters>) => {
     const params = new URLSearchParams(searchParams.toString());
 
-    const set = (key: string, value?: string) => {
+    const setStr = (key: string, value?: string) => {
       if (value === undefined) return;
-
-      if (value === '') {
-        params.delete(key);
-      } else {
-        params.set(key, value);
-      }
+      if (value === '') params.delete(key);
+      else params.set(key, value);
     };
 
-    set('search', next.search);
-    set('type', next.type);
-    set('region', next.region);
-    set('rarity', next.rarity);
-    set('generation', next.generation);
+    const setArr = (key: string, value?: string[]) => {
+      if (value === undefined) return;
+      if (value.length === 0) params.delete(key);
+      else params.set(key, value.join(','));
+    };
 
-    router.push(`?${params.toString()}`);
+    setStr('search', next.search);
+    setArr('types', next.types);
+    setArr('region', next.region);
+    setArr('rarity', next.rarity);
+    setArr('generation', next.generation);
+    setArr('evolutionStage', next.evolutionStage);
+
+    params.delete('page');
+
+    startTransition(() => router.push(`?${params.toString()}`));
   };
 
   const resetFilters = () => {
-    router.push('?');
+    startTransition(() => router.push('?'));
   };
 
   return {
     filters,
     setFilters,
     resetFilters,
+    isPending,
   };
 }

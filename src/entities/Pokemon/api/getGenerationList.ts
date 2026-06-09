@@ -1,3 +1,5 @@
+import { unstable_cache } from 'next/cache';
+
 import { findGenerations } from './generationRepository';
 
 function formatGenerationName(slug: string): string {
@@ -5,10 +7,15 @@ function formatGenerationName(slug: string): string {
   return `Generation ${roman}`;
 }
 
-export async function getGenerationList() {
-  const generations = await findGenerations();
-  return generations.map((g) => ({
-    id: g.id,
-    name: formatGenerationName(g.name),
-  }));
-}
+export const getGenerationList = unstable_cache(
+  async () => {
+    const generations = await findGenerations();
+    return generations.map((g) => ({
+      id: g.id,
+      name: formatGenerationName(g.name),
+      slug: g.name,
+    }));
+  },
+  ['generation-list'],
+  { revalidate: 3600 },
+);

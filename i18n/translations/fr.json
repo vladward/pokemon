@@ -64,7 +64,10 @@
     "steel": "Acier",
     "fairy": "Fée",
     "dark": "Ténèbres",
-    "normal": "Normal"
+    "normal": "Normal",
+    "shadow": "Ombre",
+    "stellar": "Stellaire",
+    "unknown": "Inconnu"
   },
   "evolution_preview": {
     "title": "Libérez votre potentiel caché !",
@@ -108,6 +111,7 @@
     "wip": "Page en construction. Quelque chose d'intéressant arrive bientôt !",
     "pokemon": {
       "title": "Pokémon",
+      "browse_title": "Explorer les Pokémon",
       "description": "Une encyclopédie complète des Pokémon apparaîtra bientôt ici."
     },
     "skills": {
@@ -149,6 +153,32 @@
     "note": {
       "title": "Secrets du Stade",
       "description": "Saviez-vous qu'avant l'ouverture de chaque tournoi, le feu sacré du légendaire Sulfura est apporté par relais ? Tant que cette flamme brûle dans la vasque du stade, elle protège l'esprit de fair-play de la compétition."
+    }
+  },
+  "pokemon_filters": {
+    "search_placeholder": "Chercher un Pokémon...",
+    "region": "Région",
+    "rarity": "Rareté",
+    "type": "Type",
+    "generation": "Génération",
+    "evo_stage": "Stade évo.",
+    "clear": "Effacer les filtres",
+    "apply": "Appliquer",
+    "all": "Tous",
+    "filters_title": "Filtres"
+  },
+  "pokemon_card": {
+    "rarity": {
+      "common": "Commun",
+      "uncommon": "Peu commun",
+      "rare": "Rare",
+      "legendary": "Légendaire",
+      "mythical": "Mythique"
+    },
+    "evolution_stage": {
+      "base": "De base",
+      "stage1": "Stade 1",
+      "stage2": "Stade 2"
     }
   }
 }

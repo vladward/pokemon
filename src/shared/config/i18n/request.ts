@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { getRequestConfig } from 'next-intl/server';
 
-import { defaultLocale, LOCALE_COOKIE, locales } from './config';
+import { defaultLocale, LOCALE_COOKIE, locales, TIMEZONE } from './config';
 
 export default getRequestConfig(async () => {
   const cookieStore = await cookies();
@@ -11,6 +11,6 @@ export default getRequestConfig(async () => {
   return {
     locale,
     messages: (await import(`@i18n/translations/${locale}.json`)).default,
-    timeZone: 'Europe/Moscow',
+    timeZone: TIMEZONE,
   };
 });

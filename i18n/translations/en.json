@@ -64,7 +64,10 @@
     "steel": "Steel",
     "fairy": "Fairy",
     "dark": "Dark",
-    "normal": "Normal"
+    "normal": "Normal",
+    "shadow": "Shadow",
+    "stellar": "Stellar",
+    "unknown": "Unknown"
   },
   "evolution_preview": {
     "title": "Unlock your hidden potential!",
@@ -131,6 +134,7 @@
     "wip": "Page under construction. Something interesting is coming soon!",
     "pokemon": {
       "title": "Pokémon",
+      "browse_title": "Browse Pokémon",
       "description": "A complete encyclopedia of Pokémon will appear here soon."
     },
     "skills": {
@@ -150,5 +154,31 @@
     "title": "Page not found",
     "description": "Looks like this Pokémon ran away. Try going back to the home page.",
     "button": "Go home"
+  },
+  "pokemon_filters": {
+    "search_placeholder": "Search Pokémon...",
+    "region": "Region",
+    "rarity": "Rarity",
+    "type": "Type",
+    "generation": "Generation",
+    "evo_stage": "Evo Stage",
+    "clear": "Clear filters",
+    "apply": "Apply",
+    "all": "All",
+    "filters_title": "Filters"
+  },
+  "pokemon_card": {
+    "rarity": {
+      "common": "Common",
+      "uncommon": "Uncommon",
+      "rare": "Rare",
+      "legendary": "Legendary",
+      "mythical": "Mythical"
+    },
+    "evolution_stage": {
+      "base": "Basic",
+      "stage1": "Stage 1",
+      "stage2": "Stage 2"
+    }
   }
 }

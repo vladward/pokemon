@@ -1,10 +1,30 @@
 import { PokemonSearchQuery } from '../model/pokemonSearchQuery';
 
-export function buildPokemonWhere(q: PokemonSearchQuery) {
+export function buildPokemonWhere(q: PokemonSearchQuery, evolutionSpeciesIds?: number[]) {
   const conditions: object[] = [];
 
   if (q.search) {
-    conditions.push({ name: { contains: q.search } });
+    const locale = q.searchLocale ?? 'en';
+    conditions.push({
+      OR: [
+        {
+          species: {
+            pokemon_species_name: {
+              some: { language: locale, name: { contains: q.search } },
+            },
+          },
+        },
+        {
+          pokemon_form: {
+            some: {
+              pokemon_form_name: {
+                some: { language: locale, name: { contains: q.search } },
+              },
+            },
+          },
+        },
+      ],
+    });
   }
 
   if (q.types?.length) {
@@ -71,6 +91,10 @@ export function buildPokemonWhere(q: PokemonSearchQuery) {
     if (rarityOr.length) {
       conditions.push({ species: { OR: rarityOr } });
     }
+  }
+
+  if (evolutionSpeciesIds !== undefined) {
+    conditions.push({ species_id: { in: evolutionSpeciesIds } });
   }
 
   return conditions.length ? { AND: conditions } : {};

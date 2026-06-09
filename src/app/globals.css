@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .pr-scrollbar-gap {
+    width: calc(100% + var(--removed-body-scroll-bar-size, 0px));
+    padding-right: var(--removed-body-scroll-bar-size, 0px);
+  }
+}
+
 @layer base {
   :root {
     --font-primary: 'Josefin Sans', sans-serif;

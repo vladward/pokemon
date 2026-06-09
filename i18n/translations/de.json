@@ -64,7 +64,10 @@
     "steel": "Stahl",
     "fairy": "Fee",
     "dark": "Unlicht",
-    "normal": "Normal"
+    "normal": "Normal",
+    "shadow": "Schatten",
+    "stellar": "Stellar",
+    "unknown": "Unbekannt"
   },
   "evolution_preview": {
     "title": "Entfessle dein verborgenes Potenzial!",
@@ -131,6 +134,7 @@
     "wip": "Seite im Aufbau. Bald gibt es hier etwas Spannendes!",
     "pokemon": {
       "title": "Pokémon",
+      "browse_title": "Pokémon entdecken",
       "description": "Bald erscheint hier eine vollständige Pokémon-Enzyklopädie."
     },
     "skills": {
@@ -150,5 +154,31 @@
     "title": "Seite nicht gefunden",
     "description": "Dieser Pokémon scheint weggelaufen zu sein. Versuche, zur Startseite zurückzukehren.",
     "button": "Zur Startseite"
+  },
+  "pokemon_filters": {
+    "search_placeholder": "Pokémon suchen...",
+    "region": "Region",
+    "rarity": "Seltenheit",
+    "type": "Typ",
+    "generation": "Generation",
+    "evo_stage": "Evo-Stufe",
+    "clear": "Filter zurücksetzen",
+    "apply": "Anwenden",
+    "all": "Alle",
+    "filters_title": "Filter"
+  },
+  "pokemon_card": {
+    "rarity": {
+      "common": "Häufig",
+      "uncommon": "Ungewöhnlich",
+      "rare": "Selten",
+      "legendary": "Legendär",
+      "mythical": "Mystisch"
+    },
+    "evolution_stage": {
+      "base": "Basis",
+      "stage1": "Stufe 1",
+      "stage2": "Stufe 2"
+    }
   }
 }

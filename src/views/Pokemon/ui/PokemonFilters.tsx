@@ -1,106 +1,176 @@
 'use client';
-import { XIcon } from 'lucide-react';
+import { SlidersHorizontal, XIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import { useEffect, useState } from 'react';
+
+import { usePending } from '@/views/Pokemon/lib/PendingContext';
 
 import { PokemonSearch } from '@/features/PokemonSearch';
 import { usePokemonFilters } from '@/features/PokemonSearch/model';
 
-import type { getGenerationList, getRarityList, getTypeList } from '@/entities/Pokemon';
-import type { getRegionList } from '@/entities/Region';
+import type { Generation, PokemonRarity } from '@/entities/Pokemon';
+import type { Region } from '@/entities/Region';
 
 import { Button } from '@/shared/ui';
-import { CustomSelect } from '@/shared/ui/CustomSelect/CustomSelect';
+import { MultiSelect } from '@/shared/ui/MultiSelect/MultiSelect';
+
+import { MobileFiltersModal } from './MobileFiltersModal';
 
 interface Props {
-  regions: Awaited<ReturnType<typeof getRegionList>>;
-  types: Awaited<ReturnType<typeof getTypeList>>;
-  rarities: Awaited<ReturnType<typeof getRarityList>>;
-  generations: Awaited<ReturnType<typeof getGenerationList>>;
+  regions: Region[];
+  types: string[];
+  rarities: PokemonRarity[];
+  generations: Generation[];
 }
 
 export const PokemonFilters = ({ regions, types, rarities, generations }: Props) => {
-  const { filters, setFilters, resetFilters } = usePokemonFilters();
+  const tFilters = useTranslations('pokemon_filters');
+  const tCard = useTranslations('pokemon_card');
+  const tTypes = useTranslations('elements');
+  const { filters, setFilters, resetFilters, isPending } = usePokemonFilters();
+  const { setIsPending } = usePending();
+  const [modalOpen, setModalOpen] = useState(false);
 
-  const handleSetFilter = (
-    name: 'search' | 'region' | 'type' | 'rarity' | 'generation',
-    value: string,
-  ) => {
-    setFilters({ [name]: value });
-  };
+  useEffect(() => {
+    setIsPending(isPending);
+  }, [isPending, setIsPending]);
 
-  const selectRegions = regions.map(({ id, name }) => ({ value: id.toString(), label: name }));
-  const typeOptions = types.map((t) => ({ value: t, label: t }));
-  const rarityOptions = rarities.map((r) => ({ value: r, label: r }));
-  const generationOptions = generations.map(({ id, name }) => ({
-    value: id.toString(),
+  const evolutionStageOptions = (['base', 'stage1', 'stage2'] as const).map((s) => ({
+    value: s,
+    label: tCard(`evolution_stage.${s}` as `evolution_stage.${typeof s}`),
+  }));
+
+  const selectRegions = regions
+    .filter((r) => r.generationId !== null)
+    .map(({ slug, name }) => ({ value: slug, label: name }));
+
+  const typeOptions = types.map((type) => ({
+    value: type,
+    label: tTypes(type as Parameters<typeof tTypes>[0]),
+  }));
+
+  const rarityOptions = rarities.map((r) => ({
+    value: r,
+    label: tCard(`rarity.${r}` as `rarity.${PokemonRarity}`),
+  }));
+
+  const generationOptions = generations.map(({ slug, name }) => ({
+    value: slug,
     label: name,
   }));
 
   const hasActiveFilters = !!(
-    filters.region ||
-    filters.type ||
-    filters.rarity ||
+    filters.region?.length ||
+    filters.types?.length ||
+    filters.rarity?.length ||
     filters.search ||
-    filters.generation
+    filters.generation?.length ||
+    filters.evolutionStage?.length
   );
 
+  const activeModalFiltersCount = [
+    filters.region?.length,
+    filters.types?.length,
+    filters.rarity?.length,
+    filters.generation?.length,
+    filters.evolutionStage?.length,
+  ].filter(Boolean).length;
+
   return (
-    <div className="flex items-stretch justify-start gap-3 text-center h-[40px] py-[20px] box-content mx-8">
-      <PokemonSearch
-        value={filters.search}
-        onChange={(value) => handleSetFilter('search', value)}
-      />
-
-      <div className="flex gap-3">
-        <CustomSelect
-          id="regionId"
-          value={filters.region || ''}
-          options={selectRegions}
-          placeholder="Region"
-          onChange={(value) => handleSetFilter('region', value)}
-          className="!h-full w-[110px] capitalize"
+    <>
+      <div className="flex items-stretch justify-between gap-3 text-center h-[40px] py-[20px] box-content">
+        <PokemonSearch
+          value={filters.search}
+          onChange={(value) => setFilters({ search: value })}
+          disabled={isPending}
         />
 
-        <CustomSelect
-          id="rarityId"
-          value={filters.rarity || ''}
-          options={rarityOptions}
-          placeholder="Rarity"
-          onChange={(value) => handleSetFilter('rarity', value)}
-          className="!h-full w-[110px] capitalize"
-        />
+        <button
+          className="hidden laptop:flex items-center gap-1.5 px-3 h-full rounded-lg border border-input bg-background text-sm font-medium text-foreground/70 shrink-0 relative"
+          onClick={() => setModalOpen(true)}
+          aria-label={tFilters('filters_title')}
+        >
+          <SlidersHorizontal className="size-4" />
+          {activeModalFiltersCount > 0 && (
+            <span className="absolute -top-1.5 -right-1.5 h-4 w-4 rounded-full bg-primary text-primary-foreground text-[10px] font-bold flex items-center justify-center">
+              {activeModalFiltersCount}
+            </span>
+          )}
+        </button>
 
-        <CustomSelect
-          id="typeId"
-          value={filters.type || ''}
-          options={typeOptions}
-          placeholder="Type"
-          onChange={(value) => handleSetFilter('type', value)}
-          className="!h-full w-[110px] capitalize"
-        />
+        <div className="flex gap-3 laptop:hidden">
+          <MultiSelect
+            values={filters.region ?? []}
+            options={selectRegions}
+            placeholder={tFilters('region')}
+            onChange={(value) => setFilters({ region: value })}
+            className="!h-full w-[130px]"
+            disabled={isPending}
+          />
 
-        <CustomSelect
-          id="generationId"
-          value={filters.generation || ''}
-          options={generationOptions}
-          placeholder="Generation"
-          onChange={(value) => handleSetFilter('generation', value)}
-          className="!h-full w-[140px]"
-        />
+          <MultiSelect
+            values={filters.rarity ?? []}
+            options={rarityOptions}
+            placeholder={tFilters('rarity')}
+            onChange={(value) => setFilters({ rarity: value })}
+            className="!h-full w-[130px]"
+            disabled={isPending}
+          />
 
-        {hasActiveFilters && (
-          <Button
-            variant="ghost"
-            onClick={resetFilters}
-            aria-label="Clear filters"
-            className=" p-0 text-destructive"
-          >
-            <XIcon
-              aria-hidden="true"
-              className="size-4"
-            />
-          </Button>
-        )}
+          <MultiSelect
+            values={filters.types ?? []}
+            options={typeOptions}
+            placeholder={tFilters('type')}
+            onChange={(value) => setFilters({ types: value })}
+            className="!h-full w-[130px]"
+            disabled={isPending}
+          />
+
+          <MultiSelect
+            values={filters.generation ?? []}
+            options={generationOptions}
+            placeholder={tFilters('generation')}
+            onChange={(value) => setFilters({ generation: value })}
+            className="!h-full w-[130px]"
+            disabled={isPending}
+          />
+
+          <MultiSelect
+            values={filters.evolutionStage ?? []}
+            options={evolutionStageOptions}
+            placeholder={tFilters('evo_stage')}
+            onChange={(value) => setFilters({ evolutionStage: value })}
+            className="!h-full w-[130px]"
+            disabled={isPending}
+          />
+
+          {hasActiveFilters && (
+            <Button
+              variant="ghost"
+              onClick={resetFilters}
+              aria-label={tFilters('clear')}
+              className="p-0 text-destructive"
+            >
+              <XIcon
+                aria-hidden="true"
+                className="size-4"
+              />
+            </Button>
+          )}
+        </div>
       </div>
-    </div>
+
+      <MobileFiltersModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        filters={filters}
+        regions={regions}
+        types={types}
+        rarities={rarities}
+        generations={generations}
+        onApply={setFilters}
+        onReset={resetFilters}
+      />
+    </>
   );
 };
