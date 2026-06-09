@@ -8,8 +8,14 @@ export function MetricGrid({ height, weight }: Props) {
   const weightKg = (weight / 10).toFixed(1);
 
   return (
-    <div className="flex gap-4">
-      <div className="flex flex-col gap-0.5">
+    <div className="flex gap-2">
+      <div
+        className="flex flex-col gap-0.5 rounded px-2 py-1"
+        style={{
+          background: 'rgba(93,217,216,0.05)',
+          border: '1px solid rgba(93,217,216,0.14)',
+        }}
+      >
         <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-pokedex-hud-ink-dim">
           Height
         </span>
@@ -18,10 +24,12 @@ export function MetricGrid({ height, weight }: Props) {
         </span>
       </div>
       <div
-        className="w-px opacity-30"
-        style={{ background: 'var(--pdx-hud-ink-dim)' }}
-      />
-      <div className="flex flex-col gap-0.5">
+        className="flex flex-col gap-0.5 rounded px-2 py-1"
+        style={{
+          background: 'rgba(93,217,216,0.05)',
+          border: '1px solid rgba(93,217,216,0.14)',
+        }}
+      >
         <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-pokedex-hud-ink-dim">
           Weight
         </span>
