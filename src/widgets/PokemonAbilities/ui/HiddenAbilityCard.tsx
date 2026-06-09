@@ -9,7 +9,13 @@ interface Props {
 export function HiddenAbilityCard({ ability }: Props) {
   return (
     <HudFrame>
-      <div className="flex flex-col gap-1 px-1">
+      <div
+        className="flex flex-col gap-1 border-l-2 pl-2 pr-1"
+        style={{
+          borderColor: 'var(--pdx-hud-amber)',
+          boxShadow: '-3px 0 8px rgba(244,169,59,0.35)',
+        }}
+      >
         <span
           className="font-mono text-[9px] uppercase tracking-[0.16em]"
           style={{ color: 'var(--pdx-hud-amber)' }}
