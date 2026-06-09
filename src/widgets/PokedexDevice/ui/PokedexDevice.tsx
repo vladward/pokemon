@@ -10,7 +10,7 @@ interface Props {
 export function PokedexDevice({ leftContent, rightContent, nav }: Props) {
   return (
     <div
-      className="pokedex-theme relative flex min-h-screen items-center justify-center p-8"
+      className="pokedex-theme relative flex min-h-screen items-center justify-center p-8 mobile:p-4"
       style={{
         background: 'radial-gradient(ellipse at 50% 60%, #16161a 0%, #000 100%)',
       }}

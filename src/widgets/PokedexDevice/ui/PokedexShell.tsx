@@ -14,9 +14,8 @@ interface Props {
 export function PokedexShell({ leftContent, rightContent, nav }: Props) {
   return (
     <div
-      className="relative flex w-full overflow-hidden"
+      className="relative flex w-full aspect-[16/10] overflow-hidden laptop:aspect-auto laptop:flex-col"
       style={{
-        aspectRatio: '16/10',
         borderRadius: 'var(--pdx-r-shell)',
         background:
           'linear-gradient(135deg, var(--pdx-shell-300) 0%, var(--pdx-shell-500) 50%, var(--pdx-shell-700) 100%)',

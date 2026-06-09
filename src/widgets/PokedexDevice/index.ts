@@ -1,4 +1,5 @@
 export { PokedexDevice } from './ui/PokedexDevice';
+export { PokedexMobileStack } from './ui/PokedexMobileStack';
 export { PokedexShell } from './ui/PokedexShell';
 export { PokedexHinge } from './ui/PokedexHinge';
 export { PokedexLeftPanel } from './ui/PokedexLeftPanel';

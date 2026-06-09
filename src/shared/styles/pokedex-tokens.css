@@ -165,6 +165,31 @@
   }
 }
 
+/* Hinge gradient — direction switches when the hinge is horizontal */
+.pdx-hinge {
+  background: linear-gradient(
+    to right,
+    var(--pdx-metal-900) 0%,
+    var(--pdx-metal-500) 35%,
+    var(--pdx-metal-100) 50%,
+    var(--pdx-metal-500) 65%,
+    var(--pdx-metal-900) 100%
+  );
+}
+
+@media (max-width: 992px) {
+  .pdx-hinge {
+    background: linear-gradient(
+      to bottom,
+      var(--pdx-metal-900) 0%,
+      var(--pdx-metal-500) 35%,
+      var(--pdx-metal-100) 50%,
+      var(--pdx-metal-500) 65%,
+      var(--pdx-metal-900) 100%
+    );
+  }
+}
+
 /* Reduced motion overrides */
 @media (prefers-reduced-motion: reduce) {
   .pdx-reflection-streak,
