@@ -63,12 +63,12 @@ export function PokemonNavigation({ prevId, nextId, locale }: Props) {
     <div className="flex items-center gap-2">
       <NavButton
         href={`/${locale}/pokemon/${prevId}`}
-        label="Prev"
+        label="◀ PREV"
         disabled={prevId === null}
       />
       <NavButton
         href={`/${locale}/pokemon/${nextId}`}
-        label="Next"
+        label="NEXT ▶"
         disabled={nextId === null}
       />
     </div>
