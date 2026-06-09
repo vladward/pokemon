@@ -67,7 +67,7 @@ export const MobileFiltersModal = ({
 
   const regionOptions = regions
     .filter((r) => r.generationId !== null)
-    .map(({ generationId, name }) => ({ value: generationId!.toString(), label: name }));
+    .map(({ slug, name }) => ({ value: slug, label: name }));
 
   const typeOptions = types.map((type) => ({
     value: type,
@@ -79,8 +79,8 @@ export const MobileFiltersModal = ({
     label: tCard(`rarity.${r}` as `rarity.${PokemonRarity}`),
   }));
 
-  const generationOptions = generations.map(({ id, name }) => ({
-    value: id.toString(),
+  const generationOptions = generations.map(({ slug, name }) => ({
+    value: slug,
     label: name,
   }));
 
@@ -187,16 +187,16 @@ export const MobileFiltersModal = ({
             />
           </div>
 
-          <div className="px-5 py-4 border-t border-border flex gap-3 shrink-0">
+          <div className="px-5 py-4 border-t border-border flex justify-end gap-3 shrink-0">
             <Button
               variant="ghost"
-              className="flex-1 text-destructive"
+              className="text-destructive py-2 px-5"
               onClick={handleReset}
             >
               {tFilters('clear')}
             </Button>
             <Button
-              className="flex-1"
+              className="py-2 px-5"
               onClick={handleApply}
             >
               {tFilters('apply')}

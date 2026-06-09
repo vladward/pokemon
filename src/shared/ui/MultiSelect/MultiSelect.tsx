@@ -10,6 +10,8 @@ import {
   DropdownMenuTrigger,
 } from '@/shared/ui/shadcn/dropdown-menu';
 
+import { useMultiSelectDraft } from './useMultiSelectDraft';
+
 type Option = {
   value: string;
   label: string;
@@ -32,22 +34,18 @@ export function MultiSelect({
   disabled,
   className,
 }: Props) {
-  const toggle = (value: string) => {
-    onChange(
-      values.includes(value) ? values.filter((v) => v !== value) : [...values, value],
-    );
-  };
+  const { draft, open, setOpen, toggle } = useMultiSelectDraft(values, onChange);
 
-  const triggerLabel = () => {
-    if (!values.length) return null;
-    const first = options.find((o) => o.value === values[0])?.label ?? values[0];
-    return values.length === 1 ? first : `${first} +${values.length - 1}`;
-  };
-
-  const label = triggerLabel();
+  const first = draft.length
+    ? (options.find((o) => o.value === draft[0])?.label ?? draft[0])
+    : null;
+  const label = first && (draft.length === 1 ? first : `${first} +${draft.length - 1}`);
 
   return (
-    <DropdownMenu>
+    <DropdownMenu
+      open={open}
+      onOpenChange={setOpen}
+    >
       <DropdownMenuTrigger
         disabled={disabled}
         asChild
@@ -75,9 +73,10 @@ export function MultiSelect({
         {options.map((opt) => (
           <DropdownMenuCheckboxItem
             key={opt.value}
-            checked={values.includes(opt.value)}
+            checked={draft.includes(opt.value)}
             onCheckedChange={() => toggle(opt.value)}
             onSelect={(e) => e.preventDefault()}
+            disabled={disabled}
             className="capitalize"
           >
             {opt.label}

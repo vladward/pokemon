@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import { getTranslations } from 'next-intl/server';
 
 import type { Location } from '@/entities/Location';
 import type { Generation, PokemonListResult, PokemonRarity } from '@/entities/Pokemon';
@@ -22,10 +23,19 @@ interface Props {
   generations: Generation[];
 }
 
-export const PokemonPage = ({ pokemonList, regions, types, rarities, generations }: Props) => {
+export const PokemonPage = async ({
+  pokemonList,
+  regions,
+  types,
+  rarities,
+  generations,
+}: Props) => {
+  const t = await getTranslations('pages.pokemon');
+
   return (
     <PendingProvider>
       <Container className="py-8 tablet:px-4 mobile:px-4">
+        <h1 className="text-3xl font-bold tablet:text-2xl">{t('browse_title')}</h1>
         <Suspense>
           <PokemonFilters
             regions={regions}

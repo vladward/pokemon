@@ -54,9 +54,7 @@ jest.mock('@/shared/ui/MultiSelect/MultiSelect', () => ({
           data-testid={`${placeholder}-${o.value}`}
           onClick={() =>
             onChange(
-              values.includes(o.value)
-                ? values.filter((v) => v !== o.value)
-                : [...values, o.value],
+              values.includes(o.value) ? values.filter((v) => v !== o.value) : [...values, o.value],
             )
           }
         >
@@ -94,10 +92,12 @@ const emptyFilters = {
 };
 
 const defaultProps = {
-  regions: [{ id: 1, name: 'Kanto', generationId: 1, localizedName: 'Kanto' }] as Region[],
+  regions: [
+    { id: 1, name: 'Kanto', slug: 'kanto', generationId: 1, localizedName: 'Kanto' },
+  ] as Region[],
   types: ['fire', 'water'] as string[],
   rarities: ['common', 'rare'] as PokemonRarity[],
-  generations: [{ id: 1, name: 'Generation I' }] as Generation[],
+  generations: [{ id: 1, name: 'Generation I', slug: 'generation-i' }] as Generation[],
 };
 
 function setupHook(overrides: Partial<ReturnType<typeof usePokemonFilters>> = {}) {
@@ -140,10 +140,10 @@ describe('PokemonFilters', () => {
   describe('clear button visibility', () => {
     it.each([
       ['search', { search: 'pikachu' }],
-      ['region', { region: ['1'] }],
+      ['region', { region: ['kanto'] }],
       ['types', { types: ['fire'] }],
       ['rarity', { rarity: ['rare'] }],
-      ['generation', { generation: ['1'] }],
+      ['generation', { generation: ['generation-i'] }],
       ['evolutionStage', { evolutionStage: ['base'] }],
     ])('shows clear button when %s is active', (_, activeFilters) => {
       setupHook({ filters: { ...emptyFilters, ...activeFilters } });
@@ -161,14 +161,14 @@ describe('PokemonFilters', () => {
 
     it('calls setFilters with region as array', () => {
       render(<PokemonFilters {...defaultProps} />);
-      fireEvent.click(screen.getByTestId('region-1'));
-      expect(mockSetFilters).toHaveBeenCalledWith({ region: ['1'] });
+      fireEvent.click(screen.getByTestId('region-kanto'));
+      expect(mockSetFilters).toHaveBeenCalledWith({ region: ['kanto'] });
     });
 
     it('calls setFilters with empty region array when deselected', () => {
-      setupHook({ filters: { ...emptyFilters, region: ['1'] } });
+      setupHook({ filters: { ...emptyFilters, region: ['kanto'] } });
       render(<PokemonFilters {...defaultProps} />);
-      fireEvent.click(screen.getByTestId('region-1'));
+      fireEvent.click(screen.getByTestId('region-kanto'));
       expect(mockSetFilters).toHaveBeenCalledWith({ region: [] });
     });
 
@@ -200,8 +200,8 @@ describe('PokemonFilters', () => {
 
     it('calls setFilters with generation as array', () => {
       render(<PokemonFilters {...defaultProps} />);
-      fireEvent.click(screen.getByTestId('generation-1'));
-      expect(mockSetFilters).toHaveBeenCalledWith({ generation: ['1'] });
+      fireEvent.click(screen.getByTestId('generation-generation-i'));
+      expect(mockSetFilters).toHaveBeenCalledWith({ generation: ['generation-i'] });
     });
 
     it('calls setFilters with evolutionStage as array', () => {

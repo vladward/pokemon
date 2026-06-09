@@ -47,18 +47,30 @@ export default async function Page({
   params: PageParams;
   searchParams: SearchParams;
 }) {
-  const [{ locale }, params] = await Promise.all([pageParams, searchParams]);
+  const [{ locale }, params, regions, generations] = await Promise.all([
+    pageParams,
+    searchParams,
+    getRegionList(),
+    getGenerationList(),
+  ]);
   const searchLocale = toSearchLocale(locale);
 
-  const [pokemonList, locations, regions, types, rarities, generations] = await Promise.all([
+  const regionIds =
+    toArray(params.region)
+      ?.map((slug) => regions.find((r) => r.slug === slug)?.generationId)
+      .filter((id): id is number => id != null) ?? [];
+
+  const generationIds =
+    toArray(params.generation)
+      ?.map((slug) => generations.find((g) => g.slug === slug)?.id)
+      .filter((id): id is number => id != null) ?? [];
+
+  const [pokemonList, locations, types, rarities] = await Promise.all([
     getPokemonList({
       search: params.search,
       searchLocale,
       types: toArray(params.types),
-      generation: [
-        ...(toArray(params.generation)?.map(Number).filter(Boolean) ?? []),
-        ...(toArray(params.region)?.map(Number).filter(Boolean) ?? []),
-      ],
+      generation: [...generationIds, ...regionIds],
       rarity: toArray(params.rarity),
       colors: toArray(params.colors),
       habitat: toArray(params.habitat),
@@ -71,10 +83,8 @@ export default async function Page({
       sortOrder: (params.sortOrder as SortOrder) ?? 'asc',
     }),
     getLocationList(),
-    getRegionList(),
     getTypeList(),
     getRarityList(),
-    getGenerationList(),
   ]);
 
   return (

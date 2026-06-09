@@ -38,7 +38,7 @@ export const PokemonSearch = ({ value, onChange, disabled }: PokemonSearchProps)
       value={inputValue}
       onChange={(e) => setInputValue(e.target.value)}
       readOnly={disabled}
-      className="max-w-[350px] min-w-[150px] tablet:max-w-[180px] h-full mobile:flex-1 mobile:max-w-none mobile:min-w-0"
+      className="max-w-[350px] min-w-[150px] h-full tablet:flex-1 tablet:max-w-none tablet:min-w-0"
     />
   );
 };

@@ -111,6 +111,7 @@
     "wip": "Página en construcción. ¡Pronto habrá algo interesante aquí!",
     "pokemon": {
       "title": "Pokémon",
+      "browse_title": "Explorar Pokémon",
       "description": "Pronto aparecerá aquí una enciclopedia completa de Pokémon."
     },
     "skills": {

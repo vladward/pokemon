@@ -10,5 +10,6 @@ export async function getGenerationList() {
   return generations.map((g) => ({
     id: g.id,
     name: formatGenerationName(g.name),
+    slug: g.name,
   }));
 }

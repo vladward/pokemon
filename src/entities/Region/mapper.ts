@@ -11,6 +11,7 @@ export function mapRegion(raw: RawRegion): Region {
   return {
     id: raw.id,
     name: raw.region_name[0]?.name ?? raw.name,
+    slug: raw.name,
     generationId: raw.main_generation_id ?? null,
     localizedName: raw.region_name[0]?.name ?? raw.name,
   };

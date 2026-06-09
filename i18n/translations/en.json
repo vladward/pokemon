@@ -134,6 +134,7 @@
     "wip": "Page under construction. Something interesting is coming soon!",
     "pokemon": {
       "title": "Pokémon",
+      "browse_title": "Browse Pokémon",
       "description": "A complete encyclopedia of Pokémon will appear here soon."
     },
     "skills": {

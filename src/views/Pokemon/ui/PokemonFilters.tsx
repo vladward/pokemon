@@ -42,7 +42,7 @@ export const PokemonFilters = ({ regions, types, rarities, generations }: Props)
 
   const selectRegions = regions
     .filter((r) => r.generationId !== null)
-    .map(({ generationId, name }) => ({ value: generationId!.toString(), label: name }));
+    .map(({ slug, name }) => ({ value: slug, label: name }));
 
   const typeOptions = types.map((type) => ({
     value: type,
@@ -54,8 +54,8 @@ export const PokemonFilters = ({ regions, types, rarities, generations }: Props)
     label: tCard(`rarity.${r}` as `rarity.${PokemonRarity}`),
   }));
 
-  const generationOptions = generations.map(({ id, name }) => ({
-    value: id.toString(),
+  const generationOptions = generations.map(({ slug, name }) => ({
+    value: slug,
     label: name,
   }));
 
@@ -86,12 +86,11 @@ export const PokemonFilters = ({ regions, types, rarities, generations }: Props)
         />
 
         <button
-          className="hidden mobile:flex items-center gap-1.5 px-3 h-full rounded-lg border border-input bg-background text-sm font-medium text-foreground/70 shrink-0 relative"
+          className="hidden laptop:flex items-center gap-1.5 px-3 h-full rounded-lg border border-input bg-background text-sm font-medium text-foreground/70 shrink-0 relative"
           onClick={() => setModalOpen(true)}
           aria-label={tFilters('filters_title')}
         >
           <SlidersHorizontal className="size-4" />
-          {tFilters('filters_title')}
           {activeModalFiltersCount > 0 && (
             <span className="absolute -top-1.5 -right-1.5 h-4 w-4 rounded-full bg-primary text-primary-foreground text-[10px] font-bold flex items-center justify-center">
               {activeModalFiltersCount}
@@ -99,7 +98,7 @@ export const PokemonFilters = ({ regions, types, rarities, generations }: Props)
           )}
         </button>
 
-        <div className="flex gap-3 mobile:hidden">
+        <div className="flex gap-3 laptop:hidden">
           <MultiSelect
             values={filters.region ?? []}
             options={selectRegions}
