@@ -20,6 +20,23 @@ export function SpriteStage({ sprite, spriteArtwork, name }: Props) {
         }}
       />
 
+      {/* Arena corner bracket markers */}
+      <svg
+        className="pointer-events-none absolute inset-0 h-full w-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        aria-hidden
+      >
+        {/* Top-left */}
+        <path d="M4 14 L4 4 L14 4" stroke="var(--pdx-hud-cyan)" strokeWidth="0.8" strokeOpacity="0.55" fill="none" strokeLinecap="round" />
+        {/* Top-right */}
+        <path d="M86 4 L96 4 L96 14" stroke="var(--pdx-hud-cyan)" strokeWidth="0.8" strokeOpacity="0.55" fill="none" strokeLinecap="round" />
+        {/* Bottom-left */}
+        <path d="M4 86 L4 96 L14 96" stroke="var(--pdx-hud-cyan)" strokeWidth="0.8" strokeOpacity="0.55" fill="none" strokeLinecap="round" />
+        {/* Bottom-right */}
+        <path d="M86 96 L96 96 L96 86" stroke="var(--pdx-hud-cyan)" strokeWidth="0.8" strokeOpacity="0.55" fill="none" strokeLinecap="round" />
+      </svg>
+
       {/* Reticle SVG ring */}
       <svg
         viewBox="0 0 160 160"

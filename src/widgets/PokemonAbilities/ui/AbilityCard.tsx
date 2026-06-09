@@ -9,7 +9,13 @@ interface Props {
 export function AbilityCard({ ability }: Props) {
   return (
     <HudFrame>
-      <div className="flex flex-col gap-1 px-1">
+      <div
+        className="flex flex-col gap-1 border-l-2 pl-2 pr-1"
+        style={{
+          borderColor: 'var(--pdx-hud-cyan)',
+          boxShadow: '-3px 0 8px var(--pdx-hud-cyan-glow)',
+        }}
+      >
         <span className="font-mono text-[12px] font-medium capitalize text-pokedex-hud-ink">
           {ability.name}
         </span>

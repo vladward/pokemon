@@ -5,8 +5,31 @@ interface Props {
   max?: number;
 }
 
+function getBarStyle(value: number): { fill: string; glow: string } {
+  if (value >= 150)
+    return {
+      fill: 'linear-gradient(to top, var(--pdx-hud-green), #b6ffc0)',
+      glow: '0 0 4px rgba(107,230,117,0.50)',
+    };
+  if (value >= 100)
+    return {
+      fill: 'linear-gradient(to top, var(--pdx-hud-cyan), var(--pdx-led-cyan-core))',
+      glow: '0 0 4px var(--pdx-hud-cyan-glow)',
+    };
+  if (value >= 60)
+    return {
+      fill: 'linear-gradient(to top, var(--pdx-hud-amber), #ffd580)',
+      glow: '0 0 4px rgba(244,169,59,0.45)',
+    };
+  return {
+    fill: 'linear-gradient(to top, var(--pdx-hud-red), #ff8585)',
+    glow: '0 0 4px rgba(255,82,82,0.45)',
+  };
+}
+
 export function StatBar({ value, max = 255 }: Props) {
   const filled = Math.round((value / max) * TOTAL_SEGMENTS);
+  const { fill, glow } = getBarStyle(value);
 
   return (
     <div className="flex gap-[2px]">
@@ -19,8 +42,8 @@ export function StatBar({ value, max = 255 }: Props) {
             style={
               isFilled
                 ? {
-                    background: 'linear-gradient(to top, var(--pdx-hud-cyan), var(--pdx-led-cyan-core))',
-                    boxShadow: '0 0 4px var(--pdx-hud-cyan-glow)',
+                    background: fill,
+                    boxShadow: glow,
                     animationDelay: `${i * 30}ms`,
                     transformOrigin: 'left center',
                   }

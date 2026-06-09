@@ -25,7 +25,14 @@ export function EvolutionArrow({ label }: Props) {
           {label}
         </span>
       )}
-      <svg width="16" height="8" viewBox="0 0 16 8" fill="none" aria-hidden>
+      <svg
+        width="16"
+        height="8"
+        viewBox="0 0 16 8"
+        fill="none"
+        aria-hidden
+        style={{ filter: 'drop-shadow(0 0 3px var(--pdx-hud-cyan))' }}
+      >
         <path
           d="M0 4 H12 M9 1.5 L12.5 4 L9 6.5"
           stroke="var(--pdx-hud-cyan)"
