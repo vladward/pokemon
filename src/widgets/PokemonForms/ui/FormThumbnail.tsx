@@ -4,14 +4,16 @@ import type { TForm } from '@/entities/Pokemon';
 
 interface Props {
   form: TForm;
+  className?: string;
 }
 
-export function FormThumbnail({ form }: Props) {
+export function FormThumbnail({ form, className }: Props) {
   return (
     <div
       className={cn(
         'flex flex-col items-center gap-1 rounded p-1.5',
         form.isCurrent && 'bg-[rgba(93,217,216,0.08)]',
+        className,
       )}
       style={
         form.isCurrent
