@@ -183,6 +183,15 @@
   animation: pdxBootScan 1.8s ease-in-out infinite;
 }
 
+/* Typewriter animation — duration driven by --pdx-tw-duration CSS custom property */
+.pdx-typewriter {
+  overflow: hidden;
+  animation-name: pdxTypewriter;
+  animation-duration: var(--pdx-tw-duration, 3s);
+  animation-timing-function: steps(80);
+  animation-fill-mode: forwards;
+}
+
 /* WebKit scrollbar — scoped to the Pokédex device */
 .pokedex-theme ::-webkit-scrollbar {
   width: 4px;
@@ -204,10 +213,14 @@
 @media (prefers-reduced-motion: reduce) {
   .pdx-reflection-streak,
   .pdx-led-breathe,
-  .pdx-typewriter,
   .pdx-scanline-sweep,
   .pdx-boot-scan-loop {
     animation: none !important;
     opacity: 1;
+  }
+
+  .pdx-typewriter {
+    animation: none !important;
+    width: 100% !important;
   }
 }

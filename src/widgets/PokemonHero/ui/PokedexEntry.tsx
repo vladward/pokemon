@@ -1,3 +1,5 @@
+import type React from 'react';
+
 interface Props {
   text: string | null;
   label?: string;
@@ -6,9 +8,7 @@ interface Props {
 export function PokedexEntry({ text, label = 'POKÉDEX ENTRY' }: Props) {
   if (!text) return null;
 
-  const chars = text.length;
-  const steps = Math.min(chars, 80);
-  const duration = (chars / 25).toFixed(1);
+  const duration = (text.length / 25).toFixed(1);
 
   return (
     <div className="relative">
@@ -18,14 +18,13 @@ export function PokedexEntry({ text, label = 'POKÉDEX ENTRY' }: Props) {
       <div className="relative overflow-hidden">
         <p
           className="pdx-typewriter font-mono text-[11px] leading-relaxed text-pokedex-hud-ink overflow-hidden"
-          style={{
-            animation: `pdxTypewriter ${duration}s steps(${steps}) forwards`,
-          }}
+          style={{ '--pdx-tw-duration': `${duration}s` } as React.CSSProperties}
         >
           {text}
         </p>
         <span
           className="pointer-events-none absolute bottom-0 right-0 font-mono text-[11px] leading-relaxed motion-safe:animate-pdx-caret motion-reduce:hidden text-pokedex-hud-cyan"
+          style={{ opacity: 0, animationDelay: `${duration}s` }}
           aria-hidden
         >
           ▋
