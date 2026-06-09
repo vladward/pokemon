@@ -16,13 +16,14 @@ const STAT_LABELS: Record<keyof TPokemonDetails['stats'], string> = {
 
 interface Props {
   stats: TPokemonDetails['stats'];
+  label?: string;
 }
 
-export function PokemonStatsPanel({ stats }: Props) {
+export function PokemonStatsPanel({ stats, label = 'STATUS' }: Props) {
   const total = Object.values(stats).reduce((sum, v) => sum + v, 0);
 
   return (
-    <HudSection label="Status">
+    <HudSection label={label}>
       <div className="flex flex-col gap-2">
         {(Object.entries(stats) as [keyof typeof stats, number][]).map(([key, value]) => (
           <StatRow key={key} label={STAT_LABELS[key]} value={value} />

@@ -7,9 +7,10 @@ import { SpriteStage } from './SpriteStage';
 
 interface Props {
   pokemon: TPokemonDetails;
+  entryLabel?: string;
 }
 
-export function PokemonHeroDisplay({ pokemon }: Props) {
+export function PokemonHeroDisplay({ pokemon, entryLabel }: Props) {
   return (
     <div className="flex h-full flex-col gap-3 p-4">
       {/* Header */}
@@ -49,7 +50,7 @@ export function PokemonHeroDisplay({ pokemon }: Props) {
           className="h-px opacity-20"
           style={{ background: 'linear-gradient(to right, var(--pdx-hud-cyan), transparent)' }}
         />
-        <PokedexEntry text={pokemon.flavorText} />
+        <PokedexEntry text={pokemon.flavorText} label={entryLabel} />
       </div>
     </div>
   );

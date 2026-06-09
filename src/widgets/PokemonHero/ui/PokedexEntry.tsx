@@ -1,8 +1,9 @@
 interface Props {
   text: string | null;
+  label?: string;
 }
 
-export function PokedexEntry({ text }: Props) {
+export function PokedexEntry({ text, label = 'POKÉDEX ENTRY' }: Props) {
   if (!text) return null;
 
   const chars = text.length;
@@ -11,10 +12,8 @@ export function PokedexEntry({ text }: Props) {
 
   return (
     <div className="relative">
-      <span
-        className="mb-1 block font-mono text-[10px] uppercase tracking-[0.14em] text-pokedex-hud-ink-dim"
-      >
-        Pokédex Entry
+      <span className="mb-1 block font-mono text-[10px] uppercase tracking-[0.14em] text-pokedex-hud-ink-dim">
+        {label}
       </span>
       <div className="relative overflow-hidden">
         <p

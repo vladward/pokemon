@@ -7,14 +7,15 @@ import { HiddenAbilityCard } from './HiddenAbilityCard';
 
 interface Props {
   abilities: TAbility[];
+  label?: string;
 }
 
-export function PokemonAbilitiesPanel({ abilities }: Props) {
+export function PokemonAbilitiesPanel({ abilities, label = 'ABILITIES' }: Props) {
   const regular = abilities.filter((a) => !a.isHidden);
   const hidden = abilities.filter((a) => a.isHidden);
 
   return (
-    <HudSection label="Abilities">
+    <HudSection label={label}>
       <div className="flex flex-col gap-2">
         {regular.map((ability) => (
           <AbilityCard key={ability.id} ability={ability} />
