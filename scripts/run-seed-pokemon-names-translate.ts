@@ -1,6 +1,7 @@
-import 'dotenv/config';
 import fs from 'node:fs';
 import path from 'node:path';
+
+import 'dotenv/config';
 
 import { db } from '../lib/db';
 
@@ -27,7 +28,11 @@ async function run(): Promise<void> {
         if (!entries.length) {
           console.log(`Skipping ${lang} species: empty file`);
         } else {
-          const rows: [number, string, string][] = entries.map(([id, name]) => [Number(id), lang, name]);
+          const rows: [number, string, string][] = entries.map(([id, name]) => [
+            Number(id),
+            lang,
+            name,
+          ]);
           await conn.query(
             'INSERT INTO pokemon_species_name (species_id, language, name) VALUES ? ON DUPLICATE KEY UPDATE name = VALUES(name)',
             [rows],
@@ -46,7 +51,11 @@ async function run(): Promise<void> {
         if (!entries.length) {
           console.log(`Skipping ${lang} forms: empty file`);
         } else {
-          const rows: [number, string, string][] = entries.map(([id, name]) => [Number(id), lang, name]);
+          const rows: [number, string, string][] = entries.map(([id, name]) => [
+            Number(id),
+            lang,
+            name,
+          ]);
           await conn.query(
             'INSERT INTO pokemon_form_name (form_id, language, name) VALUES ? ON DUPLICATE KEY UPDATE name = VALUES(name)',
             [rows],
