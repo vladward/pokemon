@@ -112,7 +112,27 @@
     "pokemon": {
       "title": "Pokémon",
       "browse_title": "Explorer les Pokémon",
-      "description": "Une encyclopédie complète des Pokémon apparaîtra bientôt ici."
+      "description": "Une encyclopédie complète des Pokémon apparaîtra bientôt ici.",
+      "details": {
+        "hud": {
+          "status": "STATUT",
+          "abilities": "CAPACITÉS",
+          "evolution": "CHAÎNE D'ÉVOL.",
+          "biology": "INFO BIO.",
+          "location": "LOCALISATION",
+          "forms": "FORMES",
+          "entry": "ENTRÉE POKÉDEX"
+        },
+        "loading": {
+          "scanning": "ANALYSE...",
+          "initializing": "DÉMARRAGE POKÉDEX"
+        },
+        "error": {
+          "no_signal": "PARASITE — SANS SIGNAL",
+          "description": "Impossible de récupérer les données Pokémon.",
+          "retry": "RÉESSAYER"
+        }
+      }
     },
     "skills": {
       "title": "Capacités",
