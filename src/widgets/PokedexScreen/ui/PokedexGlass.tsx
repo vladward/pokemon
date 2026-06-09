@@ -5,7 +5,7 @@ export function PokedexGlass() {
       style={{
         borderRadius: 'var(--pdx-r-screen)',
         background:
-          'linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 38%, transparent 62%, rgba(255,255,255,0.06) 100%)',
+          'linear-gradient(135deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.08) 22%, transparent 42%, transparent 62%, rgba(255,255,255,0.08) 100%)',
         mixBlendMode: 'screen',
       }}
     />

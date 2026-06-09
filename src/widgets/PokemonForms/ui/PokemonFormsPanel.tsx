@@ -14,10 +14,12 @@ export function PokemonFormsPanel({ forms, label = 'FORMS' }: Props) {
 
   return (
     <HudSection label={label}>
-      <div className="flex flex-wrap gap-2">
-        {forms.map((form) => (
-          <FormThumbnail key={form.pokemonId} form={form} />
-        ))}
+      <div className="snap-x snap-mandatory overflow-x-auto">
+        <div className="flex min-w-max gap-2 pb-1">
+          {forms.map((form) => (
+            <FormThumbnail key={form.pokemonId} form={form} className="snap-start" />
+          ))}
+        </div>
       </div>
     </HudSection>
   );
