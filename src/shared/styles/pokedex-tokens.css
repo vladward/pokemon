@@ -40,6 +40,10 @@
   --pdx-glass-edge: rgba(255, 255, 255, 0.18);
   --pdx-glass-streak: rgba(255, 255, 255, 0.06);
 
+  /* Custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--pdx-hud-cyan) var(--pdx-screen-bg-1);
+
   /* Radii */
   --pdx-r-shell: 28px;
   --pdx-r-inner: 18px;
@@ -177,6 +181,18 @@
 
 .pdx-boot-scan-loop {
   animation: pdxBootScan 1.8s ease-in-out infinite;
+}
+
+/* WebKit scrollbar — scoped to the Pokédex device */
+.pokedex-theme ::-webkit-scrollbar {
+  width: 4px;
+}
+.pokedex-theme ::-webkit-scrollbar-track {
+  background: var(--pdx-screen-bg-1);
+}
+.pokedex-theme ::-webkit-scrollbar-thumb {
+  background: var(--pdx-hud-cyan);
+  border-radius: 2px;
 }
 
 /* JetBrains Mono override — scoped to the Pokédex device so the rest of the app is unaffected */
