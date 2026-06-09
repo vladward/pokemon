@@ -8,6 +8,7 @@ import { EvolutionNode } from './EvolutionNode';
 interface Props {
   evolutions: TEvolutionNode[];
   evolutionSteps: TEvolutionStep[];
+  label?: string;
 }
 
 function buildStages(
@@ -56,7 +57,7 @@ function getArrowLabel(
   return formatTrigger(first.trigger, first.minLevel);
 }
 
-export function PokemonEvolutionPanel({ evolutions, evolutionSteps }: Props) {
+export function PokemonEvolutionPanel({ evolutions, evolutionSteps, label = 'EVOLUTION CHAIN' }: Props) {
   const stages = buildStages(evolutions, evolutionSteps);
 
   if (stages.length === 0) return null;
@@ -64,7 +65,7 @@ export function PokemonEvolutionPanel({ evolutions, evolutionSteps }: Props) {
   const isBranching = stages.some((stage) => stage.length > 1);
 
   return (
-    <HudSection label="Evolution Chain">
+    <HudSection label={label}>
       <div className="snap-x snap-mandatory overflow-x-auto">
         <div className="flex min-w-max items-center gap-1 pb-1">
           {stages.map((stage, si) => (

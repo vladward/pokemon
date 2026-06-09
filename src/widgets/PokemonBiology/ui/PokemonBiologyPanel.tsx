@@ -4,9 +4,10 @@ import type { TBiology } from '@/entities/Pokemon';
 
 interface Props {
   biology: TBiology;
+  label?: string;
 }
 
-export function PokemonBiologyPanel({ biology }: Props) {
+export function PokemonBiologyPanel({ biology, label = 'BIOLOGICAL INFO' }: Props) {
   const heightM = (biology.height / 10).toFixed(1);
   const weightKg = (biology.weight / 10).toFixed(1);
 
@@ -33,7 +34,7 @@ export function PokemonBiologyPanel({ biology }: Props) {
   ].filter(Boolean) as { label: string; value: React.ReactNode }[];
 
   return (
-    <HudSection label="Biological Info">
+    <HudSection label={label}>
       <div className="flex flex-col gap-1.5">
         {rows.map((row) => (
           <HudDataRow key={row.label} label={row.label} value={row.value} />
