@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 
 import { cn } from '@/shared/lib/utils/cn';
@@ -11,9 +12,10 @@ import { TiltWrapper } from '../TiltWrapper';
 
 interface Props {
   pokemon: PokemonCardType;
+  priority?: boolean;
 }
 
-export const PokemonCardLegendary = async ({ pokemon }: Props) => {
+export const PokemonCardLegendary = async ({ pokemon, priority }: Props) => {
   const image = pokemon.spriteDreamWorld ?? pokemon.spriteArtwork ?? pokemon.sprite;
   const gradient = getGradientClasses(pokemon.types);
   const rarity = rarityConfig[pokemon.rarity];
@@ -112,11 +114,12 @@ export const PokemonCardLegendary = async ({ pokemon }: Props) => {
             }}
           />
           {image ? (
-            <img
+            <Image
               src={image}
               alt={pokemon.name}
               width={160}
               height={160}
+              priority={priority}
               className="h-[160px] w-[160px] mobile:h-[98px] mobile:w-[98px] select-none object-contain transition-all duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-2"
               style={{
                 willChange: 'transform',

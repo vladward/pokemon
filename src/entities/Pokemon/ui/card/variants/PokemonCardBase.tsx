@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import type { CSSProperties } from 'react';
 
@@ -18,9 +19,10 @@ import { TiltWrapper } from '../TiltWrapper';
 
 interface Props {
   pokemon: PokemonCardType;
+  priority?: boolean;
 }
 
-export const PokemonCardBase = async ({ pokemon }: Props) => {
+export const PokemonCardBase = async ({ pokemon, priority }: Props) => {
   const image = pokemon.spriteDreamWorld ?? pokemon.spriteArtwork ?? pokemon.sprite;
   const gradient = getGradientClasses(pokemon.types);
   const rarity = rarityConfig[pokemon.rarity];
@@ -180,11 +182,12 @@ export const PokemonCardBase = async ({ pokemon }: Props) => {
 
         <div className="relative z-10 flex flex-1 items-center justify-center py-2 mobile:flex-none mobile:py-0">
           {image ? (
-            <img
+            <Image
               src={image}
               alt={pokemon.name}
               width={160}
               height={160}
+              priority={priority}
               className="h-[160px] w-[160px] mobile:h-[98px] mobile:w-[98px] select-none object-contain transition-all duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-2 drop-shadow-[0_8px_20px_rgba(0,0,0,0.25)] group-hover:drop-shadow-[0_20px_40px_rgba(0,0,0,0.35)] dark:drop-shadow-[0_8px_32px_rgba(0,0,0,0.6)] dark:group-hover:drop-shadow-[0_8px_32px_rgba(0,0,0,0.6)]"
               style={{ willChange: 'transform', transform: 'translateZ(12px)' }}
             />

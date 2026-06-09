@@ -6,10 +6,28 @@ import { PokemonCardMythical } from './card/variants/PokemonCardMythical';
 
 interface Props {
   pokemon: PokemonCardType;
+  priority?: boolean;
 }
 
-export const PokemonCard = ({ pokemon }: Props) => {
-  if (pokemon.rarity === 'legendary') return <PokemonCardLegendary pokemon={pokemon} />;
-  if (pokemon.rarity === 'mythical') return <PokemonCardMythical pokemon={pokemon} />;
-  return <PokemonCardBase pokemon={pokemon} />;
+export const PokemonCard = ({ pokemon, priority }: Props) => {
+  if (pokemon.rarity === 'legendary')
+    return (
+      <PokemonCardLegendary
+        pokemon={pokemon}
+        priority={priority}
+      />
+    );
+  if (pokemon.rarity === 'mythical')
+    return (
+      <PokemonCardMythical
+        pokemon={pokemon}
+        priority={priority}
+      />
+    );
+  return (
+    <PokemonCardBase
+      pokemon={pokemon}
+      priority={priority}
+    />
+  );
 };

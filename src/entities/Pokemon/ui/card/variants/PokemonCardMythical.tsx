@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import type { CSSProperties } from 'react';
 
@@ -12,6 +13,7 @@ import { TiltWrapper } from '../TiltWrapper';
 
 interface Props {
   pokemon: PokemonCardType;
+  priority?: boolean;
 }
 
 const MYTHICAL_STARS: Array<{ pos: CSSProperties; delay: string; size: string }> = [
@@ -25,7 +27,7 @@ const MYTHICAL_STARS: Array<{ pos: CSSProperties; delay: string; size: string }>
   { pos: { top: '25%', left: '40%' }, delay: '1.6s', size: 'h-[2px] w-[2px]' },
 ];
 
-export const PokemonCardMythical = async ({ pokemon }: Props) => {
+export const PokemonCardMythical = async ({ pokemon, priority }: Props) => {
   const image = pokemon.spriteDreamWorld ?? pokemon.spriteArtwork ?? pokemon.sprite;
   const gradient = getGradientClasses(pokemon.types);
   const rarity = rarityConfig[pokemon.rarity];
@@ -145,11 +147,12 @@ export const PokemonCardMythical = async ({ pokemon }: Props) => {
         <div className="relative z-10 flex flex-1 items-center justify-center py-2 mobile:flex-none mobile:py-0">
           <div className="animate-ethereal-float motion-reduce:animate-none">
             {image ? (
-              <img
+              <Image
                 src={image}
                 alt={pokemon.name}
                 width={160}
                 height={160}
+                priority={priority}
                 className="h-[160px] w-[160px] mobile:h-[98px] mobile:w-[98px] select-none object-contain transition-all duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-2 group-hover:drop-shadow-[0_20px_48px_rgba(139,92,246,0.5)]"
                 style={{
                   willChange: 'transform',

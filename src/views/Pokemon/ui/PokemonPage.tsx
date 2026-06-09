@@ -1,5 +1,7 @@
-import { Suspense } from 'react';
 import { getTranslations } from 'next-intl/server';
+import { Suspense } from 'react';
+
+import { ToTopButton } from '@/features/ToTopButton';
 
 import type { Location } from '@/entities/Location';
 import type { Generation, PokemonListResult, PokemonRarity } from '@/entities/Pokemon';
@@ -35,7 +37,10 @@ export const PokemonPage = async ({
   return (
     <PendingProvider>
       <Container className="py-8 tablet:px-4 mobile:px-4">
-        <h1 className="text-3xl font-bold tablet:text-2xl">{t('browse_title')}</h1>
+        <div className="flex items-baseline gap-3 mb-1">
+          <h1 className="text-3xl font-bold tablet:text-2xl">{t('browse_title')}</h1>
+          <span className="text-sm text-muted-foreground">{pokemonList.total}</span>
+        </div>
         <Suspense>
           <PokemonFilters
             regions={regions}
@@ -56,6 +61,7 @@ export const PokemonPage = async ({
           />
         </Suspense>
       </Container>
+      <ToTopButton />
     </PendingProvider>
   );
 };

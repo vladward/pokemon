@@ -23,13 +23,16 @@ export const PokemonCardList = ({ items }: Props) => {
 
   return (
     <div className="grid grid-cols-pokemon mobile:grid-cols-2 gap-4 min-h-[200px]">
-      {items.map((pokemon) => (
+      {items.map((pokemon, index) => (
         <Link
           href={`/pokemon/${pokemon.id}`}
           key={pokemon.id}
           className="flex justify-center"
         >
-          <PokemonCard pokemon={pokemon} />
+          <PokemonCard
+            pokemon={pokemon}
+            priority={index < 10}
+          />
         </Link>
       ))}
     </div>
