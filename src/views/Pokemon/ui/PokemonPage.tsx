@@ -37,9 +37,11 @@ export const PokemonPage = async ({
   return (
     <PendingProvider>
       <Container className="py-8 tablet:px-4 mobile:px-4">
-        <div className="flex items-baseline gap-3 mb-1">
+        <div className="flex items-baseline gap-3 mb-1 mobile:justify-between">
           <h1 className="text-3xl font-bold tablet:text-2xl">{t('browse_title')}</h1>
-          <span className="text-sm text-muted-foreground">{pokemonList.total}</span>
+          <span className="text-sm text-muted-foreground font-bold">
+            {pokemonList.total > 0 && pokemonList.total}
+          </span>
         </div>
         <Suspense>
           <PokemonFilters
