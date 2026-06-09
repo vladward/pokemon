@@ -78,7 +78,10 @@ export async function PokemonDetailsPage({ pokemon, nav }: Props) {
   return (
     <>
       {/* Desktop + Tablet (≥577px) */}
-      <div className="mobile:hidden">
+      <div
+        className="mobile:hidden flex-1"
+        style={{ background: 'radial-gradient(ellipse at 50% 60%, #16161a 0%, #000 100%)' }}
+      >
         <PokedexDevice leftContent={heroContent} nav={nav} rightContent={rightContent} />
       </div>
 

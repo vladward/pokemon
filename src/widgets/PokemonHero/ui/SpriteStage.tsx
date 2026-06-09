@@ -10,7 +10,7 @@ export function SpriteStage({ sprite, spriteArtwork, name }: Props) {
   const image = spriteArtwork ?? sprite;
 
   return (
-    <div className="relative flex flex-1 items-center justify-center overflow-hidden">
+    <div className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden" style={{ maxHeight: '260px' }}>
       {/* Radial backlight */}
       <div
         className="pointer-events-none absolute inset-0"

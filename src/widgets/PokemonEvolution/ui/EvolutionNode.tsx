@@ -22,13 +22,13 @@ export function EvolutionNode({ node }: Props) {
           : undefined
       }
     >
-      <div className="relative h-12 w-12 flex-none">
+      <div className="relative h-36 w-36 flex-none">
         {node.sprite ? (
           <img
             src={node.sprite}
             alt={node.name}
-            width={48}
-            height={48}
+            width={144}
+            height={144}
             className={cn('h-full w-full object-contain', !node.isCurrent && 'opacity-55')}
             style={{ imageRendering: 'pixelated' }}
           />
@@ -41,7 +41,7 @@ export function EvolutionNode({ node }: Props) {
       </div>
       <span
         className={cn(
-          'w-14 truncate text-center font-mono text-[9px] capitalize leading-tight',
+          'w-36 truncate text-center font-mono text-[9px] capitalize leading-tight',
           node.isCurrent ? 'text-pokedex-hud-ink' : 'text-pokedex-hud-ink-dim',
         )}
       >

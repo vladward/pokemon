@@ -24,13 +24,13 @@ export function FormThumbnail({ form, className }: Props) {
           : undefined
       }
     >
-      <div className="relative h-10 w-10 flex-none">
+      <div className="relative h-[120px] w-[120px] flex-none">
         {form.sprite ? (
           <img
             src={form.sprite}
             alt={form.name}
-            width={40}
-            height={40}
+            width={120}
+            height={120}
             className={cn('h-full w-full object-contain', !form.isCurrent && 'opacity-55')}
             style={{ imageRendering: 'pixelated' }}
           />
@@ -43,7 +43,7 @@ export function FormThumbnail({ form, className }: Props) {
       </div>
       <span
         className={cn(
-          'w-14 truncate text-center font-mono text-[8px] capitalize leading-tight',
+          'w-[120px] truncate text-center font-mono text-[8px] capitalize leading-tight',
           form.isCurrent ? 'text-pokedex-hud-ink' : 'text-pokedex-hud-ink-dim',
         )}
       >
