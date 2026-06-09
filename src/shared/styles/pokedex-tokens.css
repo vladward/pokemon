@@ -40,6 +40,10 @@
   --pdx-glass-edge: rgba(255, 255, 255, 0.18);
   --pdx-glass-streak: rgba(255, 255, 255, 0.06);
 
+  /* Custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--pdx-hud-cyan) var(--pdx-screen-bg-1);
+
   /* Radii */
   --pdx-r-shell: 28px;
   --pdx-r-inner: 18px;
@@ -179,6 +183,27 @@
   animation: pdxBootScan 1.8s ease-in-out infinite;
 }
 
+/* Typewriter animation — duration driven by --pdx-tw-duration CSS custom property */
+.pdx-typewriter {
+  overflow: hidden;
+  animation-name: pdxTypewriter;
+  animation-duration: var(--pdx-tw-duration, 3s);
+  animation-timing-function: steps(80);
+  animation-fill-mode: forwards;
+}
+
+/* WebKit scrollbar — scoped to the Pokédex device */
+.pokedex-theme ::-webkit-scrollbar {
+  width: 4px;
+}
+.pokedex-theme ::-webkit-scrollbar-track {
+  background: var(--pdx-screen-bg-1);
+}
+.pokedex-theme ::-webkit-scrollbar-thumb {
+  background: var(--pdx-hud-cyan);
+  border-radius: 2px;
+}
+
 /* JetBrains Mono override — scoped to the Pokédex device so the rest of the app is unaffected */
 .pokedex-theme .font-mono {
   font-family: var(--font-jetbrains, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace) !important;
@@ -188,10 +213,14 @@
 @media (prefers-reduced-motion: reduce) {
   .pdx-reflection-streak,
   .pdx-led-breathe,
-  .pdx-typewriter,
   .pdx-scanline-sweep,
   .pdx-boot-scan-loop {
     animation: none !important;
     opacity: 1;
+  }
+
+  .pdx-typewriter {
+    animation: none !important;
+    width: 100% !important;
   }
 }

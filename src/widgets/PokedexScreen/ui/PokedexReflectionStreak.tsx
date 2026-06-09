@@ -9,6 +9,7 @@ export function PokedexReflectionStreak() {
         style={{
           background:
             'linear-gradient(to right, transparent 38%, var(--pdx-glass-streak) 49%, var(--pdx-glass-streak) 51%, transparent 62%)',
+          willChange: 'transform, opacity',
         }}
       />
     </div>
