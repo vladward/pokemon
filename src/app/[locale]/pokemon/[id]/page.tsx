@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 
-import { getPokemonById } from '@/entities/Pokemon';
+import { getPokemonById, getPokemonNeighbors } from '@/entities/Pokemon';
+import { PokemonNavigation } from '@/features/PokemonNavigation';
 import { PokemonDetailsPage } from '@/views/PokemonDetails';
 
 interface Params {
@@ -9,9 +10,25 @@ interface Params {
 
 export default async function Page({ params }: Params) {
   const { id, locale } = await params;
-  const pokemon = await getPokemonById(Number(id), locale);
+  const numericId = Number(id);
+
+  const [pokemon, neighbors] = await Promise.all([
+    getPokemonById(numericId, locale),
+    getPokemonNeighbors(numericId),
+  ]);
 
   if (!pokemon) notFound();
 
-  return <PokemonDetailsPage pokemon={pokemon} />;
+  return (
+    <PokemonDetailsPage
+      pokemon={pokemon}
+      nav={
+        <PokemonNavigation
+          prevId={neighbors.prevId}
+          nextId={neighbors.nextId}
+          locale={locale}
+        />
+      }
+    />
+  );
 }
