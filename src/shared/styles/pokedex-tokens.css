@@ -130,6 +130,15 @@
   }
 }
 
+@keyframes pdxScanlineSweep {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 4px;
+  }
+}
+
 @keyframes pdxBootScan {
   0% {
     top: 0%;
@@ -160,7 +169,8 @@
 @media (prefers-reduced-motion: reduce) {
   .pdx-reflection-streak,
   .pdx-led-breathe,
-  .pdx-typewriter {
+  .pdx-typewriter,
+  .pdx-scanline-sweep {
     animation: none !important;
   }
 }
