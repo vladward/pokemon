@@ -1,6 +1,5 @@
 import { getTranslations } from 'next-intl/server';
 
-import { HudFrame } from '@/shared/ui/hud';
 import { PokedexDevice, PokedexMobileStack } from '@/widgets/PokedexDevice';
 
 export default async function Loading() {
@@ -16,9 +15,9 @@ export default async function Loading() {
           boxShadow: '0 0 6px var(--pdx-hud-cyan), 0 0 18px var(--pdx-hud-cyan-glow)',
         }}
       />
-      <HudFrame className="flex flex-col items-center gap-2 px-6 py-4">
+      <div className="flex flex-col items-center gap-1.5">
         <span
-          className="pdx-led-breathe motion-safe:animate-pdx-led-breathe font-mono text-[11px] uppercase tracking-[0.18em]"
+          className="pdx-led-breathe motion-safe:animate-pdx-led-breathe font-mono text-[11px] uppercase tracking-[0.18em] p-2 rounded-xl mb-3"
           style={{ color: 'var(--pdx-hud-cyan)' }}
         >
           {t('scanning')}
@@ -29,7 +28,7 @@ export default async function Loading() {
         >
           {t('initializing')}
         </span>
-      </HudFrame>
+      </div>
     </div>
   );
 
@@ -44,7 +43,7 @@ export default async function Loading() {
         }}
       />
       <span
-        className="pdx-led-breathe motion-safe:animate-pdx-led-breathe font-mono text-[11px] uppercase tracking-[0.18em]"
+        className="pdx-led-breathe motion-safe:animate-pdx-led-breathe font-mono text-[11px] uppercase tracking-[0.18em]  p-2 rounded-xl mb-3"
         style={{ color: 'var(--pdx-hud-cyan)' }}
       >
         {t('scanning')}
@@ -55,15 +54,18 @@ export default async function Loading() {
   return (
     <>
       <div className="mobile:hidden">
-        <PokedexDevice leftContent={scannerContent} rightContent={scannerContent} />
+        <PokedexDevice
+          leftContent={scannerContent}
+          rightContent={scannerContent}
+        />
       </div>
       <div className="pokedex-theme hidden mobile:block">
-        <div
-          className="flex min-h-screen items-start justify-center p-4"
-          style={{ background: 'radial-gradient(ellipse at 50% 60%, #16161a 0%, #000 100%)' }}
-        >
+        <div className="flex min-h-screen items-start justify-center p-4 bg-background">
           <div className="w-full max-w-sm">
-            <PokedexMobileStack heroContent={mobileScanContent} modules={[mobileScanContent]} />
+            <PokedexMobileStack
+              heroContent={mobileScanContent}
+              modules={[mobileScanContent]}
+            />
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ interface Props {
 export function PokedexScreenSurface({ children }: Props) {
   return (
     <div
-      className="relative h-full w-full overflow-hidden"
+      className="relative min-h-full wide:h-full laptop:h-auto w-full overflow-hidden"
       style={{
         borderRadius: 'var(--pdx-r-screen)',
         backgroundColor: 'var(--pdx-screen-bg-0)',

@@ -1,6 +1,8 @@
-import { cn } from '@/shared/lib/utils';
+import Link from 'next/link';
 
 import type { TEvolutionNode } from '@/entities/Pokemon';
+
+import { cn } from '@/shared/lib/utils';
 
 interface Props {
   node: TEvolutionNode;
@@ -8,9 +10,11 @@ interface Props {
 
 export function EvolutionNode({ node }: Props) {
   return (
-    <div
+    <Link
+      href={`/pokemon/${node.pokemonId}`}
+      data-current={node.isCurrent ? 'true' : undefined}
       className={cn(
-        'flex flex-col items-center gap-1 rounded px-2 py-1.5',
+        'flex flex-col items-center gap-1 rounded px-2 py-1.5 transition-colors hover:bg-[rgba(93,217,216,0.06)]',
         node.isCurrent && 'bg-[rgba(93,217,216,0.08)]',
       )}
       style={
@@ -47,6 +51,6 @@ export function EvolutionNode({ node }: Props) {
       >
         {node.name}
       </span>
-    </div>
+    </Link>
   );
 }
