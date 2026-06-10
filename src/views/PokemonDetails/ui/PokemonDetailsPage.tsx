@@ -79,13 +79,13 @@ export async function PokemonDetailsPage({ pokemon, nav }: Props) {
   ].filter(Boolean) as React.ReactNode[];
 
   const rightContent = (
-    <div className="relative h-full laptop:h-auto">
-      {/* Fade indicator at the bottom when content overflows */}
+    <div className="relative wide:h-full laptop:h-auto">
+      {/* Fade indicator at the bottom when content overflows — only when right panel scrolls */}
       <div
-        className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 h-8 laptop:hidden"
+        className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 h-8 hidden wide:block laptop:hidden"
         style={{ background: 'linear-gradient(to bottom, transparent, var(--pdx-screen-bg-0))' }}
       />
-      <div className="grid h-full content-start grid-cols-2 gap-3 overflow-y-auto p-4 tablet:grid-cols-1 laptop:h-auto laptop:overflow-y-visible">
+      <div className="grid wide:h-full content-start grid-cols-2 gap-3 wide:overflow-y-auto p-4 tablet:grid-cols-1 laptop:h-auto laptop:overflow-y-visible">
         <PokemonStatsPanel
           label={t('status')}
           stats={pokemon.stats}
