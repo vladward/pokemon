@@ -49,14 +49,6 @@ export async function PokemonDetailsPage({ pokemon, nav }: Props) {
       label={t('abilities')}
       abilities={pokemon.abilities}
     />,
-    pokemon.evolutions.length > 0 && (
-      <PokemonEvolutionPanel
-        key="evolution"
-        label={t('evolution')}
-        evolutions={pokemon.evolutions}
-        evolutionSteps={pokemon.evolutionSteps}
-      />
-    ),
     <PokemonBiologyPanel
       key="biology"
       label={t('biology')}
