@@ -1,6 +1,6 @@
-import { HudSection } from '@/shared/ui/hud';
-
 import type { TAbility } from '@/entities/Pokemon';
+
+import { HudSection } from '@/shared/ui/hud';
 
 import { AbilityCard } from './AbilityCard';
 import { HiddenAbilityCard } from './HiddenAbilityCard';
@@ -16,12 +16,18 @@ export function PokemonAbilitiesPanel({ abilities, label = 'ABILITIES' }: Props)
 
   return (
     <HudSection label={label}>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 overscroll-y-auto">
         {regular.map((ability) => (
-          <AbilityCard key={ability.id} ability={ability} />
+          <AbilityCard
+            key={ability.id}
+            ability={ability}
+          />
         ))}
         {hidden.map((ability) => (
-          <HiddenAbilityCard key={ability.id} ability={ability} />
+          <HiddenAbilityCard
+            key={ability.id}
+            ability={ability}
+          />
         ))}
       </div>
     </HudSection>
