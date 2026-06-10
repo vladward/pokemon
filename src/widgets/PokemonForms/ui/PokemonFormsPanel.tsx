@@ -1,6 +1,7 @@
-import { HudSection } from '@/shared/ui/hud';
-
 import type { TForm } from '@/entities/Pokemon';
+
+import { HudSection } from '@/shared/ui/hud';
+import { ScrollToActive } from '@/shared/ui/ScrollToActive';
 
 import { FormThumbnail } from './FormThumbnail';
 
@@ -14,13 +15,17 @@ export function PokemonFormsPanel({ forms, label = 'FORMS' }: Props) {
 
   return (
     <HudSection label={label}>
-      <div className="snap-x snap-mandatory overflow-x-auto">
-        <div className="flex min-w-max gap-2 pb-1">
+      <ScrollToActive className="snap-x snap-mandatory overflow-x-auto scroll-pl-3">
+        <div className="flex min-w-max gap-2 py-1 px-3">
           {forms.map((form) => (
-            <FormThumbnail key={form.pokemonId} form={form} className="snap-start" />
+            <FormThumbnail
+              key={form.pokemonId}
+              form={form}
+              className="snap-start"
+            />
           ))}
         </div>
-      </div>
+      </ScrollToActive>
     </HudSection>
   );
 }

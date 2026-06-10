@@ -1,6 +1,8 @@
-import { cn } from '@/shared/lib/utils';
+import Link from 'next/link';
 
 import type { TForm } from '@/entities/Pokemon';
+
+import { cn } from '@/shared/lib/utils';
 
 interface Props {
   form: TForm;
@@ -9,9 +11,11 @@ interface Props {
 
 export function FormThumbnail({ form, className }: Props) {
   return (
-    <div
+    <Link
+      href={`/pokemon/${form.pokemonId}`}
+      data-current={form.isCurrent ? 'true' : undefined}
       className={cn(
-        'flex flex-col items-center gap-1 rounded p-1.5',
+        'flex flex-col items-center gap-1 rounded p-1.5 transition-colors hover:bg-[rgba(93,217,216,0.06)]',
         form.isCurrent && 'bg-[rgba(93,217,216,0.08)]',
         className,
       )}
@@ -49,6 +53,6 @@ export function FormThumbnail({ form, className }: Props) {
       >
         {form.name}
       </span>
-    </div>
+    </Link>
   );
 }
