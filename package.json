@@ -6,6 +6,7 @@
     "build": "prisma generate && next build",
     "db:migrate": "tsx scripts/run-migrate.ts",
     "db:setup:docker": "tsx scripts/setup-docker.ts",
+    "translate:pokemon-detail-ru": "tsx scripts/translate-pokemon-detail-ru/run.ts",
     "db:sync": "tsx scripts/sync-db.ts",
     "db:use:docker": "tsx scripts/switch-db.ts docker",
     "db:use:tidb": "tsx scripts/switch-db.ts tidb",
@@ -49,6 +50,7 @@
   "dependencies": {
     "@prisma/client": "^6.19.3",
     "@radix-ui/react-dialog": "^1.1.15",
+    "@vitalets/google-translate-api": "^9.2.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.17.0",
