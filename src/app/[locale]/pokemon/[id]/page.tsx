@@ -1,8 +1,19 @@
 import { notFound } from 'next/navigation';
 
+import { db } from '@/shared/db/db';
+import { locales } from '@/shared/config/i18n';
 import { getPokemonById, getPokemonNeighbors } from '@/entities/Pokemon';
 import { PokemonNavigation } from '@/features/PokemonNavigation';
 import { PokemonDetailsPage } from '@/views/PokemonDetails';
+
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const pokemon = await db.pokemon.findMany({ select: { id: true } });
+  return locales.flatMap((locale) =>
+    pokemon.map((p) => ({ locale, id: String(p.id) })),
+  );
+}
 
 interface Params {
   params: Promise<{ id: string; locale: string }>;
@@ -19,6 +30,10 @@ export default async function Page({ params }: Params) {
 
   if (!pokemon) notFound();
 
+  // Warm the cache for adjacent pokemon so the next navigation hit is instant
+  if (neighbors.prevId) getPokemonById(neighbors.prevId, locale);
+  if (neighbors.nextId) getPokemonById(neighbors.nextId, locale);
+
   return (
     <PokemonDetailsPage
       pokemon={pokemon}
@@ -26,7 +41,6 @@ export default async function Page({ params }: Params) {
         <PokemonNavigation
           prevId={neighbors.prevId}
           nextId={neighbors.nextId}
-          locale={locale}
         />
       }
     />
