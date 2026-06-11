@@ -20,10 +20,8 @@ export function PokedexMobileStack({ heroContent, modules, nav, stretch }: Props
         className={stretch ? 'relative flex flex-1 flex-col w-full overflow-hidden' : 'relative w-full overflow-hidden'}
         style={{
           borderRadius: 'var(--pdx-r-shell)',
-          background:
-            'linear-gradient(135deg, var(--pdx-shell-300) 0%, var(--pdx-shell-500) 50%, var(--pdx-shell-700) 100%)',
-          boxShadow:
-            'var(--pdx-sh-shell-outer), var(--pdx-sh-shell-bevel-top), var(--pdx-sh-shell-bevel-bottom), var(--pdx-sh-shell-rim)',
+          background: 'var(--pdx-shell-bg)',
+          boxShadow: 'var(--pdx-sh-shell-stack)',
         }}
       >
         <PokedexShellFrame />

@@ -48,7 +48,7 @@ export function StatBar({ value, max = 255 }: Props) {
                     transformOrigin: 'left center',
                   }
                 : {
-                    background: 'rgba(93,217,216,0.08)',
+                    background: 'var(--pdx-hud-cyan-active)',
                   }
             }
           />

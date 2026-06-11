@@ -10,7 +10,7 @@ export function HudList({ items, className }: Props) {
     <ul className={cn('space-y-1', className)}>
       {items.map((item, i) => (
         <li
-          key={i}
+          key={`${i}-${item}`}
           className="flex items-center gap-2 font-mono text-[12px] text-pokedex-hud-ink"
         >
           <span

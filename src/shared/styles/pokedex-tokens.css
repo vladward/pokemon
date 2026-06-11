@@ -25,7 +25,15 @@
   /* HUD accent colors */
   --pdx-hud-cyan: #5dd9d8;
   --pdx-hud-cyan-glow: rgba(93, 217, 216, 0.45);
+  --pdx-hud-cyan-surface: rgba(93, 217, 216, 0.05);
+  --pdx-hud-cyan-surface-dim: rgba(93, 217, 216, 0.03);
+  --pdx-hud-cyan-surface-hover: rgba(93, 217, 216, 0.06);
+  --pdx-hud-cyan-active: rgba(93, 217, 216, 0.08);
+  --pdx-hud-cyan-border: rgba(93, 217, 216, 0.14);
+  --pdx-hud-cyan-border-dim: rgba(93, 217, 216, 0.10);
+  --pdx-hud-cyan-border-strong: rgba(93, 217, 216, 0.20);
   --pdx-hud-amber: #f4a93b;
+  --pdx-hud-amber-glow: rgba(244, 169, 59, 0.35);
   --pdx-hud-red: #ff5252;
   --pdx-hud-green: #6be675;
   --pdx-hud-ink: #c9d6e3;
@@ -75,6 +83,14 @@
     0 0 6px var(--pdx-led-cyan),
     0 0 18px var(--pdx-hud-cyan-glow),
     0 0 36px rgba(109, 236, 231, 0.25);
+
+  /* Composed shell tokens — used by PokedexShell and PokedexMobileStack */
+  --pdx-shell-bg: linear-gradient(135deg, var(--pdx-shell-300) 0%, var(--pdx-shell-500) 50%, var(--pdx-shell-700) 100%);
+  --pdx-sh-shell-stack:
+    var(--pdx-sh-shell-outer),
+    var(--pdx-sh-shell-bevel-top),
+    var(--pdx-sh-shell-bevel-bottom),
+    var(--pdx-sh-shell-rim);
 
   --pdx-sh-button-recess:
     inset 0 -3px 0 rgba(0, 0, 0, 0.45),
