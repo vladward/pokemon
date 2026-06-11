@@ -2,35 +2,63 @@ import { HudDataRow, HudSection } from '@/shared/ui/hud';
 
 import type { TBiology } from '@/entities/Pokemon';
 
+interface BiologyLabels {
+  species: string;
+  height: string;
+  weight: string;
+  eggGroups: string;
+  catchRate: string;
+  baseFriendship: string;
+  hatchCounter: string;
+  shape: string;
+  color: string;
+  habitat: string;
+  unitM: string;
+  unitKg: string;
+  steps: string;
+}
+
 interface Props {
   biology: TBiology;
+  labels: BiologyLabels;
+  shapeValue: string | null;
+  colorValue: string | null;
+  habitatValue: string | null;
   label?: string;
 }
 
-export function PokemonBiologyPanel({ biology, label = 'BIOLOGICAL INFO' }: Props) {
-  const heightM = (biology.height / 10).toFixed(1);
-  const weightKg = (biology.weight / 10).toFixed(1);
+export function PokemonBiologyPanel({ biology, labels, shapeValue, colorValue, habitatValue, label = 'BIOLOGICAL INFO' }: Props) {
+  const heightM = `${(biology.height / 10).toFixed(1)} ${labels.unitM}`;
+  const weightKg = `${(biology.weight / 10).toFixed(1)} ${labels.unitKg}`;
+  const hatchSteps = biology.hatchCounter !== null
+    ? `${(biology.hatchCounter + 1) * 255} ${labels.steps}`
+    : null;
 
   const rows: { label: string; value: React.ReactNode }[] = [
-    biology.genus ? { label: 'Species', value: biology.genus } : null,
-    { label: 'Height', value: `${heightM} m` },
-    { label: 'Weight', value: `${weightKg} kg` },
+    biology.genus ? { label: labels.species, value: biology.genus } : null,
+    { label: labels.height, value: heightM },
+    { label: labels.weight, value: weightKg },
     biology.eggGroups.length > 0
-      ? { label: 'Egg Groups', value: biology.eggGroups.join(', ') }
+      ? { label: labels.eggGroups, value: biology.eggGroups.join(', ') }
       : null,
-    biology.catchRate !== null ? { label: 'Catch Rate', value: biology.catchRate } : null,
+    biology.catchRate !== null
+      ? { label: labels.catchRate, value: biology.catchRate }
+      : null,
     biology.baseHappiness !== null
-      ? { label: 'Base Friendship', value: biology.baseHappiness }
+      ? { label: labels.baseFriendship, value: biology.baseHappiness }
       : null,
-    biology.hatchCounter !== null
-      ? {
-          label: 'Hatch Counter',
-          value: `${(biology.hatchCounter + 1) * 255} steps`,
-        }
+    hatchSteps !== null
+      ? { label: labels.hatchCounter, value: hatchSteps }
       : null,
-    biology.shape ? { label: 'Shape', value: biology.shape } : null,
-    biology.color ? { label: 'Color', value: biology.color } : null,
-    biology.habitat ? { label: 'Habitat', value: biology.habitat } : null,
+    shapeValue !== null
+      ? { label: labels.shape, value: shapeValue }
+      : null,
+    colorValue !== null
+      ? { label: labels.color, value: colorValue }
+      : null,
+    habitatValue !== null
+      ? { label: labels.habitat, value: habitatValue }
+      : null,
   ].filter(Boolean) as { label: string; value: React.ReactNode }[];
 
   return (
