@@ -1,5 +1,3 @@
-import { LedIndicator } from '@/shared/ui/mechanical';
-
 import { PokedexHinge } from './PokedexHinge';
 import { PokedexLeftPanel } from './PokedexLeftPanel';
 import { PokedexRightPanel } from './PokedexRightPanel';
@@ -24,10 +22,6 @@ export function PokedexShell({ leftContent, rightContent, nav }: Props) {
       }}
     >
       <PokedexShellFrame />
-      {/* Top-left cyan LED */}
-      <div className="absolute left-5 top-4 z-[11]">
-        <LedIndicator />
-      </div>
       <PokedexLeftPanel nav={nav}>{leftContent}</PokedexLeftPanel>
       <PokedexHinge />
       <PokedexRightPanel>{rightContent}</PokedexRightPanel>
