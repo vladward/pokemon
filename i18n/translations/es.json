@@ -131,6 +131,84 @@
           "no_signal": "ESTÁTICA — SIN SEÑAL",
           "description": "No se pudieron recuperar los datos del Pokémon.",
           "retry": "REINTENTAR"
+        },
+        "stats": {
+          "hp": "PS",
+          "attack": "Ataque",
+          "defense": "Defensa",
+          "special_attack": "At. Esp.",
+          "special_defense": "Def. Esp.",
+          "speed": "Velocidad",
+          "total": "Total"
+        },
+        "nav": {
+          "prev": "ANT",
+          "next": "SIG"
+        },
+        "hidden_ability": "Habilidad Oculta",
+        "scroll_hint": "deslizar",
+        "evolution_triggers": {
+          "level_up": "subir nivel",
+          "item": "objeto",
+          "trade": "intercambio",
+          "shed": "muda",
+          "other": "otro"
+        },
+        "biology_labels": {
+          "species": "Especie",
+          "height": "Altura",
+          "weight": "Peso",
+          "egg_groups": "Grupos huevo",
+          "catch_rate": "Tasa de captura",
+          "base_friendship": "Amistad base",
+          "hatch_counter": "Pasos huevo",
+          "steps": "pasos",
+          "unit_m": "m",
+          "unit_kg": "kg",
+          "shape": "Forma",
+          "color": "Color",
+          "habitat": "Hábitat"
+        },
+        "biology_values": {
+          "colors": {
+            "black": "Negro",
+            "blue": "Azul",
+            "brown": "Marrón",
+            "gray": "Gris",
+            "green": "Verde",
+            "pink": "Rosa",
+            "purple": "Morado",
+            "red": "Rojo",
+            "white": "Blanco",
+            "yellow": "Amarillo"
+          },
+          "shapes": {
+            "ball": "Bola",
+            "squiggle": "Zigzag",
+            "fish": "Pez",
+            "arms": "Brazos",
+            "blob": "Gota",
+            "upright": "Erguido",
+            "legs": "Piernas",
+            "quadruped": "Cuadrúpedo",
+            "wings": "Alas",
+            "tentacles": "Tentáculos",
+            "heads": "Cabezas",
+            "humanoid": "Humanoide",
+            "bug_wings": "Alas de insecto",
+            "armor": "Armadura"
+          },
+          "habitats": {
+            "cave": "Cueva",
+            "forest": "Bosque",
+            "grassland": "Pradera",
+            "mountain": "Montaña",
+            "rare": "Raro",
+            "rough_terrain": "Terreno difícil",
+            "sea": "Mar",
+            "urban": "Urbano",
+            "waters_edge": "Orilla del agua"
+          }
         }
       }
     },

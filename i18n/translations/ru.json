@@ -154,6 +154,84 @@
           "no_signal": "ПОМЕХИ — НЕТ СИГНАЛА",
           "description": "Не удалось получить данные покемона.",
           "retry": "ПОВТОР"
+        },
+        "stats": {
+          "hp": "ЗДОРОВЬЕ",
+          "attack": "Атака",
+          "defense": "Защита",
+          "special_attack": "Спец. Атака",
+          "special_defense": "Спец. Защита",
+          "speed": "Скорость",
+          "total": "Итого"
+        },
+        "nav": {
+          "prev": "ПРЕД",
+          "next": "СЛЕД"
+        },
+        "hidden_ability": "Скрытая способность",
+        "scroll_hint": "листать",
+        "evolution_triggers": {
+          "level_up": "уровень",
+          "item": "предмет",
+          "trade": "обмен",
+          "shed": "линька",
+          "other": "прочее"
+        },
+        "biology_labels": {
+          "species": "Вид",
+          "height": "Рост",
+          "weight": "Вес",
+          "egg_groups": "Группы яиц",
+          "catch_rate": "Шанс поимки",
+          "base_friendship": "Базовая дружба",
+          "hatch_counter": "Счётчик яиц",
+          "steps": "шагов",
+          "unit_m": "м",
+          "unit_kg": "кг",
+          "shape": "Форма",
+          "color": "Цвет",
+          "habitat": "Среда обитания"
+        },
+        "biology_values": {
+          "colors": {
+            "black": "Чёрный",
+            "blue": "Синий",
+            "brown": "Коричневый",
+            "gray": "Серый",
+            "green": "Зелёный",
+            "pink": "Розовый",
+            "purple": "Фиолетовый",
+            "red": "Красный",
+            "white": "Белый",
+            "yellow": "Жёлтый"
+          },
+          "shapes": {
+            "ball": "Шар",
+            "squiggle": "Змейка",
+            "fish": "Рыба",
+            "arms": "Руки",
+            "blob": "Капля",
+            "upright": "Прямоходящий",
+            "legs": "Ноги",
+            "quadruped": "Четвероногий",
+            "wings": "Крылья",
+            "tentacles": "Щупальца",
+            "heads": "Головы",
+            "humanoid": "Человекоподобный",
+            "bug_wings": "Крылья насекомого",
+            "armor": "Броня"
+          },
+          "habitats": {
+            "cave": "Пещера",
+            "forest": "Лес",
+            "grassland": "Луга",
+            "mountain": "Горы",
+            "rare": "Редкий",
+            "rough_terrain": "Пересечённая местность",
+            "sea": "Море",
+            "urban": "Город",
+            "waters_edge": "Берег водоёма"
+          }
         }
       }
     },

@@ -154,6 +154,84 @@
           "no_signal": "STATIC — NO SIGNAL",
           "description": "Unable to retrieve Pokémon data.",
           "retry": "RETRY"
+        },
+        "stats": {
+          "hp": "HP",
+          "attack": "Attack",
+          "defense": "Defense",
+          "special_attack": "Sp. Atk",
+          "special_defense": "Sp. Def",
+          "speed": "Speed",
+          "total": "Total"
+        },
+        "nav": {
+          "prev": "PREV",
+          "next": "NEXT"
+        },
+        "hidden_ability": "Hidden Ability",
+        "scroll_hint": "scroll",
+        "evolution_triggers": {
+          "level_up": "level up",
+          "item": "item",
+          "trade": "trade",
+          "shed": "shed",
+          "other": "other"
+        },
+        "biology_labels": {
+          "species": "Species",
+          "height": "Height",
+          "weight": "Weight",
+          "egg_groups": "Egg Groups",
+          "catch_rate": "Catch Rate",
+          "base_friendship": "Base Friendship",
+          "hatch_counter": "Hatch Counter",
+          "steps": "steps",
+          "unit_m": "m",
+          "unit_kg": "kg",
+          "shape": "Shape",
+          "color": "Color",
+          "habitat": "Habitat"
+        },
+        "biology_values": {
+          "colors": {
+            "black": "Black",
+            "blue": "Blue",
+            "brown": "Brown",
+            "gray": "Gray",
+            "green": "Green",
+            "pink": "Pink",
+            "purple": "Purple",
+            "red": "Red",
+            "white": "White",
+            "yellow": "Yellow"
+          },
+          "shapes": {
+            "ball": "Ball",
+            "squiggle": "Squiggle",
+            "fish": "Fish",
+            "arms": "Arms",
+            "blob": "Blob",
+            "upright": "Upright",
+            "legs": "Legs",
+            "quadruped": "Quadruped",
+            "wings": "Wings",
+            "tentacles": "Tentacles",
+            "heads": "Heads",
+            "humanoid": "Humanoid",
+            "bug_wings": "Bug Wings",
+            "armor": "Armor"
+          },
+          "habitats": {
+            "cave": "Cave",
+            "forest": "Forest",
+            "grassland": "Grassland",
+            "mountain": "Mountain",
+            "rare": "Rare",
+            "rough_terrain": "Rough Terrain",
+            "sea": "Sea",
+            "urban": "Urban",
+            "waters_edge": "Waters Edge"
+          }
         }
       }
     },
