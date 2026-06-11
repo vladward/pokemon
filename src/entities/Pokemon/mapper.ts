@@ -2,12 +2,31 @@ import { GENERATION_TO_REGION } from './config/regions';
 import { TPokemonCard } from './TPokemonCard';
 import type { TAbility, TBiology, TEvolutionNode, TEvolutionStep, TForm, TPokemonDetails } from './TPokemonDetails';
 
+type RawSprite = { sprite_name: string | null; url: string | null };
+type RawStat = { stat_name: string; base_stat: number };
+
+function findSprite(sprites: RawSprite[], name: string): string | null {
+  return sprites.find((s) => s.sprite_name === name)?.url ?? null;
+}
+
+function buildStatsMap(stats: RawStat[]): Record<string, number> {
+  return Object.fromEntries(stats.map((s) => [s.stat_name, s.base_stat]));
+}
+
+function resolveName(
+  form: { pokemon_form_name: { name: string }[] }[],
+  species: { pokemon_species_name: { name: string }[] } | null,
+  fallback: string,
+): string {
+  return form[0]?.pokemon_form_name[0]?.name ?? species?.pokemon_species_name[0]?.name ?? fallback;
+}
+
 type RawPokemon = {
   id: number;
   name: string;
   species_id: number | null;
-  pokemon_sprite: { sprite_name: string | null; url: string | null }[];
-  pokemon_stat: { stat_name: string; base_stat: number }[];
+  pokemon_sprite: RawSprite[];
+  pokemon_stat: RawStat[];
   pokemon_type: { type: { name: string } }[];
   pokemon_form: { pokemon_form_name: { name: string }[] }[];
   species: {
@@ -23,30 +42,16 @@ export function mapPokemon(
   raw: RawPokemon,
   stageMap: Record<number, 'base' | 'stage1' | 'stage2'> = {},
 ): TPokemonCard {
-  const sprite = raw.pokemon_sprite.find((s) => s.sprite_name === 'front_default')?.url ?? null;
-  const spriteArtwork =
-    raw.pokemon_sprite.find((s) => s.sprite_name === 'other_official-artwork_front_default')?.url ??
-    null;
-  const spriteDreamWorld =
-    raw.pokemon_sprite.find((s) => s.sprite_name === 'other_dream_world_front_default')?.url ??
-    null;
-
-  const statsMap: Record<string, number> = Object.fromEntries(
-    raw.pokemon_stat.map((s) => [s.stat_name, s.base_stat]),
-  );
-
+  const statsMap = buildStatsMap(raw.pokemon_stat);
   const generationId: number | null = raw.species?.generation_id ?? null;
 
   return {
     id: raw.id,
-    name:
-      raw.pokemon_form[0]?.pokemon_form_name[0]?.name ??
-      raw.species?.pokemon_species_name[0]?.name ??
-      raw.name,
+    name: resolveName(raw.pokemon_form, raw.species, raw.name),
     types: raw.pokemon_type.map((t) => t.type.name),
-    sprite,
-    spriteArtwork,
-    spriteDreamWorld,
+    sprite: findSprite(raw.pokemon_sprite, 'front_default'),
+    spriteArtwork: findSprite(raw.pokemon_sprite, 'other_official-artwork_front_default'),
+    spriteDreamWorld: findSprite(raw.pokemon_sprite, 'other_dream_world_front_default'),
     generation: generationId,
     region: generationId ? (GENERATION_TO_REGION[generationId] ?? 'Unknown') : 'Unknown',
     rarity: getRarity(raw.species),
@@ -98,9 +103,9 @@ type RawPokemonDetails = {
   height: number | null;
   weight: number | null;
   species_id: number | null;
-  pokemon_sprite: { sprite_name: string | null; url: string | null }[];
-  pokemon_stat: { stat_name: string; base_stat: number }[];
-  pokemon_type: { type: { name: string } }[];
+  pokemon_sprite: RawSprite[];
+  pokemon_stat: RawStat[];
+  pokemon_type: { type: { name: string; type_name: { name: string }[] } }[];
   pokemon_form: { pokemon_form_name: { name: string }[] }[];
   pokemon_ability: RawAbility[];
   species: RawDetailsSpecies | null;
@@ -118,16 +123,7 @@ type RawDetailsExtras = {
 };
 
 export function mapPokemonDetails(raw: RawPokemonDetails, extras: RawDetailsExtras): TPokemonDetails {
-  const sprite = raw.pokemon_sprite.find((s) => s.sprite_name === 'front_default')?.url ?? null;
-  const spriteArtwork =
-    raw.pokemon_sprite.find((s) => s.sprite_name === 'other_official-artwork_front_default')?.url ?? null;
-  const spriteDreamWorld =
-    raw.pokemon_sprite.find((s) => s.sprite_name === 'other_dream_world_front_default')?.url ?? null;
-
-  const statsMap: Record<string, number> = Object.fromEntries(
-    raw.pokemon_stat.map((s) => [s.stat_name, s.base_stat]),
-  );
-
+  const statsMap = buildStatsMap(raw.pokemon_stat);
   const generationId = raw.species?.generation_id ?? null;
 
   const abilities: TAbility[] = raw.pokemon_ability.map((pa) => ({
@@ -152,14 +148,11 @@ export function mapPokemonDetails(raw: RawPokemonDetails, extras: RawDetailsExtr
 
   return {
     id: raw.id,
-    name:
-      raw.pokemon_form[0]?.pokemon_form_name[0]?.name ??
-      raw.species?.pokemon_species_name[0]?.name ??
-      raw.name,
-    types: raw.pokemon_type.map((t) => t.type.name),
-    sprite,
-    spriteArtwork,
-    spriteDreamWorld,
+    name: resolveName(raw.pokemon_form, raw.species, raw.name),
+    types: raw.pokemon_type.map((t) => t.type.type_name[0]?.name ?? t.type.name),
+    sprite: findSprite(raw.pokemon_sprite, 'front_default'),
+    spriteArtwork: findSprite(raw.pokemon_sprite, 'other_official-artwork_front_default'),
+    spriteDreamWorld: null,
     generation: generationId,
     region: generationId ? (GENERATION_TO_REGION[generationId] ?? 'Unknown') : 'Unknown',
     rarity: getRarity(raw.species),
