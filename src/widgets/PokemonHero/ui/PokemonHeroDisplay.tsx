@@ -8,9 +8,13 @@ import { SpriteStage } from './SpriteStage';
 interface Props {
   pokemon: TPokemonDetails;
   entryLabel?: string;
+  heightLabel?: string;
+  weightLabel?: string;
+  unitM?: string;
+  unitKg?: string;
 }
 
-export function PokemonHeroDisplay({ pokemon, entryLabel }: Props) {
+export function PokemonHeroDisplay({ pokemon, entryLabel, heightLabel, weightLabel, unitM, unitKg }: Props) {
   return (
     <div className="flex h-full flex-col gap-3 p-4">
       {/* Header */}
@@ -48,7 +52,14 @@ export function PokemonHeroDisplay({ pokemon, entryLabel }: Props) {
 
       {/* Metrics + Entry */}
       <div className="flex flex-col gap-3">
-        <MetricGrid height={pokemon.biology.height} weight={pokemon.biology.weight} />
+        <MetricGrid
+          height={pokemon.biology.height}
+          weight={pokemon.biology.weight}
+          heightLabel={heightLabel}
+          weightLabel={weightLabel}
+          unitM={unitM}
+          unitKg={unitKg}
+        />
         <div
           className="h-px opacity-20"
           style={{ background: 'linear-gradient(to right, var(--pdx-hud-cyan), transparent)' }}
