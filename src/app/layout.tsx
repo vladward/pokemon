@@ -22,6 +22,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
       className={cn('font-sans', geist.variable, josefinSans.variable, orbitron.variable, jetbrainsMono.variable)}
     >
+      <head>
+        <link rel="preconnect" href="https://raw.githubusercontent.com" />
+      </head>
       <body suppressHydrationWarning>
         <ThemeProvider
           attribute="class"

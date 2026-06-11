@@ -154,6 +154,84 @@
           "no_signal": "RAUSCHEN — KEIN SIGNAL",
           "description": "Pokémon-Daten konnten nicht abgerufen werden.",
           "retry": "ERNEUT"
+        },
+        "stats": {
+          "hp": "KP",
+          "attack": "Angriff",
+          "defense": "Verteidigung",
+          "special_attack": "Sp.-Ang.",
+          "special_defense": "Sp.-Vert.",
+          "speed": "Initiative",
+          "total": "Gesamt"
+        },
+        "nav": {
+          "prev": "ZURÜCK",
+          "next": "WEITER"
+        },
+        "hidden_ability": "Versteckte Fähigkeit",
+        "scroll_hint": "scrollen",
+        "evolution_triggers": {
+          "level_up": "aufsteigen",
+          "item": "Gegenstand",
+          "trade": "Tausch",
+          "shed": "Häutung",
+          "other": "sonstige"
+        },
+        "biology_labels": {
+          "species": "Gattung",
+          "height": "Größe",
+          "weight": "Gewicht",
+          "egg_groups": "Ei-Gruppen",
+          "catch_rate": "Fangrate",
+          "base_friendship": "Basis-Freundschaft",
+          "hatch_counter": "Brutschritte",
+          "steps": "Schritte",
+          "unit_m": "m",
+          "unit_kg": "kg",
+          "shape": "Form",
+          "color": "Farbe",
+          "habitat": "Lebensraum"
+        },
+        "biology_values": {
+          "colors": {
+            "black": "Schwarz",
+            "blue": "Blau",
+            "brown": "Braun",
+            "gray": "Grau",
+            "green": "Grün",
+            "pink": "Rosa",
+            "purple": "Lila",
+            "red": "Rot",
+            "white": "Weiß",
+            "yellow": "Gelb"
+          },
+          "shapes": {
+            "ball": "Kugel",
+            "squiggle": "Schnörkel",
+            "fish": "Fisch",
+            "arms": "Arme",
+            "blob": "Tropfen",
+            "upright": "Aufrecht",
+            "legs": "Beine",
+            "quadruped": "Vierfüßig",
+            "wings": "Flügel",
+            "tentacles": "Tentakel",
+            "heads": "Köpfe",
+            "humanoid": "Menschenähnlich",
+            "bug_wings": "Insektenflügel",
+            "armor": "Rüstung"
+          },
+          "habitats": {
+            "cave": "Höhle",
+            "forest": "Wald",
+            "grassland": "Grasland",
+            "mountain": "Berg",
+            "rare": "Selten",
+            "rough_terrain": "Rohes Gelände",
+            "sea": "Meer",
+            "urban": "Stadtgebiet",
+            "waters_edge": "Gewässerrand"
+          }
         }
       }
     },

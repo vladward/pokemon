@@ -93,6 +93,7 @@ describe('PokemonHeroDisplay', () => {
 
   it('renders the flavor text entry', () => {
     render(<PokemonHeroDisplay pokemon={makePokemon()} />);
-    expect(screen.getByText(/lightning storms/i)).toBeInTheDocument();
+    const entry = document.querySelector('p');
+    expect(entry?.textContent).toMatch(/lightning storms/i);
   });
 });

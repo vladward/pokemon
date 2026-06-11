@@ -16,15 +16,15 @@ export function PokedexEntry({ text, label = 'POKÉDEX ENTRY' }: Props) {
       <div
         className="relative rounded px-2 py-1.5"
         style={{
-          background: 'rgba(93,217,216,0.03)',
-          border: '1px solid rgba(93,217,216,0.10)',
+          background: 'var(--pdx-hud-cyan-surface-dim)',
+          border: '1px solid var(--pdx-hud-cyan-border-dim)',
           boxShadow: 'inset 0 1px 4px rgba(0,0,0,0.3)',
         }}
       >
         <p className="font-mono text-[11px] leading-relaxed text-pokedex-hud-ink">
           {text.split('').map((char, i) => (
             <span
-              key={i}
+              key={`${i}-${char}`}
               className="pdx-char"
               style={{ animationDelay: `${i * CHAR_DELAY_MS}ms` }}
             >
