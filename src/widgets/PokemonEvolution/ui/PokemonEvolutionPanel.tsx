@@ -4,12 +4,15 @@ import { HudSection } from '@/shared/ui/hud';
 import { ScrollToActive } from '@/shared/ui/ScrollToActive';
 
 import { EvolutionArrow, formatTrigger } from './EvolutionArrow';
+import type { TriggerLabels } from './EvolutionArrow';
 import { EvolutionNode } from './EvolutionNode';
 
 interface Props {
   evolutions: TEvolutionNode[];
   evolutionSteps: TEvolutionStep[];
   label?: string;
+  triggerLabels?: TriggerLabels;
+  scrollHint?: string;
 }
 
 function buildStages(nodes: TEvolutionNode[], steps: TEvolutionStep[]): TEvolutionNode[][] {
@@ -25,46 +28,40 @@ function buildStages(nodes: TEvolutionNode[], steps: TEvolutionStep[]): TEvoluti
   let current = roots;
 
   while (current.length > 0) {
-    stages.push(current);
+    stages.push(
+      [...current].sort((a, b) => (b.isCurrent ? 1 : 0) - (a.isCurrent ? 1 : 0)),
+    );
     current.forEach((n) => visited.add(n.speciesId));
 
-    const nextSpeciesIds = steps
-      .filter((s) => current.some((n) => n.speciesId === s.fromSpeciesId))
-      .map((s) => s.toSpeciesId);
-
-    current = nodes.filter(
-      (n) => nextSpeciesIds.includes(n.speciesId) && !visited.has(n.speciesId),
+    const nextIds = new Set(
+      steps
+        .filter((s) => current.some((n) => n.speciesId === s.fromSpeciesId))
+        .map((s) => s.toSpeciesId),
     );
+
+    current = nodes.filter((n) => nextIds.has(n.speciesId) && !visited.has(n.speciesId));
   }
 
   return stages;
 }
 
-function getArrowLabel(
-  fromStage: TEvolutionNode[],
-  toStage: TEvolutionNode[],
-  steps: TEvolutionStep[],
-): string | undefined {
-  const fromIds = new Set(fromStage.map((n) => n.speciesId));
-  const toIds = new Set(toStage.map((n) => n.speciesId));
-  const step = steps.find((s) => fromIds.has(s.fromSpeciesId) && toIds.has(s.toSpeciesId));
-  return step ? formatTrigger(step.trigger, step.minLevel) : undefined;
-}
-
-function getNodeArrowLabel(
+function getStepLabel(
   fromStage: TEvolutionNode[],
   toSpeciesId: number,
   steps: TEvolutionStep[],
+  labels?: TriggerLabels,
 ): string | undefined {
   const fromIds = new Set(fromStage.map((n) => n.speciesId));
   const step = steps.find((s) => fromIds.has(s.fromSpeciesId) && s.toSpeciesId === toSpeciesId);
-  return step ? formatTrigger(step.trigger, step.minLevel) : undefined;
+  return step ? formatTrigger(step.trigger, step.minLevel, labels) : undefined;
 }
 
 export function PokemonEvolutionPanel({
   evolutions,
   evolutionSteps,
   label = 'EVOLUTION CHAIN',
+  triggerLabels,
+  scrollHint = 'scroll',
 }: Props) {
   const stages = buildStages(evolutions, evolutionSteps);
 
@@ -78,37 +75,33 @@ export function PokemonEvolutionPanel({
         <div className="flex min-w-max items-start justify-center gap-1 py-1 px-3">
           {stages.map((stage, si) => (
             <div
-              key={si}
+              key={stage.map((n) => n.speciesId).join('-')}
               className="flex snap-start items-center gap-1"
             >
               {stage.length === 1 ? (
                 <>
                   {si > 0 && (
-                    <EvolutionArrow label={getArrowLabel(stages[si - 1], stage, evolutionSteps)} />
+                    <EvolutionArrow
+                      label={getStepLabel(stages[si - 1], stage[0].speciesId, evolutionSteps, triggerLabels)}
+                    />
                   )}
                   <EvolutionNode node={stage[0]} />
                 </>
               ) : (
                 <div className="flex flex-col gap-1">
-                  {[...stage]
-                    .sort((a, b) => (b.isCurrent ? 1 : 0) - (a.isCurrent ? 1 : 0))
-                    .map((node) => (
-                      <div
-                        key={node.speciesId}
-                        className="flex items-center gap-1"
-                      >
-                        {si > 0 && (
-                          <EvolutionArrow
-                            label={getNodeArrowLabel(
-                              stages[si - 1],
-                              node.speciesId,
-                              evolutionSteps,
-                            )}
-                          />
-                        )}
-                        <EvolutionNode node={node} />
-                      </div>
-                    ))}
+                  {stage.map((node) => (
+                    <div
+                      key={node.speciesId}
+                      className="flex items-center gap-1"
+                    >
+                      {si > 0 && (
+                        <EvolutionArrow
+                          label={getStepLabel(stages[si - 1], node.speciesId, evolutionSteps, triggerLabels)}
+                        />
+                      )}
+                      <EvolutionNode node={node} />
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
@@ -133,7 +126,7 @@ export function PokemonEvolutionPanel({
             />
           </svg>
           <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-pokedex-hud-ink-dim">
-            scroll
+            {scrollHint}
           </span>
         </div>
       )}

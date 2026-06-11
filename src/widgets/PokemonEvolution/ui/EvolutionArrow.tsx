@@ -2,20 +2,30 @@ interface Props {
   label?: string;
 }
 
-function formatTrigger(trigger: string | null, minLevel: number | null): string | undefined {
+export interface TriggerLabels {
+  level_up?: string;
+  item?: string;
+  trade?: string;
+  shed?: string;
+  other?: string;
+}
+
+export function formatTrigger(
+  trigger: string | null,
+  minLevel: number | null,
+  labels?: TriggerLabels,
+): string | undefined {
   if (minLevel) return `Lv.${minLevel}`;
   if (!trigger) return undefined;
   const map: Record<string, string> = {
-    'level-up': 'level up',
-    'use-item': 'item',
-    trade: 'trade',
-    shed: 'shed',
-    'other': 'other',
+    'level-up': labels?.level_up ?? 'level up',
+    'use-item': labels?.item ?? 'item',
+    trade: labels?.trade ?? 'trade',
+    shed: labels?.shed ?? 'shed',
+    other: labels?.other ?? 'other',
   };
   return map[trigger] ?? trigger.replace(/-/g, ' ');
 }
-
-export { formatTrigger };
 
 export function EvolutionArrow({ label }: Props) {
   return (
