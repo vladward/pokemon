@@ -9,9 +9,7 @@ interface Props {
 
 export function PokedexDevice({ leftContent, rightContent, nav }: Props) {
   return (
-    <div
-      className="pokedex-theme relative flex items-start justify-center px-8 pt-6 pb-8 mobile:px-4 mobile:pt-4"
-    >
+    <div className="pokedex-theme relative flex items-start justify-center px-8 pt-6 pb-8 mobile:px-4 mobile:pt-4">
       <div className="relative w-full max-w-[1440px]">
         <PokedexContactShadow />
         <PokedexShell

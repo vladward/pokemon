@@ -2,18 +2,27 @@ import { cn } from '@/shared/lib/utils';
 
 interface Props {
   className?: string;
+  size?: 'sm' | 'lg' | 'xl';
+  color?: 'red' | 'green' | 'yellow';
 }
 
-export function Lens({ className }: Props) {
+const SIZES = { sm: 18, lg: 36, xl: 52 } as const;
+const COLORS = {
+  red: 'bg-pokedex-hud-red',
+  green: 'bg-pokedex-hud-green',
+  yellow: 'bg-yellow',
+} as const;
+
+export function Lens({ size = 'sm', color = 'yellow', className }: Props) {
+  const dim = SIZES[size];
+  const bg = COLORS[color];
   return (
     /* Outer chrome bezel ring */
     <div
-      className={cn('relative flex-none rounded-full', className)}
+      className={cn('relative flex-none rounded-full', bg, className)}
       style={{
-        width: 28,
-        height: 28,
-        background:
-          'linear-gradient(135deg, var(--pdx-metal-100) 0%, var(--pdx-metal-500) 50%, var(--pdx-metal-900) 100%)',
+        width: dim,
+        height: dim,
         boxShadow:
           '0 0 0 1px rgba(0,0,0,0.6), 0 2px 4px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.18)',
         padding: 2,
@@ -21,10 +30,8 @@ export function Lens({ className }: Props) {
     >
       {/* Inner lens glass */}
       <div
-        className="h-full w-full rounded-full"
+        className={`h-full w-full rounded-full ${bg}`}
         style={{
-          background:
-            'radial-gradient(circle at 35% 35%, rgba(80,80,90,1) 0%, rgba(10,10,14,1) 60%, #000 100%)',
           boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.9)',
         }}
       >
