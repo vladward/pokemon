@@ -47,10 +47,9 @@ export function PokedexShellFrame() {
         boxShadow: 'inset 0 0 0 2px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.1)',
       }}
     >
-      <CornerScrew className="left-3 top-3" />
-      <CornerScrew className="right-3 top-3" />
-      <CornerScrew className="bottom-3 left-3" />
-      <CornerScrew className="bottom-3 right-3" />
+      {/*<CornerScrew className="left-4 top-4" />*/}
+      <CornerScrew className="right-4 top-3" />
+      <CornerScrew className="bottom-4 right-3" />
     </div>
   );
 }

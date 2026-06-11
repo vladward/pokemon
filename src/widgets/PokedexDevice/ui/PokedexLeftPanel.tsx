@@ -1,13 +1,14 @@
 import { PokedexScreenHousing } from '@/widgets/PokedexScreen';
 
-import { DPad, LedIndicator, Lens } from '@/shared/ui/mechanical';
+import { LedIndicator, Lens } from '@/shared/ui/mechanical';
 
 interface Props {
   children?: React.ReactNode;
   nav?: React.ReactNode;
+  stretch?: boolean;
 }
 
-export function PokedexLeftPanel({ children, nav }: Props) {
+export function PokedexLeftPanel({ children, nav, stretch }: Props) {
   return (
     <div className="flex min-w-0 flex-1 flex-col gap-4 pt-7 px-5 pb-5">
       {/* Top indicator strip */}
@@ -26,14 +27,9 @@ export function PokedexLeftPanel({ children, nav }: Props) {
           color="green"
         />
       </div>
-      <PokedexScreenHousing className="flex-1">{children}</PokedexScreenHousing>
+      <PokedexScreenHousing className="flex-1" stretch={stretch}>{children}</PokedexScreenHousing>
       {/* Controls row */}
-      <div className="flex items-center justify-between px-2">
-        <div className="laptop:hidden">
-          <DPad />
-        </div>
-        {nav}
-      </div>
+      <div className="flex items-center justify-end px-2">{nav}</div>
     </div>
   );
 }
