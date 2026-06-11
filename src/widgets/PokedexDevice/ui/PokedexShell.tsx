@@ -1,3 +1,5 @@
+import { cn } from '@/shared/lib/utils';
+
 import { PokedexHinge } from './PokedexHinge';
 import { PokedexLeftPanel } from './PokedexLeftPanel';
 import { PokedexRightPanel } from './PokedexRightPanel';
@@ -7,12 +9,16 @@ interface Props {
   leftContent?: React.ReactNode;
   rightContent?: React.ReactNode;
   nav?: React.ReactNode;
+  stretch?: boolean;
 }
 
-export function PokedexShell({ leftContent, rightContent, nav }: Props) {
+export function PokedexShell({ leftContent, rightContent, nav, stretch }: Props) {
   return (
     <div
-      className="relative flex w-full min-h-[680px] overflow-hidden laptop:flex-col laptop:min-h-0"
+      className={cn(
+        'relative flex w-full overflow-hidden laptop:flex-col laptop:min-h-0',
+        stretch ? 'flex-1' : 'min-h-[680px]',
+      )}
       style={{
         borderRadius: 'var(--pdx-r-shell)',
         background:
@@ -22,9 +28,9 @@ export function PokedexShell({ leftContent, rightContent, nav }: Props) {
       }}
     >
       <PokedexShellFrame />
-      <PokedexLeftPanel nav={nav}>{leftContent}</PokedexLeftPanel>
+      <PokedexLeftPanel nav={nav} stretch={stretch}>{leftContent}</PokedexLeftPanel>
       <PokedexHinge />
-      <PokedexRightPanel>{rightContent}</PokedexRightPanel>
+      <PokedexRightPanel stretch={stretch}>{rightContent}</PokedexRightPanel>
     </div>
   );
 }
