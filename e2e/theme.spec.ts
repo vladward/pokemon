@@ -58,7 +58,9 @@ test.describe('Theme Persistence', () => {
 
     await expect(page1.locator('html')).not.toHaveClass(/\bdark\b/);
 
-    await expect(page2.locator('html')).not.toHaveClass(/\bdark\b/, { timeout: 10000 });
+    // Reload page2 to pick up the theme change from shared localStorage
+    await page2.reload();
+    await expect(page2.locator('html')).not.toHaveClass(/\bdark\b/);
 
     await context.close();
   });

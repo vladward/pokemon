@@ -13,10 +13,10 @@ export const ToTopButton = () => {
       const isScrolled = window.scrollY > HOME_PAGE_TO_TOP_SIZE - 1;
       setIsVisible((prev) => (prev !== isScrolled ? isScrolled : prev));
     };
-    document.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
-      document.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
