@@ -13,11 +13,30 @@ interface Props {
 }
 
 const SIZE = {
-  sm: { container: 'h-[120px] w-[120px]', imgPx: 120, text: 'w-[120px] text-[8px]', padding: 'p-1.5', glow: '6px' },
-  lg: { container: 'h-36 w-36',           imgPx: 144, text: 'w-36 text-[9px]',      padding: 'px-2 py-1.5', glow: '8px' },
+  sm: {
+    container: 'h-[120px] w-[120px]',
+    imgPx: 120,
+    text: 'w-[120px] text-[8px]',
+    padding: 'p-1.5',
+    glow: '6px',
+  },
+  lg: {
+    container: 'h-36 w-36',
+    imgPx: 144,
+    text: 'w-36 text-[9px]',
+    padding: 'px-2 py-1.5',
+    glow: '8px',
+  },
 } as const;
 
-export function SpriteThumbnail({ pokemonId, sprite, name, isCurrent, size = 'sm', className }: Props) {
+export function SpriteThumbnail({
+  pokemonId,
+  sprite,
+  name,
+  isCurrent,
+  size = 'sm',
+  className,
+}: Props) {
   const { container, imgPx, text, padding, glow } = SIZE[size];
 
   return (
@@ -31,10 +50,14 @@ export function SpriteThumbnail({ pokemonId, sprite, name, isCurrent, size = 'sm
         isCurrent && 'bg-[var(--pdx-hud-cyan-active)]',
         className,
       )}
-      style={isCurrent ? {
-        boxShadow: `0 0 0 1px var(--pdx-hud-cyan), 0 0 ${glow} var(--pdx-hud-cyan-glow)`,
-        borderRadius: 'var(--pdx-r-hud)',
-      } : undefined}
+      style={
+        isCurrent
+          ? {
+              boxShadow: `0 0 0 1px var(--pdx-hud-cyan), 0 0 ${glow} var(--pdx-hud-cyan-glow)`,
+              borderRadius: 'var(--pdx-r-hud)',
+            }
+          : undefined
+      }
     >
       <div className={cn('relative flex-none', container)}>
         {sprite ? (
@@ -53,11 +76,13 @@ export function SpriteThumbnail({ pokemonId, sprite, name, isCurrent, size = 'sm
           />
         )}
       </div>
-      <span className={cn(
-        'truncate text-center font-mono capitalize leading-tight',
-        text,
-        isCurrent ? 'text-pokedex-hud-ink' : 'text-pokedex-hud-ink-dim',
-      )}>
+      <span
+        className={cn(
+          'truncate text-center font-mono capitalize leading-tight',
+          text,
+          isCurrent ? 'text-pokedex-hud-ink' : 'text-pokedex-hud-ink-dim',
+        )}
+      >
         {name}
       </span>
     </Link>

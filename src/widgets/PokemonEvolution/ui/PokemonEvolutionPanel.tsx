@@ -28,9 +28,7 @@ function buildStages(nodes: TEvolutionNode[], steps: TEvolutionStep[]): TEvoluti
   let current = roots;
 
   while (current.length > 0) {
-    stages.push(
-      [...current].sort((a, b) => (b.isCurrent ? 1 : 0) - (a.isCurrent ? 1 : 0)),
-    );
+    stages.push([...current].sort((a, b) => (b.isCurrent ? 1 : 0) - (a.isCurrent ? 1 : 0)));
     current.forEach((n) => visited.add(n.speciesId));
 
     const nextIds = new Set(
@@ -82,7 +80,12 @@ export function PokemonEvolutionPanel({
                 <>
                   {si > 0 && (
                     <EvolutionArrow
-                      label={getStepLabel(stages[si - 1], stage[0].speciesId, evolutionSteps, triggerLabels)}
+                      label={getStepLabel(
+                        stages[si - 1],
+                        stage[0].speciesId,
+                        evolutionSteps,
+                        triggerLabels,
+                      )}
                     />
                   )}
                   <EvolutionNode node={stage[0]} />
@@ -96,7 +99,12 @@ export function PokemonEvolutionPanel({
                     >
                       {si > 0 && (
                         <EvolutionArrow
-                          label={getStepLabel(stages[si - 1], node.speciesId, evolutionSteps, triggerLabels)}
+                          label={getStepLabel(
+                            stages[si - 1],
+                            node.speciesId,
+                            evolutionSteps,
+                            triggerLabels,
+                          )}
                         />
                       )}
                       <EvolutionNode node={node} />

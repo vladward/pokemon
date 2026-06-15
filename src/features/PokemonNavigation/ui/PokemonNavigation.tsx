@@ -19,15 +19,7 @@ const navButtonStyle = {
   boxShadow: 'var(--pdx-sh-button-recess)',
 };
 
-function NavButton({
-  href,
-  label,
-  disabled,
-}: {
-  href: string;
-  label: string;
-  disabled: boolean;
-}) {
+function NavButton({ href, label, disabled }: { href: string; label: string; disabled: boolean }) {
   if (disabled) {
     return (
       <span

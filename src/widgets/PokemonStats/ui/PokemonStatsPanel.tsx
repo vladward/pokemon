@@ -1,6 +1,6 @@
-import { HudSection } from '@/shared/ui/hud';
-
 import type { TPokemonDetails } from '@/entities/Pokemon';
+
+import { HudSection } from '@/shared/ui/hud';
 
 import { StatRow } from './StatRow';
 import { StatTotal } from './StatTotal';
@@ -19,9 +19,16 @@ export function PokemonStatsPanel({ stats, label = 'STATUS', statLabels, totalLa
     <HudSection label={label}>
       <div className="flex flex-col gap-2">
         {(Object.entries(stats) as [keyof typeof stats, number][]).map(([key, value]) => (
-          <StatRow key={key} label={statLabels[key]} value={value} />
+          <StatRow
+            key={key}
+            label={statLabels[key]}
+            value={value}
+          />
         ))}
-        <StatTotal total={total} label={totalLabel} />
+        <StatTotal
+          total={total}
+          label={totalLabel}
+        />
       </div>
     </HudSection>
   );

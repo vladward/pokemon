@@ -30,8 +30,8 @@
   --pdx-hud-cyan-surface-hover: rgba(93, 217, 216, 0.06);
   --pdx-hud-cyan-active: rgba(93, 217, 216, 0.08);
   --pdx-hud-cyan-border: rgba(93, 217, 216, 0.14);
-  --pdx-hud-cyan-border-dim: rgba(93, 217, 216, 0.10);
-  --pdx-hud-cyan-border-strong: rgba(93, 217, 216, 0.20);
+  --pdx-hud-cyan-border-dim: rgba(93, 217, 216, 0.1);
+  --pdx-hud-cyan-border-strong: rgba(93, 217, 216, 0.2);
   --pdx-hud-amber: #f4a93b;
   --pdx-hud-amber-glow: rgba(244, 169, 59, 0.35);
   --pdx-hud-red: #ff5252;
@@ -60,42 +60,32 @@
   --pdx-r-pill: 9999px;
 
   /* Shadow / highlight stack */
-  --pdx-sh-shell-outer:
-    0 24px 60px -12px rgba(0, 0, 0, 0.55),
-    0 6px 14px -4px rgba(0, 0, 0, 0.35);
+  --pdx-sh-shell-outer: 0 24px 60px -12px rgba(0, 0, 0, 0.55), 0 6px 14px -4px rgba(0, 0, 0, 0.35);
 
   --pdx-sh-shell-bevel-top: inset 0 2px 0 rgba(255, 255, 255, 0.35);
   --pdx-sh-shell-bevel-bottom: inset 0 -3px 0 rgba(0, 0, 0, 0.45);
-  --pdx-sh-shell-rim:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
-    inset 0 0 0 2px rgba(0, 0, 0, 0.25);
+  --pdx-sh-shell-rim: inset 0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 0 0 2px rgba(0, 0, 0, 0.25);
 
-  --pdx-sh-screen-inset:
-    inset 0 0 0 1px #000,
-    inset 0 6px 14px rgba(0, 0, 0, 0.85),
-    inset 0 -2px 6px rgba(120, 200, 255, 0.08);
+  --pdx-sh-screen-inset: inset 0 0 0 1px #000, inset 0 6px 14px rgba(0, 0, 0, 0.85),
+  inset 0 -2px 6px rgba(120, 200, 255, 0.08);
 
-  --pdx-sh-hud-corner-glow:
-    0 0 0 1px rgba(93, 217, 216, 0.55),
-    0 0 12px rgba(93, 217, 216, 0.25);
+  --pdx-sh-hud-corner-glow: 0 0 0 1px rgba(93, 217, 216, 0.55), 0 0 12px rgba(93, 217, 216, 0.25);
 
-  --pdx-sh-led-glow:
-    0 0 6px var(--pdx-led-cyan),
-    0 0 18px var(--pdx-hud-cyan-glow),
-    0 0 36px rgba(109, 236, 231, 0.25);
+  --pdx-sh-led-glow: 0 0 6px var(--pdx-led-cyan), 0 0 18px var(--pdx-hud-cyan-glow),
+  0 0 36px rgba(109, 236, 231, 0.25);
 
   /* Composed shell tokens — used by PokedexShell and PokedexMobileStack */
-  --pdx-shell-bg: linear-gradient(135deg, var(--pdx-shell-300) 0%, var(--pdx-shell-500) 50%, var(--pdx-shell-700) 100%);
-  --pdx-sh-shell-stack:
-    var(--pdx-sh-shell-outer),
-    var(--pdx-sh-shell-bevel-top),
-    var(--pdx-sh-shell-bevel-bottom),
-    var(--pdx-sh-shell-rim);
+  --pdx-shell-bg: linear-gradient(
+      135deg,
+      var(--pdx-shell-300) 0%,
+      var(--pdx-shell-500) 50%,
+      var(--pdx-shell-700) 100%
+  );
+  --pdx-sh-shell-stack: var(--pdx-sh-shell-outer), var(--pdx-sh-shell-bevel-top), var(--pdx-sh-shell-bevel-bottom),
+  var(--pdx-sh-shell-rim);
 
-  --pdx-sh-button-recess:
-    inset 0 -3px 0 rgba(0, 0, 0, 0.45),
-    inset 0 2px 0 rgba(255, 255, 255, 0.3),
-    0 2px 4px rgba(0, 0, 0, 0.4);
+  --pdx-sh-button-recess: inset 0 -3px 0 rgba(0, 0, 0, 0.45), inset 0 2px 0 rgba(255, 255, 255, 0.3),
+  0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 /* Pokédex-specific keyframes */
@@ -117,7 +107,9 @@
 }
 
 @keyframes pdxChar {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes pdxCaret {
@@ -141,7 +133,7 @@
 
 @keyframes pdxBootScan {
   0% {
-    top: 0%;
+    top: 0;
     opacity: 1;
   }
   90% {
@@ -168,24 +160,24 @@
 /* Hinge gradient — direction switches when the hinge is horizontal */
 .pdx-hinge {
   background: linear-gradient(
-    to right,
-    var(--pdx-metal-900) 0%,
-    var(--pdx-metal-500) 35%,
-    var(--pdx-metal-100) 50%,
-    var(--pdx-metal-500) 65%,
-    var(--pdx-metal-900) 100%
+      to right,
+      var(--pdx-metal-900) 0%,
+      var(--pdx-metal-500) 35%,
+      var(--pdx-metal-100) 50%,
+      var(--pdx-metal-500) 65%,
+      var(--pdx-metal-900) 100%
   );
 }
 
 @media (max-width: 992px) {
   .pdx-hinge {
     background: linear-gradient(
-      to bottom,
-      var(--pdx-metal-900) 0%,
-      var(--pdx-metal-500) 35%,
-      var(--pdx-metal-100) 50%,
-      var(--pdx-metal-500) 65%,
-      var(--pdx-metal-900) 100%
+        to bottom,
+        var(--pdx-metal-900) 0%,
+        var(--pdx-metal-500) 35%,
+        var(--pdx-metal-100) 50%,
+        var(--pdx-metal-500) 65%,
+        var(--pdx-metal-900) 100%
     );
   }
 }
@@ -203,9 +195,11 @@
 .pokedex-theme ::-webkit-scrollbar {
   width: 4px;
 }
+
 .pokedex-theme ::-webkit-scrollbar-track {
   background: var(--pdx-screen-bg-1);
 }
+
 .pokedex-theme ::-webkit-scrollbar-thumb {
   background: var(--pdx-hud-cyan);
   border-radius: 2px;
@@ -213,7 +207,15 @@
 
 /* JetBrains Mono override — scoped to the Pokédex device so the rest of the app is unaffected */
 .pokedex-theme .font-mono {
-  font-family: var(--font-jetbrains, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace) !important;
+  font-family: var(
+      --font-jetbrains,
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace
+  ) !important;
 }
 
 /* Reduced motion overrides */

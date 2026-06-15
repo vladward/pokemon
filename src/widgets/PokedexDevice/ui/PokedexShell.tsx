@@ -26,7 +26,12 @@ export function PokedexShell({ leftContent, rightContent, nav, stretch }: Props)
       }}
     >
       <PokedexShellFrame />
-      <PokedexLeftPanel nav={nav} stretch={stretch}>{leftContent}</PokedexLeftPanel>
+      <PokedexLeftPanel
+        nav={nav}
+        stretch={stretch}
+      >
+        {leftContent}
+      </PokedexLeftPanel>
       <PokedexHinge />
       <PokedexRightPanel stretch={stretch}>{rightContent}</PokedexRightPanel>
     </div>

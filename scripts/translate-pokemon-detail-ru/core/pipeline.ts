@@ -1,6 +1,7 @@
 import type { RowDataPacket } from 'mysql2';
 
 import { db } from '../../../lib/db';
+
 import type { TranslationConfig } from './config';
 import { translateBatch } from './translator';
 import { clearLine, formatTime } from './utils';
@@ -23,9 +24,7 @@ export type PipelineOptions = {
 function renderProgress(label: string, done: number, total: number, elapsedMs: number): string {
   const pct = Math.round((done / total) * 100);
   const eta =
-    done > 0 && done < total
-      ? ` — ~${formatTime((elapsedMs / done) * (total - done))} left`
-      : '';
+    done > 0 && done < total ? ` — ~${formatTime((elapsedMs / done) * (total - done))} left` : '';
   return `[${label}] ${done}/${total} (${pct}%) — ${formatTime(elapsedMs)} elapsed${eta}`;
 }
 

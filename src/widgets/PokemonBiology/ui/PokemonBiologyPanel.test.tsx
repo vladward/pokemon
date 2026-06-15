@@ -43,59 +43,114 @@ const defaultProps = {
 
 describe('PokemonBiologyPanel', () => {
   it('renders the Biological Info section label', () => {
-    render(<PokemonBiologyPanel biology={makeBiology()} {...defaultProps} />);
+    render(
+      <PokemonBiologyPanel
+        biology={makeBiology()}
+        {...defaultProps}
+      />,
+    );
     expect(screen.getByRole('region', { name: /biological info/i })).toBeInTheDocument();
   });
 
   it('converts height from decimetres to metres', () => {
-    render(<PokemonBiologyPanel biology={makeBiology({ height: 4 })} {...defaultProps} />);
+    render(
+      <PokemonBiologyPanel
+        biology={makeBiology({ height: 4 })}
+        {...defaultProps}
+      />,
+    );
     expect(screen.getByText('0.4 m')).toBeInTheDocument();
   });
 
   it('converts weight from hectograms to kilograms', () => {
-    render(<PokemonBiologyPanel biology={makeBiology({ weight: 60 })} {...defaultProps} />);
+    render(
+      <PokemonBiologyPanel
+        biology={makeBiology({ weight: 60 })}
+        {...defaultProps}
+      />,
+    );
     expect(screen.getByText('6.0 kg')).toBeInTheDocument();
   });
 
   it('renders genus as Species row', () => {
-    render(<PokemonBiologyPanel biology={makeBiology({ genus: 'Mouse Pokémon' })} {...defaultProps} />);
+    render(
+      <PokemonBiologyPanel
+        biology={makeBiology({ genus: 'Mouse Pokémon' })}
+        {...defaultProps}
+      />,
+    );
     expect(screen.getByText('Species')).toBeInTheDocument();
     expect(screen.getByText('Mouse Pokémon')).toBeInTheDocument();
   });
 
   it('hides Species row when genus is null', () => {
-    render(<PokemonBiologyPanel biology={makeBiology({ genus: null })} {...defaultProps} />);
+    render(
+      <PokemonBiologyPanel
+        biology={makeBiology({ genus: null })}
+        {...defaultProps}
+      />,
+    );
     expect(screen.queryByText('Species')).not.toBeInTheDocument();
   });
 
   it('renders egg groups joined by comma', () => {
-    render(<PokemonBiologyPanel biology={makeBiology({ eggGroups: ['Field', 'Fairy'] })} {...defaultProps} />);
+    render(
+      <PokemonBiologyPanel
+        biology={makeBiology({ eggGroups: ['Field', 'Fairy'] })}
+        {...defaultProps}
+      />,
+    );
     expect(screen.getByText('Field, Fairy')).toBeInTheDocument();
   });
 
   it('hides Egg Groups row when array is empty', () => {
-    render(<PokemonBiologyPanel biology={makeBiology({ eggGroups: [] })} {...defaultProps} />);
+    render(
+      <PokemonBiologyPanel
+        biology={makeBiology({ eggGroups: [] })}
+        {...defaultProps}
+      />,
+    );
     expect(screen.queryByText('Egg Groups')).not.toBeInTheDocument();
   });
 
   it('renders hatch counter as step count', () => {
     // (10 + 1) * 255 = 2805
-    render(<PokemonBiologyPanel biology={makeBiology({ hatchCounter: 10 })} {...defaultProps} />);
+    render(
+      <PokemonBiologyPanel
+        biology={makeBiology({ hatchCounter: 10 })}
+        {...defaultProps}
+      />,
+    );
     expect(screen.getByText('2805 steps')).toBeInTheDocument();
   });
 
   it('hides Hatch Counter row when null', () => {
-    render(<PokemonBiologyPanel biology={makeBiology({ hatchCounter: null })} {...defaultProps} />);
+    render(
+      <PokemonBiologyPanel
+        biology={makeBiology({ hatchCounter: null })}
+        {...defaultProps}
+      />,
+    );
     expect(screen.queryByText('Hatch Counter')).not.toBeInTheDocument();
   });
 
   it('hides Catch Rate row when null', () => {
-    render(<PokemonBiologyPanel biology={makeBiology({ catchRate: null })} {...defaultProps} />);
+    render(
+      <PokemonBiologyPanel
+        biology={makeBiology({ catchRate: null })}
+        {...defaultProps}
+      />,
+    );
     expect(screen.queryByText('Catch Rate')).not.toBeInTheDocument();
   });
 
   it('renders all optional fields when present', () => {
-    render(<PokemonBiologyPanel biology={makeBiology()} {...defaultProps} />);
+    render(
+      <PokemonBiologyPanel
+        biology={makeBiology()}
+        {...defaultProps}
+      />,
+    );
     expect(screen.getByText('Shape')).toBeInTheDocument();
     expect(screen.getByText('Color')).toBeInTheDocument();
     expect(screen.getByText('Habitat')).toBeInTheDocument();

@@ -17,7 +17,11 @@ export function PokedexMobileStack({ heroContent, modules, nav, stretch }: Props
   return (
     <div className={stretch ? 'relative flex flex-1 flex-col w-full' : 'relative w-full'}>
       <div
-        className={stretch ? 'relative flex flex-1 flex-col w-full overflow-hidden' : 'relative w-full overflow-hidden'}
+        className={
+          stretch
+            ? 'relative flex flex-1 flex-col w-full overflow-hidden'
+            : 'relative w-full overflow-hidden'
+        }
         style={{
           borderRadius: 'var(--pdx-r-shell)',
           background: 'var(--pdx-shell-bg)',
@@ -32,7 +36,10 @@ export function PokedexMobileStack({ heroContent, modules, nav, stretch }: Props
 
         {/* Hero screen */}
         <div className={stretch ? 'flex flex-1 flex-col px-5 pb-0 pt-12' : 'px-5 pb-0 pt-12'}>
-          <PokedexScreenHousing className={stretch ? 'flex-1' : undefined} stretch={stretch}>
+          <PokedexScreenHousing
+            className={stretch ? 'flex-1' : undefined}
+            stretch={stretch}
+          >
             {heroContent}
           </PokedexScreenHousing>
         </div>
@@ -43,7 +50,11 @@ export function PokedexMobileStack({ heroContent, modules, nav, stretch }: Props
         {/* Per-module screens */}
         <div className={stretch ? 'flex flex-1 flex-col gap-4 px-5' : 'flex flex-col gap-4 px-5'}>
           {modules.map((module, i) => (
-            <PokedexScreenHousing key={i} className={stretch ? 'flex-1' : undefined} stretch={stretch}>
+            <PokedexScreenHousing
+              key={i}
+              className={stretch ? 'flex-1' : undefined}
+              stretch={stretch}
+            >
               <div className={stretch ? 'p-3 flex flex-col flex-1' : 'p-3'}>{module}</div>
             </PokedexScreenHousing>
           ))}

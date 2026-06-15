@@ -14,7 +14,14 @@ interface Props {
   unitKg?: string;
 }
 
-export function PokemonHeroDisplay({ pokemon, entryLabel, heightLabel, weightLabel, unitM, unitKg }: Props) {
+export function PokemonHeroDisplay({
+  pokemon,
+  entryLabel,
+  heightLabel,
+  weightLabel,
+  unitM,
+  unitKg,
+}: Props) {
   return (
     <div className="flex h-full flex-col gap-3 p-4">
       {/* Header */}
@@ -38,7 +45,10 @@ export function PokemonHeroDisplay({ pokemon, entryLabel, heightLabel, weightLab
         )}
         <div className="mt-1 flex gap-2">
           {pokemon.types.map((type) => (
-            <PokemonTypeBadge key={type} type={type} />
+            <PokemonTypeBadge
+              key={type}
+              type={type}
+            />
           ))}
         </div>
       </div>
@@ -64,7 +74,10 @@ export function PokemonHeroDisplay({ pokemon, entryLabel, heightLabel, weightLab
           className="h-px opacity-20"
           style={{ background: 'linear-gradient(to right, var(--pdx-hud-cyan), transparent)' }}
         />
-        <PokedexEntry text={pokemon.flavorText} label={entryLabel} />
+        <PokedexEntry
+          text={pokemon.flavorText}
+          label={entryLabel}
+        />
       </div>
     </div>
   );

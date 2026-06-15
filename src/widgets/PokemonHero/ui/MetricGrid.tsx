@@ -19,9 +19,7 @@ function MetricCell({ label, value }: { label: string; value: string }) {
       <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-pokedex-hud-ink-dim">
         {label}
       </span>
-      <span className="font-mono text-[13px] tabular-nums text-pokedex-hud-ink">
-        {value}
-      </span>
+      <span className="font-mono text-[13px] tabular-nums text-pokedex-hud-ink">{value}</span>
     </div>
   );
 }
@@ -36,8 +34,14 @@ export function MetricGrid({
 }: Props) {
   return (
     <div className="flex gap-2">
-      <MetricCell label={heightLabel} value={`${(height / 10).toFixed(1)} ${unitM}`} />
-      <MetricCell label={weightLabel} value={`${(weight / 10).toFixed(1)} ${unitKg}`} />
+      <MetricCell
+        label={heightLabel}
+        value={`${(height / 10).toFixed(1)} ${unitM}`}
+      />
+      <MetricCell
+        label={weightLabel}
+        value={`${(weight / 10).toFixed(1)} ${unitKg}`}
+      />
     </div>
   );
 }

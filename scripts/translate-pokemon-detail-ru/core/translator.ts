@@ -113,9 +113,7 @@ export async function translateBatch(
             await pause();
             return result || null;
           } catch (err) {
-            process.stdout.write(
-              `\n  [fail] "${text.slice(0, 60)}": ${(err as Error).message}\n`,
-            );
+            process.stdout.write(`\n  [fail] "${text.slice(0, 60)}": ${(err as Error).message}\n`);
             return null;
           }
         }),

@@ -5,16 +5,16 @@ from [PokéAPI](https://pokeapi.co) into a local **MySQL** database — no runti
 
 ## Tech Stack
 
-| Layer     | Technology                          |
-|:----------|:------------------------------------|
-| Framework | Next.js 15 (App Router)             |
-| Language  | TypeScript                          |
-| Styling   | Tailwind CSS + Shadcn/UI (Radix UI) |
-| State     | Zustand                             |
-| i18n      | next-intl                           |
+| Layer     | Technology                           |
+| :-------- | :----------------------------------- |
+| Framework | Next.js 15 (App Router)              |
+| Language  | TypeScript                           |
+| Styling   | Tailwind CSS + Shadcn/UI (Radix UI)  |
+| State     | Zustand                              |
+| i18n      | next-intl                            |
 | Database  | MySQL 8 (Docker) via Prisma + mysql2 |
-| Testing   | Jest + Testing Library, Playwright  |
-| CI        | GitHub Actions                      |
+| Testing   | Jest + Testing Library, Playwright   |
+| CI        | GitHub Actions                       |
 
 ---
 
@@ -100,7 +100,7 @@ Open [http://localhost:3000](http://localhost:3000).
 ### Application
 
 | Command             | Action                            |
-|:--------------------|:----------------------------------|
+| :------------------ | :-------------------------------- |
 | `npm run dev`       | Start Next.js dev server with HMR |
 | `npm run build`     | Build for production              |
 | `npm run start`     | Start production server           |
@@ -113,17 +113,17 @@ Open [http://localhost:3000](http://localhost:3000).
 ### Database
 
 | Command              | Action                                      |
-|:---------------------|:--------------------------------------------|
+| :------------------- | :------------------------------------------ |
 | `npm run db:migrate` | Create / update all 80+ tables (idempotent) |
 | `npm run seed:all`   | Run full seed in correct dependency order   |
 | `npm run seed:reset` | Truncate all tables for a clean re-seed     |
 
 ### Translations
 
-| Command                    | Action                                                    |
-|:---------------------------|:----------------------------------------------------------|
-| `npm run translate:setup`  | Start LibreTranslate container (downloads models on first run) |
-| `npm run translate:ru`     | Translate all tables to Russian (incremental, skips existing) |
+| Command                   | Action                                                         |
+| :------------------------ | :------------------------------------------------------------- |
+| `npm run translate:setup` | Start LibreTranslate container (downloads models on first run) |
+| `npm run translate:ru`    | Translate all tables to Russian (incremental, skips existing)  |
 
 ---
 
@@ -146,7 +146,7 @@ versions → pokedex → locations
 ### Individual seeds
 
 | Command                          | Records                                                                          |
-|:---------------------------------|:---------------------------------------------------------------------------------|
+| :------------------------------- | :------------------------------------------------------------------------------- |
 | `npm run seed:pokemon`           | 1 350 Pokémon · species · sprites · moves · stats · abilities · evolution chains |
 | `npm run seed:moves`             | 937 moves with effects, meta, flavor texts, stat changes                         |
 | `npm run seed:abilities`         | 371 abilities with descriptions and flavor texts                                 |
@@ -188,15 +188,15 @@ Russian translation.
 
 ### What gets translated
 
-| Table | Records | Content |
-|:------|--------:|:--------|
-| `type_name` | 21 | Type names (Fire, Water…) |
-| `egg_group_name` | 15 | Egg group names |
-| `ability_name` | 371 | Ability names |
-| `pokemon_species_genus` | 1 025 | Genus labels ("Seed Pokémon") |
-| `ability_effect` | 309 | Ability short descriptions |
-| `pokemon_species_flavor_text` | 1 025 | Pokémon flavor texts (one per species) |
-| `location_name` | 1 089 | Location names |
+| Table                         | Records | Content                                |
+| :---------------------------- | ------: | :------------------------------------- |
+| `type_name`                   |      21 | Type names (Fire, Water…)              |
+| `egg_group_name`              |      15 | Egg group names                        |
+| `ability_name`                |     371 | Ability names                          |
+| `pokemon_species_genus`       |   1 025 | Genus labels ("Seed Pokémon")          |
+| `ability_effect`              |     309 | Ability short descriptions             |
+| `pokemon_species_flavor_text` |   1 025 | Pokémon flavor texts (one per species) |
+| `location_name`               |   1 089 | Location names                         |
 
 ### Setup
 
@@ -300,4 +300,4 @@ The script extracts every `model`, `enum`, and `view` block into its own file in
 
 - [x] **v1.0.0** — Custom Webpack 5 pipeline, FSD architecture, dark mode, Jest/Playwright/CI.
 - [x] **v2.0.0** — Migrated to Next.js 15 App Router, Tailwind CSS, Shadcn/UI, next-intl i18n (6 locales), MySQL local
-  database with full PokéAPI seed.
+      database with full PokéAPI seed.

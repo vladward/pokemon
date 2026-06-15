@@ -27,7 +27,12 @@ export function PokedexLeftPanel({ children, nav, stretch }: Props) {
           color="green"
         />
       </div>
-      <PokedexScreenHousing className="flex-1" stretch={stretch}>{children}</PokedexScreenHousing>
+      <PokedexScreenHousing
+        className="flex-1"
+        stretch={stretch}
+      >
+        {children}
+      </PokedexScreenHousing>
       {/* Controls row */}
       <div className="flex items-center justify-end px-2">{nav}</div>
     </div>

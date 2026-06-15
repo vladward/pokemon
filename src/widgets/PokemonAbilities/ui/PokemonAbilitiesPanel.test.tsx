@@ -19,14 +19,21 @@ describe('PokemonAbilitiesPanel', () => {
   });
 
   it('renders regular ability names', () => {
-    const abilities = [makeAbility({ id: 1, name: 'static' }), makeAbility({ id: 2, name: 'lightning rod' })];
+    const abilities = [
+      makeAbility({ id: 1, name: 'static' }),
+      makeAbility({ id: 2, name: 'lightning rod' }),
+    ];
     render(<PokemonAbilitiesPanel abilities={abilities} />);
     expect(screen.getByText('static')).toBeInTheDocument();
     expect(screen.getByText('lightning rod')).toBeInTheDocument();
   });
 
   it('renders ability short effect when present', () => {
-    render(<PokemonAbilitiesPanel abilities={[makeAbility({ shortEffect: 'May paralyze on contact.' })]} />);
+    render(
+      <PokemonAbilitiesPanel
+        abilities={[makeAbility({ shortEffect: 'May paralyze on contact.' })]}
+      />,
+    );
     expect(screen.getByText('May paralyze on contact.')).toBeInTheDocument();
   });
 

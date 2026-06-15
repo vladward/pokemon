@@ -10,7 +10,11 @@ function Corner({ className }: { className?: string }) {
       fill="none"
       aria-hidden
     >
-      <path d="M0 12 L0 0 L12 0" stroke="var(--pdx-hud-cyan)" strokeWidth="1.5" />
+      <path
+        d="M0 12 L0 0 L12 0"
+        stroke="var(--pdx-hud-cyan)"
+        strokeWidth="1.5"
+      />
     </svg>
   );
 }

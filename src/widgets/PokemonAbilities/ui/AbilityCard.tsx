@@ -7,11 +7,15 @@ interface Props {
 }
 
 const VARIANT_COLORS = {
-  normal: { border: 'var(--pdx-hud-cyan)',  glow: 'var(--pdx-hud-cyan-glow)'  },
+  normal: { border: 'var(--pdx-hud-cyan)', glow: 'var(--pdx-hud-cyan-glow)' },
   hidden: { border: 'var(--pdx-hud-amber)', glow: 'var(--pdx-hud-amber-glow)' },
 };
 
-export function AbilityCard({ ability, variant = 'normal', hiddenLabel = 'Hidden Ability' }: Props) {
+export function AbilityCard({
+  ability,
+  variant = 'normal',
+  hiddenLabel = 'Hidden Ability',
+}: Props) {
   const { border, glow } = VARIANT_COLORS[variant];
 
   return (

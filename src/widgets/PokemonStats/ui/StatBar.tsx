@@ -38,7 +38,11 @@ export function StatBar({ value, max = 255 }: Props) {
         return (
           <div
             key={i}
-            className={isFilled ? 'h-2 flex-1 rounded-sm motion-safe:animate-pdx-stat-fill' : 'h-2 flex-1 rounded-sm'}
+            className={
+              isFilled
+                ? 'h-2 flex-1 rounded-sm motion-safe:animate-pdx-stat-fill'
+                : 'h-2 flex-1 rounded-sm'
+            }
             style={
               isFilled
                 ? {

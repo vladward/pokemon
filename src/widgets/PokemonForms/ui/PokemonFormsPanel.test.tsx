@@ -23,13 +23,21 @@ describe('PokemonFormsPanel', () => {
   });
 
   it('renders the Forms section when multiple forms exist', () => {
-    const forms = [makeForm(25, 'pikachu', true), makeForm(10080, 'pikachu-alola'), makeForm(10094, 'pikachu-original')];
+    const forms = [
+      makeForm(25, 'pikachu', true),
+      makeForm(10080, 'pikachu-alola'),
+      makeForm(10094, 'pikachu-original'),
+    ];
     render(<PokemonFormsPanel forms={forms} />);
     expect(screen.getByRole('region', { name: /forms/i })).toBeInTheDocument();
   });
 
   it('renders each form name', () => {
-    const forms = [makeForm(25, 'pikachu', true), makeForm(10080, 'pikachu-alola'), makeForm(10094, 'pikachu-original')];
+    const forms = [
+      makeForm(25, 'pikachu', true),
+      makeForm(10080, 'pikachu-alola'),
+      makeForm(10094, 'pikachu-original'),
+    ];
     render(<PokemonFormsPanel forms={forms} />);
     expect(screen.getByText('pikachu')).toBeInTheDocument();
     expect(screen.getByText('pikachu-alola')).toBeInTheDocument();

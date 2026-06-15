@@ -1,7 +1,7 @@
-import 'dotenv/config';
 import fs from 'node:fs';
 import path from 'node:path';
 
+import 'dotenv/config';
 import type { RowDataPacket } from 'mysql2';
 
 import { db } from '../lib/db';
@@ -14,13 +14,13 @@ async function run(): Promise<void> {
   // Export variant pokemon (pokemon.is_default=0): form name if exists, else pokemon slug
   // These are the pokemon that need unique display names (e.g. pikachu-rock-star)
   const [rows] = await db.query<(RowDataPacket & { form_id: number; name: string })[]>(`
-    SELECT pf.id AS form_id, COALESCE(pfn.name, p.name) AS name
-    FROM pokemon p
-    JOIN pokemon_form pf ON pf.pokemon_id = p.id AND pf.is_default = 1
-    LEFT JOIN pokemon_form_name pfn ON pfn.form_id = pf.id AND pfn.language = 'en'
-    WHERE p.is_default = 0
-    ORDER BY pf.id
-  `);
+        SELECT pf.id AS form_id, COALESCE(pfn.name, p.name) AS name
+        FROM pokemon p
+                 JOIN pokemon_form pf ON pf.pokemon_id = p.id AND pf.is_default = 1
+                 LEFT JOIN pokemon_form_name pfn ON pfn.form_id = pf.id AND pfn.language = 'en'
+        WHERE p.is_default = 0
+        ORDER BY pf.id
+    `);
 
   const result: Record<string, string> = {};
   for (const row of rows) {

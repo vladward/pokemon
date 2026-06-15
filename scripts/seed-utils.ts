@@ -25,13 +25,13 @@ function level(text: string): string {
   return '[INFO]   ';
 }
 
-console.log = (...args: any[]) => {
+console.log = (...args: unknown[]) => {
   const text = args.map(String).join(' ');
   const m = `[${new Date().toISOString()}] ${level(text)} ${text}`;
   _log(m);
   writeLine(m);
 };
-console.error = (...args: any[]) => {
+console.error = (...args: unknown[]) => {
   const m = `[${new Date().toISOString()}] [ERROR]   ${args.map(String).join(' ')}`;
   _error(m);
   writeLine(m);

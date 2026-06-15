@@ -1,6 +1,13 @@
 import { GENERATION_TO_REGION } from './config/regions';
 import { TPokemonCard } from './TPokemonCard';
-import type { TAbility, TBiology, TEvolutionNode, TEvolutionStep, TForm, TPokemonDetails } from './TPokemonDetails';
+import type {
+  TAbility,
+  TBiology,
+  TEvolutionNode,
+  TEvolutionStep,
+  TForm,
+  TPokemonDetails,
+} from './TPokemonDetails';
 
 type RawSprite = { sprite_name: string | null; url: string | null };
 type RawStat = { stat_name: string; base_stat: number };
@@ -122,7 +129,10 @@ type RawDetailsExtras = {
   evolutionStage: 'base' | 'stage1' | 'stage2' | null;
 };
 
-export function mapPokemonDetails(raw: RawPokemonDetails, extras: RawDetailsExtras): TPokemonDetails {
+export function mapPokemonDetails(
+  raw: RawPokemonDetails,
+  extras: RawDetailsExtras,
+): TPokemonDetails {
   const statsMap = buildStatsMap(raw.pokemon_stat);
   const generationId = raw.species?.generation_id ?? null;
 

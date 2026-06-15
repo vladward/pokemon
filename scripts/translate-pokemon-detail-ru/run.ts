@@ -1,6 +1,7 @@
 import 'dotenv/config';
 
 import { db } from '../../lib/db';
+
 import { config as abilityEffects } from './configs/ru-pokemon-ability-effects';
 import { config as abilityNames } from './configs/ru-pokemon-ability-names';
 import { config as eggGroupNames } from './configs/ru-pokemon-egg-group-names';
@@ -26,12 +27,18 @@ const ALL_CONFIGS = [
 const CONFIG_MAP = Object.fromEntries(ALL_CONFIGS.map((c) => [c.name, c]));
 
 function printUsage() {
-  console.log('Translates Pokémon detail page data to Russian (incremental — skips already translated).');
+  console.log(
+    'Translates Pokémon detail page data to Russian (incremental — skips already translated).',
+  );
   console.log('\nUsage:');
   console.log('  npm run translate:pokemon-detail-ru                          — translate all');
-  console.log('  npm run translate:pokemon-detail-ru -- --table <name>        — translate one table');
+  console.log(
+    '  npm run translate:pokemon-detail-ru -- --table <name>        — translate one table',
+  );
   console.log('  npm run translate:pokemon-detail-ru -- --force               — re-translate all');
-  console.log('  npm run translate:pokemon-detail-ru -- --force --table <name>— re-translate one table');
+  console.log(
+    '  npm run translate:pokemon-detail-ru -- --force --table <name>— re-translate one table',
+  );
   console.log('\nAvailable tables:');
   for (const c of ALL_CONFIGS) {
     console.log(`  ${c.name.padEnd(30)} ${c.description}`);

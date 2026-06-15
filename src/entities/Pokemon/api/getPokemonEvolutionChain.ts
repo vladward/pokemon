@@ -60,11 +60,9 @@ async function fetchChainData(
 }
 
 // Keyed by (chainId, locale) — shared across all pokemon in the same family
-const getCachedChainData = unstable_cache(
-  fetchChainData,
-  ['evolution-chain'],
-  { revalidate: false },
-);
+const getCachedChainData = unstable_cache(fetchChainData, ['evolution-chain'], {
+  revalidate: false,
+});
 
 async function fetchSingleSpeciesNode(speciesId: number, locale: string): Promise<RawNode | null> {
   const species = await db.pokemon_species.findUnique({
@@ -92,11 +90,9 @@ async function fetchSingleSpeciesNode(speciesId: number, locale: string): Promis
   };
 }
 
-const getCachedSingleNode = unstable_cache(
-  fetchSingleSpeciesNode,
-  ['evolution-species-node'],
-  { revalidate: false },
-);
+const getCachedSingleNode = unstable_cache(fetchSingleSpeciesNode, ['evolution-species-node'], {
+  revalidate: false,
+});
 
 export async function getPokemonEvolutionChain(
   chainId: number | null,

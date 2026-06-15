@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import Image from 'next/image';
 
 import type { TPokemonDetails } from '@/entities/Pokemon';
 
@@ -6,7 +7,12 @@ import { PokemonHeroDisplay } from './PokemonHeroDisplay';
 
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: ({ src, alt }: { src: string; alt: string }) => <img src={src} alt={alt} />,
+  default: ({ src, alt }: { src: string; alt: string }) => (
+    <Image
+      src={src}
+      alt={alt}
+    />
+  ),
 }));
 
 const makePokemon = (overrides: Partial<TPokemonDetails> = {}): TPokemonDetails => ({
@@ -20,7 +26,8 @@ const makePokemon = (overrides: Partial<TPokemonDetails> = {}): TPokemonDetails 
   region: 'kanto',
   rarity: 'common',
   evolutionStage: 'stage1',
-  flavorText: 'When several of these Pokémon gather, their electricity could build and cause lightning storms.',
+  flavorText:
+    'When several of these Pokémon gather, their electricity could build and cause lightning storms.',
   stats: { hp: 35, attack: 55, defense: 40, specialAttack: 50, specialDefense: 50, speed: 90 },
   abilities: [],
   biology: {
@@ -59,7 +66,11 @@ describe('PokemonHeroDisplay', () => {
   });
 
   it('does not render genus row when genus is null', () => {
-    render(<PokemonHeroDisplay pokemon={makePokemon({ biology: { ...makePokemon().biology, genus: null } })} />);
+    render(
+      <PokemonHeroDisplay
+        pokemon={makePokemon({ biology: { ...makePokemon().biology, genus: null } })}
+      />,
+    );
     expect(screen.queryByText('Mouse Pokémon')).not.toBeInTheDocument();
   });
 
