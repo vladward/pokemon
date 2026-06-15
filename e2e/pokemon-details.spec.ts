@@ -30,14 +30,15 @@ test.describe('Pokemon Details Page', () => {
 
     test('renders biological info section', async ({ page }) => {
       await page.goto(POKEMON_URL);
-      await expect(page.getByRole('region', { name: /biological info/i })).toBeVisible();
-      await expect(page.getByText(/height/i)).toBeVisible();
-      await expect(page.getByText(/weight/i)).toBeVisible();
+      const bioSection = page.getByRole('region', { name: /biological info/i }).first();
+      await expect(bioSection).toBeVisible();
+      await expect(bioSection.getByText(/height/i)).toBeVisible();
+      await expect(bioSection.getByText(/weight/i)).toBeVisible();
     });
 
     test('renders the dex number header', async ({ page }) => {
       await page.goto(POKEMON_URL);
-      await expect(page.getByText('No. 001')).toBeVisible();
+      await expect(page.getByText('No. 001').first()).toBeVisible();
     });
   });
 
@@ -73,10 +74,12 @@ test.describe('Pokemon Details Page', () => {
 
       test(`visual snapshot at ${bp.name}`, async ({ page }) => {
         await page.goto(POKEMON_URL);
-        // Wait for sprite to load so snapshot is stable
         await page.waitForLoadState('networkidle');
+        // Wait for pdx-char text animations to complete (~200 chars × 28ms)
+        await page.waitForTimeout(6000);
         await expect(page).toHaveScreenshot(`pokemon-details-${bp.name}.png`, {
           maxDiffPixelRatio: 0.03,
+          timeout: 15000,
         });
       });
     });
