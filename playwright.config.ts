@@ -2,7 +2,9 @@ import { defineConfig, devices } from '@playwright/test';
 import { existsSync } from 'fs';
 
 if (!process.env.PLAYWRIGHT_BROWSERS_PATH && process.platform === 'win32') {
-  process.env.PLAYWRIGHT_BROWSERS_PATH = existsSync('D:/') ? 'D:/playwright-browsers' : 'G:/playwright-browsers';
+  process.env.PLAYWRIGHT_BROWSERS_PATH = existsSync('D:/')
+    ? 'D:/playwright-browsers'
+    : 'G:/playwright-browsers';
 }
 
 export default defineConfig({

@@ -10,7 +10,7 @@
     "db:use:docker": "tsx scripts/switch-db.ts docker",
     "db:use:tidb": "tsx scripts/switch-db.ts tidb",
     "dev": "next dev",
-    "fix": "prettier --write \"**/*.{ts,tsx,json}\" && eslint \"src/**/*.{ts,tsx}\" --fix",
+    "fix": "prettier --write .",
     "format:check": "prettier --check \"**/*.{ts,tsx,json}\"",
     "lint": "next lint",
     "seed:abilities": "tsx scripts/run-seed-abilities.ts",
