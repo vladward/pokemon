@@ -15,7 +15,7 @@ export function PokedexDevice({ leftContent, rightContent, nav, stretch }: Props
     <div
       className={cn(
         'pokedex-theme relative flex px-8 pt-6 pb-8 mobile:px-4 mobile:pt-4',
-        stretch ? 'flex-col flex-1' : 'items-start justify-center',
+        stretch ? 'flex-col flex-1 items-center' : 'items-start justify-center',
       )}
     >
       <div className={cn('relative w-full max-w-[1440px]', stretch && 'flex flex-col flex-1')}>

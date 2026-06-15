@@ -2,8 +2,9 @@
 
 import { useTranslations } from 'next-intl';
 
-import { HudFrame } from '@/shared/ui/hud';
 import { PokedexDevice, PokedexMobileStack } from '@/widgets/PokedexDevice';
+
+import { HudFrame } from '@/shared/ui/hud';
 
 interface Props {
   error: Error & { digest?: string };
@@ -89,7 +90,10 @@ export default function Error({ reset }: Props) {
   return (
     <>
       <div className="mobile:hidden">
-        <PokedexDevice leftContent={errorContent} rightContent={errorContent} />
+        <PokedexDevice
+          leftContent={errorContent}
+          rightContent={errorContent}
+        />
       </div>
       <div className="pokedex-theme hidden mobile:block">
         <div
@@ -97,7 +101,10 @@ export default function Error({ reset }: Props) {
           style={{ background: 'radial-gradient(ellipse at 50% 60%, #16161a 0%, #000 100%)' }}
         >
           <div className="w-full max-w-sm">
-            <PokedexMobileStack heroContent={mobileErrorContent} modules={[mobileErrorContent]} />
+            <PokedexMobileStack
+              heroContent={mobileErrorContent}
+              modules={[mobileErrorContent]}
+            />
           </div>
         </div>
       </div>
