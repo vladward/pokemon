@@ -17,19 +17,19 @@ describe('ToTopButton Unit', () => {
 
     act(() => {
       setScrollY(1500);
-      fireEvent.scroll(document);
+      fireEvent.scroll(window);
     });
     expect(button.className).toMatch(/\bvisible\b/);
 
     act(() => {
       setScrollY(500);
-      fireEvent.scroll(document);
+      fireEvent.scroll(window);
     });
     expect(button.className).not.toMatch(/\bvisible\b/);
   });
 
   it('should remove scroll event listener when unmounted to prevent memory leaks', () => {
-    const removeSpy = jest.spyOn(document, 'removeEventListener');
+    const removeSpy = jest.spyOn(window, 'removeEventListener');
     const { unmount } = render(<ToTopButton />);
 
     unmount();

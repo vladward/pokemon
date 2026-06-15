@@ -70,4 +70,10 @@ export default [
       ],
     },
   },
+  {
+    files: ['**/*.test.{ts,tsx}', '**/*.spec.{ts,tsx}'],
+    rules: {
+      '@next/next/no-img-element': 'off',
+    },
+  },
 ];
