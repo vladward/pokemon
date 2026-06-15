@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import Image from 'next/image';
 
 import type { TPokemonDetails } from '@/entities/Pokemon';
 
@@ -8,7 +7,7 @@ import { PokemonHeroDisplay } from './PokemonHeroDisplay';
 jest.mock('next/image', () => ({
   __esModule: true,
   default: ({ src, alt }: { src: string; alt: string }) => (
-    <Image
+    <img
       src={src}
       alt={alt}
     />
