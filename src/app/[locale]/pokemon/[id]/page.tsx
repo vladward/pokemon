@@ -1,18 +1,19 @@
 import { notFound } from 'next/navigation';
 
-import { db } from '@/shared/db/db';
-import { locales } from '@/shared/config/i18n';
-import { getPokemonById, getPokemonNeighbors } from '@/entities/Pokemon';
-import { PokemonNavigation } from '@/features/PokemonNavigation';
 import { PokemonDetailsPage } from '@/views/PokemonDetails';
+
+import { PokemonNavigation } from '@/features/PokemonNavigation';
+
+import { getPokemonById, getPokemonNeighbors } from '@/entities/Pokemon';
+
+import { locales } from '@/shared/config/i18n';
+import { db } from '@/shared/db/db';
 
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const pokemon = await db.pokemon.findMany({ select: { id: true } });
-  return locales.flatMap((locale) =>
-    pokemon.map((p) => ({ locale, id: String(p.id) })),
-  );
+  return locales.flatMap((locale) => pokemon.map((p) => ({ locale, id: String(p.id) })));
 }
 
 interface Params {

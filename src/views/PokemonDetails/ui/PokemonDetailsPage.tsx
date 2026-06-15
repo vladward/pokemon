@@ -22,7 +22,11 @@ export async function PokemonDetailsPage({ pokemon, nav }: Props) {
   const t = await getTranslations('pages.pokemon.details');
 
   const safeT = (key: string, fallback: string): string => {
-    try { return t(key as Parameters<typeof t>[0]); } catch { return fallback; }
+    try {
+      return t(key as Parameters<typeof t>[0]);
+    } catch {
+      return fallback;
+    }
   };
 
   const biologyLabels = {
@@ -44,7 +48,9 @@ export async function PokemonDetailsPage({ pokemon, nav }: Props) {
   const { shape, color, habitat } = pokemon.biology;
   const shapeValue = shape ? safeT(`biology_values.shapes.${normalizeKey(shape)}`, shape) : null;
   const colorValue = color ? safeT(`biology_values.colors.${normalizeKey(color)}`, color) : null;
-  const habitatValue = habitat ? safeT(`biology_values.habitats.${normalizeKey(habitat)}`, habitat) : null;
+  const habitatValue = habitat
+    ? safeT(`biology_values.habitats.${normalizeKey(habitat)}`, habitat)
+    : null;
 
   const heroContent = (
     <div>
@@ -107,15 +113,24 @@ export async function PokemonDetailsPage({ pokemon, nav }: Props) {
       habitatValue={habitatValue}
     />
   );
-  const regionsPanel = pokemon.locations.length > 0
-    ? <PokemonRegionsPanel label={t('hud.location')} locations={pokemon.locations} />
-    : null;
-  const formsPanel = pokemon.forms.length > 1
-    ? <PokemonFormsPanel label={t('hud.forms')} forms={pokemon.forms} />
-    : null;
+  const regionsPanel =
+    pokemon.locations.length > 0 ? (
+      <PokemonRegionsPanel
+        label={t('hud.location')}
+        locations={pokemon.locations}
+      />
+    ) : null;
+  const formsPanel =
+    pokemon.forms.length > 1 ? (
+      <PokemonFormsPanel
+        label={t('hud.forms')}
+        forms={pokemon.forms}
+      />
+    ) : null;
 
-  const mobileModules = [statsPanel, abilitiesPanel, biologyPanel, regionsPanel, formsPanel]
-    .filter(Boolean) as React.ReactNode[];
+  const mobileModules = [statsPanel, abilitiesPanel, biologyPanel, regionsPanel, formsPanel].filter(
+    Boolean,
+  ) as React.ReactNode[];
 
   const rightContent = (
     <div className="relative wide:h-full laptop:h-auto">
