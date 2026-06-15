@@ -9,7 +9,7 @@ import { getPokemonById, getPokemonNeighbors } from '@/entities/Pokemon';
 import { locales } from '@/shared/config/i18n';
 import { db } from '@/shared/db/db';
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
   const pokemon = await db.pokemon.findMany({ select: { id: true } });
