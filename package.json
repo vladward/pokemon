@@ -10,27 +10,11 @@
     "db:use:docker": "tsx scripts/switch-db.ts docker",
     "db:use:tidb": "tsx scripts/switch-db.ts tidb",
     "dev": "next dev",
-    "fix": "prettier --write \"**/*.{ts,tsx,json}\" && eslint \"src/**/*.{ts,tsx}\" --fix",
+    "fix": "prettier --write .",
     "format:check": "prettier --check \"**/*.{ts,tsx,json}\"",
     "lint": "next lint",
     "seed:abilities": "tsx scripts/run-seed-abilities.ts",
     "seed:all": "npm run db:migrate && npm run seed:version-groups && npm run seed:types && npm run seed:stats && npm run seed:growth-rates && npm run seed:egg-groups && npm run seed:natures && npm run seed:encounter-methods && npm run seed:item-categories && npm run seed:item-attributes && npm run seed:items && npm run seed:berries && npm run seed:moves && npm run seed:abilities && npm run seed:machines && npm run seed:pokemon && npm run seed:forms && npm run seed:characteristics && npm run seed:generations && npm run seed:regions && npm run seed:versions && npm run seed:pokedex && npm run seed:locations",
-    "seed:berries": "tsx scripts/run-seed-berries.ts",
-    "seed:characteristics": "tsx scripts/run-seed-characteristics.ts",
-    "seed:egg-groups": "tsx scripts/run-seed-egg-groups.ts",
-    "seed:encounter-methods": "tsx scripts/run-seed-encounter-methods.ts",
-    "seed:forms": "tsx scripts/run-seed-forms.ts",
-    "seed:generations": "tsx scripts/run-seed-generations.ts",
-    "seed:growth-rates": "tsx scripts/run-seed-growth-rates.ts",
-    "seed:item-attributes": "tsx scripts/run-seed-item-attributes.ts",
-    "seed:item-categories": "tsx scripts/run-seed-item-categories.ts",
-    "seed:items": "tsx scripts/run-seed-items.ts",
-    "seed:locations": "tsx scripts/run-seed-locations.ts",
-    "seed:machines": "tsx scripts/run-seed-machines.ts",
-    "seed:moves": "tsx scripts/run-seed-moves.ts",
-    "seed:natures": "tsx scripts/run-seed-natures.ts",
-    "seed:pokedex": "tsx scripts/run-seed-pokedex.ts",
-    "seed:pokemon": "tsx scripts/run-pokemon.ts",
     "seed:pokemon-form-names-export": "tsx scripts/run-export-pokemon-form-names-en.ts",
     "seed:pokemon-names-export": "tsx scripts/run-export-pokemon-names-en.ts",
     "seed:pokemon-names-translate": "tsx scripts/run-seed-pokemon-names-translate.ts",
@@ -43,12 +27,13 @@
     "seed:versions": "tsx scripts/run-seed-versions.ts",
     "start": "next start",
     "test": "jest",
-    "test:e2e": "playwright test",
+    "translate:pokemon-detail-ru": "tsx scripts/translate-pokemon-detail-ru/run.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@prisma/client": "^6.19.3",
     "@radix-ui/react-dialog": "^1.1.15",
+    "@vitalets/google-translate-api": "^9.2.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.17.0",
@@ -67,7 +52,6 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.15.0",
-    "@playwright/test": "^1.58.2",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
@@ -85,6 +69,7 @@
     "eslint-plugin-prettier": "^5.2.0",
     "eslint-plugin-react": "^7.37.0",
     "eslint-plugin-react-hooks": "^5.0.0",
+    "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
     "p-limit": "^7.3.0",
     "postcss": "^8.5.3",
@@ -97,5 +82,8 @@
     "ts-jest": "^29.4.6",
     "tsx": "^4.19.0",
     "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "@swc/helpers": "0.5.17"
   }
 }

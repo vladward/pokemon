@@ -112,7 +112,105 @@
     "pokemon": {
       "title": "Pokémon",
       "browse_title": "Explorer les Pokémon",
-      "description": "Une encyclopédie complète des Pokémon apparaîtra bientôt ici."
+      "description": "Une encyclopédie complète des Pokémon apparaîtra bientôt ici.",
+      "details": {
+        "hud": {
+          "status": "STATUT",
+          "abilities": "CAPACITÉS",
+          "evolution": "CHAÎNE D'ÉVOL.",
+          "biology": "INFO BIO.",
+          "location": "LOCALISATION",
+          "forms": "FORMES",
+          "entry": "ENTRÉE POKÉDEX"
+        },
+        "loading": {
+          "scanning": "ANALYSE...",
+          "initializing": "DÉMARRAGE POKÉDEX"
+        },
+        "error": {
+          "no_signal": "PARASITE — SANS SIGNAL",
+          "description": "Impossible de récupérer les données Pokémon.",
+          "retry": "RÉESSAYER"
+        },
+        "stats": {
+          "hp": "PV",
+          "attack": "Attaque",
+          "defense": "Défense",
+          "special_attack": "Att. Spé.",
+          "special_defense": "Déf. Spé.",
+          "speed": "Vitesse",
+          "total": "Total"
+        },
+        "nav": {
+          "prev": "PRÉC",
+          "next": "SUIV"
+        },
+        "hidden_ability": "Talent Caché",
+        "scroll_hint": "défiler",
+        "evolution_triggers": {
+          "level_up": "montée niv.",
+          "item": "objet",
+          "trade": "échange",
+          "shed": "mue",
+          "other": "autre"
+        },
+        "biology_labels": {
+          "species": "Espèce",
+          "height": "Taille",
+          "weight": "Poids",
+          "egg_groups": "Groupes œuf",
+          "catch_rate": "Taux de capture",
+          "base_friendship": "Amitié de base",
+          "hatch_counter": "Pas avant éclosion",
+          "steps": "pas",
+          "unit_m": "m",
+          "unit_kg": "kg",
+          "shape": "Forme",
+          "color": "Couleur",
+          "habitat": "Habitat"
+        },
+        "biology_values": {
+          "colors": {
+            "black": "Noir",
+            "blue": "Bleu",
+            "brown": "Marron",
+            "gray": "Gris",
+            "green": "Vert",
+            "pink": "Rose",
+            "purple": "Violet",
+            "red": "Rouge",
+            "white": "Blanc",
+            "yellow": "Jaune"
+          },
+          "shapes": {
+            "ball": "Balle",
+            "squiggle": "Zigzag",
+            "fish": "Poisson",
+            "arms": "Bras",
+            "blob": "Goutte",
+            "upright": "Debout",
+            "legs": "Jambes",
+            "quadruped": "Quadrupède",
+            "wings": "Ailes",
+            "tentacles": "Tentacules",
+            "heads": "Têtes",
+            "humanoid": "Humanoïde",
+            "bug_wings": "Ailes d'insecte",
+            "armor": "Armure"
+          },
+          "habitats": {
+            "cave": "Grotte",
+            "forest": "Forêt",
+            "grassland": "Prairie",
+            "mountain": "Montagne",
+            "rare": "Rare",
+            "rough_terrain": "Terrain difficile",
+            "sea": "Mer",
+            "urban": "Urbain",
+            "waters_edge": "Bord de l'eau"
+          }
+        }
+      }
     },
     "skills": {
       "title": "Capacités",

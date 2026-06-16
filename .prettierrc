@@ -11,7 +11,5 @@
   "arrowParens": "always",
   "endOfLine": "auto",
   "singleAttributePerLine": true,
-  "plugins": [
-    "prettier-plugin-pkg"
-  ]
+  "plugins": ["prettier-plugin-pkg"]
 }

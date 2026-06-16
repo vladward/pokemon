@@ -1,7 +1,7 @@
-import 'dotenv/config';
 import fs from 'node:fs';
 import path from 'node:path';
 
+import 'dotenv/config';
 import type { RowDataPacket } from 'mysql2';
 
 import { db } from '../lib/db';

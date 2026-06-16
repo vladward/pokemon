@@ -129,7 +129,31 @@ export type TranslationTypes = {
   };
   pages: {
     wip: string;
-    pokemon: { title: string; description: string };
+    pokemon: {
+      title: string;
+      browse_title: string;
+      description: string;
+      details: {
+        hud: {
+          status: string;
+          abilities: string;
+          evolution: string;
+          biology: string;
+          location: string;
+          forms: string;
+          entry: string;
+        };
+        loading: {
+          scanning: string;
+          initializing: string;
+        };
+        error: {
+          no_signal: string;
+          description: string;
+          retry: string;
+        };
+      };
+    };
     skills: { title: string; description: string };
     items: { title: string; description: string };
     game: { title: string; description: string };

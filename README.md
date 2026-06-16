@@ -5,16 +5,16 @@ from [PokéAPI](https://pokeapi.co) into a local **MySQL** database — no runti
 
 ## Tech Stack
 
-| Layer     | Technology                          |
-|:----------|:------------------------------------|
-| Framework | Next.js 15 (App Router)             |
-| Language  | TypeScript                          |
-| Styling   | Tailwind CSS + Shadcn/UI (Radix UI) |
-| State     | Zustand                             |
-| i18n      | next-intl                           |
+| Layer     | Technology                           |
+| :-------- | :----------------------------------- |
+| Framework | Next.js 15 (App Router)              |
+| Language  | TypeScript                           |
+| Styling   | Tailwind CSS + Shadcn/UI (Radix UI)  |
+| State     | Zustand                              |
+| i18n      | next-intl                            |
 | Database  | MySQL 8 (Docker) via Prisma + mysql2 |
-| Testing   | Jest + Testing Library, Playwright  |
-| CI        | GitHub Actions                      |
+| Testing   | Jest + Testing Library               |
+| CI        | GitHub Actions                       |
 
 ---
 
@@ -61,8 +61,8 @@ src/
 
 Locale routing via `next-intl` — all pages live under `/[locale]/`. Supported locales: **en, de, es, fr, nl, ru**.
 
-> Dutch (`nl`) and Russian (`ru`) have no Pokémon translations in PokéAPI — the app falls back to `en` for
-> Pokémon-specific content (names, descriptions, flavor texts).
+> Dutch (`nl`) has no Pokémon translations in PokéAPI — the app falls back to `en` for Pokémon-specific content.
+> Russian (`ru`) translations are generated locally via the translation pipeline described below.
 
 ---
 
@@ -100,7 +100,7 @@ Open [http://localhost:3000](http://localhost:3000).
 ### Application
 
 | Command             | Action                            |
-|:--------------------|:----------------------------------|
+| :------------------ | :-------------------------------- |
 | `npm run dev`       | Start Next.js dev server with HMR |
 | `npm run build`     | Build for production              |
 | `npm run start`     | Start production server           |
@@ -108,15 +108,21 @@ Open [http://localhost:3000](http://localhost:3000).
 | `npm run typecheck` | TypeScript check (`tsc --noEmit`) |
 | `npm run fix`       | Auto-fix with Prettier + ESLint   |
 | `npm run test`      | Jest unit & integration tests     |
-| `npm run test:e2e`  | Playwright end-to-end tests       |
 
 ### Database
 
 | Command              | Action                                      |
-|:---------------------|:--------------------------------------------|
+| :------------------- | :------------------------------------------ |
 | `npm run db:migrate` | Create / update all 80+ tables (idempotent) |
 | `npm run seed:all`   | Run full seed in correct dependency order   |
 | `npm run seed:reset` | Truncate all tables for a clean re-seed     |
+
+### Translations
+
+| Command                   | Action                                                         |
+| :------------------------ | :------------------------------------------------------------- |
+| `npm run translate:setup` | Start LibreTranslate container (downloads models on first run) |
+| `npm run translate:ru`    | Translate all tables to Russian (incremental, skips existing)  |
 
 ---
 
@@ -139,7 +145,7 @@ versions → pokedex → locations
 ### Individual seeds
 
 | Command                          | Records                                                                          |
-|:---------------------------------|:---------------------------------------------------------------------------------|
+| :------------------------------- | :------------------------------------------------------------------------------- |
 | `npm run seed:pokemon`           | 1 350 Pokémon · species · sprites · moves · stats · abilities · evolution chains |
 | `npm run seed:moves`             | 937 moves with effects, meta, flavor texts, stat changes                         |
 | `npm run seed:abilities`         | 371 abilities with descriptions and flavor texts                                 |
@@ -169,6 +175,59 @@ versions → pokedex → locations
 Long-running seeds (`pokemon`, `moves`, `items`, `forms`, `locations`, `machines`) checkpoint progress in the
 `seed_state` table. Interrupting and re-running resumes from the last completed batch. All seeds use
 `INSERT ... ON DUPLICATE KEY UPDATE` and are safe to run multiple times.
+
+---
+
+## Russian Translations (Pokémon Detail Page)
+
+PokéAPI does not provide Russian translations for most Pokémon detail data. Instead, English content is exported
+from the database, translated locally using **LibreTranslate** (self-hosted via Docker), and seeded back as
+`language = 'ru'` rows. The pipeline is incremental — re-running it only processes entries that don't yet have a
+Russian translation.
+
+### What gets translated
+
+| Table                         | Records | Content                                |
+| :---------------------------- | ------: | :------------------------------------- |
+| `type_name`                   |      21 | Type names (Fire, Water…)              |
+| `egg_group_name`              |      15 | Egg group names                        |
+| `ability_name`                |     371 | Ability names                          |
+| `pokemon_species_genus`       |   1 025 | Genus labels ("Seed Pokémon")          |
+| `ability_effect`              |     309 | Ability short descriptions             |
+| `pokemon_species_flavor_text` |   1 025 | Pokémon flavor texts (one per species) |
+| `location_name`               |   1 089 | Location names                         |
+
+### Setup
+
+**1. Start LibreTranslate** (first run downloads ~300 MB of `en`/`ru` language models):
+
+```bash
+npm run translate:setup
+```
+
+The container persists models in a Docker volume — subsequent starts are instant.
+
+**2. Verify** that `LIBRETRANSLATE_URL=http://localhost:5100` is set in `.env`.
+
+### Running translations
+
+```bash
+# Translate all tables (skips already-translated rows)
+npm run translate:ru
+
+# Translate a specific table only
+npm run translate:ru -- --table ru-pokemon-genus
+npm run translate:ru -- --table ru-pokemon-flavor-texts
+```
+
+Each command follows the same three steps internally:
+
+1. **Export** — reads English rows that have no `ru` counterpart yet
+2. **Translate** — sends batches to LibreTranslate at `LIBRETRANSLATE_URL`
+3. **Seed** — upserts translated rows with `language = 'ru'`
+
+Running the command again after new Pokémon are seeded from PokéAPI will automatically pick up only the new
+entries.
 
 ---
 
@@ -240,4 +299,4 @@ The script extracts every `model`, `enum`, and `view` block into its own file in
 
 - [x] **v1.0.0** — Custom Webpack 5 pipeline, FSD architecture, dark mode, Jest/Playwright/CI.
 - [x] **v2.0.0** — Migrated to Next.js 15 App Router, Tailwind CSS, Shadcn/UI, next-intl i18n (6 locales), MySQL local
-  database with full PokéAPI seed.
+      database with full PokéAPI seed.

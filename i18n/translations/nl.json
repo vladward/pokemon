@@ -108,7 +108,106 @@
     "wip": "Pagina in aanbouw. Er komt binnenkort iets interessants!",
     "pokemon": {
       "title": "Pokémon",
-      "description": "Binnenkort verschijnt hier een volledige Pokémon-encyclopedie."
+      "browse_title": "Pokémon verkennen",
+      "description": "Binnenkort verschijnt hier een volledige Pokémon-encyclopedie.",
+      "details": {
+        "hud": {
+          "status": "STATUS",
+          "abilities": "VAARDIGHEDEN",
+          "evolution": "EVOLUTIEKETEN",
+          "biology": "BIOLOGISCHE INFO",
+          "location": "LOCATIE",
+          "forms": "VORMEN",
+          "entry": "POKÉDEX-VERMELDING"
+        },
+        "loading": {
+          "scanning": "SCANNEN...",
+          "initializing": "POKÉDEX INITIALISEREN"
+        },
+        "error": {
+          "no_signal": "RUIS — GEEN SIGNAAL",
+          "description": "Kan geen Pokémon-gegevens ophalen.",
+          "retry": "OPNIEUW"
+        },
+        "stats": {
+          "hp": "KP",
+          "attack": "Aanval",
+          "defense": "Verdediging",
+          "special_attack": "Sp. Aanval",
+          "special_defense": "Sp. Verdediging",
+          "speed": "Snelheid",
+          "total": "Totaal"
+        },
+        "nav": {
+          "prev": "VOR",
+          "next": "VOLG"
+        },
+        "hidden_ability": "Verborgen Vermogen",
+        "scroll_hint": "scrollen",
+        "evolution_triggers": {
+          "level_up": "level omhoog",
+          "item": "voorwerp",
+          "trade": "ruilen",
+          "shed": "vervellen",
+          "other": "overig"
+        },
+        "biology_labels": {
+          "species": "Soort",
+          "height": "Lengte",
+          "weight": "Gewicht",
+          "egg_groups": "Eigroepen",
+          "catch_rate": "Vangkans",
+          "base_friendship": "Basisblijheid",
+          "hatch_counter": "Uitkomststappen",
+          "steps": "stappen",
+          "unit_m": "m",
+          "unit_kg": "kg",
+          "shape": "Vorm",
+          "color": "Kleur",
+          "habitat": "Habitat"
+        },
+        "biology_values": {
+          "colors": {
+            "black": "Zwart",
+            "blue": "Blauw",
+            "brown": "Bruin",
+            "gray": "Grijs",
+            "green": "Groen",
+            "pink": "Roze",
+            "purple": "Paars",
+            "red": "Rood",
+            "white": "Wit",
+            "yellow": "Geel"
+          },
+          "shapes": {
+            "ball": "Bal",
+            "squiggle": "Kronkel",
+            "fish": "Vis",
+            "arms": "Armen",
+            "blob": "Klodder",
+            "upright": "Rechtop",
+            "legs": "Benen",
+            "quadruped": "Viervoetig",
+            "wings": "Vleugels",
+            "tentacles": "Tentakels",
+            "heads": "Hoofden",
+            "humanoid": "Mensachtig",
+            "bug_wings": "Insectenvleugels",
+            "armor": "Pantser"
+          },
+          "habitats": {
+            "cave": "Grot",
+            "forest": "Woud",
+            "grassland": "Grasvlakte",
+            "mountain": "Berg",
+            "rare": "Zeldzaam",
+            "rough_terrain": "Ruw terrein",
+            "sea": "Zee",
+            "urban": "Stedelijk",
+            "waters_edge": "Waterkant"
+          }
+        }
+      }
     },
     "skills": {
       "title": "Vaardigheden",

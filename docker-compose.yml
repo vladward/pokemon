@@ -9,7 +9,7 @@ services:
       MYSQL_USER: pokemon
       MYSQL_PASSWORD: pokemon
     ports:
-      - "3306:3306"
+      - '3306:3306'
     volumes:
       - pokemon_db_data:/var/lib/mysql
 
