@@ -34,7 +34,6 @@
     "src",
     "i18n",
     ".next/types/**/*.ts",
-    "e2e/**/*.ts",
     "scripts",
     "lib"
   ],
