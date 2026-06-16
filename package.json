@@ -69,6 +69,7 @@
     "eslint-plugin-prettier": "^5.2.0",
     "eslint-plugin-react": "^7.37.0",
     "eslint-plugin-react-hooks": "^5.0.0",
+    "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
     "p-limit": "^7.3.0",
     "postcss": "^8.5.3",
