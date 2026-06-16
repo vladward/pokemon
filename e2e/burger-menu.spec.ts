@@ -30,10 +30,13 @@ test.describe('Header Adaptive Flow', () => {
     await page.getByLabel('Toggle menu').click();
 
     const drawer = page.locator('[data-testid="mobile-drawer"]');
-    await drawer.getByRole('link', { name: 'Pokemon' }).click();
+
+    await Promise.all([
+      page.waitForURL(/\/pokemon/, { timeout: 15000 }),
+      drawer.getByRole('link', { name: 'Pokemon' }).click(),
+    ]);
 
     await expect(drawer).not.toBeInViewport();
-    await expect(page).toHaveURL(/\/pokemon/, { timeout: 15000 });
   });
 
   test('adaptability: hiding a burger when resizing to a desktop', async ({ page }) => {
