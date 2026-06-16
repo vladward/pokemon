@@ -1,0 +1,44 @@
+name: Generate Linux Snapshots (temporary)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  gen-snapshots:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL_CI }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm ci
+
+      - name: Get Playwright version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('@playwright/test/package.json').version)")" >> $GITHUB_ENV
+
+      - name: Cache Playwright Browsers
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+
+      - name: Install Playwright Browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install chromium firefox webkit
+
+      - name: Install Playwright Dependencies
+        run: npx playwright install-deps chromium firefox webkit
+
+      - run: npx playwright test e2e/pokemon-details.spec.ts --update-snapshots
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: linux-snapshots
+          path: e2e/pokemon-details.spec.ts-snapshots/
+          retention-days: 7
