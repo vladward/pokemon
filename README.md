@@ -13,7 +13,7 @@ from [PokéAPI](https://pokeapi.co) into a local **MySQL** database — no runti
 | State     | Zustand                              |
 | i18n      | next-intl                            |
 | Database  | MySQL 8 (Docker) via Prisma + mysql2 |
-| Testing   | Jest + Testing Library, Playwright   |
+| Testing   | Jest + Testing Library               |
 | CI        | GitHub Actions                       |
 
 ---
@@ -108,7 +108,6 @@ Open [http://localhost:3000](http://localhost:3000).
 | `npm run typecheck` | TypeScript check (`tsc --noEmit`) |
 | `npm run fix`       | Auto-fix with Prettier + ESLint   |
 | `npm run test`      | Jest unit & integration tests     |
-| `npm run test:e2e`  | Playwright end-to-end tests       |
 
 ### Database
 
