@@ -32,7 +32,7 @@ test.describe('Header Adaptive Flow', () => {
     const drawer = page.locator('[data-testid="mobile-drawer"]');
 
     await Promise.all([
-      page.waitForURL(/\/pokemon/, { timeout: 15000 }),
+      page.waitForURL(/\/pokemon/, { waitUntil: 'commit', timeout: 15000 }),
       drawer.getByRole('link', { name: 'Pokemon' }).click(),
     ]);
 
