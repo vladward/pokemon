@@ -82,5 +82,8 @@
     "ts-jest": "^29.4.6",
     "tsx": "^4.19.0",
     "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "@swc/helpers": "0.5.17"
   }
 }
