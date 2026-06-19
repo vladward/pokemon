@@ -24,7 +24,7 @@ export const ToTopButton = () => {
 
   return (
     <PokemonButton
-      className={`fixed right-5 bottom-5 z-10 m-[15px] p-3 transition-all duration-300 ease-in-out hover:scale-110 ${
+      className={`fixed right-5 bottom-20 z-10 m-[15px] p-3 transition-all duration-300 ease-in-out hover:scale-110 ${
         isVisible ? 'opacity-100 visible' : 'opacity-0 invisible'
       }`}
       onClick={handleScrollToTop}

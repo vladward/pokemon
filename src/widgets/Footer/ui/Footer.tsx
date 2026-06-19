@@ -1,17 +1,53 @@
 import NextLink from 'next/link';
 import { getTranslations } from 'next-intl/server';
-import type { FC } from 'react';
 
+import { MobileTabs } from '@/widgets/Footer';
 import { NavLinks } from '@/widgets/NavLinks';
 
 import { Link } from '@/shared/config/navigation';
-import { PokemonTitle } from '@/shared/ui';
+import { Gamepad, Home, PokeballLogo, PokemonTitle } from '@/shared/ui';
 
-export const Footer: FC = async () => {
+import { MobileTabProps } from './types';
+
+export async function Footer() {
   const t = await getTranslations();
+
+  const tabs: MobileTabProps[] = [
+    {
+      name: 'home',
+      icon: (
+        <Home
+          width={34}
+          height={34}
+        />
+      ),
+      path: '/',
+    },
+    {
+      name: 'pokemon',
+      icon: (
+        <PokeballLogo
+          width={34}
+          height={34}
+        />
+      ),
+      path: '/pokemon',
+    },
+    {
+      name: 'game',
+      icon: (
+        <Gamepad
+          width={34}
+          height={34}
+        />
+      ),
+      path: '/game',
+    },
+  ];
+
   return (
-    <footer className="w-full flex flex-col px-[5vw] bg-yellow transition-colors duration-theme">
-      <div className="flex flex-col justify-center items-center pb-10 mobile:pb-2">
+    <footer className="w-full flex flex-col px-[5vw] bg-yellow transition-colors duration-theme mobile:fixed mobile:bottom-0 mobile:z-20 mobile:p-2 mobile:rounded-t-2xl">
+      <div className="mobile:hidden flex flex-col justify-center items-center pb-10 mobile:pb-2">
         <Link href="/">
           <PokemonTitle className="text-blue transition-transform duration-300 hover:scale-110 w-[120px] h-[120px] mobile:w-[80px] mobile:h-[80px]" />
         </Link>
@@ -27,7 +63,7 @@ export const Footer: FC = async () => {
         </div>
       </div>
 
-      <div className="text-center py-5 mobile:py-3 border-t border-[#cdc1c1] text-blue">
+      <div className="mobile:hidden text-center py-5 mobile:py-3 border-t border-[#cdc1c1] text-blue">
         <span>
           {t('footer.created_by')}
           <NextLink
@@ -39,6 +75,8 @@ export const Footer: FC = async () => {
           .{t('footer.rights')}
         </span>
       </div>
+
+      <MobileTabs tabs={tabs} />
     </footer>
   );
-};
+}

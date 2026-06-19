@@ -25,3 +25,4 @@ export { Normal } from './normal';
 export { Sun } from './sun';
 export { Moon } from './moon';
 export { ArrowTop } from './arrow-top';
+export { Home } from './home';
