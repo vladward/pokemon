@@ -2,13 +2,14 @@ import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import type { CSSProperties } from 'react';
 
+import { RarityLabel } from '@/entities/Pokemon/ui/card/RarityLabel';
+
 import { cn } from '@/shared/lib/utils/cn';
 
 import type { PokemonRarity } from '../../../config';
 import type { TPokemonCard as PokemonCardType } from '../../../TPokemonCard';
-import { rarityConfig, typeBadgeColors, getGradientClasses } from '../config';
+import { getGradientClasses, typeBadgeColors } from '../config';
 import { PokeBallPlaceholder } from '../PokeBallPlaceholder';
-import { RarityStars } from '../RarityStars';
 import { TiltWrapper } from '../TiltWrapper';
 
 interface Props {
@@ -30,7 +31,6 @@ const MYTHICAL_STARS: Array<{ pos: CSSProperties; delay: string; size: string }>
 export const PokemonCardMythical = async ({ pokemon, priority }: Props) => {
   const image = pokemon.spriteDreamWorld ?? pokemon.spriteArtwork ?? pokemon.sprite;
   const gradient = getGradientClasses(pokemon.types);
-  const rarity = rarityConfig[pokemon.rarity];
   const tCard = await getTranslations('pokemon_card');
   const tTypes = await getTranslations('elements');
 
@@ -166,27 +166,10 @@ export const PokemonCardMythical = async ({ pokemon, priority }: Props) => {
           </div>
         </div>
 
-        <div className="relative z-10 flex items-center justify-between border-t border-white/10 px-4 pt-[10px] pb-[14px] mobile:px-3 mobile:py-2">
-          <span
-            className={cn(
-              'rounded-md border px-2.5 pt-[7px] pb-[5px] text-[11px] mobile:text-[9px] font-bold leading-none uppercase tracking-[0.15em] text-center backdrop-blur-sm',
-              rarity.border,
-              rarity.bg,
-              rarity.glow,
-            )}
-            style={{ color: rarity.color }}
-          >
-            {rarityLabel(pokemon.rarity)}
-          </span>
-          <div className="mobile:hidden">
-            {rarity.stars > 0 && (
-              <RarityStars
-                count={rarity.stars}
-                color={rarity.color}
-              />
-            )}
-          </div>
-        </div>
+        <RarityLabel
+          rarityType={pokemon.rarity}
+          label={rarityLabel(pokemon.rarity)}
+        />
       </div>
     </TiltWrapper>
   );

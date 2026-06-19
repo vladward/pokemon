@@ -58,4 +58,5 @@ export type TPokemonDetails = Omit<TPokemonCard, 'stats'> & {
   evolutionSteps: TEvolutionStep[];
   locations: string[];
   forms: TForm[];
+  rarity: 'common' | 'uncommon' | 'rare' | 'legendary' | 'mythical';
 };

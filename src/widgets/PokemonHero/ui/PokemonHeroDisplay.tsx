@@ -1,4 +1,5 @@
 import type { TPokemonDetails } from '@/entities/Pokemon';
+import { RarityLabel } from '@/entities/Pokemon/ui/card/RarityLabel';
 
 import { MetricGrid } from './MetricGrid';
 import { PokedexEntry } from './PokedexEntry';
@@ -12,6 +13,7 @@ interface Props {
   weightLabel?: string;
   unitM?: string;
   unitKg?: string;
+  rarityText?: string;
 }
 
 export function PokemonHeroDisplay({
@@ -21,6 +23,7 @@ export function PokemonHeroDisplay({
   weightLabel,
   unitM,
   unitKg,
+  rarityText = 'common',
 }: Props) {
   return (
     <div className="flex h-full flex-col gap-3 p-4">
@@ -52,6 +55,14 @@ export function PokemonHeroDisplay({
           ))}
         </div>
       </div>
+
+      {/*Rarity*/}
+      <RarityLabel
+        rarityType={pokemon.rarity}
+        label={rarityText}
+        className="pt-4 mobile:pb-0 mobile:pt-4"
+        showStars={false}
+      />
 
       {/* Sprite */}
       <SpriteStage

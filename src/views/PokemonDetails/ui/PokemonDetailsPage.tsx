@@ -9,7 +9,7 @@ import { PokemonHeroDisplay } from '@/widgets/PokemonHero';
 import { PokemonRegionsPanel } from '@/widgets/PokemonRegions';
 import { PokemonStatsPanel } from '@/widgets/PokemonStats';
 
-import type { TPokemonDetails } from '@/entities/Pokemon';
+import type { PokemonRarity, TPokemonDetails } from '@/entities/Pokemon';
 
 interface Props {
   pokemon: TPokemonDetails;
@@ -20,6 +20,8 @@ const normalizeKey = (k: string) => k.replace(/-/g, '_');
 
 export async function PokemonDetailsPage({ pokemon, nav }: Props) {
   const t = await getTranslations('pages.pokemon.details');
+  const tCard = await getTranslations('pokemon_card');
+  const rarityText = tCard(`rarity.${pokemon.rarity}` as `rarity.${PokemonRarity}`);
 
   const safeT = (key: string, fallback: string): string => {
     try {
@@ -61,6 +63,7 @@ export async function PokemonDetailsPage({ pokemon, nav }: Props) {
         weightLabel={biologyLabels.weight}
         unitM={biologyLabels.unitM}
         unitKg={biologyLabels.unitKg}
+        rarityText={rarityText}
       />
 
       {pokemon.evolutions.length > 0 && (
