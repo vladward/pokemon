@@ -1,6 +1,4 @@
-import { getTranslations } from 'next-intl/server';
-
-import type { PokemonRarity, TPokemonDetails } from '@/entities/Pokemon';
+import type { TPokemonDetails } from '@/entities/Pokemon';
 import { RarityLabel } from '@/entities/Pokemon/ui/card/RarityLabel';
 
 import { MetricGrid } from './MetricGrid';
@@ -15,19 +13,18 @@ interface Props {
   weightLabel?: string;
   unitM?: string;
   unitKg?: string;
+  rarityText?: string;
 }
 
-export async function PokemonHeroDisplay({
+export function PokemonHeroDisplay({
   pokemon,
   entryLabel,
   heightLabel,
   weightLabel,
   unitM,
   unitKg,
+  rarityText = 'common',
 }: Props) {
-  const tCard = await getTranslations('pokemon_card');
-  const rarityText = tCard(`rarity.${pokemon.rarity}` as `rarity.${PokemonRarity}`);
-
   return (
     <div className="flex h-full flex-col gap-3 p-4">
       {/* Header */}
