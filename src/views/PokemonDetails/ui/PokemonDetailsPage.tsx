@@ -162,7 +162,7 @@ export async function PokemonDetailsPage({ pokemon, nav }: Props) {
 
       {/* Mobile (≤576px) */}
       <div className="pokedex-theme hidden mobile:block">
-        <div className="flex min-h-screen items-start justify-center p-4 bg-background">
+        <div className="flex min-h-screen items-start justify-center p-4 mb-4 bg-background">
           <div className="w-full max-w-sm">
             <PokedexMobileStack
               heroContent={heroContent}

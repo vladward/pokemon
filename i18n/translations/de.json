@@ -7,7 +7,10 @@
   },
   "footer": {
     "rights": " Alle Rechte vorbehalten.",
-    "created_by": "Entwickelt von "
+    "created_by": "Entwickelt von ",
+    "home": "Startseite",
+    "pokemon": "Pokémon",
+    "game": "Spiel"
   },
   "home": {
     "greetings": "Willkommen in der Welt der ",

@@ -27,7 +27,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
     >
       <div className="relative flex min-h-screen flex-col">
         <Header />
-        <main className="flex flex-col flex-grow">{children}</main>
+        <main className="flex flex-col flex-grow mobile:pb-16">{children}</main>
         <Footer />
       </div>
     </I18nProvider>

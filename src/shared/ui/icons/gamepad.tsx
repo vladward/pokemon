@@ -9,7 +9,7 @@ export const Gamepad: FC<SVGPropsType> = ({ width = '36', height = '36', ...rest
     height={height}
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#b8b2b2"
+    stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
