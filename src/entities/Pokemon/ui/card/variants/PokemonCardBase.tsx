@@ -142,7 +142,7 @@ export const PokemonCardBase = async ({ pokemon, priority }: Props) => {
                 <span
                   key={type}
                   className={cn(
-                    'rounded-full border px-2 py-[3px] text-[11px] font-bold leading-none capitalize tracking-widest backdrop-blur-sm',
+                    'rounded-full border px-2 py-[3px] pt-1.5 text-[11px] font-bold leading-none capitalize tracking-widest backdrop-blur-sm',
                     tc.bg,
                     tc.border,
                     LIGHT_BG_BADGE_TEXT[type] ?? tc.text,

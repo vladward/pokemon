@@ -86,7 +86,7 @@ export const PokemonCardLegendary = async ({ pokemon, priority }: Props) => {
             {pokemon.types.map((type) => (
               <span
                 key={type}
-                className="rounded-full border border-white/30 bg-black/25 px-2 py-[3px] text-[11px] font-bold leading-none capitalize tracking-widest text-white backdrop-blur-sm"
+                className="rounded-full border border-white/30 bg-black/25 px-2 py-[3px] pt-1.5 text-[11px] font-bold leading-none capitalize tracking-widest text-white backdrop-blur-sm"
               >
                 {typeLabel(type)}
               </span>
