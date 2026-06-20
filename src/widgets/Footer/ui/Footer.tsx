@@ -2,10 +2,8 @@ import NextLink from 'next/link';
 import { getTranslations } from 'next-intl/server';
 
 import { MobileTabs } from '@/widgets/Footer';
-import { NavLinks } from '@/widgets/NavLinks';
 
-import { Link } from '@/shared/config/navigation';
-import { Gamepad, Home, PokeballLogo, PokemonTitle } from '@/shared/ui';
+import { Gamepad, Home, PokeballLogo } from '@/shared/ui';
 
 import { MobileTabProps } from './types';
 
@@ -47,22 +45,6 @@ export async function Footer() {
 
   return (
     <footer className="w-full flex flex-col px-[5vw] bg-yellow transition-colors duration-theme mobile:fixed mobile:bottom-0 mobile:z-20 mobile:p-2 mobile:rounded-t-2xl">
-      <div className="mobile:hidden flex flex-col justify-center items-center pb-10 mobile:pb-2">
-        <Link href="/">
-          <PokemonTitle className="text-blue transition-transform duration-300 hover:scale-110 w-[120px] h-[120px] mobile:w-[80px] mobile:h-[80px]" />
-        </Link>
-
-        <div className="mobile:hidden">
-          <NavLinks isCentered />
-        </div>
-        <div className="hidden mobile:block">
-          <NavLinks
-            isVertical
-            isCentered
-          />
-        </div>
-      </div>
-
       <div className="mobile:hidden text-center py-5 mobile:py-3 border-t border-[#cdc1c1] text-blue">
         <span>
           {t('footer.created_by')}
