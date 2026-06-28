@@ -1,7 +1,7 @@
 'use client';
+import { useState } from 'react';
 import { cn } from '@/shared/lib/utils';
 import { Button, PokemonButton } from '@/shared/ui';
-import { useState } from 'react';
 
 type QuizzAnswersListType = {
   list: { id: string; title: string; isCorrect: boolean }[];
