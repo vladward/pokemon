@@ -1,4 +1,5 @@
 import { PokemonLoader } from '@/views/Pokemon';
+
 import { QuizzAnswersList } from './QuizzAnswersList';
 
 export const QuizzPanel = () => {
