@@ -18,6 +18,7 @@ export const PokemonButton: FC<{ children?: ReactNode | string } & ButtonProps> 
         'font-bold uppercase cursor-pointer',
         'shadow-[0_6px_0_#c7a008] transition-all duration-100 ease-in',
         'active:shadow-[0_2px_0_#c7a008] active:translate-y-1',
+        'hover:opacity-80',
         className,
       )}
       {...rest}

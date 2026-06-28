@@ -1,3 +1,5 @@
-import { GamePage } from '@/views/Game';
+import { GamePageView } from '@/views/Game';
 
-export default GamePage;
+export default function Page() {
+  return <GamePageView />;
+}
