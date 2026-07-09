@@ -1,8 +1,8 @@
 import { PokemonLoader } from '@/views/Pokemon';
 
-import { QuizzAnswersList } from './QuizzAnswersList';
+import { QuizAnswersList } from './QuizAnswersList';
 
-export const QuizzPanel = () => {
+export const QuizPanel = () => {
   const variants = [
     {
       id: '1',
@@ -26,5 +26,9 @@ export const QuizzPanel = () => {
     },
   ];
 
-  return <div>{variants.length ? <QuizzAnswersList list={variants} /> : <PokemonLoader />}</div>;
+  return (
+    <div className="flex items-center justify-center px-14 py-14 ">
+      {variants.length ? <QuizAnswersList list={variants} /> : <PokemonLoader />}
+    </div>
+  );
 };

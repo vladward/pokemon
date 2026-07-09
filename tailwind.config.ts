@@ -36,7 +36,7 @@ export default {
         lightBlue: '#2a75bb',
         blue: '#334e68',
         white100: '#f4f7fb',
-
+        sidebarRing: 'var(--sidebar-ring)',
         warning: {
           bg: 'var(--warning-bg)',
           text: 'var(--warning-text)',
@@ -131,6 +131,16 @@ export default {
         },
         destructive: {
           DEFAULT: 'var(--destructive)',
+        },
+        grayCard: {
+          DEFAULT: 'var(--gray-card)',
+        },
+        chart: {
+          1: 'var(--chart-1)',
+          2: 'var(--chart-2)',
+          3: 'var(--chart-3)',
+          4: 'var(--chart-4)',
+          5: 'var(--chart-5)',
         },
       },
       boxShadow: {
